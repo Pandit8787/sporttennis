@@ -320,7 +320,7 @@ function TestimonialsPage() {
                     <div className="flex items-center gap-1.5">
                       <p className="font-bold text-sm text-foreground">{t.name}</p>
                       {t.verified && (
-                        <CheckCircle2 className="size-3.5 text-neon" title="Verified Player/Parent" />
+                        <CheckCircle2 className="size-3.5 text-neon" aria-label="Verified Player/Parent" />
                       )}
                     </div>
                     <p className="text-xs text-muted-foreground">{t.role}</p>

@@ -23,7 +23,6 @@ function PunjabiBagh() {
         eyebrow="Punjabi Bagh"
         title="Punjabi Bagh Club"
         body="A premium destination for tennis excellence, designed to make structured player development more accessible across West Delhi."
-        image={undefined}
       />
 
       <Section>
