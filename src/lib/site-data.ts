@@ -4,7 +4,7 @@ export const ACADEMY = {
   tagline: "Player-first tennis coaching across Delhi, from first lesson to national-level competition",
   phone: "+91 92665 79159, 81305 14603",
   whatsapp: "+919266579159",
-  email: "kabhiney@gmail.com",
+  email: "abhiney@sportslifetennisacademy.com",
   address: "DDA Roshanara Club, Shakti Nagar, Delhi-110007",
   hours: [
     { day: "Tuesday – Sunday", time: "4:00pm – 7:00pm" },
