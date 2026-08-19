@@ -1,29 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
-import { Reveal, Counter } from "@/components/site/motion-primitives";
+import { Reveal } from "@/components/site/motion-primitives";
 import {
-  Award,
   BookOpen,
-  Calendar,
   CheckCircle2,
-  Compass,
-  ExternalLink,
   Globe2,
   GraduationCap,
-  HeartHandshake,
   Home,
-  MapPin,
-  Plane,
   Sparkles,
   Trophy,
-  Users,
-  Zap,
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
-const matchPlayImage = "/centre-gallery/whatsapp-20260813-171744-2.jpg";
-const globalLearningImage = "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg";
-const courtsHomeImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
+const matchPlayImage = "/centre-gallery/img_8064.jpg";
+const globalLearningImage = "/founder-gallery/abhiney-with-jofre-porta.jpg";
 
 export const Route = createFileRoute("/initiatives/")({
   head: () => ({
@@ -32,13 +22,13 @@ export const Route = createFileRoute("/initiatives/")({
       {
         name: "description",
         content:
-          "Explore Sports Life initiatives: Sunday Match Play, Global Learning masterclasses, Delhi University internships, DU sports quota guidance, and visiting player tournament support in Delhi.",
+          "Explore Sports Life initiatives: Sunday Match Play and Global Learning Initiatives (Learning Beyond the Court).",
       },
       { property: "og:title", content: "Sports Life Initiatives" },
       {
         property: "og:description",
         content:
-          "Holistic tennis programs, internships, and competitive platforms empowering athletes across Delhi.",
+          "Sunday Match Play and Global Learning masterclasses connecting players directly with high-level mentors.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/initiatives" },
@@ -48,18 +38,17 @@ export const Route = createFileRoute("/initiatives/")({
   component: InitiativesPage,
 });
 
-const INITIATIVES_DATA = [
+const ACTIVE_INITIATIVES = [
   {
     title: "Sunday Match Play",
-    tag: "Flagship Initiative",
-    status: "Active Weekly",
+    tag: "Active Program",
     badgeColor: "text-neon bg-neon/10 border-neon/30",
-    desc: "Practice builds technique; matches build competitors. Weekly structured match play grouped by age and rating to build tournament composure, tactical shot selection, and mental grit.",
+    desc: "Practice builds technique; matches build competitors. Weekly tournament match play giving players regular competitive match exposure, tactical coach debriefs, and tournament composure.",
     highlights: [
-      "Level-based grouping across all skill brackets",
-      "Multiple short-format matches per session",
-      "Supervisor coaches providing real-time feedback",
-      "Held across 3 premier Delhi centres",
+      "Simulated tournament environment",
+      "Multiple competitive matches per session",
+      "Supervisor coaches providing real-time debriefs",
+      "Held across our premier Delhi centres",
     ],
     link: "/initiatives/sunday-match-play",
     linkText: "Explore Sunday Match Play",
@@ -69,203 +58,108 @@ const INITIATIVES_DATA = [
   },
   {
     title: "Global Learning Initiatives",
-    tag: "International Masterclasses",
-    status: "Active Series",
+    tag: "Active Series",
     badgeColor: "text-electric bg-electric/10 border-electric/30",
-    desc: "Exclusive interactive sessions and webinars connecting Indian players and coaches with internationally renowned mentors like Jofre Porta and European academy experts from Spain.",
+    desc: "Learning Beyond the Court: Direct access to experienced professionals including international coach Jofre Porta and accomplished Indian pro Vishnu Vardhan.",
     highlights: [
-      "Modern European training methodologies",
-      "Tactical biomechanics & mental resilience",
-      "Interactions with ATP/ITF tour professionals",
-      "Q&A sessions for parents, players, and coaches",
+      "Direct online sessions with international coaches",
+      "Insights from tour professionals on high-level competition",
+      "Expanding player perspective beyond daily court drills",
+      "Interactive Q&As for athletes and parents",
     ],
     link: "/initiatives/global-learning",
-    linkText: "View Global Masterclasses",
+    linkText: "View Global Learning",
     icon: Globe2,
     image: globalLearningImage,
-    imagePos: "object-[center_20%]",
+    imagePos: "object-center",
   },
+];
+
+const UPCOMING_INITIATIVES = [
   {
-    title: "Your Tennis Home in Delhi",
-    tag: "Tournament Support",
-    status: "Year-Round Service",
-    badgeColor: "text-amber-500 bg-amber-500/10 border-amber-500/30",
-    desc: "A complete support ecosystem for travelling players competing in AITA, ITF, and national tournaments in Delhi. Providing practice courts across 3 surfaces, certified hitting partners, and scheduling.",
-    highlights: [
-      "Access to 14 synthetic, 10 clay, and 3 grass courts",
-      "High-level hitting partners matched to player ranking",
-      "Practice sessions tailored around tournament draws",
-      "Private coaching and tactical debriefs",
-    ],
-    link: "/contact",
-    linkText: "Request Visiting Player Support",
-    icon: Home,
-    image: courtsHomeImage,
-  },
-  {
-    title: "Delhi University Sports Quota Guidance",
-    tag: "Academic & Career Pathway",
-    status: "Admissions Season",
-    badgeColor: "text-neon bg-neon/10 border-neon/30",
-    desc: "Comprehensive mentorship for aspiring student-athletes and parents navigating the competitive Delhi University sports quota admissions process.",
-    highlights: [
-      "Certificate verification & trial preparation",
-      "Strategic tournament calendar planning for ranking points",
-      "Balancing high-performance tennis with board exams",
-      "College-specific trial fitness and skill benchmarks",
-    ],
-    link: "/contact",
-    linkText: "Book DU Quota Consultation",
-    icon: GraduationCap,
-  },
-  {
-    title: "Sports Life DU Coaching Internship",
-    tag: "Career Development",
-    status: "Seasonal Batches",
-    badgeColor: "text-electric bg-electric/10 border-electric/30",
-    desc: "Paid coaching internship empowering Delhi University sports-quota students to gain professional coaching experience, head coach mentorship, and a monthly stipend (₹8,000–₹15,000).",
-    highlights: [
-      "Hands-on assistant coaching under certified Head Coaches",
-      "Official certificate of coaching internship",
-      "Weekly assignments in match analysis & academy operations",
-      "Long-term career placement pathways in sports management",
-    ],
-    link: "/contact",
-    linkText: "Apply for Internship",
+    title: "Delhi University Internship Program",
+    status: "Coming Soon",
+    desc: "A structured coaching internship pathway for university athletes seeking hands-on mentoring, on-court experience, and careers in sports management.",
     icon: BookOpen,
   },
   {
-    title: "International Player India Tour Support",
-    tag: "Global Support",
-    status: "On Request",
-    badgeColor: "text-amber-500 bg-amber-500/10 border-amber-500/30",
-    desc: "Full-service tournament preparation for international ITF and junior athletes travelling to India for Asian circuit events. Seamless court booking, transport, stringing, and sparring.",
-    highlights: [
-      "Priority court booking on European-spec surfaces",
-      "Pro hitting partners and tactical briefing",
-      "Local logistical support, transport & hotel guidance",
-      "Same-day racket stringing & recovery arrangements",
-    ],
-    link: "/contact",
-    linkText: "Enquire for Tour Support",
-    icon: Plane,
+    title: "Your Tennis Home in Delhi",
+    status: "Coming Soon",
+    desc: "Comprehensive tournament support for travelling national and international players competing in Delhi, offering court access, hitting partners, and logistics.",
+    icon: Home,
+  },
+  {
+    title: "DU Sports Quota Guidance",
+    status: "Coming Soon",
+    desc: "Dedicated trial preparation, certificate verification guidance, and tactical advice for student-athletes seeking Delhi University sports admissions.",
+    icon: GraduationCap,
   },
 ];
 
 function InitiativesPage() {
   return (
     <>
-      {/* Hero */}
       <PageHero
-        eyebrow="Beyond The Court"
-        title="Sports Life Initiatives"
-        body="Pathways, competitive platforms, university internships, and global learning masterclasses designed to empower every player beyond traditional training."
+        eyebrow="Sports Life Initiatives"
+        title="Pathways Beyond Traditional Coaching"
+        body="We actively create opportunities for our players to compete regularly, learn from international professionals, and broaden their perspective on tennis."
         image={heroImage}
       />
 
-      {/* Overview Intro */}
+      {/* Active Initiatives */}
       <Section>
         <SectionHeading
-          eyebrow="Holistic Impact"
-          title="Building an Ecosystem, Not Just an Academy"
-          body="Sports Life was created to solve the real challenges athletes face—from lack of regular match play and tournament logistics to career mentorship and international exposure."
+          eyebrow="Current Initiatives"
+          title="Active Player Initiatives"
+          body="Currently featuring our signature Sunday Match Play program and Global Learning Initiatives."
         />
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="card-elevated p-6 text-center">
-            <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={52} suffix="+" />
-            </p>
-            <p className="mt-2 text-sm font-semibold text-foreground">Sunday Match Plays / Year</p>
-            <p className="text-xs text-muted-foreground mt-1">Structured weekend competition</p>
-          </div>
-
-          <div className="card-elevated p-6 text-center">
-            <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={27} suffix="" />
-            </p>
-            <p className="mt-2 text-sm font-semibold text-foreground">Tournament Courts in Delhi</p>
-            <p className="text-xs text-muted-foreground mt-1">Synthetic, clay, and grass</p>
-          </div>
-
-          <div className="card-elevated p-6 text-center">
-            <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={100} suffix="%" />
-            </p>
-            <p className="mt-2 text-sm font-semibold text-foreground">Mentorship & Support</p>
-            <p className="text-xs text-muted-foreground mt-1">From grassroots to university</p>
-          </div>
-
-          <div className="card-elevated p-6 text-center">
-            <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={6} suffix="+" />
-            </p>
-            <p className="mt-2 text-sm font-semibold text-foreground">Key Dedicated Programs</p>
-            <p className="text-xs text-muted-foreground mt-1">Covering development & careers</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Initiatives Grid */}
-      <Section className="bg-surface/30">
-        <SectionHeading
-          eyebrow="Our Initiatives"
-          title="Programs That Make a Difference"
-          body="Click on any initiative to learn more, register, or connect with our program coordinators."
-        />
-
-        <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {INITIATIVES_DATA.map((item, idx) => (
-            <Reveal key={item.title} delay={idx * 0.08}>
-              <div className="card-elevated flex h-full flex-col justify-between overflow-hidden p-6 sm:p-7">
-                <div>
-                  {/* Top Bar */}
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex size-11 items-center justify-center rounded-xl bg-neon/15 text-neon">
-                      <item.icon className="size-5" />
-                    </div>
-                    <span
-                      className={`rounded-full border px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider ${item.badgeColor}`}
-                    >
-                      {item.tag}
-                    </span>
-                  </div>
-
-                  {item.image && (
-                    <div className="mt-4 overflow-hidden rounded-xl border border-border">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className={`h-44 w-full object-cover ${(item as { imagePos?: string }).imagePos ?? "object-center"} transition-transform duration-500 hover:scale-105`}
-                      />
-                    </div>
-                  )}
-
-                  <h3 className="mt-4 text-xl font-bold text-foreground">{item.title}</h3>
-                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                    {item.desc}
-                  </p>
-
-                  {/* Highlights List */}
-                  <div className="mt-4 space-y-2 border-t border-border/70 pt-3">
-                    {item.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-foreground/85">
-                        <CheckCircle2 className="size-3.5 shrink-0 text-neon mt-0.5" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {ACTIVE_INITIATIVES.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.1}>
+              <div className="card-elevated group flex flex-col justify-between h-full overflow-hidden border border-border bg-surface rounded-3xl shadow-lg hover:border-neon/50 transition-all">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className={`size-full object-cover ${item.imagePos} transition-transform duration-700 group-hover:scale-105`}
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                  <span className="absolute top-3 left-3 rounded-full bg-black/60 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-neon">
+                    {item.tag}
+                  </span>
+                  <h3 className="absolute bottom-3 left-4 right-4 text-2xl font-bold text-white">
+                    {item.title}
+                  </h3>
                 </div>
 
-                {/* Footer Link */}
-                <div className="mt-6 border-t border-border pt-4">
-                  <a
-                    href={item.link}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-neon hover:text-foreground transition-colors"
-                  >
-                    <span>{item.linkText}</span>
-                    <ExternalLink className="size-3.5" />
-                  </a>
+                <div className="p-7 flex flex-col justify-between grow">
+                  <div>
+                    <p className="text-sm text-foreground/80 leading-relaxed">{item.desc}</p>
+                    <div className="mt-5 space-y-2 border-t border-border pt-4">
+                      {item.highlights.map((h) => (
+                        <div key={h} className="flex items-center gap-2 text-xs text-foreground/85">
+                          <CheckCircle2 className="size-3.5 text-neon shrink-0" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-7 pt-4 border-t border-border flex items-center justify-between">
+                    <Link
+                      to={item.link as any}
+                      className="font-display text-xs font-bold uppercase tracking-wider text-neon hover:underline inline-flex items-center gap-1"
+                    >
+                      <span>{item.linkText}</span>
+                      <span>→</span>
+                    </Link>
+                    <div className="rounded-full p-2.5 bg-neon/10 text-neon">
+                      <item.icon className="size-5" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -273,10 +167,44 @@ function InitiativesPage() {
         </div>
       </Section>
 
-      {/* CTA */}
+      {/* Coming Soon Initiatives */}
+      <Section className="bg-surface/30">
+        <SectionHeading
+          eyebrow="In Development"
+          title="Upcoming Initiatives"
+          body="Programs and platforms currently being built for future phases of Sports Life."
+        />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {UPCOMING_INITIATIVES.map((item, idx) => (
+            <Reveal key={item.title} delay={idx * 0.08}>
+              <div className="card-elevated p-6 sm:p-7 border border-border/80 bg-surface rounded-2xl flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex size-10 items-center justify-center rounded-xl bg-neon/10 text-neon">
+                      <item.icon className="size-5" />
+                    </div>
+                    <span className="rounded-full bg-surface-2 border border-border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                      {item.status}
+                    </span>
+                  </div>
+                  <h4 className="mt-4 text-lg font-bold text-foreground">{item.title}</h4>
+                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-border/60 text-xs font-semibold text-muted-foreground">
+                  Stay tuned for updates
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
       <CtaBanner
-        title="Want to Partner With Us?"
-        body="Whether you are a university player, school administrator, or competitive athlete travelling to Delhi, connect with us to participate in Sports Life initiatives."
+        title="Get Involved with Sports Life"
+        body="Whether you want to participate in Sunday Match Play or join our next learning masterclass, reach out today."
       />
     </>
   );

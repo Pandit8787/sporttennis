@@ -15,7 +15,7 @@ export const Route = createFileRoute("/facilities")({
       {
         name: "description",
         content:
-          "Tour Sports Life Tennis Academy: 27 courts across multiple surfaces, structured player development and support for match play and tournaments.",
+          "Tour Sports Life Tennis Academy: 25 courts across multiple surfaces (synthetic, clay, grass), structured player development and support for match play and tournaments.",
       },
       { property: "og:title", content: "Sports Life Facilities — Courts, Gym, Recovery" },
       {

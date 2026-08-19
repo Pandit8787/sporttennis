@@ -4,37 +4,35 @@ import { Reveal } from "@/components/site/motion-primitives";
 import {
   Award,
   BookOpen,
-  Calendar,
   CheckCircle2,
-  Compass,
   Globe2,
-  GraduationCap,
+  HeartHandshake,
   Lightbulb,
-  MapPin,
   MessageSquare,
   Sparkles,
   Trophy,
   Users,
   Video,
-  Zap,
 } from "lucide-react";
 
 const heroImage = "/founder-gallery/abhiney-at-rafa-nadal-tennis-academy.jpg";
+const jofreSessionImage = "/founder-gallery/abhiney-with-jofre-porta.jpg";
+const ferreroSessionImage = "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg";
 
 export const Route = createFileRoute("/initiatives/global-learning")({
   head: () => ({
     meta: [
-      { title: "Global Learning Initiatives | Sports Life Tennis Academy" },
+      { title: "Global Learning Initiatives — Learning Beyond the Court | Sports Life" },
       {
         name: "description",
         content:
-          "Connect with international tennis academies, European coaching philosophies in Spain, and interactive masterclasses with world-class mentors through Sports Life.",
+          "Direct access to experienced professionals: exclusive online sessions with Jofre Porta, Indian professional Vishnu Vardhan, and international tennis mentors.",
       },
       { property: "og:title", content: "Global Learning Initiatives — Sports Life" },
       {
         property: "og:description",
         content:
-          "Broadening player perspectives with international coach webinars, Spanish training systems, and masterclasses.",
+          "Learning Beyond the Court: Connecting our players with internationally experienced coaches and ATP tour professionals.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/initiatives/global-learning" },
@@ -44,281 +42,233 @@ export const Route = createFileRoute("/initiatives/global-learning")({
   component: GlobalLearning,
 });
 
-const GLOBAL_GALLERY = [
-  {
-    src: "/founder-gallery/abhiney-at-rafa-nadal-tennis-academy.jpg",
-    title: "Rafa Nadal Tennis Academy",
-    location: "Manacor, Mallorca, Spain",
-    desc: "Studying high-performance Spanish clay court movement, endurance drills, and physical conditioning methods.",
-    badge: "Spanish Academy",
-    pos: "object-[center_20%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-with-jofre-porta.jpg",
-    title: "Mentorship with Jofre Porta",
-    location: "Global Tennis Team, Spain",
-    desc: "Collaborating with legendary international coach Jofre Porta, mentor to former World No. 1 players.",
-    badge: "Masterclass Mentor",
-    pos: "object-[center_15%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg",
-    title: "JC Ferrero Equelite Tennis Academy",
-    location: "Villena, Spain",
-    desc: "Exploring modern European player development pathways, biomechanics, and technical stroke production.",
-    badge: "Elite Academy",
-    pos: "object-center",
-  },
-  {
-    src: "/founder-gallery/abhiney-with-karen-khachanov.jpg",
-    title: "Interaction with Karen Khachanov",
-    location: "ATP Tour Pro",
-    desc: "Gaining insights from former ATP World No. 8 and Olympic Silver Medalist on mental resilience and pro tour demands.",
-    badge: "ATP Pro Insights",
-    pos: "object-[center_15%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-at-global-agent-tennis-acadmey-madrid.jpg",
-    title: "Global Agent Tennis Academy",
-    location: "Madrid, Spain",
-    desc: "Studying modern tactical court positioning and aggressive baseline strategies utilized by European junior competitors.",
-    badge: "Madrid Training",
-    pos: "object-[center_20%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-at-barcelona-tennis-acadmey.jpg",
-    title: "Barcelona Tennis Academy",
-    location: "Barcelona, Spain",
-    desc: "Observing youth development frameworks, structured progression systems, and holistic athletic nutrition.",
-    badge: "Barcelona Experience",
-    pos: "object-[center_25%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-at-madrid-open.jpg",
-    title: "Mutua Madrid Open Insights",
-    location: "Madrid, Spain",
-    desc: "Analyzing top ATP/WTA match play patterns, return positioning, and tactical decision-making at Masters 1000 level.",
-    badge: "Tour Analysis",
-    pos: "object-[center_25%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-at-jofre-porta-academy-1.jpg",
-    title: "On-Court Drills with Jofre Porta",
-    location: "Mallorca, Spain",
-    desc: "Practical execution of high-intensity decision-making drills designed to build tactical intelligence under pressure.",
-    badge: "Tactical Drills",
-    pos: "object-[center_20%]",
-  },
-  {
-    src: "/founder-gallery/abhiney-at-jc-ferrero-1.jpg",
-    title: "Technical Analysis Session",
-    location: "Equelite Academy, Spain",
-    desc: "Deep-dive video feedback methods and biomechanical correction protocols for serve and forehand acceleration.",
-    badge: "Video Analytics",
-    pos: "object-[center_25%]",
-  },
-];
-
 function GlobalLearning() {
   return (
     <>
       {/* Hero */}
       <PageHero
-        eyebrow="International Exposure"
-        title="Global Learning Initiatives"
-        body="Connecting Indian tennis players and coaches with international academies, European training philosophies, and world-class masterclasses."
+        eyebrow="Global Learning Initiatives"
+        title="Learning Beyond the Court"
+        body="Direct access to experienced professionals. At Sports Life, we believe player development should extend beyond the regular coaching session."
         image={heroImage}
       />
 
-      {/* Program Mission */}
+      {/* Main Philosophy Section */}
       <Section>
         <SectionHeading
-          eyebrow="Broadening Horizons"
-          title="World-Class Tennis Perspectives for Indian Athletes"
-          body="Tennis is a global sport. To compete at the highest level, athletes and coaches must understand how the world's best players are developed."
+          eyebrow="Learning Beyond the Court"
+          title="Direct Access to Experienced Professionals"
+          body="Bringing the right people, experiences, and knowledge closer to our players."
         />
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="card-elevated p-6 text-center">
-            <div className="flex size-11 mx-auto items-center justify-center rounded-xl bg-neon/15 text-neon mb-3">
-              <Globe2 className="size-5" />
-            </div>
-            <h4 className="font-bold text-base text-foreground">European Methodologies</h4>
-            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-              Grounded in the proven Spanish training models that built world champions.
+        <div className="mt-8 space-y-6 text-base leading-relaxed text-foreground/85 lg:text-lg">
+          <div className="rounded-2xl border border-neon/30 bg-linear-to-r from-neon/10 via-neon/5 to-transparent p-6 sm:p-8">
+            <p className="font-display text-lg font-bold text-foreground sm:text-xl lg:text-2xl leading-snug">
+              “At Sports Life, we believe that player development should extend beyond the regular coaching session. Players can learn from their coaches every day, but sometimes hearing directly from someone who has experienced high-level tennis can offer an entirely different perspective.”
             </p>
           </div>
 
-          <div className="card-elevated p-6 text-center">
-            <div className="flex size-11 mx-auto items-center justify-center rounded-xl bg-electric/15 text-electric mb-3">
-              <Video className="size-5" />
-            </div>
-            <h4 className="font-bold text-base text-foreground">Interactive Masterclasses</h4>
-            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-              Live webinars and Q&As with international coaches and Indian professionals.
-            </p>
-          </div>
-
-          <div className="card-elevated p-6 text-center">
-            <div className="flex size-11 mx-auto items-center justify-center rounded-xl bg-neon/15 text-neon mb-3">
-              <Lightbulb className="size-5" />
-            </div>
-            <h4 className="font-bold text-base text-foreground">Tactical IQ & Biomechanics</h4>
-            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-              Modern kinematic stroke mechanics, court geometry, and high-percentage patterns.
-            </p>
-          </div>
-
-          <div className="card-elevated p-6 text-center">
-            <div className="flex size-11 mx-auto items-center justify-center rounded-xl bg-electric/15 text-electric mb-3">
-              <Compass className="size-5" />
-            </div>
-            <h4 className="font-bold text-base text-foreground">Pro Pathway Guidance</h4>
-            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-              Navigating AITA, ITF Juniors, and international scholarship pathways.
-            </p>
-          </div>
+          <p>
+            That is why we actively create opportunities for our players to learn from experienced
+            professionals and gain perspectives from different parts of the tennis world. Our
+            approach is simple: bring the right people, experiences, and knowledge closer to our
+            players.
+          </p>
         </div>
       </Section>
 
-      {/* Featured International Mentors & Academies */}
+      {/* Direct Access to Experienced Professionals: Jofre Porta & Vishnu Vardhan */}
       <Section className="bg-surface/30">
         <SectionHeading
-          eyebrow="Key Mentors"
-          title="Global Academies & Collaborations"
-          body="Insights distilled from leading training centres across Spain and ATP tour circles."
+          eyebrow="Exclusive Interactions"
+          title="Learning From Those Who Have Been There"
+          body="As part of our learning initiatives, Sports Life has organised exclusive online interactions that have given our players the opportunity to directly engage with experienced professionals. These sessions are designed to go beyond technical coaching. Players can listen, ask questions, understand different perspectives, and learn about the realities of competitive tennis from people who have experienced them firsthand."
         />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-3">
-          <div className="card-elevated p-6 sm:p-7 flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-neon">Mallorca, Spain</span>
-              <h3 className="mt-2 text-xl font-bold text-foreground">Jofre Porta Mentorship</h3>
-              <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Jofre Porta is one of the most respected figures in modern tennis coaching. Having
-                mentored Grand Slam champions and World No. 1 players, his philosophy on developing
-                tactical intelligence and mental toughness is integrated into Sports Life training.
-              </p>
-            </div>
-            <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-neon">
-              ★ Guest Speaker & Masterclass Mentor
-            </div>
-          </div>
+        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          {/* 01 JOFRE PORTA */}
+          <Reveal delay={0.05}>
+            <div className="card-elevated flex flex-col justify-between h-full p-7 sm:p-9 border border-border bg-surface rounded-3xl">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-neon/15 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-neon">
+                    01 Coaching Perspective
+                  </span>
+                  <span className="text-xs font-semibold text-muted-foreground">Mallorca, Spain</span>
+                </div>
 
-          <div className="card-elevated p-6 sm:p-7 flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-electric">Villena, Spain</span>
-              <h3 className="mt-2 text-xl font-bold text-foreground">JC Ferrero Equelite Academy</h3>
-              <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Home to world number ones, this academy's technical discipline, physical training
-                intensity, and video analysis protocols provide the benchmark for our high-performance
-                development batches in Delhi.
-              </p>
-            </div>
-            <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-electric">
-              ★ Modern Stroke Mechanics & S&C Models
-            </div>
-          </div>
+                <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-foreground">
+                  Jofre Porta
+                </h3>
+                <p className="text-sm font-semibold text-neon mt-1">
+                  Learning From an International Coaching Perspective
+                </p>
 
-          <div className="card-elevated p-6 sm:p-7 flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-neon">Manacor, Spain</span>
-              <h3 className="mt-2 text-xl font-bold text-foreground">Rafa Nadal Academy Insights</h3>
-              <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Studying the relentless intensity, clay-court movement dynamics, and positive
-                character-building rituals that define Spanish tennis excellence.
-              </p>
-            </div>
-            <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-neon">
-              ★ Clay Court Dominance & Resilience
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Global Learning Photo Gallery */}
-      <Section>
-        <SectionHeading
-          eyebrow="Visual Journey"
-          title="International Visits & Learning Gallery"
-          body="Real moments from international coaching visits, masterclasses, and player interactions."
-        />
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {GLOBAL_GALLERY.map((item, idx) => (
-            <Reveal key={item.title + idx} delay={(idx % 3) * 0.08}>
-              <div className="card-elevated overflow-hidden flex flex-col justify-between h-full">
-                <div>
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={item.src}
-                      alt={item.title}
-                      className={`h-56 w-full object-cover ${(item as { pos?: string }).pos ?? "object-center"} transition-transform duration-500 hover:scale-105`}
-                    />
-                    <span className="absolute top-3 right-3 rounded-full bg-background/90 backdrop-blur-xs border border-border px-2.5 py-0.5 text-[11px] font-bold text-neon">
-                      {item.badge}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-[11px] font-semibold text-muted-foreground">{item.location}</p>
-                    <h4 className="mt-1 font-bold text-base text-foreground">{item.title}</h4>
-                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                <div className="relative my-6 overflow-hidden rounded-2xl border border-border bg-surface-2/80 flex items-center justify-center p-2 aspect-[4/3] sm:aspect-[16/11]">
+                  <img
+                    src={jofreSessionImage}
+                    alt="Exclusive learning interaction with Jofre Porta"
+                    className="size-full object-contain"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 rounded-lg bg-black/75 backdrop-blur-md px-3 py-1.5 text-[11px] text-white font-medium text-center">
+                    An exclusive learning interaction with Jofre Porta.
                   </div>
                 </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Sports Life organised an exclusive online interaction with Jofre Porta, giving our
+                  players the opportunity to interact directly with an internationally experienced coach
+                  and learn from his perspective on tennis and player development.
+                </p>
+
+                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                  The session allowed players to ask questions and gain insights that they would not
+                  normally receive during their regular training sessions. For us, the value was not
+                  simply in meeting an experienced coach. It was in giving players the opportunity to
+                  listen, question, and think differently about their own development.
+                </p>
               </div>
-            </Reveal>
-          ))}
+            </div>
+          </Reveal>
+
+          {/* 02 VISHNU VARDHAN */}
+          <Reveal delay={0.1}>
+            <div className="card-elevated flex flex-col justify-between h-full p-7 sm:p-9 border border-border bg-surface rounded-3xl">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-electric/15 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-electric">
+                    02 Pro Player Perspective
+                  </span>
+                  <span className="text-xs font-semibold text-muted-foreground">ATP Tour / India</span>
+                </div>
+
+                <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-foreground">
+                  Vishnu Vardhan
+                </h3>
+                <p className="text-sm font-semibold text-electric mt-1">
+                  Learning From a Professional Player's Perspective
+                </p>
+
+                <div className="relative my-6 overflow-hidden rounded-2xl border border-border bg-surface-2/80 flex items-center justify-center p-2 aspect-[4/3] sm:aspect-[16/11]">
+                  <img
+                    src={ferreroSessionImage}
+                    alt="Exclusive player interaction with Vishnu Vardhan"
+                    className="size-full object-contain"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 rounded-lg bg-black/75 backdrop-blur-md px-3 py-1.5 text-[11px] text-white font-medium text-center">
+                    An exclusive player interaction with Vishnu Vardhan.
+                  </div>
+                </div>
+
+                <p className="text-sm leading-relaxed text-foreground/80">
+                  Sports Life also created an opportunity for our players to interact directly with
+                  Vishnu Vardhan, an accomplished Indian professional tennis player.
+                </p>
+
+                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                  The interaction gave players an opportunity to hear about competitive tennis from the
+                  perspective of someone who has experienced it at the professional level. Players could
+                  ask questions, understand the realities of competing at a high level, and learn from
+                  experiences that go beyond what can be taught through a regular training session.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </Section>
 
-      {/* Upcoming Masterclass Topics */}
-      <Section className="bg-surface/30">
-        <SectionHeading
-          eyebrow="Curriculum"
-          title="Masterclass Topics Covered"
-          body="Structured themes designed to expand athletic understanding for players, parents, and coaches."
-        />
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              title: "Mental Resilience in Tiebreaks",
-              desc: "Techniques for managing heart rate, breath control, and focusing on high-percentage patterns.",
-            },
-            {
-              title: "Kinetic Chain on Serve & Forehand",
-              desc: "Maximizing effortless power through ground reaction force, hip-shoulder separation, and wrist lag.",
-            },
-            {
-              title: "Clay vs. Synthetic Movement",
-              desc: "Mastering the controlled slide, recovery footwork, and adjusting ball height perception across surfaces.",
-            },
-            {
-              title: "Junior Tournament Scheduling",
-              desc: "How to avoid burnout and plan tournament cycles for peak performance and ranking progression.",
-            },
-            {
-              title: "Nutrition & Match-Day Fuelling",
-              desc: "Pre-match meals, mid-match electrolyte hydration, and recovery protocols for multi-match weekends.",
-            },
-            {
-              title: "US College & DU Sports Quota Pathways",
-              desc: "Building a competitive athletic resume and video highlight reel for university admissions.",
-            },
-          ].map((topic, i) => (
-            <div key={i} className="card-elevated p-5">
-              <span className="text-xs font-bold text-neon">Module 0{i + 1}</span>
-              <h4 className="mt-2 font-bold text-base text-foreground">{topic.title}</h4>
-              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{topic.desc}</p>
+      {/* Why We Do This */}
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="Why We Do This"
+              title="Because Learning Should Never Stop"
+            />
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
+              <p>
+                We don't believe that all learning has to happen through a coach standing across the net. Sometimes it happens through a conversation. Sometimes it happens by hearing about someone else's journey. Sometimes one answer to a player's question can change the way they approach their own training.
+              </p>
+              <p>
+                That's why we want our players to have access to different voices, different experiences, and different perspectives within tennis.
+              </p>
+              <div className="rounded-2xl border border-neon/30 bg-neon/5 p-5 text-sm sm:text-base font-semibold text-foreground">
+                “Our goal is not to replace the coach. It is to expand the player's world beyond the court.”
+              </div>
             </div>
-          ))}
+          </div>
+
+          <div className="card-elevated p-8 sm:p-10 border border-border bg-surface rounded-3xl space-y-6">
+            <span className="text-xs font-bold uppercase tracking-wider text-neon">Our Approach</span>
+            <h3 className="text-2xl font-bold text-foreground">
+              Bringing Opportunities Closer to Players
+            </h3>
+            <div className="space-y-4 text-sm">
+              <div className="flex items-start gap-3">
+                <div className="size-2 rounded-full bg-neon mt-2 shrink-0" />
+                <div>
+                  <strong className="text-foreground">Experienced Professionals: </strong>
+                  <span className="text-muted-foreground">Interactions with coaches and players who have experienced competitive tennis at a high level.</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="size-2 rounded-full bg-neon mt-2 shrink-0" />
+                <div>
+                  <strong className="text-foreground">International Perspectives: </strong>
+                  <span className="text-muted-foreground">Learning from different coaching environments and approaches to player development.</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="size-2 rounded-full bg-neon mt-2 shrink-0" />
+                <div>
+                  <strong className="text-foreground">Player Conversations: </strong>
+                  <span className="text-muted-foreground">Giving players the opportunity to ask questions and learn directly from experienced people.</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="size-2 rounded-full bg-neon mt-2 shrink-0" />
+                <div>
+                  <strong className="text-foreground">Real Experiences: </strong>
+                  <span className="text-muted-foreground">Sharing practical lessons from competition, coaching, travel, development, and the realities of a tennis career.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* More Than a Coaching Session */}
+      <Section className="bg-surface/30">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <span className="eyebrow">Beyond The Court</span>
+          <h2 className="text-3xl sm:text-4xl font-black uppercase text-foreground">
+            More Than A Coaching Session
+          </h2>
+          <p className="text-base sm:text-lg leading-relaxed text-foreground/85">
+            At Sports Life, we want players to understand that their development is bigger than the time they spend on the court.
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 py-4 font-display text-sm sm:text-lg font-black uppercase text-neon tracking-widest">
+            <span>Train</span> · <span>Compete</span> · <span>Learn</span> · <span>Connect</span> · <span>Grow</span>
+          </div>
+          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-3xl mx-auto">
+            These opportunities are part of our effort to create a broader player-first environment — one where players are not only trained, but exposed to the knowledge and experiences that can help them make better decisions throughout their tennis journey.
+          </p>
+          <div className="mt-8 rounded-2xl border border-border bg-surface p-6 text-sm text-foreground/80 max-w-2xl mx-auto">
+            <h4 className="font-bold text-foreground text-base mb-2">The Journey Continues</h4>
+            <p>
+              Our global learning initiatives are still evolving. As Sports Life grows, we want to create more opportunities for our players to interact with experienced coaches, professional players, and people who can offer valuable perspectives on different stages of the tennis journey.
+            </p>
+            <p className="mt-3 font-semibold text-neon">
+              Because sometimes, one conversation can change the way a player sees the game.
+            </p>
+          </div>
         </div>
       </Section>
 
       {/* CTA */}
       <CtaBanner
-        title="Register for the Next Global Masterclass"
-        body="Join our upcoming online session. Learn directly from international experts and submit your questions live."
+        title="Be Part of Our Next Learning Session"
+        body="Join Sports Life Tennis Academy and give your game the advantage of international mentorship and pro insights."
       />
     </>
   );

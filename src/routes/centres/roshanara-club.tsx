@@ -1,17 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { Reveal } from "@/components/site/motion-primitives";
 
+const heroImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
 const galleryImages = [
   "/centre-gallery/whatsapp-20260813-171744-1.jpg",
   "/centre-gallery/whatsapp-20260813-171744-2.jpg",
   "/centre-gallery/whatsapp-20260813-171745-1.jpg",
   "/centre-gallery/whatsapp-20260813-171745-2.jpg",
-  "/centre-gallery/punjabi-bagh-club-gallery-1.jpg",
+  "/centre-gallery/whatsapp-20260813-171844-1.jpg",
 ];
 
 export const Route = createFileRoute("/centres/roshanara-club")({
   head: () => ({
-    meta: [{ title: "Roshanara Club — Sports Life" }, { property: "og:url", content: "/centres/roshanara-club" }],
+    meta: [
+      { title: "Roshanara Club — 9 Courts (Synthetic, Clay & Grass) | Sports Life" },
+      {
+        name: "description",
+        content:
+          "Sports Life Tennis Academy at Roshanara Club, North Delhi. 4 Professional Synthetic Courts, 2 Professional Clay Courts, and 3 Grass Courts.",
+      },
+      { property: "og:title", content: "Roshanara Club — Sports Life Tennis Academy" },
+      { property: "og:url", content: "/centres/roshanara-club" },
+    ],
     links: [{ rel: "canonical", href: "/centres/roshanara-club" }],
   }),
   component: Roshanara,
@@ -21,16 +32,17 @@ function Roshanara() {
   return (
     <>
       <PageHero
-        eyebrow="Roshanara"
+        eyebrow="North Delhi · Established 2024"
         title="Roshanara Club"
-        body="The flagship centre of Sports Life Tennis Academy, where tradition meets excellence and player development is built on world-class coaching and exceptional facilities."
+        body="Located in the heart of North Delhi, Roshanara Club is one of the city's most historic and prestigious sports venues. In 2024, Sports Life began its journey here with a vision to create a player-first environment combining professional coaching with exceptional facilities."
+        image={heroImage}
       />
 
       <Section>
         <SectionHeading
-          eyebrow="Flagship centre"
+          eyebrow="Flagship Centre"
           title="Where Tradition Meets Excellence"
-          body="Located in the heart of North Delhi, Roshanara Club is one of the city’s most historic and prestigious sports venues. In 2024, Sports Life began its journey here with a vision to create a player-first environment that combines world-class coaching with exceptional facilities."
+          body="Located in the heart of North Delhi, Roshanara Club is one of the city’s most historic and prestigious sports venues. In 2024, Sports Life began its journey here with a vision to create a player-first environment that combines professional coaching with exceptional facilities."
         />
 
         <div className="mt-8 space-y-5 text-base leading-relaxed text-foreground/80">
@@ -45,12 +57,12 @@ function Roshanara() {
 
       <Section className="bg-surface/30">
         <SectionHeading
-          eyebrow="World-Class Facilities"
-          title="Training across all three major tennis surfaces"
+          eyebrow="Multi-Surface Infrastructure"
+          title="Training Across All Three Major Tennis Surfaces"
           body="One of the greatest strengths of Roshanara Club is its exceptional tennis infrastructure. The centre provides players with the rare opportunity to train on all three major tennis court surfaces, helping them become more complete and adaptable athletes."
         />
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
             {
               title: "4 Synthetic Courts",
@@ -65,10 +77,10 @@ function Roshanara() {
               body: "Natural grass courts offer a unique playing experience and improve footwork, reaction speed, net play, and adaptability to different tournament conditions.",
             },
           ].map((surface) => (
-            <div key={surface.title} className="rounded-2xl border border-border bg-background/60 p-6 shadow-[0_20px_45px_rgba(0,0,0,0.04)]">
+            <div key={surface.title} className="card-elevated rounded-2xl border border-border bg-surface p-6 shadow-md">
               <div className="mb-4 text-2xl">🎾</div>
-              <h3 className="text-xl font-semibold">{surface.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/75">{surface.body}</p>
+              <h3 className="text-xl font-bold text-foreground">{surface.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{surface.body}</p>
             </div>
           ))}
         </div>
@@ -80,34 +92,10 @@ function Roshanara() {
 
       <Section>
         <SectionHeading
-          eyebrow="Player Development"
-          title="Structured coaching for every stage of the journey"
-          body="At Sports Life Tennis Academy, every player follows a structured development pathway designed to improve every aspect of their game."
+          eyebrow="Facilities Summary"
+          title="Facilities at Roshanara Club"
         />
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          {[
-            "Technical Development",
-            "Tactical Awareness",
-            "Physical Conditioning",
-            "Mental Strength",
-            "Match Play & Competition",
-            "Long-Term Athlete Development",
-          ].map((item) => (
-            <div key={item} className="rounded-2xl border border-border bg-background/60 p-5 text-base font-medium text-foreground/80">
-              • {item}
-            </div>
-          ))}
-        </div>
-
-        <p className="mt-8 text-base leading-relaxed text-foreground/75">
-          Every session is carefully planned to ensure players continue improving while enjoying the learning process in a positive and motivating environment.
-        </p>
-      </Section>
-
-      <Section className="bg-surface/30">
-        <SectionHeading eyebrow="Facilities" title="Everything players need to grow" />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
             "4 Professional Synthetic Tennis Courts",
             "2 Professional Clay Courts",
@@ -115,66 +103,54 @@ function Roshanara() {
             "Structured Coaching Programs",
             "Experienced Coaching Team",
             "High Performance Training",
-            "Weekly Match Play Opportunities",
+            "Weekly Sunday Match Play Opportunities",
             "Tournament Preparation",
             "Fitness & Athletic Development",
-            "Safe & Positive Learning Environment",
           ].map((facility) => (
-            <div key={facility} className="rounded-2xl border border-border bg-background/60 p-4 text-sm text-foreground/75">
-              {facility}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHeading
-          eyebrow="Why Choose Us"
-          title="A place where confidence, discipline and passion grow together"
-          body="Roshanara Club offers far more than excellent tennis courts. It offers an environment where players are encouraged to develop confidence, discipline, resilience and a lifelong love for the game."
-        />
-        <p className="mt-8 text-base leading-relaxed text-foreground/75">
-          By combining one of Delhi’s finest tennis facilities with Sports Life’s player-first coaching philosophy, we create an experience that supports every stage of a player’s journey—from learning the fundamentals to competing at the highest level. Every player who trains at Roshanara Club becomes part of a community that values excellence, continuous learning, teamwork, and personal growth.
-        </p>
-      </Section>
-
-      <Section>
-        <SectionHeading
-          eyebrow="Gallery"
-          title="Discover the energy of Roshanara Club"
-          body="Explore the beauty and energy of our flagship venue through a glimpse of our facilities, coaching sessions, match play, tournaments and academy life."
-        />
-
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {galleryImages.map((image, index) => (
-            <div key={image} className="overflow-hidden rounded-3xl border border-border bg-background/60">
-              <img src={image} alt={`Roshanara Club gallery ${index + 1}`} loading="lazy" decoding="async" className="h-72 w-full object-contain object-center p-1" />
+            <div key={facility} className="rounded-2xl border border-border bg-surface p-4 text-sm font-medium text-foreground/85">
+              • {facility}
             </div>
           ))}
         </div>
       </Section>
 
       <Section className="bg-surface/30">
-        <SectionHeading eyebrow="Find us" title="Roshanara Club" body="Find us on Google Maps" />
-        <div className="mt-10 overflow-hidden rounded-3xl border border-border">
+        <SectionHeading
+          eyebrow="Visual Highlights"
+          title="Roshanara Club Gallery"
+          body="A look inside our training sessions, multi-surface courts, and player development in action."
+        />
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+          {galleryImages.map((image, index) => (
+            <div key={image + index} className="overflow-hidden rounded-3xl border border-border bg-surface aspect-[4/3]">
+              <img
+                src={image}
+                alt={`Roshanara Club tennis court session ${index + 1}`}
+                loading="lazy"
+                decoding="async"
+                className="size-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeading eyebrow="Location" title="Find Us at DDA Roshanara Club" />
+        <div className="mt-8 overflow-hidden rounded-3xl border border-border">
           <iframe
             title="Roshanara Club location map"
-            src="https://maps.google.com/maps?q=DDA%20Roshanara%20Club&t=&z=17&ie=UTF8&iwloc=&output=embed"
-            className="h-[480px] w-full"
+            src="https://www.google.com/maps?q=DDA+Roshanara+Club,+Shakti+Nagar,+Delhi+110007&output=embed"
+            className="h-[420px] w-full"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
           />
-        </div>
-        <div className="mt-3 text-sm">
-          <a href="https://www.google.com/maps/place/DDA+Roshanara+Club/@28.6749747,77.1951509,17z/data=!3m1!4b1!4m6!3m5!1s0x390cfd876e3715c9:0xbeb6d948d476bfb0!8m2!3d28.6749747!4d77.1951509!16s%2Fg%2F1td4hhk_!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer noopener" className="text-neon underline">
-            Open in Google Maps
-          </a>
         </div>
       </Section>
 
       <CtaBanner
-        title="Experience Tennis at Roshanara Club"
-        body="Whether your goal is to learn tennis, improve your game, compete professionally, or simply enjoy an active lifestyle, Roshanara Club offers the ideal environment to begin your journey."
+        title="Train at Roshanara Club"
+        body="Experience coaching on synthetic, clay, and grass courts. Book a free skill assessment session today."
       />
     </>
   );

@@ -160,9 +160,12 @@ function ContactPage() {
                   <dt className="text-xs tracking-[0.16em] text-muted-foreground uppercase">
                     Phone
                   </dt>
-                  <dd className="mt-1">
-                    <a href={`tel:${ACADEMY.phone.replace(/\s/g, "")}`} className="text-neon">
-                      {ACADEMY.phone}
+                  <dd className="mt-1 flex flex-col gap-1">
+                    <a href="tel:8130514603" className="text-neon hover:underline font-semibold">
+                      +91 81305 14603
+                    </a>
+                    <a href="tel:9266579159" className="text-neon hover:underline font-semibold">
+                      +91 92665 79159
                     </a>
                   </dd>
                 </div>

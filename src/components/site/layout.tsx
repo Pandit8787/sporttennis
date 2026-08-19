@@ -3,7 +3,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ACADEMY, NAV } from "@/lib/site-data";
 import { Facebook, Instagram, Linkedin, MessageCircle, Twitter, Youtube } from "lucide-react";
-import { Logo, ShuttleIcon } from "./brand";
+import { Logo } from "./brand";
 import Navbar from "./navbar";
 import { Loader, ScrollProgress } from "./chrome";
 import { WhatsAppAssistant } from "./whatsapp-assistant";
@@ -37,8 +37,6 @@ export function CtaLink({
   );
 }
 
-
-
 function Footer() {
   return (
     <footer className="relative mt-24 border-t border-border/80 bg-linear-to-b from-[#0b1329] to-[#050814] text-slate-200 shadow-2xl overflow-hidden">
@@ -50,7 +48,7 @@ function Footer() {
         <div className="lg:col-span-1">
           <Logo className="text-white" textClassName="text-white" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-300">
-            {ACADEMY.tagline}. 27 courts across 3 premium centres in Delhi, international coaching philosophy, and dedicated player development.
+            {ACADEMY.tagline}. 25 courts across 3 premier centres in Delhi, international coaching exposure, and dedicated player development.
           </p>
           <div className="mt-5 flex flex-wrap gap-2.5">
             {ACADEMY.socials.map((s) => {
@@ -96,22 +94,28 @@ function Footer() {
           <h3 className="font-display text-xs tracking-[0.22em] text-neon uppercase font-bold">Our Centres</h3>
           <address className="mt-4 space-y-3 text-sm not-italic text-slate-300">
             <div>
-              <p className="font-bold text-white">Roshanara Club</p>
-              <p className="text-xs text-slate-400">Old Subzi Mandi, Kamla Nagar, Delhi</p>
+              <p className="font-bold text-white">Roshanara Club (9 Courts)</p>
+              <p className="text-xs text-slate-400">4 Synthetic · 2 Clay · 3 Grass Courts</p>
             </div>
             <div>
-              <p className="font-bold text-white">Major Dhyan Chand Complex</p>
-              <p className="text-xs text-slate-400">India Gate, Central Delhi</p>
+              <p className="font-bold text-white">Major Dhyan Chand Sports Complex (6 Courts)</p>
+              <p className="text-xs text-slate-400">4 Synthetic · 2 Clay Courts</p>
             </div>
             <div>
-              <p className="font-bold text-white">Punjabi Bagh Club</p>
-              <p className="text-xs text-slate-400">Ring Road, West Delhi</p>
+              <p className="font-bold text-white">Punjabi Bagh Club (10 Courts)</p>
+              <p className="text-xs text-slate-400">6 Clay · 4 Synthetic Courts</p>
             </div>
             <div className="pt-2">
-              <a href={`tel:${ACADEMY.phone.replace(/\s/g, "")}`} className="block text-xs font-semibold text-neon hover:underline">
-                Call: {ACADEMY.phone}
-              </a>
-              <a href={`mailto:${ACADEMY.email}`} className="block text-xs text-slate-400 hover:text-white mt-1">
+              <p className="text-xs text-slate-400 font-semibold">Contact Numbers:</p>
+              <div className="flex flex-col gap-0.5 mt-1">
+                <a href="tel:8130514603" className="text-xs font-semibold text-neon hover:underline">
+                  +91 81305 14603
+                </a>
+                <a href="tel:9266579159" className="text-xs font-semibold text-neon hover:underline">
+                  +91 92665 79159
+                </a>
+              </div>
+              <a href={`mailto:${ACADEMY.email}`} className="block text-xs text-slate-400 hover:text-white mt-1.5">
                 {ACADEMY.email}
               </a>
             </div>
