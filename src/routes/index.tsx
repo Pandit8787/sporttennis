@@ -1,10 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import heroImg from "@/assets/academy-gallery/hero-chatgpt-063244-20260813.png";
 import courtsImg from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.22 PM.jpeg";
-import trainingImg from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.21 PM.jpeg";
-import trophyImg from "@/assets/trophy.jpg";
 import academyGallery1 from "@/assets/academy-gallery/abhiney-jofre-porta-20260813.jpg";
 import academyGallery2 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.21 PM.jpeg";
 import academyGallery3 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.21 PM (1).jpeg";
@@ -15,21 +12,14 @@ import academyGallery7 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 
 import academyGallery8 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM.jpeg";
 import academyGallery9 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (1).jpeg";
 import academyGallery10 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (2).jpeg";
-import academyGallery11 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (3).jpeg";
-import academyGallery12 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.24 PM.jpeg";
-import academyGallery13 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.24 PM (1).jpeg";
-import academyGallery14 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.24 PM (2).jpeg";
-import academyGallery15 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.25 PM.jpeg";
 import video1 from "@/assets/videos/whatsapp-video-1.mp4";
 import video2 from "@/assets/videos/whatsapp-video-2.mp4";
 import {
   ACADEMY,
-  BLOGS,
   COACHES,
   FACILITIES,
   PROGRAMS,
   STATS,
-  TRANSFORMATIONS,
   WHY_US,
 } from "@/lib/site-data";
 import { ShuttleIcon } from "@/components/site/brand";
@@ -38,27 +28,17 @@ import { Counter, Reveal } from "@/components/site/motion-primitives";
 import {
   CtaBanner,
   FaqSection,
-  Newsletter,
   Section,
   SectionHeading,
-  TestimonialsSlider,
 } from "@/components/site/sections";
 import {
-  Award,
-  Calendar,
   CheckCircle2,
-  ChevronRight,
   Globe2,
-  GraduationCap,
   MapPin,
-  Play,
-  ShieldCheck,
   Sparkles,
   Star,
-  Target,
   Trophy,
-  Users,
-  Zap,
+  Video,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -68,7 +48,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Sports Life Tennis Academy offers professional, structured tennis coaching across Delhi at Roshanara Club, Major Dhyan Chand Complex & Punjabi Bagh Club. 27 courts, certified coaches, and regular match play.",
+          "Sports Life Tennis Academy offers professional, structured tennis coaching across Delhi at Roshanara Club, Major Dhyan Chand Complex & Punjabi Bagh Club. 25 courts, 18+ coaches, and regular match play.",
       },
       { property: "og:title", content: "Sports Life Tennis Academy — Train With Purpose" },
       {
@@ -122,12 +102,12 @@ function Hero() {
       <div className="grid-lines absolute inset-0 opacity-15 pointer-events-none" />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 py-16 lg:py-24 lg:px-8">
-        {/* Eyebrow badge without background */}
+        {/* Eyebrow badge */}
         <span
           className="eyebrow text-white block text-center lg:text-left text-xs sm:text-sm font-bold tracking-[0.24em] uppercase"
           style={{ textShadow: "0 4px 14px rgba(0,0,0,0.6)" }}
         >
-          Delhi · Est. 2024 · 3 Centres · 27 Courts
+          Delhi · Est. 2024 · 3 Centres · 25 Courts
         </span>
 
         {/* Hero Title */}
@@ -182,19 +162,19 @@ function Hero() {
             to="/centres/roshanara-club"
             className="inline-flex items-center gap-1 rounded-full bg-black/40 border border-white/15 px-3 py-1 text-white hover:border-neon hover:text-neon transition-colors"
           >
-            <MapPin className="size-3 text-neon" /> Roshanara Club
+            <MapPin className="size-3 text-neon" /> Roshanara Club (9)
           </Link>
           <Link
             to="/centres/major-dhyan-chand-sports-complex"
             className="inline-flex items-center gap-1 rounded-full bg-black/40 border border-white/15 px-3 py-1 text-white hover:border-neon hover:text-neon transition-colors"
           >
-            <MapPin className="size-3 text-neon" /> Dhyan Chand Complex
+            <MapPin className="size-3 text-neon" /> Dhyan Chand Complex (6)
           </Link>
           <Link
             to="/centres/punjabi-bagh-club"
             className="inline-flex items-center gap-1 rounded-full bg-black/40 border border-white/15 px-3 py-1 text-white hover:border-neon hover:text-neon transition-colors"
           >
-            <MapPin className="size-3 text-neon" /> Punjabi Bagh Club
+            <MapPin className="size-3 text-neon" /> Punjabi Bagh Club (10)
           </Link>
         </div>
 
@@ -229,13 +209,13 @@ function Hero() {
 /* -------------------------------------------------------------------------- */
 function Marquee() {
   const items = [
-    "27 Multi-Surface Courts in Delhi",
-    "Synthetic · Clay · Grass Surfaces",
-    "Spain-Inspired Coaching Methodology",
+    "25 Multi-Surface Courts in Delhi",
+    "12 Synthetic · 10 Clay · 3 Grass Courts",
+    "18+ Professional Dedicated Coaches",
+    "300+ Active Monthly Players",
     "Weekly Sunday Match Play League",
-    "Toddlers to Elite Performance Squads",
-    "Delhi University Sports Quota Guidance",
-    "Certified NIS, PTR & ITF Coaches",
+    "Global Learning: Jofre Porta & Vishnu Vardhan",
+    "Toddlers to Advanced & Performance Squads",
     "100% Player-Centred Development",
   ];
   return (
@@ -263,29 +243,29 @@ function CentresSpotlight() {
     {
       name: "Roshanara Club",
       slug: "roshanara-club",
-      area: "North Delhi · Kamla Nagar",
+      area: "North Delhi · Shakti Nagar",
       courts: "9 Courts (4 Synthetic · 2 Clay · 3 Grass)",
       tag: "Flagship Founding Centre",
-      image: "/centre-gallery/whatsapp-20260813-171844-1.jpg",
-      summary: "Where the Sports Life journey began in 2024. A historic premier club with full multi-surface training facilities.",
+      image: "/centre-gallery/whatsapp-20260813-171744-1.jpg",
+      summary: "Where the Sports Life journey began in 2024. Multi-surface training with 4 synthetic, 2 clay, and 3 grass courts.",
     },
     {
-      name: "Major Dhyan Chand Complex",
+      name: "Major Dhyan Chand Sports Complex",
       slug: "major-dhyan-chand-sports-complex",
-      area: "Central Delhi · India Gate",
-      courts: "14 Courts (6 Synthetic · 8 Clay)",
-      tag: "National Tournament Hub",
+      area: "Ashok Vihar · North-West Delhi",
+      courts: "6 Courts (4 Synthetic · 2 Clay)",
+      tag: "Development Hub",
       image: "/centre-gallery/whatsapp-20260813-171844-2.jpg",
-      summary: "Delhi's largest central tennis facility. High-energy squads, tournament match play, and performance training.",
+      summary: "Expanded in 2026 to bring professional coaching and player-first structured training with 4 synthetic and 2 clay courts.",
     },
     {
       name: "Punjabi Bagh Club",
       slug: "punjabi-bagh-club",
       area: "West Delhi · Ring Road",
-      courts: "4 Floodlit Synthetic Courts",
-      tag: "West Delhi Coaching Academy",
-      image: "/centre-gallery/whatsapp-20260813-171845-1.jpg",
-      summary: "Premier West Delhi tennis destination with modern floodlit hard courts for juniors, adults, and competitive squads.",
+      courts: "10 Courts (6 Clay · 4 Synthetic)",
+      tag: "West Delhi Centre",
+      image: "/centre-gallery/img_8064.jpg",
+      summary: "Premier West Delhi tennis destination featuring 6 clay and 4 synthetic courts with active junior, adult and Sunday match play batches.",
     },
   ] as const;
 
@@ -294,8 +274,8 @@ function CentresSpotlight() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <SectionHeading
           eyebrow="Delhi Infrastructure"
-          title="3 Premier Centres. 27 Courts."
-          body="Train across all three major surfaces—Synthetic, Clay, and Grass—with certified coaching across North, Central, and West Delhi."
+          title="3 Premier Centres. 25 Courts."
+          body="Train across all three major surfaces—Synthetic, Clay, and Grass—with certified coaching across North, West, and Central Delhi."
         />
         <CtaLink to="/centres" variant="ghost">
           All Centres
@@ -305,7 +285,7 @@ function CentresSpotlight() {
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {centresData.map((c, i) => (
           <Reveal key={c.slug} delay={i * 0.1}>
-            <div className="card-elevated group flex flex-col h-full overflow-hidden border border-border/80 bg-surface">
+            <div className="card-elevated group flex flex-col h-full overflow-hidden border border-border/80 bg-surface rounded-3xl">
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={c.image}
@@ -364,10 +344,10 @@ function CentresSpotlight() {
 /* -------------------------------------------------------------------------- */
 function FounderSpotlight() {
   const credentials = [
-    "International Tennis Coach & NIS Qualified",
-    "16+ Years Competitive Playing & Coaching",
-    "Spain Coaching Exposure (Rafa Nadal Academy, Ferrero Academy, Jofre Porta)",
-    "Contributed to Developing National & State Ranked Players",
+    "Founder & Head Coach, Sports Life Tennis Academy",
+    "16+ Years On The Court & Competitive Tennis",
+    "International Coaching Experience in Spain (Jofre Porta Academy & JC Ferrero Academy)",
+    "Contributed to SAI Induction Protocol for Tennis (Khelo India Scheme)",
   ];
 
   return (
@@ -377,7 +357,7 @@ function FounderSpotlight() {
           <SectionHeading
             eyebrow="Vision & Leadership"
             title="Founded on Passion, Experience & Player-First Values"
-            body="Sports Life was founded by Abhiney Kumar with a singular vision: to build an organization where every athlete receives structured guidance, regular competition, and world-class developmental opportunities."
+            body="Sports Life was founded by Abhiney Kumar with a singular vision: to build an organization where every athlete receives structured guidance, regular competition, and long-term development."
           />
 
           <div className="mt-8 rounded-2xl bg-surface-2/60 border border-border/80 p-6 backdrop-blur-sm">
@@ -424,11 +404,11 @@ function FounderSpotlight() {
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <span className="rounded-full bg-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                  Head Coach & Founder
+                  Founder & Head Coach
                 </span>
                 <h3 className="mt-2 text-2xl font-black">Abhiney Kumar</h3>
                 <p className="text-xs text-white/80 mt-1">
-                  PTR · NIS · ITF Certified · Spain Coaching Exposure
+                  Diploma JC Ferrero (Spain) · NIS · PTR · AITA/ITF Certified
                 </p>
               </div>
             </div>
@@ -460,9 +440,9 @@ function ProgramsSection() {
     <Section className="bg-surface/30">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <SectionHeading
-          eyebrow="Coaching Programs"
+          eyebrow="Our Programs"
           title="Pick Your Stage. We Build Your Game."
-          body="Age-appropriate, structured tennis curriculum for toddlers, beginners, competitive tournament players, adults, and weekend match play."
+          body="Structured developmental pathways from Toddlers and Beginners to Intermediate, Advanced & Performance, and Adult Tennis."
         />
         <CtaLink to="/programs" variant="ghost">
           View All Programs
@@ -472,7 +452,7 @@ function ProgramsSection() {
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {PROGRAMS.map((p, i) => (
           <Reveal key={p.slug} delay={i * 0.06}>
-            <article className="card-elevated group flex h-full flex-col justify-between p-7 border border-border/80 bg-surface">
+            <article className="card-elevated group flex h-full flex-col justify-between p-7 border border-border/80 bg-surface rounded-3xl">
               <div>
                 <div className="flex items-center justify-between">
                   <span className="rounded-full bg-neon/10 border border-neon/30 px-3 py-1 font-display text-[10px] font-black uppercase tracking-wider text-neon">
@@ -519,89 +499,94 @@ function ProgramsSection() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                        SIGNATURE INITIATIVES SECTION                       */
+/*                   LEARNING BEYOND THE COURT (GLOBAL INITIATIVES)           */
 /* -------------------------------------------------------------------------- */
-function InitiativesSection() {
-  const initiatives = [
-    {
-      title: "Sunday Match Play League",
-      to: "/initiatives/sunday-match-play",
-      tag: "Weekly Competition",
-      icon: <Trophy className="size-5 text-neon" />,
-      image: "/centre-gallery/whatsapp-20260813-171844-3.jpg",
-      imagePos: "object-[center_60%]",
-      body: "Level-based competitive match exposure every Sunday with structured refereeing, UTR-style rankings, and match analysis.",
-    },
-    {
-      title: "Global Learning Initiatives",
-      to: "/initiatives/global-learning",
-      tag: "Spain Masterclasses",
-      icon: <Globe2 className="size-5 text-neon" />,
-      image: "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg",
-      imagePos: "object-[center_20%]",
-      body: "International tennis exposure bringing European training methodologies, high-performance masterclasses, and player exchange programs.",
-    },
-    {
-      title: "DU Sports Quota Guidance",
-      to: "/initiatives",
-      tag: "University Mentorship",
-      icon: <GraduationCap className="size-5 text-neon" />,
-      image: "/centre-gallery/whatsapp-20260813-171745-1.jpg",
-      imagePos: "object-[center_35%]",
-      body: "Specialized fitness, tactical prep, and trial certification mentoring for student-athletes seeking Delhi University sports quota admissions.",
-    },
-  ];
-
+function LearningBeyondTheCourt() {
   return (
     <Section>
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
         <SectionHeading
-          eyebrow="Beyond The Court"
-          title="Sports Life Initiatives"
-          body="We believe in creating real pathways—through competitive match play leagues, international academy masterclasses, and university sports career guidance."
+          eyebrow="Learning Beyond The Court"
+          title="Direct Access to Experienced Professionals"
+          body="Bringing international coaches and Indian tour professionals closer to our players through exclusive learning masterclasses and video interactions."
         />
-        <CtaLink to="/initiatives" variant="ghost">
-          All Initiatives
+        <CtaLink to="/initiatives/global-learning" variant="ghost">
+          Global Learning Series
         </CtaLink>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {initiatives.map((item, i) => (
-          <Reveal key={item.title} delay={i * 0.1}>
-            <div className="card-elevated group flex flex-col h-full overflow-hidden border border-border bg-surface">
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  decoding="async"
-                  className={`size-full object-cover ${item.imagePos ?? "object-center"} transition-transform duration-700 group-hover:scale-105`}
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                <span className="absolute top-3 left-3 rounded-full bg-black/60 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-neon">
-                  {item.tag}
+      <div className="grid gap-8 md:grid-cols-2">
+        {/* Jofre Porta */}
+        <Reveal delay={0.05}>
+          <div className="card-elevated rounded-3xl border border-border bg-surface p-6 sm:p-8 flex flex-col justify-between h-full">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="rounded-full bg-neon/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-neon">
+                  01 International Coach
                 </span>
-                <h3 className="absolute bottom-3 left-4 right-4 text-xl font-bold text-white">
-                  {item.title}
-                </h3>
+                <span className="text-xs font-medium text-muted-foreground">Mallorca, Spain</span>
               </div>
-
-              <div className="p-6 flex flex-col justify-between grow">
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
-                <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
-                  <Link
-                    to={item.to}
-                    className="font-display text-xs font-bold uppercase tracking-wider text-neon hover:underline inline-flex items-center gap-1"
-                  >
-                    <span>Learn More</span>
-                    <span>→</span>
-                  </Link>
-                  <div className="rounded-full p-2 bg-neon/10 text-neon">{item.icon}</div>
-                </div>
+              <h3 className="mt-4 text-2xl font-bold text-foreground">Jofre Porta</h3>
+              <p className="text-xs font-semibold text-neon mt-0.5">
+                Learning From an International Coaching Perspective
+              </p>
+              <div className="my-5 overflow-hidden rounded-2xl border border-border bg-surface-2/80 flex items-center justify-center p-2 aspect-[4/3] sm:aspect-[16/11]">
+                <img
+                  src="/founder-gallery/abhiney-with-jofre-porta.jpg"
+                  alt="Online interaction with Jofre Porta"
+                  className="size-full object-contain"
+                />
               </div>
+              <p className="text-sm leading-relaxed text-foreground/80">
+                Sports Life organized an exclusive online interaction with Jofre Porta, giving our players the opportunity to interact directly with an internationally experienced coach and learn from his perspective on tennis and player development.
+              </p>
             </div>
-          </Reveal>
-        ))}
+            <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+              <Link
+                to="/initiatives/global-learning"
+                className="font-display text-xs font-bold uppercase tracking-wider text-neon hover:underline"
+              >
+                Learn More →
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Vishnu Vardhan */}
+        <Reveal delay={0.1}>
+          <div className="card-elevated rounded-3xl border border-border bg-surface p-6 sm:p-8 flex flex-col justify-between h-full">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="rounded-full bg-electric/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-electric">
+                  02 Tour Professional
+                </span>
+                <span className="text-xs font-medium text-muted-foreground">ATP Tour / India</span>
+              </div>
+              <h3 className="mt-4 text-2xl font-bold text-foreground">Vishnu Vardhan</h3>
+              <p className="text-xs font-semibold text-electric mt-0.5">
+                Learning From a Professional Player's Perspective
+              </p>
+              <div className="my-5 overflow-hidden rounded-2xl border border-border bg-surface-2/80 flex items-center justify-center p-2 aspect-[4/3] sm:aspect-[16/11]">
+                <img
+                  src="/founder-gallery/abhiney-at-jc-ferrero-academy.jpg"
+                  alt="Online interaction with Vishnu Vardhan"
+                  className="size-full object-contain"
+                />
+              </div>
+              <p className="text-sm leading-relaxed text-foreground/80">
+                Sports Life created an opportunity for players to interact directly with Vishnu Vardhan, hearing about competitive tennis from someone who has competed at the professional level and Olympic Games.
+              </p>
+            </div>
+            <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+              <Link
+                to="/initiatives/global-learning"
+                className="font-display text-xs font-bold uppercase tracking-wider text-neon hover:underline"
+              >
+                Learn More →
+              </Link>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </Section>
   );
@@ -618,7 +603,7 @@ function GalleryCarousel() {
     { image: academyGallery4, title: "Sunday Match Play League", subtitle: "Competitive match play exposure for juniors and adult athletes" },
     { image: academyGallery5, title: "Daily Practice Intensity", subtitle: "Consistency, high-energy rallies, and discipline on court" },
     { image: academyGallery6, title: "Spain-Inspired Methodology", subtitle: "Tactical decision making, endurance and clay court movement" },
-    { image: academyGallery7, title: "Major Dhyan Chand Complex", subtitle: "14 courts at Central Delhi's premier tennis tournament venue" },
+    { image: academyGallery7, title: "Major Dhyan Chand Complex", subtitle: "Structured player development at Ashok Vihar centre" },
     { image: academyGallery8, title: "Young Champion Progress", subtitle: "From red ball fun to full tournament readiness" },
     { image: academyGallery9, title: "Technical Stroke Analysis", subtitle: "High-speed racket head acceleration and grip fundamentals" },
     { image: academyGallery10, title: "Punjabi Bagh Club Hub", subtitle: "Floodlit evening sessions for adults, juniors and competitive squads" },
@@ -644,13 +629,13 @@ function GalleryCarousel() {
           />
           <div className="mt-8 grid grid-cols-2 gap-4">
             <div className="rounded-2xl border border-border/80 bg-surface p-5">
-              <p className="font-display text-3xl font-black text-neon">27 Courts</p>
+              <p className="font-display text-3xl font-black text-neon">25 Courts</p>
               <p className="text-xs text-muted-foreground mt-1 font-semibold uppercase tracking-wider">
                 Multi-Surface Network
               </p>
             </div>
             <div className="rounded-2xl border border-border/80 bg-surface p-5">
-              <p className="font-display text-3xl font-black text-neon">12+ Coaches</p>
+              <p className="font-display text-3xl font-black text-neon">18+ Coaches</p>
               <p className="text-xs text-muted-foreground mt-1 font-semibold uppercase tracking-wider">
                 Certified Mentors
               </p>
@@ -722,7 +707,7 @@ function HomePage() {
       <CentresSpotlight />
       <FounderSpotlight />
       <ProgramsSection />
-      <InitiativesSection />
+      <LearningBeyondTheCourt />
       <GalleryCarousel />
 
       {/* Video Highlights Section */}
@@ -771,7 +756,7 @@ function HomePage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {WHY_US.map((w, i) => (
             <Reveal key={w.title} delay={i * 0.06}>
-              <article className="card-elevated h-full p-7 border border-border bg-surface">
+              <article className="card-elevated h-full p-7 border border-border bg-surface rounded-2xl">
                 <span className="font-display text-sm font-black text-neon">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -783,73 +768,40 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* Facilities Breakdown */}
+      {/* Community Feedback / Google Review Spotlight */}
       <Section>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <Reveal>
-            <div className="overflow-hidden rounded-3xl border border-border shadow-2xl">
-              <img
-                src={courtsImg}
-                alt="Tennis court facilities at Sports Life"
-                width={1600}
-                height={1000}
-                loading="lazy"
-                decoding="async"
-                className="h-[440px] w-full object-cover lg:h-[520px]"
-              />
-            </div>
-          </Reveal>
-          <div>
-            <SectionHeading
-              eyebrow="Infrastructure"
-              title="Built For The Way Championship Tennis Is Played"
-              body="Train with the variety and court standards needed to excel in national and international tournaments."
-            />
-            <ul className="mt-8 divide-y divide-border border-y border-border">
-              {FACILITIES.slice(0, 4).map((f) => (
-                <li key={f.name} className="flex items-start justify-between gap-6 py-4.5">
-                  <div>
-                    <h3 className="text-base font-bold text-foreground">{f.name}</h3>
-                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground">{f.body}</p>
-                  </div>
-                  <span className="shrink-0 rounded-full border border-border bg-surface-2 px-3 py-1 text-[10px] tracking-wider text-neon uppercase font-bold">
-                    {f.tag}
-                  </span>
-                </li>
+        <div className="card-elevated rounded-3xl border border-neon/30 bg-linear-to-r from-neon/10 via-surface to-surface p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex items-center gap-1.5 text-amber-400">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="size-5 fill-amber-400 text-amber-400" />
               ))}
-            </ul>
-            <div className="mt-8">
-              <CtaLink to="/facilities" variant="ghost">
-                Explore Facilities
-              </CtaLink>
+              <span className="ml-2 font-display text-sm font-bold text-foreground">5.0 / 5.0 Rating</span>
             </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+              Loved by Delhi's Tennis Community
+            </h3>
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              Read verified reviews from parents, juniors, and adult players about our player-first coaching, tournament match play, and welcoming community across Delhi.
+            </p>
+          </div>
+          <div className="shrink-0 flex flex-col sm:flex-row gap-3">
+            <CtaLink to="/testimonials" variant="neon">
+              View Google Reviews
+            </CtaLink>
+            <CtaLink to="/contact" variant="ghost">
+              Book Free Trial
+            </CtaLink>
           </div>
         </div>
       </Section>
 
-      {/* Testimonials */}
+      {/* Coaching Team Grid */}
       <Section className="bg-surface/30">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <SectionHeading
-            eyebrow="Player & Parent Voices"
-            title="Real Words From Our Tennis Community"
-            body="Read how structured coaching and regular match play have transformed the game of our junior athletes and adults."
-          />
-          <CtaLink to="/testimonials" variant="ghost">
-            All Reviews
-          </CtaLink>
-        </div>
-        <div className="mt-12">
-          <TestimonialsSlider />
-        </div>
-      </Section>
-
-      {/* Coaching Team Grid */}
-      <Section>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <SectionHeading
             eyebrow="Our Coaches"
-            title="Experienced Mentors. Zero Autopilot."
+            title="18+ Dedicated Coaches. 100% Player-First."
             body="Led by Founder Abhiney Kumar and certified coaches with national playing credentials and player-first mentorship."
           />
           <CtaLink to="/team" variant="ghost">
@@ -860,7 +812,7 @@ function HomePage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {COACHES.slice(0, 4).map((c, i) => (
             <Reveal key={c.name} delay={i * 0.08}>
-              <article className="card-elevated group h-full overflow-hidden border border-border bg-surface flex flex-col justify-between">
+              <article className="card-elevated group h-full overflow-hidden border border-border bg-surface flex flex-col justify-between rounded-2xl">
                 {c.image ? (
                   <div className="h-72 w-full overflow-hidden bg-surface-2/60 flex items-center justify-center p-2">
                     <img
@@ -920,7 +872,7 @@ function HomePage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="bg-surface/30">
+      <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <SectionHeading
             eyebrow="Got Questions?"

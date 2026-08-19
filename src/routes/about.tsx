@@ -56,7 +56,7 @@ const SUBPAGES = [
     title: "Our Story",
     to: "/about/our-story",
     tag: "The Journey",
-    desc: "From a childhood passion at age 4 and coaching in Spain to establishing 27 courts across Delhi in 2024.",
+    desc: "From a childhood passion at age 4 and coaching in Spain to establishing 25 courts across Delhi in 2024.",
     icon: Sparkles,
     badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
@@ -88,7 +88,7 @@ const SUBPAGES = [
     title: "Why Sports Life",
     to: "/about/why-sports-life",
     tag: "The Difference",
-    desc: "5 key advantages: expert coaching, personalized roadmaps, Sunday Match Play, and 27 courts across 3 centres.",
+    desc: "5 key advantages: expert coaching, personalized roadmaps, Sunday Match Play, and 25 courts across 3 centres.",
     icon: Trophy,
     badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
@@ -167,10 +167,10 @@ function AboutPage() {
 
           <div className="card-elevated p-6 text-center">
             <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={27} suffix="" />
+              <Counter value={25} suffix="" />
             </p>
             <p className="mt-2 text-sm font-semibold text-foreground">Professional Courts</p>
-            <p className="text-xs text-muted-foreground mt-1">14 Synthetic · 10 Clay · 3 Grass</p>
+            <p className="text-xs text-muted-foreground mt-1">12 Synthetic · 10 Clay · 3 Grass</p>
           </div>
 
           <div className="card-elevated p-6 text-center">
@@ -209,7 +209,7 @@ function AboutPage() {
               </p>
               <p>
                 Today, Sports Life operates across Roshanara Club, Major Dhyan Chand Sports Complex,
-                and Punjabi Bagh Club with 27 courts and a passionate team of certified coaches.
+                and Punjabi Bagh Club with 25 courts and a passionate team of certified coaches.
               </p>
               <div className="pt-2">
                 <a

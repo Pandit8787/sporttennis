@@ -4,7 +4,7 @@ import { Reveal, Counter } from "@/components/site/motion-primitives";
 import { Award, Compass, HeartHandshake, MapPin, Sparkles, Trophy, Users } from "lucide-react";
 
 const heroImage = "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg";
-const founderSpainImage = "/founder-gallery/abhiney-at-rafa-nadal-tennis-academy.jpg";
+const founderSpainImage = "/founder-gallery/abhiney-at-jofre-porta-academy-1.jpg";
 const roshanaraCourtsImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
 const communityImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
 
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/about/our-story")({
       {
         property: "og:description",
         content:
-          "The journey that shaped Sports Life: from international coaching in Spain to 27 professional courts across Delhi.",
+          "The journey that shaped Sports Life: from international coaching in Spain to 25 professional courts across Delhi.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/about/our-story" },
@@ -38,7 +38,7 @@ function OurStoryPage() {
       <PageHero
         eyebrow="Our Story"
         title="The Journey That Shaped Sports Life"
-        body="From a childhood passion and international coaching experience in Spain to building one of Delhi's most dedicated player-first tennis academies."
+        body="From a childhood passion and international coaching experience in Spain to building a player-first tennis academy focused on long-term athlete development across Delhi."
         image={heroImage}
       />
 
@@ -64,29 +64,35 @@ function OurStoryPage() {
             competitive tennis, international coaching experience in Spain, and working with
             players at different stages of development. Along the way, one thing became clear: many
             talented players had the passion and potential to succeed but often lacked access to
-            structured guidance, consistent match play, quality facilities, and long-term player
+            structured guidance, consistent match play, quality facilities, and longterm player
             development.
           </p>
 
           <p>
             Inspired by these experiences, Sports Life Tennis Academy was established in 2024 at
-            Roshanara Club with a vision of creating more than just a tennis academy. Our goal was
-            to build an organization that places players at the centre of everything it does—where
-            coaching goes beyond technique and focuses on developing complete athletes and
-            responsible individuals.
+            DDA Roshanara Club with a vision of creating more than just a tennis academy. Our goal
+            was to build an organization that places players at the centre of everything it
+            does—where coaching goes beyond technique and focuses on developing complete athletes
+            and responsible individuals.
           </p>
 
           <p>
             Driven by this vision, Sports Life has continued to grow and now proudly operates
             across <strong>Roshanara Club</strong>, <strong>Major Dhyan Chand Sports Complex</strong>,
-            and <strong>Punjabi Bagh Club</strong>, providing players with access to 14 professional
-            synthetic courts, 10 clay courts, and 3 grass courts. More importantly, we have built a
-            team of passionate coaches who share the same commitment to excellence, integrity, and
+            and <strong>Punjabi Bagh Club</strong>, providing players with access to 12 synthetic
+            courts, 10 clay courts, and 3 grass courts. More importantly, we have built a team of
+            passionate coaches who share the same commitment to excellence, integrity, and
             player-first development.
           </p>
 
           <p>
-            Today, Sports Life is more than a place to learn tennis. It is a growing community where
+            Today, more than 300 players train with Sports Life every month, supported by a growing
+            team of professional coaches committed to delivering structured, player-first
+            development.
+          </p>
+
+          <p>
+            Sports Life is more than a place to learn tennis. It is a growing community where
             players, parents, and coaches come together with a shared purpose—to learn, compete,
             grow, and contribute to the future of Indian tennis. As we continue to expand, our
             mission remains unchanged: to create opportunities, inspire dreams, and empower every
@@ -135,8 +141,8 @@ function OurStoryPage() {
                 <h3 className="mt-2 text-2xl font-bold text-foreground">International Coaching</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Gaining international coaching experience in Spain revealed the critical gap back
-                  home: many talented players possessed passion but lacked structured player pathways,
-                  regular match play, and holistic athletic development.
+                  home: many talented players possessed passion but lacked structured player
+                  pathways, regular match play, and holistic athletic development.
                 </p>
               </div>
               <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-foreground/70">
@@ -175,12 +181,13 @@ function OurStoryPage() {
                 <h3 className="mt-2 text-2xl font-bold text-foreground">3 Premier Centres</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Rapid expansion across Roshanara Club, Major Dhyan Chand Sports Complex, and
-                  Punjabi Bagh Club now provides athletes access to 14 synthetic, 10 clay, and 3 grass
-                  courts.
+                  Punjabi Bagh Club now gives athletes access to 12 synthetic, 10 clay, and 3 grass
+                  courts, while more than 300 players train with Sports Life every month, supported
+                  by a growing team of professional coaches committed to player-first development.
                 </p>
               </div>
               <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-foreground/70">
-                27 Courts · Multi-surface training environment
+                25 Courts · Multi-surface training environment
               </div>
             </div>
           </Reveal>
@@ -236,18 +243,18 @@ function OurStoryPage() {
               The Foundation of Our Vision
             </span>
             <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl leading-tight">
-              Where World-Class Standards Meet Player-First Care
+              Where High-Performance Standards Meet Player-First Care
             </h2>
             <div className="space-y-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
               <p>
-                From Spain's high-performance academies to Delhi's premier sports venues, the Sports
-                Life philosophy is anchored in one core belief: <em>when players receive structured
-                guidance, consistent match play, and genuine mentorship, there is no ceiling to what
-                they can achieve.</em>
+                From high-performance coaching environments in Spain to leading sports venues across
+                Delhi, the Sports Life philosophy is built around one core belief: <em>When players
+                receive structured guidance, consistent match play, quality facilities, and genuine
+                mentorship, they are given the foundation to reach their full potential.</em>
               </p>
               <div className="grid gap-3 pt-2 sm:grid-cols-2">
                 <div className="rounded-xl border border-border bg-surface p-4">
-                  <p className="font-display text-2xl font-bold text-neon">14</p>
+                  <p className="font-display text-2xl font-bold text-neon">12</p>
                   <p className="text-xs font-medium text-foreground">Synthetic Courts</p>
                   <p className="text-xs text-muted-foreground mt-1">For technical precision and fast-paced drills</p>
                 </div>
@@ -264,7 +271,7 @@ function OurStoryPage() {
                 <div className="rounded-xl border border-border bg-surface p-4">
                   <p className="font-display text-2xl font-bold text-neon">3</p>
                   <p className="text-xs font-medium text-foreground">Centres in Delhi</p>
-                  <p className="text-xs text-muted-foreground mt-1">Roshanara, Dhyan Chand & Punjabi Bagh</p>
+                  <p className="text-xs text-muted-foreground mt-1">Roshanara Club, Major Dhyan Chand Sports Complex & Punjabi Bagh Club</p>
                 </div>
               </div>
             </div>
@@ -275,7 +282,7 @@ function OurStoryPage() {
               <div className="overflow-hidden rounded-2xl border border-border">
                 <img
                   src={founderSpainImage}
-                  alt="Founder coaching & international exposure"
+                  alt="Head coach explaining players and training drills"
                   loading="lazy"
                   decoding="async"
                   className="h-56 w-full object-cover transition-transform duration-500 hover:scale-105"
@@ -295,7 +302,7 @@ function OurStoryPage() {
               <div className="overflow-hidden rounded-2xl border border-border">
                 <img
                   src={communityImage}
-                  alt="Sports Life tennis community"
+                  alt="Sports Life tennis community and players"
                   loading="lazy"
                   decoding="async"
                   className="h-44 w-full object-cover transition-transform duration-500 hover:scale-105"
@@ -303,11 +310,11 @@ function OurStoryPage() {
               </div>
               <div className="rounded-2xl border border-border bg-surface p-6">
                 <p className="font-display text-sm font-bold uppercase tracking-wider text-neon">
-                  Our Unchanged Mission
+                  300+ Players Training Every Month
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  To create opportunities, inspire dreams, and empower every player to achieve their
-                  highest potential on and off the court.
+                  Supported by a growing team of professional coaches committed to structured,
+                  player-first development.
                 </p>
               </div>
             </div>
@@ -323,13 +330,13 @@ function OurStoryPage() {
               <Counter value={3} suffix="" />
             </p>
             <p className="mt-2 text-sm font-semibold text-foreground">Premier Centres</p>
-            <p className="text-xs text-muted-foreground mt-1">Across North, West & Central Delhi</p>
+            <p className="text-xs text-muted-foreground mt-1">Across Delhi</p>
           </div>
           <div className="card-elevated p-6 text-center">
             <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={27} suffix="+" />
+              <Counter value={25} suffix="" />
             </p>
-            <p className="mt-2 text-sm font-semibold text-foreground">Professional Courts</p>
+            <p className="mt-2 text-sm font-semibold text-foreground">Courts</p>
             <p className="text-xs text-muted-foreground mt-1">Synthetic, clay, and grass surfaces</p>
           </div>
           <div className="card-elevated p-6 text-center">
