@@ -166,7 +166,7 @@ const ALL_TESTIMONIALS = [
 
 const VIDEO_TESTIMONIALS = [
   {
-    src: "/videos/testimonials/C0004.MP4",
+    src: "/videos/testimonials/C0004.mp4",
     title: "Parent Testimonial — Genuine Feedback",
     tag: "Parent Review",
     caption: "“Coaching aur environment dono hi top-class hai. Bacchon ka progress visible hai.”",
@@ -174,7 +174,7 @@ const VIDEO_TESTIMONIALS = [
     name: "Parent Review",
   },
   {
-    src: "/videos/testimonials/C0005.MP4",
+    src: "/videos/testimonials/C0005.mp4",
     title: "Player Experience On Court",
     tag: "Player Story",
     caption: "“Regular drills + Sunday match play ne mera game poora badal diya.”",
@@ -182,7 +182,7 @@ const VIDEO_TESTIMONIALS = [
     name: "Junior Player",
   },
   {
-    src: "/videos/testimonials/C0006.MP4",
+    src: "/videos/testimonials/C0006.mp4",
     title: "Parent On Junior Journey",
     tag: "Parent Review",
     caption: "“Technique, discipline, match sense — sab ek saath improve hua.”",
@@ -190,7 +190,7 @@ const VIDEO_TESTIMONIALS = [
     name: "Parent Review",
   },
   {
-    src: "/videos/testimonials/C0009.MP4",
+    src: "/videos/testimonials/C0009.mp4",
     title: "Player & Parent Success Story",
     tag: "Combined Review",
     caption: "“State level tak pahuncha diya. Coach team ka support unbelievable hai.”",

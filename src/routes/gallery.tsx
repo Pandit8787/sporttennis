@@ -299,7 +299,7 @@ function GalleryPage() {
               venue: "Roshanara Club",
             },
             {
-              video: "/videos/img_1954.mov",
+              video: "/videos/img_1954.mp4",
               title: "Competitive Match Play Points & Volley Exchanges",
               venue: "Punjabi Bagh Club",
             },

@@ -485,7 +485,7 @@ function PlayersSlideshow() {
     { image: "/players-slideshow/1000266508.jpg", title: "Group Training Session", subtitle: "Academy players on court at Roshanara Club" },
     { image: "/players-slideshow/img_8433.jpg", title: "Centre Action Shots", subtitle: "High-intensity drills across Delhi centres" },
     { image: "/about/founder-with-players.jpg", title: "Founder With Players", subtitle: "Abhiney Kumar training players on court" },
-    { image: "/players-slideshow/img_0808.mov", title: "Match Play Highlights", subtitle: "Real match rally and competitive play", isVideo: true },
+    { image: "/players-slideshow/img_0808.mp4", title: "Match Play Highlights", subtitle: "Real match rally and competitive play", isVideo: true },
     { image: "/gallery/img_8054.jpg", title: "Junior Player Development", subtitle: "Building juniors from ground-up with modern drills" },
     { image: "/gallery/img_8058.jpg", title: "Squad Practice", subtitle: "Group and paired rally discipline on synthetic courts" },
     { image: "/gallery/img_8059.jpg", title: "Technical Stroke Work", subtitle: "Precision-driven technique and consistency drills" },
@@ -552,7 +552,7 @@ function PlayersSlideshow() {
               playsInline
               preload="metadata"
             >
-              <source src={active.image} type="video/quicktime" />
+              <source src={active.image} type="video/mp4" />
             </video>
           ) : (
             <img
@@ -620,7 +620,7 @@ function HighIntensityTraining() {
   const items = [
     { src: video1, title: "Footwork & Conditioning", tag: "Athleticism" },
     { src: video2, title: "Technical Stroke Drills", tag: "Technique" },
-    { src: "/videos/img_1954.mov", title: "Match Intensity Rallies", tag: "Competitive" },
+    { src: "/videos/img_1954.mp4", title: "Match Intensity Rallies", tag: "Competitive" },
   ];
   return (
     <Section>
