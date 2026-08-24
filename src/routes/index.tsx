@@ -659,7 +659,9 @@ function HighIntensityTraining() {
                   playsInline
                   preload="metadata"
                   className="h-full w-full object-contain transition duration-500"
-                />
+                >
+                  <source src={v.src} type="video/mp4" />
+                </video>
               </div>
               <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none">
                 <p className="font-bold text-white text-sm drop-shadow-md">{v.title}</p>

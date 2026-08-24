@@ -314,7 +314,9 @@ function GalleryPage() {
                     muted
                     playsInline
                     className="size-full object-cover"
-                  />
+                  >
+                    <source src={vid.video} type="video/mp4" />
+                  </video>
                 </div>
                 <div className="p-5">
                   <p className="text-xs font-semibold text-neon">{vid.venue}</p>
