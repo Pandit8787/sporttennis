@@ -172,9 +172,9 @@ export const COACH_PROFILES: Record<string, CoachProfile> = {
     initials: "SP",
     image: "/samriti-punyani.jpg",
     tagline: "Empowering Players Through Excellence, Education & Experience",
-    badge: "NIS Qualified Coach · M.P.Ed. · Former AIR 21",
+    badge: "PTR Certified · NIS Qualified Coach · M.P.Ed. · Former AIR 21",
     experience: "14+ Years Competitive & Coaching Journey",
-    certifications: "NIS Bengaluru (PGDSC) · NIS Patiala · M.P.Ed. · B.P.Ed.",
+    certifications: "NIS Bengaluru (PGDSC) · NIS Patiala · M.P.Ed. · B.P.Ed. · PTR",
     intro: [
       "Samriti Punyani is one of the Head Coaches at Sports Life Tennis Academy and brings together the experience of a national-level player, a qualified sports coach, and a passionate mentor. With over 14 years of experience in competitive tennis, she has represented India at state, national, and international events while dedicating herself to developing the next generation of tennis players.",
       "As an NIS-qualified coach with advanced degrees in physical education, Samriti believes that great coaching is about much more than teaching strokes. Her focus is on building technically sound players, developing confidence, nurturing discipline, and creating an environment where every athlete can grow both on and off the court.",
@@ -216,6 +216,7 @@ export const COACH_PROFILES: Record<string, CoachProfile> = {
       "Mental Confidence & Motivation",
     ],
     qualifications: [
+      "Professional Tennis Registry (PTR) – International Coach Certification",
       "National Institute of Sports (NIS), Bengaluru – Post Graduate Diploma in Sports Coaching (Tennis)",
       "National Institute of Sports (NIS), Patiala – Sports Coaching Certification",
       "Master of Physical Education (M.P.Ed.)",

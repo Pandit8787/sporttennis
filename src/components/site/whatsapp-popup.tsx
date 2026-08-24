@@ -27,12 +27,13 @@ export function WhatsAppPopup() {
   const [message, setMessage] = useState("I would like to book a free trial session.");
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return undefined;
     const seen = sessionStorage.getItem("whatsappPopupSeen");
     if (!seen) {
       const timer = window.setTimeout(() => setOpen(true), 450);
       return () => window.clearTimeout(timer);
     }
+    return undefined;
   }, []);
 
   const handleClose = () => {

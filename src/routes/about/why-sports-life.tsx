@@ -30,7 +30,7 @@ export const Route = createFileRoute("/about/why-sports-life")({
       {
         name: "description",
         content:
-          "Discover what sets Sports Life Tennis Academy apart—expert international coaching, 27 courts across 3 Delhi centres, player-first pathways, and Sunday match play.",
+          "Discover what sets Sports Life Tennis Academy apart—expert international coaching, 25 courts across 3 Delhi centres, player-first pathways, and Sunday match play.",
       },
       { property: "og:title", content: "Why Sports Life — Sports Life Tennis Academy" },
       {
@@ -189,12 +189,12 @@ function WhySportsLifePage() {
         </div>
       </Section>
 
-      {/* Feature 4: 27 Multi-Surface Courts Across Delhi */}
+      {/* Feature 4: 25 Multi-Surface Courts Across Delhi */}
       <Section>
         <SectionHeading
           eyebrow="Advantage 04"
-          title="World-Class Facilities Across 3 Delhi Centres"
-          body="Access to 27 professional courts with synthetic, clay, and grass surfaces for comprehensive athletic development."
+          title="Facilities Across 3 Delhi Centres"
+          body="Access to 25 courts with synthetic, clay, and grass surfaces for comprehensive athletic development."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -205,7 +205,7 @@ function WhySportsLifePage() {
             <h4 className="font-bold text-lg text-foreground">Roshanara Club</h4>
             <p className="text-xs font-semibold text-neon mt-1">North Delhi · Flagship</p>
             <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
-              4 Synthetic Courts · 2 Clay Courts · 3 Grass Courts. Historic heritage venue offering all 3 major tennis surfaces.
+              4 Synthetic Courts · 2 Clay Courts · 3 Grass Courts (9 Total). Historic heritage venue offering all 3 major tennis surfaces.
             </p>
           </div>
 
@@ -214,9 +214,9 @@ function WhySportsLifePage() {
               <MapPin className="size-5" />
             </div>
             <h4 className="font-bold text-lg text-foreground">Major Dhyan Chand Complex</h4>
-            <p className="text-xs font-semibold text-electric mt-1">Ashok Vihar · Central Delhi</p>
+            <p className="text-xs font-semibold text-electric mt-1">Ashok Vihar · North-West Delhi</p>
             <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
-              6 Synthetic Courts · 7 Clay Courts. Dedicated high-performance training hub with extensive court availability.
+              4 Synthetic Courts · 2 Clay Courts (6 Total). Dedicated player development hub with structured coaching.
             </p>
           </div>
 
@@ -225,9 +225,9 @@ function WhySportsLifePage() {
               <MapPin className="size-5" />
             </div>
             <h4 className="font-bold text-lg text-foreground">Punjabi Bagh Club</h4>
-            <p className="text-xs font-semibold text-neon mt-1">West Delhi</p>
+            <p className="text-xs font-semibold text-neon mt-1">West Delhi · Ring Road</p>
             <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
-              4 Synthetic Courts · 1 Clay Court. Premium sports club infrastructure with thriving adult and junior programs.
+              6 Clay Courts · 4 Synthetic Courts (10 Total). Premier sports club infrastructure with thriving adult and junior programs.
             </p>
           </div>
         </div>
@@ -307,10 +307,10 @@ function WhySportsLifePage() {
 
           <div className="card-elevated p-6 text-center">
             <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={27} suffix="" />
+              <Counter value={25} suffix="" />
             </p>
-            <p className="mt-2 text-sm font-semibold text-foreground">Professional Courts</p>
-            <p className="text-xs text-muted-foreground mt-1">14 Synthetic · 10 Clay · 3 Grass</p>
+            <p className="mt-2 text-sm font-semibold text-foreground">Tennis Courts</p>
+            <p className="text-xs text-muted-foreground mt-1">12 Synthetic · 10 Clay · 3 Grass</p>
           </div>
 
           <div className="card-elevated p-6 text-center">

@@ -1,13 +1,17 @@
 export const ACADEMY = {
   name: "Sports Life Tennis Academy",
   short: "Sports Life",
-  tagline: "Player-first tennis coaching across Delhi, from first lesson to national-level competition",
-  phone: "+91 92665 79159, 81305 14603",
+  tagline: "Player-first tennis coaching across Delhi, from first lesson to competitive tournament play",
+  phone: "+91 81305 14603, +91 92665 79159",
   whatsapp: "+919266579159",
   email: "abhiney@sportslifetennisacademy.com",
+  emails: [
+    "abhiney@sportslifetennisacademy.com",
+    "kabhiney@gmail.com",
+  ],
   address: "DDA Roshanara Club, Shakti Nagar, Delhi-110007",
   hours: [
-    { day: "Tuesday – Sunday", time: "4:00pm – 7:00pm" },
+    { day: "Tuesday – Sunday", time: "Morning & Evening Sessions" },
   ],
   socials: [
     { label: "Instagram", href: "https://instagram.com" },
@@ -38,10 +42,10 @@ export const NAV = [
     label: "Our Centres",
     to: "/centres",
     children: [
-      { label: "All Centres Overview", to: "/centres", description: "3 Delhi Centres with 27 Courts" },
-      { label: "Roshanara Club", to: "/centres/roshanara-club", description: "North Delhi · 9 Multi-surface courts" },
-      { label: "Major Dhyan Chand Complex", to: "/centres/major-dhyan-chand-sports-complex", description: "Central Delhi · 14 Tournament courts" },
-      { label: "Punjabi Bagh Club", to: "/centres/punjabi-bagh-club", description: "West Delhi · 4 Floodlit synthetic courts" },
+      { label: "All Centres Overview", to: "/centres", description: "3 Delhi Centres with 25 Courts" },
+      { label: "Roshanara Club", to: "/centres/roshanara-club", description: "North Delhi · 4 Synthetic · 2 Clay · 3 Grass" },
+      { label: "Major Dhyan Chand Complex", to: "/centres/major-dhyan-chand-sports-complex", description: "Ashok Vihar · 4 Synthetic · 2 Clay" },
+      { label: "Punjabi Bagh Club", to: "/centres/punjabi-bagh-club", description: "West Delhi · 6 Clay · 4 Synthetic" },
     ],
   },
   { label: "Our Programs", to: "/programs" },
@@ -51,21 +55,18 @@ export const NAV = [
     children: [
       { label: "Initiatives Overview", to: "/initiatives", description: "Pathways beyond traditional training" },
       { label: "Sunday Match Play", to: "/initiatives/sunday-match-play", description: "Weekly tournament match play league" },
-      { label: "Global Learning Initiatives", to: "/initiatives/global-learning", description: "European coaching masterclasses & webinars" },
+      { label: "Global Learning Initiatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
     ],
   },
-  { label: "Facilities", to: "/facilities" },
-  { label: "Tournaments", to: "/tournaments" },
   { label: "Testimonials", to: "/testimonials" },
   { label: "Gallery", to: "/gallery" },
-  { label: "Blogs", to: "/blogs" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
 export const STATS = [
-  { value: 3, suffix: "", label: "centres across Delhi" },
-  { value: 27, suffix: "", label: "tennis courts" },
-  { value: 14, suffix: "", label: "synthetic courts" },
+  { value: 3, suffix: "", label: "centres in Delhi" },
+  { value: 25, suffix: "", label: "tennis courts" },
+  { value: 12, suffix: "", label: "synthetic courts" },
   { value: 10, suffix: "", label: "clay courts" },
 ];
 
@@ -99,75 +100,73 @@ export const WHY_US = [
 export const PROGRAMS = [
   {
     slug: "toddlers",
-    name: "Toddlers Tennis",
+    name: "Toddlers Tennis (4–6 Years)",
     level: "Ages 4–6",
-    duration: "Weekly classes",
+    duration: "Regular Batches",
     price: "On enquiry",
-    summary: "A fun introduction to tennis through movement, coordination, balance and confidence-building.",
-    points: ["Fun & movement", "Coordination", "Agility", "Positive first experience"],
+    summary: "Building a Love for Tennis Through Fun & Movement. Our Toddlers Program introduces young children to tennis through engaging activities that develop coordination, balance, agility, and confidence in a fun and supportive environment.",
+    points: ["Coordination & balance", "Agility games", "Fun & supportive environment", "Positive first experience"],
+    perfectFor: "Children aged 4–6 years",
   },
   {
     slug: "beginners",
     name: "Beginners Program",
-    level: "First steps",
-    duration: "Ongoing",
+    level: "The Perfect First Step",
+    duration: "Regular Batches",
     price: "On enquiry",
-    summary: "Designed for players with little or no previous experience, with fundamental technique and rallying at the core.",
-    points: ["Grip & footwork", "Basic rallying", "Coordination", "Enjoyable learning"],
+    summary: "The Perfect First Step Into Tennis. Designed for players with little or no previous experience, this program focuses on developing the fundamental techniques, correct grip, footwork, coordination, and basic rallying skills while making learning enjoyable.",
+    points: ["Fundamental techniques", "Correct grip & footwork", "Basic rallying skills", "Enjoyable learning"],
+    perfectFor: "Children and adults starting their tennis journey",
   },
   {
     slug: "semi-intermediate",
     name: "Semi-Intermediate Program",
-    level: "Building confidence",
-    duration: "Ongoing",
+    level: "Building Confidence",
+    duration: "Regular Batches",
     price: "On enquiry",
-    summary: "Improves consistency, movement, shot selection and match awareness with more structured point play.",
-    points: ["Consistency", "Shot selection", "Point play", "Match awareness"],
+    summary: "Building Confidence & Consistency. As players become comfortable with the fundamentals, this program focuses on improving consistency, movement, shot selection, and match awareness while introducing more structured training and point play.",
+    points: ["Consistency & movement", "Shot selection", "Match awareness", "Structured point play"],
+    perfectFor: "Players with basic tennis knowledge looking to improve their game",
   },
   {
     slug: "intermediate",
     name: "Intermediate Program",
-    level: "Next level",
-    duration: "Ongoing",
+    level: "Next Level Tennis",
+    duration: "Regular Batches",
     price: "On enquiry",
-    summary: "Develops advanced technical skills, tactical understanding, match strategy and competitive confidence.",
-    points: ["Technical refinement", "Tactical reading", "Physical conditioning", "Competitive confidence"],
+    summary: "Taking Your Game to the Next Level. This program develops advanced technical skills, tactical understanding, match strategy, physical conditioning, and competitive confidence through structured coaching and regular match play.",
+    points: ["Advanced technical skills", "Tactical understanding", "Match strategy & conditioning", "Competitive confidence"],
+    perfectFor: "Players preparing for competitive tennis",
   },
   {
-    slug: "advanced",
-    name: "Advanced Program",
-    level: "Competitive players",
-    duration: "Ongoing",
+    slug: "advanced-performance",
+    name: "Advanced & Performance",
+    level: "Competitive Excellence",
+    duration: "Regular Batches",
     price: "On enquiry",
-    summary: "Prepares committed players for district, state and national competition through intense development.",
-    points: ["Advanced stroke production", "Tournament preparation", "Mental resilience", "Fitness planning"],
-  },
-  {
-    slug: "performance",
-    name: "Performance Batch",
-    level: "High performance",
-    duration: "High intensity",
-    price: "On enquiry",
-    summary: "Built for dedicated athletes chasing national-level excellence through analysis, conditioning and planning.",
-    points: ["High-intensity training", "Match analysis", "Physical conditioning", "Long-term athlete development"],
+    summary: "Preparing Competitive Players for Success. Our Advanced Program and Performance Batch focus on high-intensity training, tournament preparation, tactical planning, match analysis and long-term athlete development.",
+    points: ["High-intensity training", "Tournament preparation", "Tactical planning & match analysis", "Long-term athlete development"],
+    perfectFor: "Competitive players aiming for district, state, national and international competition",
   },
   {
     slug: "adult",
     name: "Adult Tennis Program",
-    level: "18+",
-    duration: "Weekly sessions",
+    level: "All Adult Levels",
+    duration: "Regular Batches",
     price: "On enquiry",
-    summary: "An encouraging environment for complete beginners, returners and improving adults.",
-    points: ["Fitness", "Confidence", "Stress relief", "Social connection"],
+    summary: "It's Never Too Late to Start Playing. Whether you're picking up a racquet for the first time, returning to tennis after years away, or looking to improve your game, our Adult Tennis Program provides a welcoming and professional environment for players of all abilities.",
+    points: ["Fitness & agility", "Technique refinement", "Stress relief & wellness", "Welcoming community"],
+    perfectFor: "Beginners, recreational players, and competitive adults",
   },
   {
     slug: "sunday-match-play",
-    name: "Sunday Match Play Program",
-    level: "All levels",
+    name: "Sunday Match Play",
+    level: "All Levels",
     duration: "Every Sunday",
     price: "On enquiry",
-    summary: "A structured weekly initiative that gives players regular competitive matches, confidence and tournament readiness.",
-    points: ["Level-based groups", "Competitive match exposure", "Confidence building", "Tournament preparation"],
+    summary: "A structured weekly competitive match-play initiative giving players regular tournament match exposure, tactical debriefs, and competitive confidence.",
+    points: ["Simulated tournament matches", "Supervisor coach debriefs", "Tactical shot selection", "Competitive pressure training"],
+    perfectFor: "All players wanting real competitive match exposure",
   },
 ];
 
@@ -207,10 +206,30 @@ export const COACHES = [
     role: "Head Coach",
     initials: "SP",
     experience: "14+ years",
-    cert: "NIS-qualified · M.P.Ed. · B.P.Ed.",
+    cert: "NIS-qualified · M.P.Ed. · B.P.Ed. · PTR",
     achievements: ["State, national and international experience", "Women’s tennis coaching", "Long-term athlete development"],
-    bio: "Samriti Punyani is an accomplished tennis player and coach with over 14 years of experience in the sport. Having represented India at state, national, and international levels, she is passionate about developing players through professional coaching, personalized guidance, and a strong focus on long-term athlete development.",
+    bio: "Samriti Punyani is an accomplished tennis player and coach with over 14 years of experience in the sport. Having represented India at state, national, and international levels, she is passionate about developing players through structured coaching, personalized guidance, and a strong focus on long-term athlete development.",
     image: "/samriti-punyani.jpg",
+  },
+  {
+    name: "Sachin",
+    role: "Coach",
+    initials: "S",
+    experience: "Junior Coaching Expert",
+    cert: "ITF Level 1 · AITA Certified",
+    achievements: ["U-12 Player Development", "Toddler Tennis Specialist"],
+    bio: "Newly joined senior youth coach specializing in U-10 and U-12 foundational programs.",
+    image: "/coaches/rohit.jpg",
+  },
+  {
+    name: "Ankit",
+    role: "Coach",
+    initials: "A",
+    experience: "Adult & Match Play",
+    cert: "PTR Certified · AITA Level 2",
+    achievements: ["Adult Tennis Coaching", "Sunday Match Play League"],
+    bio: "Recently hired specialist coach for adults, corporate sessions, and Sunday Match Play organization.",
+    image: "/coaches/mohit.jpg",
   },
   {
     name: "Rahul",
@@ -220,6 +239,7 @@ export const COACHES = [
     cert: "Foundation & progression",
     achievements: ["Junior player support", "Progressive planning"],
     bio: "Works closely with youth players to build strong fundamentals and a love for the game.",
+    image: "/coaches/rahul.jpg",
   },
   {
     name: "Ashish",
@@ -229,6 +249,7 @@ export const COACHES = [
     cert: "Match play support",
     achievements: ["Performance development", "Technique refinement"],
     bio: "Supports players at every stage with structured drills and clear technical feedback.",
+    image: "/coaches/ashish.jpg",
   },
   {
     name: "Vishal",
@@ -238,6 +259,7 @@ export const COACHES = [
     cert: "Training support",
     achievements: ["Skill progression", "Structured practice"],
     bio: "Focuses on helping players improve through clear technical guidance and steady progression.",
+    image: "/coaches/vishal.jpg",
   },
   {
     name: "Rupesh",
@@ -247,6 +269,7 @@ export const COACHES = [
     cert: "Foundation coaching",
     achievements: ["Court awareness", "Player confidence"],
     bio: "Builds confidence and consistency through simple, focused coaching methods.",
+    image: "/coaches/rupesh.jpg",
   },
   {
     name: "Rohit",
@@ -256,6 +279,7 @@ export const COACHES = [
     cert: "Progression support",
     achievements: ["Tactical awareness", "Development planning"],
     bio: "Supports players with practical coaching that focuses on growth at every stage.",
+    image: "/coaches/rohit.jpg",
   },
   {
     name: "Mintu",
@@ -265,6 +289,7 @@ export const COACHES = [
     cert: "Development coaching",
     achievements: ["Youth support", "Fun-based learning"],
     bio: "Helps young players build comfort, rhythm and confidence on court.",
+    image: "/coaches/mintu.jpg",
   },
   {
     name: "Himanshu",
@@ -274,6 +299,7 @@ export const COACHES = [
     cert: "Match preparation",
     achievements: ["Competitive readiness", "Focus and discipline"],
     bio: "Works with players to sharpen preparation, discipline and match awareness.",
+    image: "/coaches/himanshu.jpg",
   },
   {
     name: "Ashok",
@@ -283,6 +309,7 @@ export const COACHES = [
     cert: "Training support",
     achievements: ["Consistency", "Technical clarity"],
     bio: "Supports aspiring players through clear instruction and consistent mentoring.",
+    image: "/coaches/ashok.jpg",
   },
   {
     name: "Mohit",
@@ -292,6 +319,7 @@ export const COACHES = [
     cert: "Foundation support",
     achievements: ["Fundamentals", "Progression"],
     bio: "Focused on laying strong foundations and creating a positive learning experience.",
+    image: "/coaches/mohit.jpg",
   },
   {
     name: "Chetan",
@@ -301,6 +329,7 @@ export const COACHES = [
     cert: "Match readiness",
     achievements: ["Momentum", "Competitive support"],
     bio: "Helps players build confidence and maintain momentum across their development journey.",
+    image: "/coaches/chetan.jpg",
   },
   {
     name: "Akhil",
@@ -310,6 +339,7 @@ export const COACHES = [
     cert: "Technical coaching",
     achievements: ["Skill refinement", "Consistency"],
     bio: "Encourages disciplined improvement and clear technical habits on court.",
+    image: "/coaches/akhil.jpg",
   },
   {
     name: "Tarun",
@@ -319,6 +349,7 @@ export const COACHES = [
     cert: "Practice planning",
     achievements: ["Structured routines", "Confidence building"],
     bio: "Creates focused practice environments where players can grow with clarity and confidence.",
+    image: "/coaches/tarun.jpg",
   },
   {
     name: "Rachna",
@@ -328,6 +359,7 @@ export const COACHES = [
     cert: "Player mentorship",
     achievements: ["Mentorship", "Motivation"],
     bio: "Supports players through encouraging guidance that builds confidence and long-term commitment.",
+    image: "/coaches/rachna.jpg",
   },
   {
     name: "Rishi",
@@ -337,6 +369,7 @@ export const COACHES = [
     cert: "Progression coaching",
     achievements: ["Technical improvement", "Match awareness"],
     bio: "Works with players to sharpen technique and understanding of the game.",
+    image: "/coaches/rishi.jpg",
   },
   {
     name: "Radhe",
@@ -346,6 +379,7 @@ export const COACHES = [
     cert: "Player support",
     achievements: ["Consistency", "Growth mindset"],
     bio: "Brings a calm, supportive approach that helps players grow step by step.",
+    image: "/coaches/radhe.jpg",
   },
   {
     name: "Aman",
@@ -355,15 +389,7 @@ export const COACHES = [
     cert: "Training guidance",
     achievements: ["Focus", "Competitive growth"],
     bio: "Contributes to player development with attention to discipline and performance habits.",
-  },
-  {
-    name: "Harsh",
-    role: "Coach",
-    initials: "H",
-    experience: "Skill development",
-    cert: "Practice support",
-    achievements: ["Technique", "Court movement"],
-    bio: "Helps players strengthen movement, fundamentals and game awareness.",
+    image: "/coaches/aman.jpg",
   },
   {
     name: "Pratham",
@@ -373,23 +399,24 @@ export const COACHES = [
     cert: "Progression coaching",
     achievements: ["Young player support", "Rally confidence"],
     bio: "Encourages young athletes to enjoy the game while building strong habits and confidence.",
+    image: "/coaches/pratham.jpg",
   },
 ];
 
 export const FACILITIES = [
   {
-    name: "14 synthetic courts",
-    body: "Professional courts designed for technical training, match preparation and high-performance development.",
+    name: "12 synthetic courts",
+    body: "Courts designed for technical precision, fast-paced drills, match preparation and high-performance development.",
     tag: "Courts",
   },
   {
     name: "10 clay courts",
-    body: "Clay surfaces that improve movement, endurance, patience and point construction in a complete game.",
+    body: "Clay surfaces that improve endurance, sliding, patience, and point construction in a complete game.",
     tag: "Surfaces",
   },
   {
     name: "3 grass courts",
-    body: "Natural grass gives players a chance to build footwork, reactions and adaptability for different tournament conditions.",
+    body: "Natural grass gives players quick reflexes, versatile footwork and adaptability for different tournament conditions.",
     tag: "Surfaces",
   },
   {
@@ -403,8 +430,8 @@ export const FACILITIES = [
     tag: "Competition",
   },
   {
-    name: "Support beyond the court",
-    body: "Our initiatives include internships, travel support, sports quota guidance and global learning opportunities.",
+    name: "Global learning & mentorship",
+    body: "Direct access to international coach masterclasses and Indian professionals beyond the court.",
     tag: "Community",
   },
 ];
@@ -416,27 +443,27 @@ export const CENTRES = [
     location: "North Delhi",
     summary: "The flagship centre where Sports Life began in 2024, with 4 synthetic, 2 clay and 3 grass courts.",
     description:
-      "Where the Sports Life journey began. Established in 2024, our flagship centre at Roshanara Club offers world-class training facilities with 4 synthetic courts, 2 clay courts, and 3 grass courts, providing players with the opportunity to train on all major court surfaces in a professional and inspiring environment.",
+      "Where the Sports Life journey began. Established in 2024, our flagship centre at Roshanara Club offers structured coaching and training facilities with 4 synthetic courts, 2 clay courts, and 3 grass courts, providing players with the opportunity to train on all major court surfaces in an inspiring environment.",
     photo:
-      "/centre-gallery/abhiney-at-jc-ferrero-academy.jpg",
+      "/centre-gallery/whatsapp-20260813-171744-1.jpg",
   },
   {
     slug: "major-dhyan-chand-sports-complex",
     name: "Major Dhyan Chand Sports Complex",
     location: "Ashok Vihar",
-    summary: "A modern centre for player development with 4 synthetic and 2 clay courts in a professional environment.",
+    summary: "A modern centre for player development with 4 synthetic and 2 clay courts.",
     description:
-      "Located in the heart of Ashok Vihar, our Major Dhyan Chand Sports Complex centre reflects the Sports Life philosophy of structured coaching, player development, and competitive excellence. With quality facilities and experienced coaches, it provides an ideal environment for players of all ages to learn, compete, and grow.",
+      "In 2026, Sports Life Tennis Academy expanded to the Major Dhyan Chand Sports Complex with the vision of providing aspiring players access to structured coaching in a modern sporting environment. Today, the centre serves as a hub for structured player development, combining coaching, and a player-first philosophy. The complex offers 4 synthetic courts and 2 clay courts.",
     photo:
-      "/centre-gallery/abhiney-at-jofre-porta-academy-1.jpg",
+      "/centre-gallery/whatsapp-20260813-171844-2.jpg",
   },
   {
     slug: "punjabi-bagh-club",
     name: "Punjabi Bagh Club",
     location: "West Delhi",
-    summary: "A premium destination with 4 synthetic and 6 clay courts and strong adult and Sunday match play programming.",
+    summary: "A premier destination with 4 synthetic and 6 clay courts and strong adult and Sunday match play programming.",
     description:
-      "Punjabi Bagh Club is Sports Life's newest centre, created to bring professional tennis coaching and competitive match-play opportunities to more players across Delhi. Combining quality facilities with a player-first approach, the centre offers a positive and dynamic environment for beginners, competitive players, and adults alike.",
+      "Punjabi Bagh Club brings tennis coaching and competitive match-play opportunities to players across Delhi. Combining 4 synthetic courts and 6 clay courts with a player-first approach, the centre offers a positive and dynamic environment for beginners, competitive players, and adults alike.",
     photo:
       "/centre-gallery/img_8064.jpg",
   },
@@ -445,23 +472,11 @@ export const CENTRES = [
 export const INITIATIVES = [
   {
     title: "Sunday Match Play",
-    body: "Structured competitive matches for players of similar age and level, helping them improve decision-making and match confidence.",
-  },
-  {
-    title: "Delhi University Internship",
-    body: "A practical coaching pathway for university athletes who want to earn, mentor and stay connected to tennis.",
-  },
-  {
-    title: "Your Tennis Home in Delhi",
-    body: "Support for visiting players with practice courts, hitting partners, coaching and tournament preparation in Delhi.",
+    body: "Structured competitive matches for players of similar level, helping them improve decision-making, tactical shot selection, and match confidence.",
   },
   {
     title: "Global Learning Initiatives",
-    body: "Online interactive sessions with international coaches and Indian professionals to broaden player perspectives.",
-  },
-  {
-    title: "DU Sports Quota Guidance",
-    body: "Clear guidance for players and parents navigating the Delhi University sports quota process and admissions.",
+    body: "Learning Beyond the Court: Direct online interactive sessions with international coaches like Jofre Porta and Indian professionals like Vishnu Vardhan.",
   },
 ];
 
@@ -608,16 +623,16 @@ export const RESULTS = [
 
 export const FAQS = [
   {
-    q: "Do I need my own racket to start?",
-    a: "No. Our pro shop lends demo rackets free for the first month, and our coaches will help you choose the right weight and balance before you buy.",
+    q: "Do I need my own racquet to start?",
+    a: "Yes, for the 1st day we provide racquet trial, then we suggest the racquet. The racquet can be purchased from the academy at the best price.",
   },
   {
     q: "How does the free trial work?",
-    a: "Book a slot through the contact form and you get one full 90-minute session with a coach, including a short skill assessment and a written recommendation.",
+    a: "Book a slot through the contact form and you get a 30–45 minutes session with a coach, including a short skill assessment and a personalized recommendation.",
   },
   {
     q: "What is the age range for the kids programme?",
-    a: "The Shuttle Club runs from age 5 to 12, split into three coordination bands so children always train with peers of similar ability.",
+    a: "Our kids programme runs from age 4 to 18, split into development stages so children always train with peers of similar ability.",
   },
   {
     q: "Can adults join if they've never played competitively?",
@@ -625,7 +640,7 @@ export const FAQS = [
   },
   {
     q: "Do you help with tournament entries?",
-    a: "Yes. Advanced and Elite athletes have entries, schedules and travel logistics coordinated by our tournament desk at no additional cost.",
+    a: "Yes. Advanced and Performance athletes have entries, schedules and travel logistics coordinated by our tournament desk at no additional cost.",
   },
 ];
 
