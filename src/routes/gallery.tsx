@@ -31,9 +31,9 @@ import academyGallery13 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07
 import academyGallery14 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.24 PM (2).jpeg";
 import academyGallery15 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.25 PM.jpeg";
 
-// Imported videos
-import video1 from "@/assets/videos/whatsapp-video-1.mp4";
-import video2 from "@/assets/videos/whatsapp-video-2.mp4";
+// Static videos
+const video1 = "/videos/whatsapp-video-1.mp4";
+const video2 = "/videos/whatsapp-video-2.mp4";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({

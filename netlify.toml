@@ -2,6 +2,10 @@
   publish = "dist"
   command = "npm run build:netlify"
 
+[build.environment]
+  GIT_LFS_ENABLED = "true"
+  GIT_LFS_FETCH_METHOD = "custom"
+
 [dev]
   command = "npm run dev"
   publish = "dist"

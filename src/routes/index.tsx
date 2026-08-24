@@ -12,8 +12,8 @@ import academyGallery7 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 
 import academyGallery8 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM.jpeg";
 import academyGallery9 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (1).jpeg";
 import academyGallery10 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (2).jpeg";
-import video1 from "@/assets/videos/whatsapp-video-1.mp4";
-import video2 from "@/assets/videos/whatsapp-video-2.mp4";
+const video1 = "/videos/whatsapp-video-1.mp4";
+const video2 = "/videos/whatsapp-video-2.mp4";
 import {
   ACADEMY,
   COACHES,
