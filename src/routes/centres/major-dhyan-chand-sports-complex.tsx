@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-2.jpg";
 const galleryImages = [
@@ -34,6 +34,7 @@ function MDCSC() {
         title="Major Dhyan Chand Sports Complex"
         body="In 2026, Sports Life Tennis Academy expanded to the Major Dhyan Chand Sports Complex with the vision of providing aspiring players access to professional coaching in a modern sporting environment."
         image={heroImage}
+        removeFog
       />
 
       <Section>
@@ -138,10 +139,7 @@ function MDCSC() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Train at Major Dhyan Chand Sports Complex"
-        body="Experience structured player-first coaching in Ashok Vihar. Book a free trial and skill assessment today."
-      />
+      
     </>
   );
 }

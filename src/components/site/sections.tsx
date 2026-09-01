@@ -34,12 +34,7 @@ export function SectionHeading({
 }) {
   return (
     <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
-      <Reveal>
-        <span className="eyebrow">
-          <ShuttleIcon className="size-3.5" />
-          {eyebrow}
-        </span>
-      </Reveal>
+
       <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">
         <TextReveal text={title} />
       </h2>
@@ -57,14 +52,16 @@ export function PageHero({
   title,
   body,
   image,
+  removeFog = false,
 }: {
-  eyebrow: string;
-  title: string;
-  body: string;
+  eyebrow?: string;
+  title?: string;
+  body?: string;
   image?: string;
+  removeFog?: boolean;
 }) {
   return (
-    <section className="relative overflow-hidden px-4 sm:px-6 pt-28 pb-14 sm:pt-36 sm:pb-20 lg:px-8 lg:pt-40 lg:pb-24">
+    <section className="relative overflow-hidden px-4 sm:px-6 flex flex-col justify-end min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] pb-14 sm:pb-20 lg:pb-24 pt-32">
       {/* Base background */}
       <div className="absolute inset-0 bg-background" />
 
@@ -75,29 +72,35 @@ export function PageHero({
             alt=""
             aria-hidden="true"
             loading="eager"
-            className="absolute inset-0 size-full object-cover object-center opacity-85 saturate-[1.18] contrast-[1.08] transition-transform duration-1000"
+            className="absolute inset-0 size-full object-cover object-center transition-transform duration-1000"
           />
           {/* Refined gradient overlays */}
-          <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/70 to-background/25" />
-          <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-background/35" />
+          {!removeFog && (
+            <>
+              <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/70 to-background/25" />
+              <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-background/35" />
+            </>
+          )}
+          {removeFog && <div className="absolute inset-0 bg-black/40" />}
         </>
       )}
 
       <div className="grid-lines absolute inset-0 opacity-20 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl">
-        <span className="eyebrow">
-          <ShuttleIcon className="size-3.5" />
-          {eyebrow}
-        </span>
-        <h1 className="mt-4 max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-[0_10px_35px_rgba(255,255,255,0.4)] [text-shadow:0_2px_16px_rgba(255,255,255,0.2)] leading-tight">
-          <TextReveal text={title} />
-        </h1>
-        <Reveal delay={0.15}>
-          <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed text-foreground/90 lg:text-lg font-medium">
-            {body}
-          </p>
-        </Reveal>
+      <div className="relative mx-auto w-full max-w-7xl">
+        {title && (
+          <h1 className="mt-4 max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)] [text-shadow:0_2px_16px_rgba(0,0,0,0.8)] text-white leading-tight">
+            <TextReveal text={title} />
+          </h1>
+        )}
+        {body && (
+          <Reveal delay={0.15}>
+            <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed text-white/95 lg:text-lg font-semibold drop-shadow-md">
+              {body}
+            </p>
+          </Reveal>
+        )}
+        {!title && !body && <div className="h-32 sm:h-40 lg:h-48 w-full" />}
       </div>
     </section>
   );
@@ -222,7 +225,7 @@ export function CtaBanner({
         <div className="absolute -top-32 -right-20 size-96 rounded-full bg-electric/20 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-10 size-96 rounded-full bg-neon/10 blur-3xl pointer-events-none" />
         <div className="relative max-w-2xl">
-          <span className="eyebrow">Train with us</span>
+
           <h2 className="mt-3 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black">
             <TextReveal text={title} />
           </h2>

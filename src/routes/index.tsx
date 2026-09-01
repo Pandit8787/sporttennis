@@ -13,7 +13,7 @@ import academyGallery8 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 
 import academyGallery9 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (1).jpeg";
 import academyGallery10 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (2).jpeg";
 const video1 = "/videos/whatsapp-video-1.mp4";
-const video2 = "/videos/whatsapp-video-2.mp4";
+const video2 = "/videos/b9d7097e4adf46bc9064aaf1f7151802.mov";
 import {
   ACADEMY,
   COACHES,
@@ -87,161 +87,101 @@ export const Route = createFileRoute("/")({
 /* -------------------------------------------------------------------------- */
 /*                                HERO SECTION                                */
 /* -------------------------------------------------------------------------- */
+function TypewriterText({ text, delay = 0, speed = 40, className }: { text: string; delay?: number; speed?: number; className?: string }) {
+  const [displayed, setDisplayed] = useState("");
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    let interval: ReturnType<typeof setInterval>;
+    timeout = setTimeout(() => {
+      let i = 0;
+      interval = setInterval(() => {
+        setDisplayed(text.slice(0, i + 1));
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, speed);
+    }, delay);
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
+  }, [text, delay, speed]);
+  return <span className={className}>{displayed}</span>;
+}
+
 function Hero() {
+  const images = [
+    "/hero-slider/chatgpt_image.png",
+    "/hero-slider/img_0268.jpg",
+    "/hero-slider/img_0670.jpg",
+    "/hero-slider/img_8433.jpg",
+    "/hero-slider/img_8655.jpg"
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="relative flex min-h-[85svh] lg:min-h-[100svh] items-center overflow-hidden pt-20">
-      {/* Background Image & Ambient Gradients */}
-      <img
-        src={heroImg}
-        alt="Sports Life Tennis Academy premium court and training"
-        width={1920}
-        height={1280}
-        loading="eager"
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 size-full object-cover object-center opacity-85 saturate-[1.18] contrast-[1.08]"
-      />
-      {/* Refined Overlays for Crisp Text Legibility */}
-      <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/75 to-background/30" />
-      <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-background/40" />
-      <div className="grid-lines absolute inset-0 opacity-15 pointer-events-none" />
+    <div className="relative flex items-center min-h-[60svh] lg:min-h-[85svh] w-full overflow-hidden bg-black mt-[72px] sm:mt-[80px]">
+      {/* Background Images */}
+      {images.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt={`Banner ${i + 1}`}
+          loading={i === 0 ? "eager" : "lazy"}
+          className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-1000 ${i === index ? "opacity-100 z-0" : "opacity-0 z-0"
+            }`}
+        />
+      ))}
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 py-16 lg:py-24 lg:px-8">
-        {/* Welcome eyebrow */}
-        <div className="text-center lg:text-left mb-4">
-          <span className="inline-block rounded-full border-2 border-neon/60 bg-black/40 backdrop-blur-md px-5 py-1.5 text-[11px] sm:text-xs font-extrabold tracking-[0.2em] uppercase text-neon shadow-[0_6px_20px_rgba(16,185,129,0.35)]">
-            🏆 Premium Tennis Excellence in Delhi
-          </span>
-        </div>
+      {/* Subtle overlay for text legibility, no fog */}
+      <div className="absolute inset-0 z-10 bg-linear-to-r from-black/70 via-black/20 to-transparent pointer-events-none" />
 
-        {/* Hero Title */}
+      {/* Foreground Content */}
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-5 py-16 lg:py-24 lg:px-8">
         <h1
-          className="mt-4 max-w-5xl text-[clamp(2.4rem,7.5vw,6.5rem)] leading-[0.9] font-black uppercase text-white text-center lg:text-left"
-          style={{ textShadow: "0 10px 35px rgba(0,0,0,0.75)" }}
+          className="max-w-5xl text-[clamp(2.4rem,7.5vw,6.5rem)] leading-[0.9] font-black uppercase text-white text-left"
+          style={{ textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}
         >
-          Welcome to
-          <br />
-          <span className="text-white drop-shadow-lg" style={{ textShadow: "0 8px 24px rgba(0,0,0,0.8)" }}>
-            Sports Life
-          </span>
-          <br />
-          <span className="bg-gradient-to-r from-neon via-emerald-400 to-teal-300 bg-clip-text text-transparent drop-shadow-xl">
-            Tennis Academy
-          </span>
+          <TypewriterText text="Welcome to" delay={300} speed={40} className="block text-[clamp(1.5rem,4vw,3rem)]" />
+          <TypewriterText text="Sports Life" delay={1000} speed={50} className="block text-white drop-shadow-lg" />
+          <TypewriterText text="Tennis Academy" delay={1700} speed={50} className="block bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 bg-clip-text text-transparent drop-shadow-2xl" />
         </h1>
 
-        {/* Hero Subtitle */}
         <p
-          className="mt-6 max-w-2xl text-base sm:text-lg lg:text-xl text-white/95 font-medium leading-relaxed mx-auto lg:mx-0 text-center lg:text-left"
-          style={{ textShadow: "0 4px 16px rgba(0,0,0,0.65)" }}
+          className="mt-6 max-w-2xl text-base sm:text-lg lg:text-xl text-white font-medium leading-relaxed"
+          style={{ textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}
         >
-          Structured tennis coaching across Delhi—from toddlers picking up their first racquet to high-performance athletes competing nationally.
+          <TypewriterText text="" delay={2600} speed={25} />
         </p>
 
-        {/* Key Stats Bar in Hero */}
-        <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 max-w-3xl mx-auto lg:mx-0">
-          <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 text-center">
-            <p className="font-display text-2xl sm:text-3xl font-black bg-gradient-to-b from-white to-neon bg-clip-text text-transparent">
-              <Counter value={25} duration={1400} />
-            </p>
-            <p className="mt-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/80">
-              Tennis Courts
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 text-center">
-            <p className="font-display text-2xl sm:text-3xl font-black bg-gradient-to-b from-white to-neon bg-clip-text text-transparent">
-              3 <span className="text-neon">Grass</span>
-            </p>
-            <p className="mt-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/80">
-              Grass Courts
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 text-center">
-            <p className="font-display text-2xl sm:text-3xl font-black bg-gradient-to-b from-white to-neon bg-clip-text text-transparent">
-              300<span className="text-neon">+</span>
-            </p>
-            <p className="mt-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/80">
-              Players / Month
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 text-center">
-            <p className="font-display text-2xl sm:text-3xl font-black bg-gradient-to-b from-white to-neon bg-clip-text text-transparent">
-              1000<span className="text-neon">+</span>
-            </p>
-            <p className="mt-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/80">
-              Trained Till Now
-            </p>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <Reveal delay={0.25}>
-          <div className="mt-9 flex flex-wrap items-center gap-3.5 justify-center lg:justify-start">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-7 py-3.5 font-display text-xs font-black uppercase tracking-wider text-white shadow-[0_8px_30px_rgba(34,197,94,0.4)] hover:shadow-[0_10px_35px_rgba(34,197,94,0.55)] hover:scale-105 transition-all"
-            >
-              <span>Book Free Trial</span>
-              <span>→</span>
-            </Link>
-            <Link
-              to="/programs"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md px-6 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-white hover:bg-white/20 transition-all"
-            >
-              Explore Programs
-            </Link>
-            <Link
-              to="/about/our-story"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 backdrop-blur-md px-5 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-white/90 hover:text-white hover:bg-black/35 transition-all"
-            >
-              Our Story
-            </Link>
-          </div>
-        </Reveal>
-
-        {/* Quick Venue Badge Links */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 justify-center lg:justify-start text-xs text-white/90">
-          <span className="font-semibold text-neon uppercase tracking-wider text-[11px] mr-1">Centres:</span>
-          <Link
-            to="/centres/roshanara-club"
-            className="inline-flex items-center gap-1 rounded-full bg-black/40 border border-white/15 px-3 py-1 text-white hover:border-neon hover:text-neon transition-colors"
-          >
-            <MapPin className="size-3 text-neon" /> Roshanara Club (9)
-          </Link>
-          <Link
-            to="/centres/major-dhyan-chand-sports-complex"
-            className="inline-flex items-center gap-1 rounded-full bg-black/40 border border-white/15 px-3 py-1 text-white hover:border-neon hover:text-neon transition-colors"
-          >
-            <MapPin className="size-3 text-neon" /> Dhyan Chand Complex (6)
-          </Link>
-          <Link
-            to="/centres/punjabi-bagh-club"
-            className="inline-flex items-center gap-1 rounded-full bg-black/40 border border-white/15 px-3 py-1 text-white hover:border-neon hover:text-neon transition-colors"
-          >
-            <MapPin className="size-3 text-neon" /> Punjabi Bagh Club (10)
-          </Link>
-        </div>
-
         {/* Stats Grid */}
-        <Reveal delay={0.45}>
-          <dl className="mt-12 grid max-w-4xl grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 rounded-2xl bg-black/35 backdrop-blur-md border border-white/10 p-5 sm:p-6 shadow-2xl">
-            {STATS.map((s) => (
-              <div key={s.label} className="border-l border-white/15 pl-3 sm:pl-4 first:border-l-0">
-                <dt
-                  className="font-display text-2xl font-black sm:text-3xl lg:text-4xl text-white"
-                  style={{ textShadow: "0 4px 14px rgba(0,0,0,0.6)" }}
-                >
-                  <Counter value={s.value} suffix={s.suffix} />
-                </dt>
-                <dd
-                  className="mt-1 text-[10px] tracking-[0.16em] text-white/80 uppercase sm:text-xs font-semibold"
-                  style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
-                >
-                  {s.label}
-                </dd>
+        <Reveal delay={6}>
+          <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 max-w-3xl">
+            {[
+              { value: "25", label: "Tennis Courts" },
+              { value: "3", label: "Grass Courts" },
+              { value: "300+", label: "Players / Month" },
+              { value: "1000+", label: "Trained Till Now" }
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 text-center shadow-lg"
+              >
+                <p className="font-display text-2xl sm:text-3xl font-black bg-gradient-to-b from-white to-neon bg-clip-text text-transparent">
+                  {stat.value}
+                </p>
+                <p className="mt-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/90">
+                  {stat.label}
+                </p>
               </div>
             ))}
-          </dl>
+          </div>
         </Reveal>
       </div>
     </div>
@@ -598,9 +538,8 @@ function PlayersSlideshow() {
                 type="button"
                 aria-label={`Go to player slide ${i + 1}`}
                 onClick={() => setActiveIndex(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === activeIndex ? "w-10 bg-neon" : "w-3 bg-border hover:bg-neon/60"
-                }`}
+                className={`h-1.5 rounded-full transition-all ${i === activeIndex ? "w-10 bg-neon" : "w-3 bg-border hover:bg-neon/60"
+                  }`}
               />
             ))}
           </div>
@@ -620,7 +559,7 @@ function HighIntensityTraining() {
   const items = [
     { src: video1, title: "Footwork & Conditioning", tag: "Athleticism" },
     { src: video2, title: "Technical Stroke Drills", tag: "Technique" },
-    { src: "/videos/img_1954.mp4", title: "Match Intensity Rallies", tag: "Competitive" },
+    { src: "/videos/c0736a40636246c1937e92c55f6b970b.mov", title: "Match Intensity Rallies", tag: "Competitive" },
   ];
   return (
     <Section>
@@ -856,10 +795,7 @@ function HomePage() {
       <Marquee />
       <CentresSpotlight />
       <FounderSpotlight />
-      <PlayersSlideshow />
       <HighIntensityTraining />
-      <TeamIntroduction />
-      <PlayerSpotlight />
 
       {/* Community Feedback / Google Review Spotlight */}
       <Section>

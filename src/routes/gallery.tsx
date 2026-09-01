@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   Camera,
@@ -443,10 +443,7 @@ function GalleryPage() {
       </AnimatePresence>
 
       {/* Bottom Conversion Banner */}
-      <CtaBanner
-        title="Be Part of Our Next Championship Frame"
-        body="Join our structured training squads across Delhi. Book your free trial session and skills assessment today."
-      />
+      
     </>
   );
 }

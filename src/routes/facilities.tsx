@@ -6,7 +6,7 @@ const shuttleImg =
   "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=1920&q=80";
 import { FACILITIES } from "@/lib/site-data";
 import { Reveal } from "@/components/site/motion-primitives";
-import { CtaBanner, PageHero, Section, SectionHeading } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 
 export const Route = createFileRoute("/facilities")({
   head: () => ({
@@ -105,10 +105,7 @@ function FacilitiesPage() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Visit a centre in Delhi"
-        body="Book a centre tour and experience the training environment for yourself."
-      />
+      
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   BookOpen,
@@ -167,10 +167,7 @@ function InitiativesPage() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Get Involved with Sports Life"
-        body="Whether you want to participate in Sunday Match Play or join our next learning masterclass, reach out today."
-      />
+      
     </>
   );
 }

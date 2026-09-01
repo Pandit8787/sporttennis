@@ -1,5 +1,5 @@
 import { Link, createFileRoute, Outlet, useLocation } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { COACHES } from "@/lib/site-data";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
@@ -136,27 +136,14 @@ function TeamPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-border/80 bg-linear-to-b from-surface via-background to-background">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.12),transparent_50%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.08),transparent_50%)] pointer-events-none" />
-        <div className="grid-lines absolute inset-0 opacity-10 pointer-events-none" />
+      <div className="relative overflow-hidden min-h-[450px] md:min-h-[550px] lg:min-h-[650px] flex flex-col justify-end pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-border/80">
+        <div className="absolute inset-0 z-0">
+          <img src="/team-bg-1.webp" alt="Coaching Team Background" className="w-full h-full object-cover object-[center_30%]" />
+        </div>
+        <div className="grid-lines absolute inset-0 opacity-10 pointer-events-none z-0" />
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 mt-auto">
           <div className="mx-auto max-w-4xl text-center">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-neon/30 bg-neon/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-neon mb-6">
-                <Sparkles className="size-3.5" /> Certified Coaching Faculty · Delhi
-              </div>
-              <h1 className="text-4xl font-black tracking-tight uppercase sm:text-5xl lg:text-6xl text-foreground">
-                Meet Our{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-neon via-emerald-400 to-teal-300">
-                  Coaching Team
-                </span>
-              </h1>
-              <p className="mt-6 text-base sm:text-lg lg:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto font-medium">
-                At Sports Life Tennis Academy, our greatest strength is our coaching team. From certified mentors and former national champions to on-court specialists, every coach is committed to disciplined, player-first excellence.
-              </p>
-            </Reveal>
 
             {/* Stats Highlight Bar */}
             <Reveal delay={0.15}>
@@ -311,13 +298,7 @@ function TeamPage() {
       {otherCoaches.length > 0 && (
         <Section>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-            <div>
-              <span className="eyebrow">Coaching Team</span>
-              <h3 className="mt-2 text-3xl sm:text-4xl font-bold text-foreground">Our Coaches</h3>
-              <p className="mt-2 text-muted-foreground text-sm sm:text-base max-w-2xl">
-                Our passionate team of coaches work across our 3 Delhi centres to refine player fundamentals, rally intensity, and court movement.
-              </p>
-            </div>
+
             <div className="rounded-full bg-surface-2 border border-border px-4 py-1.5 text-xs font-bold text-foreground">
               26+ Dedicated Coaches
             </div>
@@ -348,9 +329,7 @@ function TeamPage() {
                         {coach.name}
                       </h4>
                       <p className="mt-1 text-[11px] font-semibold text-neon">{coach.role}</p>
-                      <p className="mt-2.5 text-xs text-muted-foreground font-medium line-clamp-3 leading-relaxed">
-                        {coach.bio}
-                      </p>
+
                     </div>
                     <div className="mt-3 pt-3 border-t border-border/60 text-[11px] font-medium text-foreground/80">
                       {coach.cert}
@@ -364,10 +343,7 @@ function TeamPage() {
       )}
 
       {/* Bottom CTA Banner */}
-      <CtaBanner
-        title="Train with Delhi's Premier Tennis Coaches"
-        body="Experience our player-first coaching philosophy. Book a free trial session across Roshanara Club, Major Dhyan Chand Complex & Punjabi Bagh Club."
-      />
+      
     </>
   );
 }

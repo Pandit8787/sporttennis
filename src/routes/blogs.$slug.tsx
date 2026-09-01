@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { BLOGS } from "@/lib/site-data";
-import { CtaBanner, Section } from "@/components/site/sections";
+import { Section } from "@/components/site/sections";
 
 export const Route = createFileRoute("/blogs/$slug")({
   loader: ({ params }) => {
@@ -122,7 +122,7 @@ function BlogPostPage() {
         </div>
       </Section>
 
-      <CtaBanner />
+      
     </>
   );
 }

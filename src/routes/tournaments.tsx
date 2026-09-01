@@ -3,7 +3,7 @@ import { useState } from "react";
 import trophyImg from "@/assets/trophy.jpg";
 import { RESULTS, SCHEDULE, TOURNAMENTS } from "@/lib/site-data";
 import { Reveal } from "@/components/site/motion-primitives";
-import { CtaBanner, PageHero, Section, SectionHeading } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 
 export const Route = createFileRoute("/tournaments")({
   head: () => ({
@@ -217,10 +217,7 @@ function TournamentsPage() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Get match ready"
-        body="Advanced squad athletes get entries, seeding advice and post-match analysis included."
-      />
+      
     </>
   );
 }

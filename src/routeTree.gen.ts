@@ -21,10 +21,8 @@ import { Route as TeamRouteImport } from './routes/team'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as AboutMeetFounderRouteImport } from './routes/about/meet-founder'
-import { Route as AboutOurCoreValuesRouteImport } from './routes/about/our-core-values'
 import { Route as AboutOurStoryRouteImport } from './routes/about/our-story'
 import { Route as AboutOurVisionMissionRouteImport } from './routes/about/our-vision-mission'
-import { Route as AboutWhySportsLifeRouteImport } from './routes/about/why-sports-life'
 import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
 import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
 import { Route as CentresIndexRouteImport } from './routes/centres/index'
@@ -96,11 +94,6 @@ const AboutMeetFounderRoute = AboutMeetFounderRouteImport.update({
   path: '/meet-founder',
   getParentRoute: () => AboutRoute,
 } as any)
-const AboutOurCoreValuesRoute = AboutOurCoreValuesRouteImport.update({
-  id: '/our-core-values',
-  path: '/our-core-values',
-  getParentRoute: () => AboutRoute,
-} as any)
 const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
   id: '/our-story',
   path: '/our-story',
@@ -109,11 +102,6 @@ const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
 const AboutOurVisionMissionRoute = AboutOurVisionMissionRouteImport.update({
   id: '/our-vision-mission',
   path: '/our-vision-mission',
-  getParentRoute: () => AboutRoute,
-} as any)
-const AboutWhySportsLifeRoute = AboutWhySportsLifeRouteImport.update({
-  id: '/why-sports-life',
-  path: '/why-sports-life',
   getParentRoute: () => AboutRoute,
 } as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
@@ -183,10 +171,8 @@ export interface FileRoutesByFullPath {
   '/testimonials': typeof TestimonialsRoute
   '/tournaments': typeof TournamentsRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
-  '/about/our-core-values': typeof AboutOurCoreValuesRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/our-vision-mission': typeof AboutOurVisionMissionRoute
-  '/about/why-sports-life': typeof AboutWhySportsLifeRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/centres/major-dhyan-chand-sports-complex': typeof CentresMajorDhyanChandSportsComplexRoute
   '/centres/punjabi-bagh-club': typeof CentresPunjabiBaghClubRoute
@@ -211,10 +197,8 @@ export interface FileRoutesByTo {
   '/testimonials': typeof TestimonialsRoute
   '/tournaments': typeof TournamentsRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
-  '/about/our-core-values': typeof AboutOurCoreValuesRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/our-vision-mission': typeof AboutOurVisionMissionRoute
-  '/about/why-sports-life': typeof AboutWhySportsLifeRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/centres/major-dhyan-chand-sports-complex': typeof CentresMajorDhyanChandSportsComplexRoute
   '/centres/punjabi-bagh-club': typeof CentresPunjabiBaghClubRoute
@@ -240,10 +224,8 @@ export interface FileRoutesById {
   '/testimonials': typeof TestimonialsRoute
   '/tournaments': typeof TournamentsRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
-  '/about/our-core-values': typeof AboutOurCoreValuesRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/about/our-vision-mission': typeof AboutOurVisionMissionRoute
-  '/about/why-sports-life': typeof AboutWhySportsLifeRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/centres/major-dhyan-chand-sports-complex': typeof CentresMajorDhyanChandSportsComplexRoute
   '/centres/punjabi-bagh-club': typeof CentresPunjabiBaghClubRoute
@@ -270,10 +252,8 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/tournaments'
     | '/about/meet-founder'
-    | '/about/our-core-values'
     | '/about/our-story'
     | '/about/our-vision-mission'
-    | '/about/why-sports-life'
     | '/blogs/$slug'
     | '/centres/major-dhyan-chand-sports-complex'
     | '/centres/punjabi-bagh-club'
@@ -298,10 +278,8 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/tournaments'
     | '/about/meet-founder'
-    | '/about/our-core-values'
     | '/about/our-story'
     | '/about/our-vision-mission'
-    | '/about/why-sports-life'
     | '/blogs/$slug'
     | '/centres/major-dhyan-chand-sports-complex'
     | '/centres/punjabi-bagh-club'
@@ -326,10 +304,8 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/tournaments'
     | '/about/meet-founder'
-    | '/about/our-core-values'
     | '/about/our-story'
     | '/about/our-vision-mission'
-    | '/about/why-sports-life'
     | '/blogs/$slug'
     | '/centres/major-dhyan-chand-sports-complex'
     | '/centres/punjabi-bagh-club'
@@ -451,13 +427,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutMeetFounderRouteImport
       parentRoute: typeof AboutRoute
     }
-    '/about/our-core-values': {
-      id: '/about/our-core-values'
-      path: '/our-core-values'
-      fullPath: '/about/our-core-values'
-      preLoaderRoute: typeof AboutOurCoreValuesRouteImport
-      parentRoute: typeof AboutRoute
-    }
     '/about/our-story': {
       id: '/about/our-story'
       path: '/our-story'
@@ -470,13 +439,6 @@ declare module '@tanstack/react-router' {
       path: '/our-vision-mission'
       fullPath: '/about/our-vision-mission'
       preLoaderRoute: typeof AboutOurVisionMissionRouteImport
-      parentRoute: typeof AboutRoute
-    }
-    '/about/why-sports-life': {
-      id: '/about/why-sports-life'
-      path: '/why-sports-life'
-      fullPath: '/about/why-sports-life'
-      preLoaderRoute: typeof AboutWhySportsLifeRouteImport
       parentRoute: typeof AboutRoute
     }
     '/blogs/': {
@@ -554,18 +516,14 @@ declare module '@tanstack/react-router' {
 
 interface AboutRouteChildren {
   AboutMeetFounderRoute: typeof AboutMeetFounderRoute
-  AboutOurCoreValuesRoute: typeof AboutOurCoreValuesRoute
   AboutOurStoryRoute: typeof AboutOurStoryRoute
   AboutOurVisionMissionRoute: typeof AboutOurVisionMissionRoute
-  AboutWhySportsLifeRoute: typeof AboutWhySportsLifeRoute
 }
 
 const AboutRouteChildren: AboutRouteChildren = {
   AboutMeetFounderRoute: AboutMeetFounderRoute,
-  AboutOurCoreValuesRoute: AboutOurCoreValuesRoute,
   AboutOurStoryRoute: AboutOurStoryRoute,
   AboutOurVisionMissionRoute: AboutOurVisionMissionRoute,
-  AboutWhySportsLifeRoute: AboutWhySportsLifeRoute,
 }
 
 const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal, Counter } from "@/components/site/motion-primitives";
 import { VideoCard } from "@/components/site/VideoCard";
 import {
@@ -289,93 +289,7 @@ function TestimonialsPage() {
           </a>
         </div>
       </Section>
-            {/* ====== VIDEO TESTIMONIALS GALLERY (REELS 9:16) ====== */}
-      <Section className="bg-surface/30">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-          <SectionHeading
-            eyebrow="Video Reviews"
-            title="Reels-Style Video Testimonials"
-            body="Vertical 9:16 video reviews — watch real players and parents share their unfiltered journey at Sports Life Tennis Academy."
-          />
-          <div className="flex items-center gap-2 rounded-full border border-neon/40 bg-neon/10 px-4 py-2 text-xs font-bold text-neon">
-            <span className="size-2 rounded-full bg-red-500 animate-blink-live" />
-            <span>{VIDEO_TESTIMONIALS.length} LIVE Stories</span>
-          </div>
-        </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {VIDEO_TESTIMONIALS.map((vid, idx) => (
-            <Reveal key={vid.src} delay={idx * 0.1}>
-              <div className="flex flex-col h-full gap-3">
-                <div className="group card-elevated rounded-[2rem] overflow-hidden border border-border/70 bg-black shadow-xl hover:shadow-2xl hover:border-neon/50 transition-all">
-                  <div className="relative aspect-[9/16] overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.92)_0%,#0a0a0a_65%,#000_100%)]">
-                    {/* Ambient corner glow */}
-                    <div className="pointer-events-none absolute inset-0 z-10 opacity-70 bg-[radial-gradient(circle_at_15%_12%,rgba(239,68,68,0.22),transparent_55%),radial-gradient(circle_at_85%_88%,rgba(16,185,129,0.25),transparent_55%)]" />
 
-                    {/* LIVE Badge — top-left with blinking dot */}
-                    <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 px-2.5 py-1">
-                      <span className="size-1.5 rounded-full bg-red-500 animate-blink-live shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-                      <span className="text-[10px] font-black uppercase tracking-widest text-white">LIVE</span>
-                    </div>
-
-                    {/* Tag pill — top-right */}
-                    <span className="absolute top-3 right-3 z-20 inline-flex items-center gap-1 rounded-full bg-neon/90 backdrop-blur-sm border border-neon px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-md">
-                      <Sparkles className="size-2.5" />
-                      {vid.tag}
-                    </span>
-
-                    {/* Video — Full frame visible (no crop), autoplay muted loop */}
-                    <video
-                      className="size-full object-contain transition-transform duration-700"
-                      src={vid.src}
-                      title={vid.title}
-                      muted
-                      autoPlay
-                      loop
-                      playsInline
-                      preload="metadata"
-                    >
-                      <source src={vid.src} type="video/mp4" />
-                    </video>
-
-                    {/* Gradient overlays for caption legibility */}
-                    <div className="absolute inset-x-0 bottom-0 z-10 h-[55%] bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none" />
-                    <div className="absolute inset-x-0 top-0 z-10 h-[30%] bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none" />
-
-                    {/* Bottom caption + author block — Reels style */}
-                    <div className="absolute inset-x-0 bottom-0 z-20 p-4 sm:p-5">
-                      <div className="space-y-2.5">
-                        <div className="flex items-center gap-2">
-                          <div className="grid size-8 place-items-center rounded-full bg-neon/90 text-white text-[11px] font-black border-2 border-white/20 shadow-lg">
-                            {vid.name.charAt(0)}
-                          </div>
-                          <div>
-                            <p className="text-[12px] font-extrabold text-white drop-shadow-md">
-                              {vid.name}
-                            </p>
-                            <p className="text-[10px] font-semibold text-neon/90 flex items-center gap-1">
-                              <MapPin className="size-2.5" />
-                              {vid.location}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="text-[12px] sm:text-[13px] font-semibold leading-snug text-white/95 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] line-clamp-4">
-                          {vid.caption}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Reels frame counter bottom-right */}
-                    <div className="absolute right-3 bottom-3 z-20 font-mono text-[10px] font-bold tracking-wider text-white/80">
-                      {String(idx + 1).padStart(2, "0")}{" "}
-                      <span className="text-white/40">/ {String(VIDEO_TESTIMONIALS.length).padStart(2, "0")}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
 
       {/* Filterable Reviews Grid */}
       <Section>
@@ -461,10 +375,7 @@ function TestimonialsPage() {
       </Section>
 
       {/* CTA */}
-      <CtaBanner
-        title="Ready to Start Your Success Story?"
-        body="Experience the Sports Life difference. Book a free trial session and skill assessment with our certified coaching team today."
-      />
+      
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { CENTRES, STATS } from "@/lib/site-data";
 import { Reveal, Counter } from "@/components/site/motion-primitives";
 import { MapPin, Trophy } from "lucide-react";
@@ -70,6 +70,7 @@ function CentresPage() {
         title="25 Courts Across 3 Delhi Centres"
         body="Train across all three major surfaces—Synthetic, Clay, and Grass—with certified coaching and a player-first philosophy."
         image={heroImage}
+        removeFog
       />
 
       <Section>
@@ -164,10 +165,7 @@ function CentresPage() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Visit a Sports Life Centre"
-        body="Experience our multi-surface courts and player-first training firsthand. Book a free skill assessment and centre tour today."
-      />
+      
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { COACH_PROFILES } from "@/lib/coach-profiles";
 import { COACHES } from "@/lib/site-data";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import { CtaLink } from "@/components/site/layout";
 import {
@@ -424,10 +424,7 @@ function CoachDetailPage() {
       </Section>
 
       {/* Conversion Banner */}
-      <CtaBanner
-        title={coach.ctaHeading}
-        body={`${coach.ctaText} ${coach.motto}`}
-      />
+      
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   Award,
@@ -266,10 +266,7 @@ function GlobalLearning() {
       </Section>
 
       {/* CTA */}
-      <CtaBanner
-        title="Be Part of Our Next Learning Session"
-        body="Join Sports Life Tennis Academy and give your game the advantage of international mentorship and pro insights."
-      />
+      
     </>
   );
 }

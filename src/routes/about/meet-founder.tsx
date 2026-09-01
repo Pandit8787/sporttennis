@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   Award,
@@ -401,10 +401,7 @@ function MeetFounderPage() {
       </Section>
 
       {/* CTA */}
-      <CtaBanner
-        title="Train with Head Coach Abhiney Kumar"
-        body="Experience our player-first coaching approach firsthand with a free skill assessment and centre tour."
-      />
+      
     </>
   );
 }

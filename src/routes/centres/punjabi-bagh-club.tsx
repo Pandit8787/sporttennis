@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 
 const heroImage = "/centre-gallery/img_8064.jpg";
 const galleryImages = [
@@ -34,6 +34,7 @@ function PunjabiBagh() {
         title="Punjabi Bagh Club"
         body="A premier destination for tennis excellence, bringing structured player development and professional coaching to West Delhi."
         image={heroImage}
+        removeFog
       />
 
       <Section>
@@ -161,10 +162,7 @@ function PunjabiBagh() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Train at Punjabi Bagh Club"
-        body="Experience 6 clay courts and 4 synthetic courts with our player-first coaching team. Book a free trial today."
-      />
+      
     </>
   );
 }

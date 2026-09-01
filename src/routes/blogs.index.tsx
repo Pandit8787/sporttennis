@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { BLOGS, BLOG_CATEGORIES } from "@/lib/site-data";
 import { Reveal } from "@/components/site/motion-primitives";
-import { CtaBanner, PageHero, Section } from "@/components/site/sections";
+import { PageHero, Section } from "@/components/site/sections";
 
 export const Route = createFileRoute("/blogs/")({
   head: () => ({
@@ -115,10 +115,7 @@ function BlogsPage() {
         )}
       </Section>
 
-      <CtaBanner
-        title="Read it, then train it"
-        body="Bring any article to your next session and a coach will run the drill with you."
-      />
+      
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   Activity,
@@ -15,6 +15,12 @@ import {
   Target,
   Trophy,
   Users,
+  BookOpen,
+  Heart,
+  Lightbulb,
+  Scale,
+  Shield,
+  Zap,
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
@@ -22,16 +28,23 @@ const visionActionImage = "/centre-gallery/whatsapp-20260813-171744-2.jpg";
 const developmentImage = "/centre-gallery/whatsapp-20260813-171844-3.jpg";
 const courtsImage = "/centre-gallery/whatsapp-20260813-171745-1.jpg";
 
+// Core values images
+const excellenceImage = "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg";
+const integrityImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
+const playerFirstImage = "/centre-gallery/whatsapp-20260813-171744-2.jpg";
+const disciplineImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
+const learningImage = "/founder-gallery/abhiney-at-rafa-nadal-tennis-academy.jpg";
+
 export const Route = createFileRoute("/about/our-vision-mission")({
   head: () => ({
     meta: [
-      { title: "Our Vision & Mission | Sports Life Tennis Academy" },
+      { title: "Our Vision, Mission & Values | Sports Life Tennis Academy" },
       {
         name: "description",
         content:
-          "Understanding the vision and mission that drives Sports Life Tennis Academy's commitment to holistic player development across Delhi.",
+          "Understanding the vision, mission, and core values that drive Sports Life Tennis Academy's commitment to holistic player development across Delhi.",
       },
-      { property: "og:title", content: "Our Vision & Mission — Sports Life Tennis Academy" },
+      { property: "og:title", content: "Our Vision, Mission & Values — Sports Life Tennis Academy" },
       {
         property: "og:description",
         content:
@@ -50,9 +63,9 @@ function OurVisionMissionPage() {
     <>
       {/* Hero */}
       <PageHero
-        eyebrow="Vision & Mission"
+        eyebrow="Vision, Mission & Values"
         title="What Drives Us Forward"
-        body="Building India's most trusted and respected tennis organization through structured coaching and holistic player development."
+        body="Building India's most trusted and respected tennis organization through structured coaching, core values, and holistic player development."
         image={heroImage}
       />
 
@@ -227,6 +240,226 @@ function OurVisionMissionPage() {
         </div>
       </Section>
 
+      {/* CORE VALUES MERGED SECTION */}
+      
+      {/* Intro */}
+      <Section className="bg-surface/30">
+        <SectionHeading
+          eyebrow="Our Guiding North Star"
+          title="Values Lived Daily On & Off Court"
+          body="Our core values define who we are and shape every training session, coaching decision, and community interaction."
+        />
+
+        <div className="mt-6 text-base leading-relaxed text-foreground/85 lg:text-lg">
+          <p>
+            At Sports Life Tennis Academy, our values are not just words on a wall—they are lived
+            daily by our coaches, reflected in our player development pathways, and demonstrated
+            through our actions. They ensure every athlete is nurtured in an environment of respect,
+            relentless growth, and integrity.
+          </p>
+        </div>
+      </Section>
+
+      {/* Value 1: Excellence */}
+      <Section>
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
+            <img
+              src={excellenceImage}
+              alt="Excellence in tennis coaching standards"
+              className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
+              <Trophy className="size-3.5" />
+              Value 01
+            </div>
+            <h3 className="text-3xl font-extrabold text-foreground">Excellence</h3>
+            <p className="text-base font-semibold text-neon">
+              We strive for excellence in everything we do
+            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Excellence is not an accident—it is a continuous habit. We maintain the highest
+              standards across coaching methodology, facility infrastructure, court maintenance, and
+              athlete feedback. We never settle for "good enough."
+            </p>
+            <ul className="space-y-2 pt-2 text-sm text-foreground/85">
+              {[
+                "Certified, internationally experienced coaching staff",
+                "Meticulously maintained synthetic, clay, and grass courts",
+                "Structured lesson plans with clear measurable outcomes",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-neon font-bold">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* Value 2: Integrity */}
+      <Section className="bg-surface/30">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="space-y-4 order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 rounded-full bg-electric/15 px-3 py-1 text-xs font-bold text-electric uppercase tracking-wider">
+              <ShieldCheck className="size-3.5" />
+              Value 02
+            </div>
+            <h3 className="text-3xl font-extrabold text-foreground">Integrity</h3>
+            <p className="text-base font-semibold text-electric">
+              Honesty, transparency, and accountability in everything
+            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Integrity means doing the right thing, especially when no one is watching. We believe
+              in transparent communication with parents, objective evaluations of player progress,
+              and fair treatment of every student on our courts.
+            </p>
+            <ul className="space-y-2 pt-2 text-sm text-foreground/85">
+              {[
+                "Honest, realistic assessments of player capabilities and tournament readiness",
+                "Transparent program pathways and tournament advisory",
+                "Accountability for coaching decisions and commitments",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-electric font-bold">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="overflow-hidden rounded-3xl border border-border shadow-lg order-1 lg:order-2">
+            <img
+              src={integrityImage}
+              alt="Integrity and fair coaching"
+              className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Value 3: Player First */}
+      <Section>
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
+            <img
+              src={playerFirstImage}
+              alt="Player first development approach"
+              className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
+              <Heart className="size-3.5" />
+              Value 03
+            </div>
+            <h3 className="text-3xl font-extrabold text-foreground">Player First</h3>
+            <p className="text-base font-semibold text-neon">
+              Every decision starts with what is best for the player
+            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              We don't fit players into rigid formulas. We design customized coaching plans based on
+              each player's unique mechanics, personality, schedule, and aspirations. Long-term
+              growth always takes priority over quick, unsustainable shortcuts.
+            </p>
+            <ul className="space-y-2 pt-2 text-sm text-foreground/85">
+              {[
+                "Tailored coaching plans based on age, level, and individual biomechanics",
+                "Focus on long-term athletic longevity and injury prevention",
+                "Personalized match scheduling and post-match video debriefs",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-neon font-bold">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* Value 4: Discipline */}
+      <Section className="bg-surface/30">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="space-y-4 order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 rounded-full bg-electric/15 px-3 py-1 text-xs font-bold text-electric uppercase tracking-wider">
+              <Zap className="size-3.5" />
+              Value 04
+            </div>
+            <h3 className="text-3xl font-extrabold text-foreground">Discipline</h3>
+            <p className="text-base font-semibold text-electric">
+              Consistent effort and strong habits build champions
+            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Discipline is the bridge between goals and accomplishment. We instill punctuality,
+              court etiquette, focused practice routines, and mental resilience so players build
+              habits that serve them for life.
+            </p>
+            <ul className="space-y-2 pt-2 text-sm text-foreground/85">
+              {[
+                "Punctuality and structured warm-up/cool-down rituals",
+                "High-intensity drills requiring total concentration",
+                "Respect for umpires, opponents, coaches, and court equipment",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-electric font-bold">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="overflow-hidden rounded-3xl border border-border shadow-lg order-1 lg:order-2">
+            <img
+              src={disciplineImage}
+              alt="Discipline on the tennis court"
+              className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Value 5: Continuous Learning */}
+      <Section>
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
+            <img
+              src={learningImage}
+              alt="Continuous learning and coach education in Spain"
+              className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
+              <Lightbulb className="size-3.5" />
+              Value 05
+            </div>
+            <h3 className="text-3xl font-extrabold text-foreground">Continuous Learning</h3>
+            <p className="text-base font-semibold text-neon">
+              We embrace innovation and ongoing development
+            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Modern tennis evolves constantly. We continuously invest in coach education, global
+              masterclasses, sports science, video analytics, and new training methodologies to ensure
+              our players always have a competitive edge.
+            </p>
+            <ul className="space-y-2 pt-2 text-sm text-foreground/85">
+              {[
+                "Regular coach workshops and certification upgrades",
+                "Global Learning Initiatives with international tennis experts",
+                "Incorporating modern tactical trends and physical conditioning",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="text-neon font-bold">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
       {/* Promise & Belief */}
       <Section className="bg-surface/30">
         <div className="grid items-center gap-10 lg:grid-cols-2">
@@ -278,10 +511,7 @@ function OurVisionMissionPage() {
       </Section>
 
       {/* CTA */}
-      <CtaBanner
-        title="Start Your Journey With Us"
-        body="Experience our vision and structured development in action with a free 90-minute trial session."
-      />
+      
     </>
   );
 }

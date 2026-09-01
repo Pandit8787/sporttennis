@@ -1,51 +1,64 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal, Counter } from "@/components/site/motion-primitives";
-import { Award, Compass, HeartHandshake, MapPin, Sparkles, Trophy, Users } from "lucide-react";
+import {
+  Award,
+  CheckCircle2,
+  Compass,
+  GraduationCap,
+  HeartHandshake,
+  MapPin,
+  Quote,
+  Sparkles,
+  Trophy,
+  Users,
+} from "lucide-react";
 
-const heroImage = "/about/hero-slideshow.jpg";
-const founderSpainImage = "/about/founder-with-players.jpg";
-const roshanaraCourtsImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
-const communityImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
+const heroImage = "/about/img_0670.jpg";
+const founderSpainImage = "/about/img_0804.jpg";
+const roshanaraCourtsImage = "/about/img_8064.jpg";
+const communityImage = "/about/whatsapp_image_aug7.jpg";
+
+const coachingImage = "/founder-gallery/abhiney-at-jofre-porta-academy-1.jpg";
+const playerDevelopmentImage = "/centre-gallery/whatsapp-20260813-171844-3.jpg";
+const matchPlayImage = "/centre-gallery/whatsapp-20260813-171744-2.jpg";
+const facilitiesImage = "/centre-gallery/punjabi-bagh-club-gallery-1.jpg";
 
 export const Route = createFileRoute("/about/our-story")({
   head: () => ({
     meta: [
-      { title: "Our Story — The Journey That Shaped Sports Life | Sports Life Tennis Academy" },
+      { title: "Our Story & Why Sports Life | Sports Life Tennis Academy" },
       {
         name: "description",
         content:
-          "Discover the story of Sports Life Tennis Academy — born from a belief that every player deserves quality coaching, structured guidance, and an inspiring environment.",
+          "Discover the journey that shaped Sports Life and what sets our academy apart—expert international coaching, player-first pathways, and a supportive community.",
       },
-      { property: "og:title", content: "Our Story — Sports Life Tennis Academy" },
+      { property: "og:title", content: "Our Story & Why Sports Life" },
       {
         property: "og:description",
         content:
-          "The journey that shaped Sports Life: from international coaching in Spain to 25 professional courts across Delhi.",
+          "The journey from a childhood passion to 25 courts across Delhi, and the advantages that make Sports Life a premier development ecosystem.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "/about/our-story" },
     ],
     links: [{ rel: "canonical", href: "/about/our-story" }],
   }),
-  component: OurStoryPage,
+  component: OurStoryAndWhyUsPage,
 });
 
-function OurStoryPage() {
+function OurStoryAndWhyUsPage() {
   return (
     <>
       {/* Hero Section */}
       <PageHero
-        eyebrow="Our Story"
-        title="The Journey That Shaped Sports Life"
-        body="From a childhood passion and international coaching experience in Spain to building a player-first tennis academy focused on long-term athlete development across Delhi."
         image={heroImage}
+        removeFog={true}
       />
 
       {/* Main Story Narrative */}
       <Section>
         <SectionHeading
-          eyebrow="Our Story"
           title="Born From Purpose & Passion"
           body="How a vision to transform tennis coaching in India became a thriving reality."
         />
@@ -60,7 +73,7 @@ function OurStoryPage() {
           </div>
             <div className="mt-6">
               <img
-                src="/about/opening-ceremony.jpg"
+                src="/about/major_dhyanchand_group_photo.jpg"
                 alt="Opening ceremony"
                 loading="lazy"
                 decoding="async"
@@ -99,22 +112,12 @@ function OurStoryPage() {
             team of professional coaches committed to delivering structured, player-first
             development.
           </p>
-
-          <p>
-            Sports Life is more than a place to learn tennis. It is a growing community where
-            players, parents, and coaches come together with a shared purpose—to learn, compete,
-            grow, and contribute to the future of Indian tennis. As we continue to expand, our
-            mission remains unchanged: to create opportunities, inspire dreams, and empower every
-            player to achieve their highest potential. Our story is still being written, and every
-            player who joins Sports Life becomes a part of it.
-          </p>
         </div>
       </Section>
 
       {/* Story Milestones & Timeline Cards */}
       <Section className="bg-surface/30">
         <SectionHeading
-          eyebrow="Key Milestones"
           title="Chapters in Our Journey"
           body="The defining moments that shaped our philosophy, infrastructure, and community."
         />
@@ -179,67 +182,6 @@ function OurStoryPage() {
               </div>
             </div>
           </Reveal>
-
-          <Reveal delay={0.2}>
-            <div className="card-elevated flex h-full flex-col justify-between p-6 sm:p-8">
-              <div>
-                <div className="flex size-12 items-center justify-center rounded-xl bg-electric/15 text-electric mb-5">
-                  <MapPin className="size-6" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-neon">Chapter 04</span>
-                <h3 className="mt-2 text-2xl font-bold text-foreground">3 Premier Centres</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Rapid expansion across Roshanara Club, Major Dhyan Chand Sports Complex, and
-                  Punjabi Bagh Club now gives athletes access to 12 synthetic, 10 clay, and 3 grass
-                  courts, while more than 300 players train with Sports Life every month, supported
-                  by a growing team of professional coaches committed to player-first development.
-                </p>
-              </div>
-              <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-foreground/70">
-                25 Courts · Multi-surface training environment
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.25}>
-            <div className="card-elevated flex h-full flex-col justify-between p-6 sm:p-8">
-              <div>
-                <div className="flex size-12 items-center justify-center rounded-xl bg-neon/15 text-neon mb-5">
-                  <HeartHandshake className="size-6" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-neon">Chapter 05</span>
-                <h3 className="mt-2 text-2xl font-bold text-foreground">Passionate Coaching</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  We assembled an exceptional team of certified, passionate coaches sharing an
-                  unwavering commitment to excellence, integrity, and putting the player first at
-                  every stage of development.
-                </p>
-              </div>
-              <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-foreground/70">
-                Certified Coaches · NIS · PTR · AITA-ITF
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <div className="card-elevated flex h-full flex-col justify-between p-6 sm:p-8">
-              <div>
-                <div className="flex size-12 items-center justify-center rounded-xl bg-electric/15 text-electric mb-5">
-                  <Users className="size-6" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-neon">Chapter 06</span>
-                <h3 className="mt-2 text-2xl font-bold text-foreground">A Thriving Community</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Today, Sports Life brings players, parents, and coaches together with a shared
-                  purpose—to learn, compete, grow, and contribute meaningfully to the future of Indian
-                  tennis.
-                </p>
-              </div>
-              <div className="mt-6 border-t border-border pt-4 text-xs font-semibold text-foreground/70">
-                Ongoing · Every player is part of the story
-              </div>
-            </div>
-          </Reveal>
         </div>
       </Section>
 
@@ -247,17 +189,13 @@ function OurStoryPage() {
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="space-y-6">
-            <span className="eyebrow">
-              <Award className="size-3.5" />
-              The Foundation of Our Vision
-            </span>
             <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl leading-tight">
               Where High-Performance Standards Meet Player-First Care
             </h2>
             <div className="mt-6">
               <img
-                src="/about/high-performance-care.jpg"
-                alt="High performance and player‑first care"
+                src="/about/whatsapp_image_aug7.jpg"
+                alt="High performance and player-first care"
                 loading="lazy"
                 decoding="async"
                 className="w-full rounded-2xl border border-border object-cover"
@@ -270,28 +208,6 @@ function OurStoryPage() {
                 receive structured guidance, consistent match play, quality facilities, and genuine
                 mentorship, they are given the foundation to reach their full potential.</em>
               </p>
-              <div className="grid gap-3 pt-2 sm:grid-cols-2">
-                <div className="rounded-xl border border-border bg-surface p-4">
-                  <p className="font-display text-2xl font-bold text-neon">12</p>
-                  <p className="text-xs font-medium text-foreground">Synthetic Courts</p>
-                  <p className="text-xs text-muted-foreground mt-1">For technical precision and fast-paced drills</p>
-                </div>
-                <div className="rounded-xl border border-border bg-surface p-4">
-                  <p className="font-display text-2xl font-bold text-neon">10</p>
-                  <p className="text-xs font-medium text-foreground">Clay Courts</p>
-                  <p className="text-xs text-muted-foreground mt-1">For endurance, sliding, and point construction</p>
-                </div>
-                <div className="rounded-xl border border-border bg-surface p-4">
-                  <p className="font-display text-2xl font-bold text-neon">3</p>
-                  <p className="text-xs font-medium text-foreground">Grass Courts</p>
-                  <p className="text-xs text-muted-foreground mt-1">For quick reflexes and versatile footwork</p>
-                </div>
-                <div className="rounded-xl border border-border bg-surface p-4">
-                  <p className="font-display text-2xl font-bold text-neon">3</p>
-                  <p className="text-xs font-medium text-foreground">Centres in Delhi</p>
-                  <p className="text-xs text-muted-foreground mt-1">Roshanara Club, Major Dhyan Chand Sports Complex & Punjabi Bagh Club</p>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -326,15 +242,6 @@ function OurStoryPage() {
                   className="h-44 w-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
-                <div className="overflow-hidden rounded-2xl border border-border mt-4">
-                  <img
-                    src="/about/founder-with-players.jpg"
-                    alt="Founder with players explaining and group photo"
-                    loading="lazy"
-                    decoding="async"
-                    className="h-44 w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
               <div className="rounded-2xl border border-border bg-surface p-6">
                 <p className="font-display text-sm font-bold uppercase tracking-wider text-neon">
                   300+ Players Training Every Month
@@ -349,9 +256,185 @@ function OurStoryPage() {
         </div>
       </Section>
 
+      {/* The Sports Life Advantage - Why Us Merged section */}
+      <Section className="bg-surface/30">
+        <SectionHeading
+          title="The Sports Life Advantage"
+          body="In Delhi, there are many places to hit tennis balls. But Sports Life is built as a complete development ecosystem where every player is guided with intention, care, and international standards."
+        />
+
+        <div className="mt-12 space-y-24">
+          
+          {/* Feature 1: Expert Coaching */}
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
+              <img
+                src={coachingImage}
+                alt="Expert tennis coaching team"
+                className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
+                <GraduationCap className="size-3.5" />
+                Advantage 01
+              </div>
+              <h3 className="text-3xl font-extrabold text-foreground">Expert, Certified Coaching Team</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Our coaching team isn't just experienced—they bring international certifications,
+                European training philosophies, and years of national-level competitive play to every
+                court session.
+              </p>
+              <div className="rounded-2xl border border-border bg-surface p-4 space-y-2">
+                {[
+                  "International coaching certifications and Spanish academy experience",
+                  "NIS, PTR, and AITA-ITF accredited coaches",
+                  "Proven track record of developing top state and national junior players",
+                  "Continuous professional coach education in modern biomechanics",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-foreground/85">
+                    <CheckCircle2 className="size-4 shrink-0 text-neon mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 2: Player-Centered Development */}
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className="space-y-4 order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 rounded-full bg-electric/15 px-3 py-1 text-xs font-bold text-electric uppercase tracking-wider">
+                <Compass className="size-3.5" />
+                Advantage 02
+              </div>
+              <h3 className="text-3xl font-extrabold text-foreground">Player-Centered Development</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                We never use a rigid, one-size-fits-all formula. Every player receives an individualized
+                coaching roadmap tailored to their physical maturation, style of play, learning pace,
+                and aspirations.
+              </p>
+              <div className="space-y-2.5 pt-2">
+                {[
+                  "Customized training plans based on individual player goals",
+                  "Focus on long-term athletic durability and biomechanical efficiency",
+                  "Periodic skill evaluations and honest, structured parent feedback",
+                  "Mental resilience and point-construction strategies",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-foreground/85">
+                    <CheckCircle2 className="size-4 shrink-0 text-electric mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-border shadow-lg order-1 lg:order-2">
+              <img
+                src={playerDevelopmentImage}
+                alt="Player-centered development session"
+                className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          </div>
+
+          {/* Feature 3: Regular Match Play */}
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
+              <img
+                src={matchPlayImage}
+                alt="Sunday match play sessions"
+                className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
+                <Trophy className="size-3.5" />
+                Advantage 03
+              </div>
+              <h3 className="text-3xl font-extrabold text-foreground">Weekly Sunday Match Play</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Practice alone doesn't build tournament grit. Our signature Sunday Match Play initiative
+                provides structured competitive exposure under actual match conditions with umpire
+                protocols, ranking tracking, and coach analysis.
+              </p>
+              <div className="rounded-2xl border border-border bg-surface p-4 space-y-2">
+                {[
+                  "Weekly competitive match play across all age groups and skill brackets",
+                  "Simulated pressure scenarios to sharpen decision-making",
+                  "Pre-match mental prep and post-match tactical review",
+                  "Clear benchmarking of progress against peers across Delhi",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-foreground/85">
+                    <CheckCircle2 className="size-4 shrink-0 text-neon mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </Section>
+
+      {/* Facilities/Courts overview */}
+      <Section>
+        <SectionHeading
+          title="Facilities Across 3 Delhi Centres"
+          body="Access to 25 courts with synthetic, clay, and grass surfaces for comprehensive athletic development."
+        />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="card-elevated p-6">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-neon/15 text-neon mb-4">
+              <MapPin className="size-5" />
+            </div>
+            <h4 className="font-bold text-lg text-foreground">Roshanara Club</h4>
+            <p className="text-xs font-semibold text-neon mt-1">North Delhi · Flagship</p>
+            <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+              4 Synthetic Courts · 2 Clay Courts · 3 Grass Courts (9 Total). Historic heritage venue offering all 3 major tennis surfaces.
+            </p>
+          </div>
+
+          <div className="card-elevated p-6">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-electric/15 text-electric mb-4">
+              <MapPin className="size-5" />
+            </div>
+            <h4 className="font-bold text-lg text-foreground">Major Dhyan Chand Complex</h4>
+            <p className="text-xs font-semibold text-electric mt-1">Ashok Vihar · North-West Delhi</p>
+            <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+              4 Synthetic Courts · 2 Clay Courts (6 Total). Dedicated player development hub with structured coaching.
+            </p>
+          </div>
+
+          <div className="card-elevated p-6">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-neon/15 text-neon mb-4">
+              <MapPin className="size-5" />
+            </div>
+            <h4 className="font-bold text-lg text-foreground">Punjabi Bagh Club</h4>
+            <p className="text-xs font-semibold text-neon mt-1">West Delhi · Ring Road</p>
+            <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+              6 Clay Courts · 4 Synthetic Courts (10 Total). Premier sports club infrastructure with thriving adult and junior programs.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 overflow-hidden rounded-3xl border border-border shadow-lg">
+          <img
+            src={facilitiesImage}
+            alt="Sports Life tennis facilities in Delhi"
+            className="h-72 w-full object-cover"
+          />
+        </div>
+      </Section>
+
       {/* Numbers / Stats Summary */}
       <Section className="bg-surface/30">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading
+          title="The Results Speak for Themselves"
+          body="Real numbers reflecting our dedication to Delhi's tennis community."
+        />
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="card-elevated p-6 text-center">
             <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
               <Counter value={3} suffix="" />
@@ -364,7 +447,7 @@ function OurStoryPage() {
               <Counter value={25} suffix="" />
             </p>
             <p className="mt-2 text-sm font-semibold text-foreground">Courts</p>
-            <p className="text-xs text-muted-foreground mt-1">Synthetic, clay, and grass surfaces</p>
+            <p className="text-xs text-muted-foreground mt-1">Synthetic, clay, and grass</p>
           </div>
           <div className="card-elevated p-6 text-center">
             <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
@@ -383,11 +466,58 @@ function OurStoryPage() {
         </div>
       </Section>
 
+      {/* Testimonials */}
+      <Section>
+        <SectionHeading
+          title="What Players & Parents Say"
+          body="Feedback from families who have experienced the Sports Life difference."
+        />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {[
+            {
+              quote:
+                "Sports Life transformed my child's approach to tennis. The technical coaching is professional, the atmosphere is disciplined, and the coaches genuinely care about every kid's development.",
+              name: "Parent of 12-year-old Junior Player",
+              location: "Roshanara Club Centre",
+            },
+            {
+              quote:
+                "I've trained at multiple tennis academies in Delhi, but the structured match play and video analysis at Sports Life are unmatched. My tactical awareness has improved tremendously.",
+              name: "Competitive Junior Player (Age 15)",
+              location: "Major Dhyan Chand Centre",
+            },
+            {
+              quote:
+                "The multi-surface exposure—switching between clay, synthetic, and grass—has made my son far more adaptable and confident in tournament pressure situations.",
+              name: "Parent of 14-year-old State Player",
+              location: "Roshanara & Punjabi Bagh Centres",
+            },
+            {
+              quote:
+                "Joining the adult program at Sports Life was the best fitness and recreational decision I've made. Great drills, high energy, and wonderful community of players.",
+              name: "Adult Program Player",
+              location: "Punjabi Bagh Club Centre",
+            },
+          ].map((item, i) => (
+            <div key={i} className="card-elevated p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <Quote className="size-8 text-neon/30 mb-4" />
+                <p className="text-sm sm:text-base leading-relaxed text-foreground/90 italic">
+                  “{item.quote}”
+                </p>
+              </div>
+              <div className="mt-6 border-t border-border pt-4">
+                <p className="font-bold text-sm text-foreground">{item.name}</p>
+                <p className="text-xs text-neon mt-0.5">{item.location}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       {/* Call to action */}
-      <CtaBanner
-        title="Be Part of Our Story"
-        body="Join the Sports Life community. Book a centre tour and a free assessment session with our coaching team today."
-      />
+      
     </>
   );
 }

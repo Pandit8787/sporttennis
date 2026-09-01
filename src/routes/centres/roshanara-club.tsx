@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
@@ -36,6 +36,7 @@ function Roshanara() {
         title="Roshanara Club"
         body="Located in the heart of North Delhi, Roshanara Club is one of the city's most historic and prestigious sports venues. In 2024, Sports Life began its journey here with a vision to create a player-first environment combining professional coaching with exceptional facilities."
         image={heroImage}
+        removeFog
       />
 
       <Section>
@@ -148,10 +149,7 @@ function Roshanara() {
         </div>
       </Section>
 
-      <CtaBanner
-        title="Train at Roshanara Club"
-        body="Experience coaching on synthetic, clay, and grass courts. Book a free skill assessment session today."
-      />
+      
     </>
   );
 }

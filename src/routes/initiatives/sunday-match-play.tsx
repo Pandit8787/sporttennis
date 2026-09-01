@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   AlertCircle,
@@ -197,10 +197,7 @@ function SundayMatchPlay() {
       </Section>
 
       {/* CTA */}
-      <CtaBanner
-        title="Join Sunday Match Play"
-        body="Sign up for our upcoming Sunday Match Play session. Experience competitive tennis in a structured, player-first environment."
-      />
+      
     </>
   );
 }

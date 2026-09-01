@@ -187,7 +187,7 @@ export function Navbar() {
                           transition={{ duration: 0.18, ease: "easeOut" }}
                           className="absolute left-1/2 top-full z-50 -translate-x-1/2 mt-2 w-80 rounded-2xl border border-border/80 bg-surface/95 p-2.5 shadow-2xl backdrop-blur-2xl"
                         >
-                          <ul className="grid gap-1">
+                          <ul className="grid gap-1 whitespace-normal">
                             {item.children.map((c: any) => (
                               <li key={c.to}>
                                 <Link

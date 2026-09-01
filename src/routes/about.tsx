@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, useLocation } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBanner } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal, Counter } from "@/components/site/motion-primitives";
 import {
   Award,
@@ -53,10 +53,10 @@ export const Route = createFileRoute("/about")({
 
 const SUBPAGES = [
   {
-    title: "Our Story",
+    title: "Our Story & Why Sports Life",
     to: "/about/our-story",
-    tag: "The Journey",
-    desc: "From a childhood passion at age 4 and coaching in Spain to establishing 25 courts across Delhi in 2024.",
+    tag: "The Journey & Advantage",
+    desc: "From a childhood passion to establishing 25 courts, and why families choose our complete development ecosystem.",
     icon: Sparkles,
     badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
@@ -69,27 +69,11 @@ const SUBPAGES = [
     badgeColor: "text-electric bg-electric/10 border-electric/30",
   },
   {
-    title: "Our Vision & Mission",
+    title: "Our Vision, Mission & Values",
     to: "/about/our-vision-mission",
-    tag: "Guiding Purpose",
-    desc: "Building India's most trusted tennis ecosystem through structured player development and character building.",
+    tag: "Guiding Purpose & Culture",
+    desc: "Building India's most trusted tennis ecosystem through structured development and core values.",
     icon: Target,
-    badgeColor: "text-neon bg-neon/10 border-neon/30",
-  },
-  {
-    title: "Our Core Values",
-    to: "/about/our-core-values",
-    tag: "Culture",
-    desc: "Excellence, Integrity, Player-First, Discipline, and Continuous Learning guiding every session.",
-    icon: ShieldCheck,
-    badgeColor: "text-electric bg-electric/10 border-electric/30",
-  },
-  {
-    title: "Why Sports Life",
-    to: "/about/why-sports-life",
-    tag: "The Difference",
-    desc: "5 key advantages: expert coaching, personalized roadmaps, Sunday Match Play, and 25 courts across 3 centres.",
-    icon: Trophy,
     badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
 ];
@@ -355,7 +339,7 @@ function AboutPage() {
 
         <div className="mt-8 text-center">
           <a
-            href="/about/our-core-values"
+            href="/about/our-vision-mission"
             className="inline-flex items-center gap-1.5 font-bold text-neon text-sm hover:underline"
           >
             <span>Learn more about our core values</span>
@@ -404,7 +388,7 @@ function AboutPage() {
             </div>
             <div className="pt-2">
               <a
-                href="/about/why-sports-life"
+                href="/about/our-story"
                 className="inline-flex items-center gap-1.5 font-bold text-neon text-sm hover:underline"
               >
                 <span>Discover why families choose Sports Life</span>
@@ -416,10 +400,7 @@ function AboutPage() {
       </Section>
 
       {/* CTA */}
-      <CtaBanner
-        title="Come See the Place"
-        body="Book a centre tour and a free 90-minute assessment session with our certified coaches today."
-      />
+      
     </>
   );
 }

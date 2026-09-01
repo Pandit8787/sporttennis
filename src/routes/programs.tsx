@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PROGRAMS } from "@/lib/site-data";
 import { CtaLink } from "@/components/site/layout";
 import { Reveal } from "@/components/site/motion-primitives";
-import { CtaBanner, PageHero, Section, SectionHeading } from "@/components/site/sections";
+import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { CheckCircle2, Sparkles, Trophy } from "lucide-react";
 
 const heroImg = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
@@ -141,10 +141,7 @@ function ProgramsPage() {
         </ol>
       </Section>
 
-      <CtaBanner
-        title="Begin Your Tennis Journey"
-        body="Experience our player-first coaching in person. Book a free skill assessment session across Roshanara Club, Major Dhyan Chand Complex & Punjabi Bagh Club."
-      />
+      
     </>
   );
 }
