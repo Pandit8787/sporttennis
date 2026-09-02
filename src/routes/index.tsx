@@ -230,7 +230,6 @@ function CentresSpotlight() {
       slug: "roshanara-club",
       area: "North Delhi · Shakti Nagar",
       courts: "9 Courts (4 Synthetic · 2 Clay · 3 Grass)",
-      tag: "Flagship Founding Centre",
       image: "/centre-gallery/whatsapp-20260813-171744-1.jpg",
       summary: "Where the Sports Life journey began in 2024. Multi-surface training with 4 synthetic, 2 clay, and 3 grass courts.",
     },
@@ -239,7 +238,6 @@ function CentresSpotlight() {
       slug: "major-dhyan-chand-sports-complex",
       area: "Ashok Vihar · North-West Delhi",
       courts: "6 Courts (4 Synthetic · 2 Clay)",
-      tag: "Development Hub",
       image: "/centre-gallery/whatsapp-20260813-171844-2.jpg",
       summary: "Expanded in 2026 to bring structured coaching and player-first structured training with 4 synthetic and 2 clay courts.",
     },
@@ -248,8 +246,7 @@ function CentresSpotlight() {
       slug: "punjabi-bagh-club",
       area: "West Delhi · Ring Road",
       courts: "10 Courts (6 Clay · 4 Synthetic)",
-      tag: "West Delhi Centre",
-      image: "/centre-gallery/img_8064.jpg",
+      image: "/centre-gallery/whatsapp-20260813-171911.jpg",
       summary: "Premier West Delhi tennis destination featuring 6 clay and 4 synthetic courts with active junior, adult and Sunday match play batches.",
     },
   ] as const;
@@ -280,9 +277,6 @@ function CentresSpotlight() {
                   className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                <span className="absolute top-3 left-3 rounded-full bg-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-md">
-                  {c.tag}
-                </span>
                 <div className="absolute bottom-3 left-3 right-3 text-white">
                   <p className="text-xs font-semibold text-neon flex items-center gap-1">
                     <MapPin className="size-3" /> {c.area}
@@ -352,7 +346,7 @@ function FounderSpotlight() {
             <div className="mt-4 flex items-center gap-3">
               <div className="size-2 rounded-full bg-neon" />
               <p className="font-display text-xs font-extrabold tracking-wider uppercase text-foreground">
-                Abhiney Kumar · Founder & Head Coach
+                Abhiney Kumar · Founder
               </p>
             </div>
           </div>
@@ -389,7 +383,7 @@ function FounderSpotlight() {
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <span className="rounded-full bg-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                  Founder & Head Coach
+                  Founder
                 </span>
                 <h3 className="mt-2 text-2xl font-black">Abhiney Kumar</h3>
                 <p className="text-xs text-white/80 mt-1">
@@ -557,9 +551,9 @@ function PlayersSlideshow() {
 /* -------------------------------------------------------------------------- */
 function HighIntensityTraining() {
   const items = [
-    { src: video1, title: "Footwork & Conditioning", tag: "Athleticism" },
-    { src: video2, title: "Technical Stroke Drills", tag: "Technique" },
-    { src: "/videos/c0736a40636246c1937e92c55f6b970b.mov", title: "Match Intensity Rallies", tag: "Competitive" },
+    { src: video1, },
+    { src: video2, },
+    { src: "/videos/c0736a40636246c1937e92c55f6b970b.mov", },
   ];
   return (
     <Section>
@@ -584,7 +578,7 @@ function HighIntensityTraining() {
                 </span>
                 <span className="rounded-full bg-neon/15 border border-neon/30 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-neon">
                   <span className="flex items-center gap-1">
-                    <Flame className="size-3" /> {v.tag}
+                    <Flame className="size-3" />
                   </span>
                 </span>
               </div>
@@ -603,7 +597,7 @@ function HighIntensityTraining() {
                 </video>
               </div>
               <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none">
-                <p className="font-bold text-white text-sm drop-shadow-md">{v.title}</p>
+                <p className="font-bold text-white text-sm drop-shadow-md"></p>
               </div>
             </div>
           </Reveal>

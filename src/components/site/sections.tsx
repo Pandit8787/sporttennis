@@ -15,7 +15,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`relative px-4 sm:px-6 py-14 sm:py-20 lg:px-8 lg:py-28 ${className ?? ""}`}>
+    <section id={id} className={`relative px-4 sm:px-6 py-10 sm:py-14 lg:px-8 lg:py-20 ${className ?? ""}`}>
       <div className="mx-auto max-w-7xl">{children}</div>
     </section>
   );
@@ -34,7 +34,6 @@ export function SectionHeading({
 }) {
   return (
     <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
-
       <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black">
         <TextReveal text={title} />
       </h2>
@@ -135,9 +134,8 @@ export function TestimonialsSlider() {
             key={t.name}
             onClick={() => setIndex(i)}
             aria-label={`Show testimonial from ${t.name}`}
-            className={`h-1 rounded-full transition-all duration-300 ${
-              i === index ? "w-10 bg-neon" : "w-5 bg-border hover:bg-muted-foreground"
-            }`}
+            className={`h-1 rounded-full transition-all duration-300 ${i === index ? "w-10 bg-neon" : "w-5 bg-border hover:bg-muted-foreground"
+              }`}
           />
         ))}
       </div>
@@ -213,7 +211,7 @@ export function Newsletter() {
 
 export function CtaBanner({
   title = "Your first session is on us",
-  body = "Book a free 90-minute trial with a certified coach and get a written skill assessment the same day.",
+  body = "Book a free 30-minute trial with a certified coach and get a written skill assessment the same day.",
 }: {
   title?: string;
   body?: string;
