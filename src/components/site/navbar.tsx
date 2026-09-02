@@ -8,19 +8,13 @@ import {
   Camera,
   ChevronDown,
   ChevronRight,
-  ExternalLink,
-  Flame,
   Globe2,
-  GraduationCap,
-  HeartHandshake,
   Home,
   Info,
-  Mail,
   MapPin,
   Menu,
   MessageCircle,
   Phone,
-  ShieldCheck,
   Sparkles,
   Star,
   Trophy,
@@ -28,7 +22,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { AcademyLogo } from "./brand";
+import { NavbarBrand } from "./brand";
 
 function useOnClickOutside(ref: React.RefObject<HTMLElement | null>, handler: (e: Event) => void) {
   useEffect(() => {
@@ -119,153 +113,153 @@ export function Navbar() {
     setOpenMobile(false);
   }, [location.pathname]);
 
-  const cleanPhone = ACADEMY.phone.replace(/\D/g, "");
+  const cleanPhone = (ACADEMY.phone.split(",")[0] ?? "").replace(/\D/g, "");
   const cleanWhatsapp = ACADEMY.whatsapp.replace(/\D/g, "");
 
   return (
     <>
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-surface/90 backdrop-blur-2xl border-b border-border/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] py-2.5 sm:py-3"
-          : "bg-surface/75 backdrop-blur-xl border-b border-black/5 dark:border-white/10 shadow-[0_2px_15px_rgba(0,0,0,0.03)] py-3 sm:py-4"
-      }`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand Logo */}
-        <Link
-          to="/"
-          className="flex items-center shrink-0 transition-transform duration-200 hover:scale-105 mr-4 sm:mr-6 lg:mr-8 xl:mr-10"
-          aria-label="Sports Life Tennis Academy"
-        >
-          <div className="size-10 sm:size-12 flex items-center justify-center">
-            <AcademyLogo className="h-9 sm:h-11 w-auto object-contain" />
-          </div>
-        </Link>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-surface/90 backdrop-blur-2xl border-b border-border/80 shadow-[0_10px_30px_rgba(0,0,0,0.08)] py-2 sm:py-2.5"
+            : "bg-surface/75 backdrop-blur-xl border-b border-border/50 shadow-[0_2px_18px_rgba(0,0,0,0.03)] py-3 sm:py-3.5"
+        }`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        {/* Subtle top vibrant accent line */}
+        <div className="absolute inset-x-0 top-0 h-[2px] bg-linear-to-r from-transparent via-neon/60 to-transparent pointer-events-none" />
 
-        {/* Desktop Navigation Links */}
-        <nav ref={navRef} className="hidden grow items-center justify-center gap-0.5 xl:flex px-2">
-          <ul className="flex items-center gap-0.5 xl:gap-1 whitespace-nowrap">
-            {NAV.map((item, i) => (
-              <li key={String(item.to) + i} className="relative">
-                {"children" in item && item.children ? (
-                  <div
-                    className="group"
-                    onMouseEnter={() => setOpenIndex(i)}
-                    onMouseLeave={() => setOpenIndex(null)}
-                  >
-                    <div className="flex items-center gap-1 rounded-full px-2.5 py-1.5 transition-colors hover:bg-neon/10">
-                      <Link
-                        to={item.to}
-                        activeProps={{ className: "text-neon font-bold" }}
-                        className="text-[11.5px] 2xl:text-xs font-semibold text-foreground/80 group-hover:text-neon transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                      <button
-                        aria-haspopup="true"
-                        aria-expanded={openIndex === i}
-                        className="text-foreground/60 group-hover:text-neon transition-colors cursor-pointer"
-                        onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                      >
-                        <ChevronDown
-                          className={`size-3 transition-transform duration-200 ${
-                            openIndex === i ? "-rotate-180 text-neon" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
-
-                    <AnimatePresence>
-                      {openIndex === i && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -6, scale: 0.98 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                          transition={{ duration: 0.18, ease: "easeOut" }}
-                          className="absolute left-1/2 top-full z-50 -translate-x-1/2 mt-2 w-80 rounded-2xl border border-border/80 bg-surface/95 p-2.5 shadow-2xl backdrop-blur-2xl"
-                        >
-                          <ul className="grid gap-1 whitespace-normal">
-                            {item.children.map((c: any) => (
-                              <li key={c.to}>
-                                <Link
-                                  to={c.to}
-                                  onClick={() => setOpenIndex(null)}
-                                  activeProps={{ className: "bg-neon/15 text-neon font-bold" }}
-                                  className="group/item flex items-start gap-3 rounded-xl p-2.5 text-xs text-foreground/80 hover:bg-neon/10 hover:text-neon transition-all"
-                                >
-                                  <span className="mt-1 flex size-2 shrink-0 rounded-full bg-neon/40 group-hover/item:bg-neon transition-colors" />
-                                  <div>
-                                    <div className="font-bold text-foreground group-hover/item:text-neon transition-colors">
-                                      {c.label}
-                                    </div>
-                                    {c.description && (
-                                      <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
-                                        {c.description}
-                                      </div>
-                                    )}
-                                  </div>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
-                  <Link
-                    to={item.to}
-                    activeOptions={{ exact: item.to === "/" }}
-                    activeProps={{ className: "text-neon font-bold bg-neon/10" }}
-                    className="rounded-full px-2.5 py-1.5 text-[11.5px] 2xl:text-xs font-semibold text-foreground/80 hover:bg-neon/10 hover:text-neon transition-all"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Action Buttons: Desktop & Mobile Header Bar */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Mobile Quick Call CTA */}
-          <a
-            href={`tel:${cleanPhone}`}
-            aria-label="Call Sports Life Tennis Academy"
-            className="flex size-9 sm:size-10 items-center justify-center rounded-full border border-border/80 bg-surface text-neon hover:bg-neon hover:text-white transition-colors xl:hidden shadow-xs"
-          >
-            <Phone className="size-4" />
-          </a>
-
-          {/* Quick Book Trial pill on Mobile & Desktop */}
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          {/* Brand Logo & Name */}
           <Link
-            to="/contact"
-            className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-3.5 py-1.5 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider text-white uppercase shadow-[0_4px_16px_rgba(34,197,94,0.3)] hover:scale-105 transition-all"
+            to="/"
+            className="flex items-center shrink-0 mr-3 sm:mr-6 lg:mr-8 xl:mr-10"
+            aria-label="Sports Life Tennis Academy"
           >
-            <span>Book Trial</span>
-            <span className="hidden sm:inline">→</span>
+            <NavbarBrand />
           </Link>
 
-          {/* Mobile Menu Toggle Button (3 lines hamburger) */}
-          <button
-            className="flex size-9 sm:size-10 items-center justify-center rounded-2xl border border-border/80 bg-surface text-foreground backdrop-blur-md transition-colors hover:border-neon hover:text-neon xl:hidden cursor-pointer shadow-xs"
-            aria-label={openMobile ? "Close menu" : "Open menu"}
-            aria-expanded={openMobile}
-            aria-controls="mobile-navigation"
-            onClick={() => setOpenMobile((v) => !v)}
-          >
-            {openMobile ? <X className="size-5 text-neon" /> : <Menu className="size-5" />}
-          </button>
+          {/* Desktop Navigation Links */}
+          <nav ref={navRef} className="hidden grow items-center justify-center xl:flex px-2">
+            <ul className="flex items-center gap-1 xl:gap-1.5 whitespace-nowrap bg-surface-2/60 border border-border/60 rounded-full px-3 py-1.5 shadow-xs backdrop-blur-md">
+              {NAV.map((item, i) => (
+                <li key={String(item.to) + i} className="relative">
+                  {"children" in item && item.children ? (
+                    <div
+                      className="group"
+                      onMouseEnter={() => setOpenIndex(i)}
+                      onMouseLeave={() => setOpenIndex(null)}
+                    >
+                      <div className="flex items-center gap-1 rounded-full px-3 py-1.5 transition-all hover:bg-neon/10 cursor-pointer">
+                        <Link
+                          to={item.to}
+                          activeProps={{ className: "text-neon font-bold" }}
+                          className="text-[12px] 2xl:text-[12.5px] font-semibold text-foreground/80 group-hover:text-neon transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                        <button
+                          aria-haspopup="true"
+                          aria-expanded={openIndex === i}
+                          className="text-foreground/50 group-hover:text-neon transition-colors cursor-pointer"
+                          onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                        >
+                          <ChevronDown
+                            className={`size-3 transition-transform duration-200 ${
+                              openIndex === i ? "-rotate-180 text-neon" : ""
+                            }`}
+                          />
+                        </button>
+                      </div>
+
+                      <AnimatePresence>
+                        {openIndex === i && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                            transition={{ duration: 0.18, ease: "easeOut" }}
+                            className="absolute left-1/2 top-full z-50 -translate-x-1/2 mt-2 w-80 rounded-2xl border border-border/80 bg-surface/95 p-2.5 shadow-2xl backdrop-blur-2xl"
+                          >
+                            <ul className="grid gap-1 whitespace-normal">
+                              {item.children.map((c: any) => (
+                                <li key={c.to}>
+                                  <Link
+                                    to={c.to}
+                                    onClick={() => setOpenIndex(null)}
+                                    activeProps={{ className: "bg-neon/15 text-neon font-bold" }}
+                                    className="group/item flex items-start gap-3 rounded-xl p-2.5 text-xs text-foreground/80 hover:bg-neon/10 hover:text-neon transition-all"
+                                  >
+                                    <span className="mt-1 flex size-2 shrink-0 rounded-full bg-neon/40 group-hover/item:bg-neon transition-colors" />
+                                    <div>
+                                      <div className="font-bold text-foreground group-hover/item:text-neon transition-colors">
+                                        {c.label}
+                                      </div>
+                                      {c.description && (
+                                        <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                                          {c.description}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.to}
+                      activeOptions={{ exact: item.to === "/" }}
+                      activeProps={{ className: "text-neon font-bold bg-neon/15 shadow-xs" }}
+                      className="rounded-full px-3 py-1.5 text-[12px] 2xl:text-[12.5px] font-semibold text-foreground/80 hover:bg-neon/10 hover:text-neon transition-all"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Action Buttons: Desktop & Mobile Header Bar */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Quick Call Button */}
+            <a
+              href={`tel:${cleanPhone}`}
+              aria-label="Call Sports Life Tennis Academy"
+              className="flex size-9 sm:size-10 items-center justify-center rounded-full border border-border/80 bg-surface text-neon hover:bg-neon hover:text-white transition-all shadow-xs hover:scale-105 active:scale-95"
+            >
+              <Phone className="size-4" />
+            </a>
+
+            {/* Quick Book Trial pill on Mobile & Desktop */}
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-3.5 py-1.5 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider text-white uppercase shadow-[0_4px_16px_rgba(34,197,94,0.3)] hover:shadow-[0_6px_22px_rgba(34,197,94,0.45)] hover:scale-105 active:scale-95 transition-all"
+            >
+              <span>Book Trial</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+            </Link>
+
+            {/* Mobile Menu Toggle Button (3 lines hamburger) */}
+            <button
+              className="flex size-9 sm:size-10 items-center justify-center rounded-xl border border-border/80 bg-surface text-foreground backdrop-blur-md transition-all hover:border-neon hover:text-neon hover:scale-105 active:scale-95 xl:hidden cursor-pointer shadow-xs"
+              aria-label={openMobile ? "Close menu" : "Open menu"}
+              aria-expanded={openMobile}
+              aria-controls="mobile-navigation"
+              onClick={() => setOpenMobile((v) => !v)}
+            >
+              {openMobile ? <X className="size-5 text-neon" /> : <Menu className="size-5" />}
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-    </header>
-
-      {/* Ultra-Responsive Mobile Navigation Drawer — outside header to avoid stacking context trap */}
+      {/* Ultra-Responsive Mobile Navigation Drawer */}
       <AnimatePresence>
         {openMobile && (
           <motion.aside
@@ -290,10 +284,12 @@ export function Navbar() {
               <div>
                 {/* Drawer Header */}
                 <div className="flex items-center justify-between border-b border-border/80 pb-4">
-                  <Link to="/" onClick={() => setOpenMobile(false)} className="flex items-center" aria-label="Sports Life Tennis Academy">
-                    <div className="size-10 flex items-center justify-center">
-                      <AcademyLogo className="h-9 w-auto object-contain" />
-                    </div>
+                  <Link
+                    to="/"
+                    onClick={() => setOpenMobile(false)}
+                    aria-label="Sports Life Tennis Academy"
+                  >
+                    <NavbarBrand />
                   </Link>
                   <button
                     onClick={() => setOpenMobile(false)}
@@ -329,7 +325,7 @@ export function Navbar() {
                 {/* Section Header */}
                 <div className="mt-5 flex items-center justify-between px-1 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
                   <span>Navigation Menu</span>
-                  <span className="text-[10px] text-neon bg-neon/10 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] text-neon bg-neon/10 px-2 py-0.5 rounded-full font-bold">
                     {NAV.length} Sections
                   </span>
                 </div>
@@ -356,7 +352,7 @@ export function Navbar() {
                   onClick={() => setOpenMobile(false)}
                   className="block w-full rounded-2xl bg-linear-to-r from-neon via-emerald-500 to-teal-500 py-3.5 text-center font-display text-xs font-black uppercase tracking-wider text-white shadow-lg hover:scale-102 transition-transform"
                 >
-                  Book Free 90-Min Trial →
+                  Book Free Trial →
                 </Link>
 
                 <div className="flex items-center justify-center gap-1.5 text-[10px] font-semibold text-muted-foreground text-center">
@@ -393,7 +389,7 @@ function MobileNavItem({
   if (hasChildren) {
     return (
       <li className="rounded-2xl border border-border/60 bg-surface/60 overflow-hidden transition-colors">
-        {/* Category Header Row - Clicking anywhere toggles open/close */}
+        {/* Category Header Row */}
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
