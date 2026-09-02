@@ -39,6 +39,7 @@ function ProgramsPage() {
         title="Structured Player Development"
         body="At Sports Life Tennis Academy, we believe every player learns and develops at their own pace. Our programs are carefully designed to provide the right coaching, environment and challenges at every stage of development."
         image={heroImg}
+        removeFog
       />
 
       <Section>
@@ -53,14 +54,7 @@ function ProgramsPage() {
             <Reveal key={p.slug} delay={i * 0.05}>
               <article className="card-elevated flex h-full flex-col justify-between p-7 sm:p-8 border border-border/80 bg-surface">
                 <div>
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-neon/10 border border-neon/30 px-3 py-1 font-display text-[10px] font-black uppercase tracking-wider text-neon">
-                      {p.level}
-                    </span>
-                    <span className="text-xs font-semibold text-muted-foreground">{p.duration}</span>
-                  </div>
-
-                  <h3 className="mt-4 text-2xl font-bold text-foreground">
+                  <h3 className="text-2xl font-bold text-foreground">
                     {p.name}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

@@ -55,6 +55,7 @@ function MeetFounderPage() {
         title="Abhiney Kumar"
         body="From a childhood passion for tennis to building a player-first academy focused on long-term athlete development across Delhi."
         image={heroImage}
+        removeFog
       />
 
       {/* Profile Overview */}
@@ -71,7 +72,7 @@ function MeetFounderPage() {
                 <div className="mt-4 rounded-xl bg-linear-to-r from-neon/15 via-electric/10 to-transparent p-4">
                   <p className="font-display text-lg font-bold text-foreground">Abhiney Kumar</p>
                   <p className="text-xs font-semibold uppercase tracking-wider text-neon">
-                    Founder & Head Coach · Sports Life Tennis Academy
+                    Founder  · Sports Life Tennis Academy
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
                     <span className="rounded-full bg-surface border border-border px-2.5 py-1 text-muted-foreground font-medium">
@@ -93,7 +94,7 @@ function MeetFounderPage() {
             <SectionHeading
               eyebrow="Meet the Founder"
               title="Abhiney Kumar"
-              body="Founder & Head Coach, Sports Life Tennis Academy"
+              body="Founder , Sports Life Tennis Academy"
             />
             <div className="space-y-4 text-base leading-relaxed text-foreground/85 lg:text-lg">
               <p className="font-medium text-foreground">
@@ -401,7 +402,7 @@ function MeetFounderPage() {
       </Section>
 
       {/* CTA */}
-      
+
     </>
   );
 }

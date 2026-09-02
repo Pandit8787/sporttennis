@@ -1,18 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { PageHero, Section, SectionHeading } from "@/components/site/sections";
-import { Reveal, Counter } from "@/components/site/motion-primitives";
+import { PageHero, Section } from "@/components/site/sections";
+import { Counter } from "@/components/site/motion-primitives";
 import { VideoCard } from "@/components/site/VideoCard";
 import {
-  CheckCircle2,
   ExternalLink,
-  Flame,
   Instagram,
-  MapPin,
-  Quote,
-  Sparkles,
   Star,
-  Trophy,
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
@@ -42,127 +35,7 @@ export const Route = createFileRoute("/testimonials")({
   component: TestimonialsPage,
 });
 
-type Category = "All" | "Junior & Parents" | "Competitive Squad" | "Adult Program" | "Sunday Match Play";
 
-const ALL_TESTIMONIALS = [
-  {
-    name: "Priya Nair",
-    role: "Parent of 12-Year-Old Junior Player",
-    category: "Junior & Parents" as Category,
-    centre: "Roshanara Club",
-    rating: 5,
-    tag: "Junior Development",
-    source: "Google Review",
-    quote:
-      "Six months at Sports Life Tennis Academy turned my daughter from a hesitant beginner into a confident state tournament player. The coaching detail, patience, and encouraging environment provided by Abhiney Sir and his team are extraordinary.",
-    highlight: "Transformed from beginner to state tournament competitor in 6 months",
-    verified: true,
-  },
-  {
-    name: "Rohit Deshpande",
-    role: "Performance Batch Player (Age 16)",
-    category: "Competitive Squad" as Category,
-    centre: "Major Dhyan Chand Complex",
-    rating: 5,
-    tag: "High Performance",
-    source: "Google Review",
-    quote:
-      "The video analysis sessions and multi-surface training on synthetic and clay completely changed how I construct points. I used to lose long baseline rallies due to impatience; now I understand how to manage court geometry and dictate pace.",
-    highlight: "Developed point construction and tactical composure",
-    verified: true,
-  },
-  {
-    name: "Anita George",
-    role: "Adult Evening Program Member",
-    category: "Adult Program" as Category,
-    centre: "Punjabi Bagh Club",
-    rating: 5,
-    tag: "Adult Tennis",
-    source: "Google Review",
-    quote:
-      "I joined for evening fitness and ended up staying for the amazing community. As a working professional, the coaches make every drill engaging, energetic, and technique-focused. It's genuinely the best evening batch in Delhi.",
-    highlight: "Perfect balance of fitness, technique, and welcoming community",
-    verified: true,
-  },
-  {
-    name: "Vikram Malhotra",
-    role: "Parent of U-14 National Circuit Player",
-    category: "Junior & Parents" as Category,
-    centre: "Roshanara Club",
-    rating: 5,
-    tag: "Tournament Player",
-    source: "Google Review",
-    quote:
-      "What sets Sports Life apart is their honesty. There are no false promises—just structured development plans, clear tournament scheduling, and sincere coach mentorship. My son's footwork and court coverage have reached a whole new level.",
-    highlight: "Honest feedback, structured pathways, and remarkable footwork improvement",
-    verified: true,
-  },
-  {
-    name: "Karthik Iyer",
-    role: "Elite Squad Athlete",
-    category: "Competitive Squad" as Category,
-    centre: "Major Dhyan Chand Complex",
-    rating: 5,
-    tag: "Performance & S&C",
-    source: "Google Review",
-    quote:
-      "The athletic conditioning combined with international coaching drills helped me recover from an ankle setback and build stronger lateral stability. I feel more explosive on court than ever before.",
-    highlight: "Targeted athletic conditioning and explosive court movement",
-    verified: true,
-  },
-  {
-    name: "Sanjay Singhal",
-    role: "Sunday Match Play Regular",
-    category: "Sunday Match Play" as Category,
-    centre: "Punjabi Bagh Club",
-    rating: 5,
-    tag: "Match Exposure",
-    source: "Google Review",
-    quote:
-      "The Sunday Match Play initiative is simply brilliant. Playing full-pressure matches against players of similar ratings every single weekend has built immense match confidence that regular weekday drills alone cannot provide.",
-    highlight: "Weekly tournament-style competitive exposure and rating tracking",
-    verified: true,
-  },
-  {
-    name: "Meenakshi Sharma",
-    role: "Parent of 8-Year-Old Toddler/Beginner",
-    category: "Junior & Parents" as Category,
-    centre: "Roshanara Club",
-    rating: 5,
-    tag: "Grassroots Tennis",
-    source: "Google Review",
-    quote:
-      "My 8-year-old looks forward to every session. The coaches incorporate fun hand-eye coordination games, agility ladders, and positive reinforcement that makes kids fall in love with tennis from day one.",
-    highlight: "Fun, positive, and foundational coaching for young beginners",
-    verified: true,
-  },
-  {
-    name: "Aman Kapoor",
-    role: "Adult Weekend Batch",
-    category: "Adult Program" as Category,
-    centre: "Major Dhyan Chand Complex",
-    rating: 5,
-    tag: "Adult Tennis",
-    source: "Google Review",
-    quote:
-      "I picked up tennis after a 10-year break. The coaches patiently refined my grip and modern topspin forehand mechanics. The court facilities and lighting at Dhyan Chand are top-notch.",
-    highlight: "Modern technique coaching for returning recreational players",
-    verified: true,
-  },
-  {
-    name: "Deepak Verma",
-    role: "Parent of U-17 Delhi State Player",
-    category: "Sunday Match Play" as Category,
-    centre: "Roshanara Club",
-    rating: 5,
-    tag: "Match Play & Strategy",
-    source: "Google Review",
-    quote:
-      "Having access to 12 synthetic, 10 clay, and 3 grass courts is rare in India. My daughter adapts quickly to any tournament surface now. The coaches' post-match debriefs give clear action items for the upcoming training week.",
-    highlight: "Multi-surface adaptability and constructive post-match debriefs",
-    verified: true,
-  },
-];
 
 const VIDEO_TESTIMONIALS = [
   {
@@ -199,21 +72,6 @@ const VIDEO_TESTIMONIALS = [
   },
 ];
 function TestimonialsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>("All");
-
-  const categories: Category[] = [
-    "All",
-    "Junior & Parents",
-    "Competitive Squad",
-    "Adult Program",
-    "Sunday Match Play",
-  ];
-
-  const filteredTestimonials =
-    selectedCategory === "All"
-      ? ALL_TESTIMONIALS
-      : ALL_TESTIMONIALS.filter((t) => t.category === selectedCategory);
-
   return (
     <>
       {/* Hero Section */}
@@ -222,6 +80,7 @@ function TestimonialsPage() {
         title="Google Reviews & Player Feedback"
         body="Hear firsthand from parents, juniors, competitive athletes, and adult players about how our player-first coaching and multi-surface facilities shape their tennis journey."
         image={heroImage}
+        removeFog
       />
 
       {/* Google Review Badge & Stats Bar */}
@@ -290,87 +149,185 @@ function TestimonialsPage() {
         </div>
       </Section>
 
-
-      {/* Filterable Reviews Grid */}
+      {/* Real Google Reviews — Text Cards */}
       <Section>
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading
-            eyebrow="Verified Feedback"
-            title="What Our Players & Parents Say"
-            body="Explore verified reviews from players of all ages and training levels."
-          />
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? "bg-neon text-white shadow-md"
-                    : "border border-border bg-surface text-muted-foreground hover:border-neon/50 hover:text-foreground"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+        {/* Section Header */}
+        <div className="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-amber-400/10 border border-amber-400/30 px-3.5 py-1 text-xs font-bold text-amber-400 mb-3">
+              <Star className="size-3.5 fill-amber-400 text-amber-400" /> Verified Google Reviews
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-foreground">
+              What Our Players &amp; Parents Say
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground max-w-xl">
+              Real, unedited Google reviews — straight from parents, juniors, and players training at Sports Life Tennis Academy.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+            <span className="text-sm font-bold text-foreground">5.0</span>
+            <span className="text-xs text-muted-foreground">· 60 reviews on Google</span>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredTestimonials.map((t, idx) => (
-            <Reveal key={t.name + idx} delay={(idx % 3) * 0.08}>
-              <div className="card-elevated flex h-full flex-col justify-between p-6 sm:p-7 border border-border bg-surface rounded-2xl shadow-sm hover:border-neon/50 transition-colors">
-                <div>
-                  {/* Top Bar: Stars, Tag & Source */}
-                  <div className="flex items-center justify-between gap-2 border-b border-border/70 pb-3">
-                    <div className="flex items-center text-amber-400">
-                      {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} className="size-3.5 fill-amber-400 text-amber-400" />
+        {/* Review Cards Grid */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
+          {[
+            {
+              name: "Manvi Rathi",
+              initial: "M",
+              color: "bg-emerald-500",
+              time: "8 weeks ago",
+              quote:
+                "I've been a part of Sports Life Tennis Academy for the last two years, and it has played a huge role in my development as a tennis player. The coaches are experienced, dedicated, and always encourage us to give our best. A special thanks to the founder, Coach Abhiney Sir, whose vision, discipline, and commitment to developing players have created such a positive and professional training environment. The academy provides a competitive yet supportive atmosphere that helps players improve technically, physically, and mentally. I'm grateful for everything I've learned here and would highly recommend this academy to anyone passionate about tennis.",
+            },
+            {
+              name: "Vikas Rathi",
+              initial: "V",
+              color: "bg-blue-500",
+              time: "8 weeks ago",
+              quote:
+                "Sports life tennis academy is one the most important aspect of our life. Manvi has been playing tennis from the age of 6, but unfortunately we never could find the right coach during this journey. Luckily we found Abiney (founder of sports life tennis academy). It's because of him that Manvi is still playing tennis. Success and failure is a long journey but happiness to play tennis is all about sports life. Highly recommend tennis centre where you can trust the coach and its method — all sports loving parents should give their child once chance at sports life.",
+            },
+            {
+              name: "Nivedan Kukreti",
+              initial: "N",
+              color: "bg-purple-500",
+              time: "4 weeks ago",
+              badge: "NEW",
+              quote:
+                "My son trains at the Academy and it is one of the good academies of Delhi. Abhinay sir gives personal attention to all the students. Very good infrastructure and great team is available for assistance at any moment. They are dedicated to the students and offer a personalized training to all the students.",
+            },
+            {
+              name: "Nathin Ram",
+              initial: "N",
+              color: "bg-orange-500",
+              time: "4 weeks ago",
+              badge: "NEW",
+              quote:
+                "I have been with Sports Life tennis academy since 2024. It has been a really great journey for me with them. From the amenities to the coaches, it's always kept me wanting to go back and play. A special shoutout to Abhiney sir, Rahul sir and Rishi sir — they have been wonderful coaches who have guided me on my tennis journey.",
+            },
+            {
+              name: "Kanav Mittal",
+              initial: "K",
+              color: "bg-pink-500",
+              time: "8 weeks ago",
+              quote:
+                "Great tennis academy with experienced and supportive coaches. The training is professional and well structured, and it has improved my game massively. Highly recommended for players of all skill levels!",
+            },
+            {
+              name: "Vivaan Kohli",
+              initial: "V",
+              color: "bg-cyan-500",
+              time: "8 weeks ago",
+              quote:
+                "Great academy to learn tennis. The coaches are very experienced and polite. They helped improve my game from a beginner to pro in just a few weeks. Now I play and win tournaments.",
+            },
+            {
+              name: "Sakshi Gupta",
+              initial: "S",
+              color: "bg-rose-500",
+              time: "4 weeks ago",
+              badge: "NEW",
+              quote:
+                "A fantastic academy with caring and dedicated coaches. There has been incredible improvement in my child. Highly recommend!",
+            },
+            {
+              name: "Aadwik Rawal",
+              initial: "A",
+              color: "bg-indigo-500",
+              time: "4 weeks ago",
+              badge: "NEW",
+              quote:
+                "I've been in this academy for 8 months and I've seen more improvement than I saw in 3 years — it's been great and I'm excited for the experience ahead with Sports Life Tennis Academy.",
+            },
+            {
+              name: "Deepam Malik",
+              initial: "D",
+              color: "bg-teal-500",
+              time: "8 weeks ago",
+              quote: "Excellent trainers and well maintained facilities.",
+            },
+            {
+              name: "Ekamveer Singh",
+              initial: "E",
+              color: "bg-amber-500",
+              time: "8 weeks ago",
+              quote:
+                "Very good and professional academy for tennis players. All the coaches are very sweet as well.",
+            },
+            {
+              name: "Amit Kochhar",
+              initial: "A",
+              color: "bg-lime-600",
+              time: "4 weeks ago",
+              badge: "NEW",
+              quote: "Well maintained courts and very supportive coaching team.",
+            },
+          ].map((r, idx) => (
+            <div
+              key={idx}
+              className="break-inside-avoid rounded-2xl border border-border bg-surface p-5 shadow-sm hover:border-neon/40 hover:shadow-lg hover:shadow-neon/5 transition-all duration-300"
+            >
+              {/* Header row */}
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className={`${r.color} size-10 rounded-full flex items-center justify-center text-white font-bold text-base shrink-0`}
+                >
+                  {r.initial}
+                </div>
+                <div className="min-w-0">
+                  <p className="font-bold text-sm text-foreground truncate">{r.name}</p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="size-3 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <span className="rounded-md bg-neon/10 px-2 py-0.5 text-[11px] font-bold text-neon">
-                      {t.source}
-                    </span>
-                  </div>
-
-                  {/* Quote Body */}
-                  <div className="mt-4">
-                    <Quote className="size-6 text-neon/30 mb-2" />
-                    <p className="text-sm leading-relaxed text-foreground/90 italic">
-                      “{t.quote}”
-                    </p>
-                  </div>
-
-                  {/* Highlight Pill */}
-                  {t.highlight && (
-                    <div className="mt-4 rounded-lg bg-surface-2 border border-border p-2.5 text-xs text-foreground/80 font-medium">
-                      <span className="text-neon font-bold mr-1.5">★ Highlight:</span>
-                      {t.highlight}
-                    </div>
-                  )}
-                </div>
-
-                {/* Footer Author Details */}
-                <div className="mt-6 border-t border-border pt-4 flex items-center justify-between">
-                  <div>
-                    <div className="flex items-center gap-1.5">
-                      <p className="font-bold text-sm text-foreground">{t.name}</p>
-                      {t.verified && (
-                        <CheckCircle2 className="size-3.5 text-neon" aria-label="Verified Player/Parent" />
-                      )}
-                    </div>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
-                  </div>
-                  <div className="flex items-center gap-1 text-[11px] font-semibold text-muted-foreground">
-                    <MapPin className="size-3 text-neon" />
-                    <span>{t.centre}</span>
+                    <span className="text-[11px] text-muted-foreground">{r.time}</span>
+                    {r.badge && (
+                      <span className="rounded px-1.5 py-0.5 text-[10px] font-bold bg-neon/10 text-neon border border-neon/20">
+                        {r.badge}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
-            </Reveal>
+
+              {/* Review text */}
+              <p className="text-sm leading-relaxed text-foreground/85">{r.quote}</p>
+
+              {/* Google badge */}
+              <div className="mt-3 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <svg className="size-3.5" viewBox="0 0 24 24" fill="none">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>Google Review</span>
+              </div>
+            </div>
           ))}
+        </div>
+
+        {/* Footer CTA */}
+        <div className="mt-12 text-center">
+          <a
+            href="https://www.google.com/maps/search/Sports+Life+Tennis+Academy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-neon/40 bg-neon/5 px-6 py-3 text-sm font-semibold text-neon hover:bg-neon/10 transition-colors"
+          >
+            <Star className="size-4 fill-neon text-neon" />
+            View All 60 Reviews on Google
+            <ExternalLink className="size-3.5" />
+          </a>
         </div>
       </Section>
 

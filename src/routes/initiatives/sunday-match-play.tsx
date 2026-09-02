@@ -51,6 +51,7 @@ function SundayMatchPlay() {
         title="Sunday Match Play"
         body="Practice builds technique; matches build competitors. A structured weekly competitive platform designed to bridge the gap between weekday drills and tournament victory."
         image={heroImage}
+        removeFog
       />
 
       {/* Problem vs Solution Section */}

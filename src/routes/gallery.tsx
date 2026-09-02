@@ -150,60 +150,14 @@ function GalleryPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <div className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-border/80 bg-linear-to-b from-surface via-background to-background">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.12),transparent_50%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(56,189,248,0.08),transparent_50%)] pointer-events-none" />
-        <div className="grid-lines absolute inset-0 opacity-10 pointer-events-none" />
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-neon/30 bg-neon/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-neon mb-6">
-                <Camera className="size-3.5" /> Visual Journal · Delhi & Spain
-              </div>
-              <h1 className="text-4xl font-black tracking-tight uppercase sm:text-5xl lg:text-6xl text-foreground">
-                Capturing Moments of{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-neon via-emerald-400 to-teal-300">
-                  Passion & Excellence
-                </span>
-              </h1>
-              <p className="mt-6 text-base sm:text-lg lg:text-xl text-foreground/80 leading-relaxed max-w-3xl mx-auto font-medium">
-                Step inside the daily energy of Sports Life Tennis Academy. From high-octane junior drills and Sunday Match Play clashes across Delhi to international coaching exchanges in Spain.
-              </p>
-            </Reveal>
-
-            {/* Quick Metrics Bar */}
-            <Reveal delay={0.15}>
-              <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 max-w-3xl mx-auto">
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-neon">28+</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Moments
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-electric">3</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Delhi Centres
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-foreground">25</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Courts
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-neon">Spain</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Masterclasses
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+      {/* Hero Section — Banner Sized Image (Below Navbar) */}
+      <div className="relative w-full overflow-hidden mt-[68px] sm:mt-[76px] lg:mt-[80px] h-[50vh] sm:h-[60vh] lg:h-[70vh] min-h-[400px] sm:min-h-[500px] border-b border-border/80 bg-neutral-950">
+        <img
+          src={academyGallery14}
+          alt="Sports Life Tennis Academy Team & Juniors"
+          className="absolute inset-0 size-full object-cover object-[center_56%]"
+          loading="eager"
+        />
       </div>
 
       {/* Main Interactive Filter Bar & Photo Grid */}

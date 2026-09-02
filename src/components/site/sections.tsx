@@ -27,7 +27,7 @@ export function SectionHeading({
   body,
   align = "left",
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   body?: string;
   align?: "left" | "center";
@@ -51,12 +51,14 @@ export function PageHero({
   title,
   body,
   image,
+  imagePos = "object-center",
   removeFog = false,
 }: {
   eyebrow?: string;
   title?: string;
   body?: string;
   image?: string;
+  imagePos?: string;
   removeFog?: boolean;
 }) {
   return (
@@ -71,7 +73,7 @@ export function PageHero({
             alt=""
             aria-hidden="true"
             loading="eager"
-            className="absolute inset-0 size-full object-cover object-center transition-transform duration-1000"
+            className={`absolute inset-0 size-full object-cover ${imagePos} transition-transform duration-1000`}
           />
           {/* Refined gradient overlays */}
           {!removeFog && (

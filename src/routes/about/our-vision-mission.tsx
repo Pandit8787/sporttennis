@@ -67,6 +67,7 @@ function OurVisionMissionPage() {
         title="What Drives Us Forward"
         body="Building India's most trusted and respected tennis organization through structured coaching, core values, and holistic player development."
         image={heroImage}
+        removeFog
       />
 
       {/* Vision Statement */}

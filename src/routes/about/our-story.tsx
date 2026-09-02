@@ -71,15 +71,15 @@ function OurStoryAndWhyUsPage() {
               opportunities, and an environment that inspires growth.”
             </p>
           </div>
-            <div className="mt-6">
-              <img
-                src="/about/major_dhyanchand_group_photo.jpg"
-                alt="Opening ceremony"
-                loading="lazy"
-                decoding="async"
-                className="w-full rounded-2xl border border-border object-cover"
-              />
-            </div>
+          <div className="mt-6">
+            <img
+              src="/about/major_dhyanchand_group_photo.jpg"
+              alt="Opening ceremony"
+              loading="lazy"
+              decoding="async"
+              className="w-full rounded-2xl border border-border object-cover"
+            />
+          </div>
 
           <p>
             Our founder's journey in tennis began at the age of four and evolved through years of
@@ -205,8 +205,8 @@ function OurStoryAndWhyUsPage() {
               <p>
                 From high-performance coaching environments in Spain to leading sports venues across
                 Delhi, the Sports Life philosophy is built around one core belief: <em>When players
-                receive structured guidance, consistent match play, quality facilities, and genuine
-                mentorship, they are given the foundation to reach their full potential.</em>
+                  receive structured guidance, consistent match play, quality facilities, and genuine
+                  mentorship, they are given the foundation to reach their full potential.</em>
               </p>
             </div>
           </div>
@@ -264,20 +264,20 @@ function OurStoryAndWhyUsPage() {
         />
 
         <div className="mt-12 space-y-24">
-          
+
           {/* Feature 1: Expert Coaching */}
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
+            <div className="overflow-hidden rounded-3xl border border-border shadow-lg bg-surface">
               <img
                 src={coachingImage}
                 alt="Expert tennis coaching team"
-                className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+                className="h-[440px] sm:h-[480px] lg:h-[500px] w-full object-cover object-[center_22%] transition-transform duration-500 hover:scale-105"
               />
             </div>
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
                 <GraduationCap className="size-3.5" />
-                Advantage 01
+
               </div>
               <h3 className="text-3xl font-extrabold text-foreground">Expert, Certified Coaching Team</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
@@ -306,7 +306,7 @@ function OurStoryAndWhyUsPage() {
             <div className="space-y-4 order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 rounded-full bg-electric/15 px-3 py-1 text-xs font-bold text-electric uppercase tracking-wider">
                 <Compass className="size-3.5" />
-                Advantage 02
+
               </div>
               <h3 className="text-3xl font-extrabold text-foreground">Player-Centered Development</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
@@ -349,7 +349,7 @@ function OurStoryAndWhyUsPage() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-3 py-1 text-xs font-bold text-neon uppercase tracking-wider">
                 <Trophy className="size-3.5" />
-                Advantage 03
+
               </div>
               <h3 className="text-3xl font-extrabold text-foreground">Weekly Sunday Match Play</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
@@ -517,7 +517,7 @@ function OurStoryAndWhyUsPage() {
       </Section>
 
       {/* Call to action */}
-      
+
     </>
   );
 }

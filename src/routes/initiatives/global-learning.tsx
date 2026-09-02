@@ -51,6 +51,8 @@ function GlobalLearning() {
         title="Learning Beyond the Court"
         body="Direct access to experienced professionals. At Sports Life, we believe player development should extend beyond the regular coaching session."
         image={heroImage}
+        imagePos="object-[center_24%]"
+        removeFog
       />
 
       {/* Main Philosophy Section */}

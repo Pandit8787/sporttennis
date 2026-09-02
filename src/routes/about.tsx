@@ -93,6 +93,7 @@ function AboutPage() {
         title="Building the Future of Indian Tennis"
         body="Coaching excellence, multi-surface infrastructure, and player-first athlete development across Delhi's premier sports clubs."
         image={heroImage}
+        removeFog
       />
 
       {/* Explore Sub-pages Navigation Grid */}

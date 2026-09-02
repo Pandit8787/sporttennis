@@ -104,6 +104,7 @@ function InitiativesPage() {
         title="Pathways Beyond Traditional Coaching"
         body="We actively create opportunities for our players to compete regularly, learn from international professionals, and broaden their perspective on tennis."
         image={heroImage}
+        removeFog
       />
 
       {/* Active Initiatives */}
