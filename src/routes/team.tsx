@@ -57,9 +57,9 @@ function TeamPage() {
       initials: "AK",
       badge: "Founder & Head Coach",
       badgeColor: "bg-neon/15 text-neon border-neon/30",
-      experience: "16+ Years Experience · Spain Exposure",
+      experience: "20+ Years Experience · Spain Exposure",
       tags: ["Diploma JC Ferrero (Spain)", "NIS & PTR Certified", "Khelo India SAI Protocol"],
-      bio: "International Tennis Coach and founder of Sports Life Tennis Academy. With 16+ years in competitive tennis and coaching stints across elite academies in Spain (Jofre Porta, Ferrero Academy), he drives structured systems for Indian tennis.",
+      bio: "International Tennis Coach and founder of Sports Life Tennis Academy. With 20+ years in competitive tennis and coaching stints across elite academies in Spain (Jofre Porta, Ferrero Academy), he drives structured systems for Indian tennis.",
     },
     {
       name: "Rahul Singh",

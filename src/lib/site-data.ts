@@ -173,10 +173,10 @@ export const COACHES = [
     name: "Abhiney Kumar",
     role: "Founder & Head Coach",
     initials: "AK",
-    experience: "16+ years",
+    experience: "20+ years",
     cert: "International Coach · NIS · PTR · AITA-ITF",
     achievements: ["International coaching exposure", "Player-first philosophy", "Founder of Sports Life"],
-    bio: "Abhiney Kumar is an International Tennis Coach and the Founder of Sports Life Tennis Academy. With over 16 years of playing experience and international coaching exposure, he is passionate about developing players through structured coaching, modern training methods, and a player-first approach. His vision is to build an organization that supports every aspect of a player's journey while contributing to the long-term growth of tennis in India.",
+    bio: "Abhiney Kumar is an International Tennis Coach and the Founder of Sports Life Tennis Academy. With over 20 years of playing experience and international coaching exposure, he is passionate about developing players through structured coaching, modern training methods, and a player-first approach. His vision is to build an organization that supports every aspect of a player's journey while contributing to the long-term growth of tennis in India.",
     image: "/abhiney-kumar-headshot.jpg",
   },
   {

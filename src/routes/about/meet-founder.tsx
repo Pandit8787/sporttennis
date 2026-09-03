@@ -76,7 +76,7 @@ function MeetFounderPage() {
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
                     <span className="rounded-full bg-surface border border-border px-2.5 py-1 text-muted-foreground font-medium">
-                      16+ Years Experience
+                      20+ Years Experience
                     </span>
                     <span className="rounded-full bg-surface border border-border px-2.5 py-1 text-muted-foreground font-medium">
                       Spain Coaching Exposure

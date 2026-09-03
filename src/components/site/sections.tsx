@@ -213,7 +213,7 @@ export function Newsletter() {
 
 export function CtaBanner({
   title = "Your first session is on us",
-  body = "Book a free 30-minute trial with a certified coach and get a written skill assessment the same day.",
+  body = "Book a free 30-minute trial with a certified coach.",
 }: {
   title?: string;
   body?: string;
@@ -236,9 +236,15 @@ export function CtaBanner({
               View Programs
             </CtaLink>
           </div>
-          <p className="mt-6 text-[10px] sm:text-xs tracking-[0.16em] text-muted-foreground uppercase">
-            Roshanara Club · Major Dhyan Chand National Stadium · Punjabi Bagh Club
-          </p>
+
+          <div className="mt-8 pt-5 border-t border-border/60 space-y-1.5">
+            <p className="text-[10px] sm:text-xs tracking-[0.16em] text-foreground/80 font-bold uppercase">
+              Roshanara Club · Major Dhyan Chand Sports Complex · Punjabi Bagh Club
+            </p>
+            <p className="text-[11px] sm:text-xs text-muted-foreground font-medium">
+              * Note: We don’t provide written skill assessment at Major Dhyan Chand Sports Complex.
+            </p>
+          </div>
         </div>
       </div>
     </Section>

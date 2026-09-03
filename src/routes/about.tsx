@@ -56,25 +56,27 @@ const SUBPAGES = [
     title: "Our Story & Why Sports Life",
     to: "/about/our-story",
     tag: "The Journey & Advantage",
-    desc: "From a childhood passion to establishing 25 courts, and why families choose our complete development ecosystem.",
+    desc: `Our Story & Why SportsLife
+Built from a passion for tennis, designed to build players.
+From our first court to a growing tennis community, SportsLife brings together expert coaching, world- class facilities and a structured development journey for every player.`,
     icon: Sparkles,
     badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
-  {
-    title: "Meet the Founder",
+{
+  title: "Meet the Founder",
     to: "/about/meet-founder",
-    tag: "Leadership",
-    desc: "Abhiney Kumar — International Coach, certified trainer, and NIS/PTR/AITA-ITF accredited mentor.",
-    icon: GraduationCap,
-    badgeColor: "text-electric bg-electric/10 border-electric/30",
+      tag: "Leadership",
+        desc: "Abhiney Kumar — International Coach, professional player, 20+ years on court, Spain coaching experience (Jofre Porta & JC Ferrero Academy), and SAI/Khelo India induction protocol contributor.",
+          icon: GraduationCap,
+            badgeColor: "text-electric bg-electric/10 border-electric/30",
   },
-  {
-    title: "Our Vision, Mission & Values",
+{
+  title: "Our Vision, Mission & Values",
     to: "/about/our-vision-mission",
-    tag: "Guiding Purpose & Culture",
-    desc: "Building India's most trusted tennis ecosystem through structured development and core values.",
-    icon: Target,
-    badgeColor: "text-neon bg-neon/10 border-neon/30",
+      tag: "Guiding Purpose & Culture",
+        desc: "Building India's most trusted tennis ecosystem through structured development and core values.",
+          icon: Target,
+            badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
 ];
 
@@ -160,7 +162,7 @@ function AboutPage() {
 
           <div className="card-elevated p-6 text-center">
             <p className="font-display text-4xl font-extrabold text-neon sm:text-5xl">
-              <Counter value={16} suffix="+" />
+              <Counter value={20} suffix="+" />
             </p>
             <p className="mt-2 text-sm font-semibold text-foreground">Years Experience</p>
             <p className="text-xs text-muted-foreground mt-1">Competitive play & Spanish coaching</p>
@@ -401,7 +403,7 @@ function AboutPage() {
       </Section>
 
       {/* CTA */}
-      
+
     </>
   );
 }

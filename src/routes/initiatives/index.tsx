@@ -55,6 +55,7 @@ const ACTIVE_INITIATIVES = [
     icon: Trophy,
     image: matchPlayImage,
     imagePos: "object-center",
+    imageAspect: "aspect-[16/10]",
   },
   {
     title: "Global Learning Initiatives",
@@ -72,6 +73,7 @@ const ACTIVE_INITIATIVES = [
     icon: Globe2,
     image: globalLearningImage,
     imagePos: "object-center",
+    imageAspect: "aspect-[3/2]",
   },
 ];
 
@@ -119,7 +121,7 @@ function InitiativesPage() {
           {ACTIVE_INITIATIVES.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.1}>
               <div className="card-elevated group flex flex-col justify-between h-full overflow-hidden border border-border bg-surface rounded-3xl shadow-lg hover:border-neon/50 transition-all">
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className={`relative ${item.imageAspect} overflow-hidden`}>
                   <img
                     src={item.image}
                     alt={item.title}

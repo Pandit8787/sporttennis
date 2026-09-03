@@ -32,6 +32,7 @@ import {
   SectionHeading,
 } from "@/components/site/sections";
 import {
+  ArrowRight,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
@@ -39,6 +40,8 @@ import {
   Flame,
   Globe2,
   MapPin,
+  Pause,
+  Play,
   Sparkles,
   Star,
   Trophy,
@@ -110,11 +113,11 @@ function TypewriterText({ text, delay = 0, speed = 40, className }: { text: stri
 
 function Hero() {
   const images = [
-    "/hero-slider/chatgpt_image.png",
-    "/hero-slider/img_0268.jpg",
-    "/hero-slider/img_0670.jpg",
-    "/hero-slider/img_8433.jpg",
-    "/hero-slider/img_8655.jpg"
+    "/hero-slider/banner-1.jpg",
+    "/hero-slider/banner-2.jpg",
+    "/hero-slider/banner-3.jpg",
+    "/hero-slider/banner-4.jpg",
+    "/hero-slider/banner-5.jpg"
   ];
   const [index, setIndex] = useState(0);
 
@@ -165,7 +168,7 @@ function Hero() {
           <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 max-w-3xl">
             {[
               { value: "25", label: "Tennis Courts" },
-              { value: "3", label: "Grass Courts" },
+              { value: "3", label: "Centres" },
               { value: "300+", label: "Players / Month" },
               { value: "1000+", label: "Trained Till Now" }
             ].map((stat) => (
@@ -202,6 +205,8 @@ function Marquee() {
     "Global Learning: Jofre Porta & Vishnu Vardhan",
     "Toddlers to Advanced & Performance Squads",
     "100% Player-Centred Development",
+    "We don't provide written skill assessment",
+    "Major Dhyan Chand Sports Complex",
   ];
   return (
     <div className="overflow-hidden border-y border-border bg-surface/60 py-4.5 backdrop-blur-md">
@@ -324,7 +329,7 @@ function CentresSpotlight() {
 function FounderSpotlight() {
   const credentials = [
     "Founder & Head Coach, Sports Life Tennis Academy",
-    "16+ Years On The Court & Competitive Tennis",
+    "20+ Years On The Court & Competitive Tennis",
     "International Coaching Experience in Spain (Jofre Porta Academy & JC Ferrero Academy)",
     "Contributed to SAI Induction Protocol for Tennis (Khelo India Scheme)",
   ];
@@ -372,22 +377,28 @@ function FounderSpotlight() {
 
         <Reveal delay={0.2}>
           <div className="relative">
-            <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-surface shadow-2xl">
+            <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-surface shadow-2xl aspect-[3/4] max-h-[580px]">
               <img
-                src="/abhiney-kumar.jpg"
-                alt="Abhiney Kumar - Founder of Sports Life Tennis Academy"
+                src="/abhiney-with-jofre-porta.webp"
+                alt="Abhiney Kumar with Jofre Porta - Spain Tennis Methodology"
                 loading="lazy"
                 decoding="async"
-                className="size-full object-cover object-[center_20%] max-h-[560px]"
+                className="size-full object-cover object-top"
+                onError={(e) => {
+                  const el = e.currentTarget as HTMLImageElement;
+                  if (el.src !== "/abhiney-with-jofre-porta.jpg") {
+                    el.src = "/abhiney-with-jofre-porta.jpg";
+                  }
+                }}
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="rounded-full bg-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">
-                  Founder
+                <span className="rounded-full bg-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-md">
+                  Founder & Spain Mentorship
                 </span>
-                <h3 className="mt-2 text-2xl font-black">Abhiney Kumar</h3>
-                <p className="text-xs text-white/80 mt-1">
-                  Diploma JC Ferrero (Spain) · NIS · PTR · AITA/ITF Certified
+                <h3 className="mt-2 text-2xl font-black">Abhiney Kumar with Jofre Porta</h3>
+                <p className="text-xs text-white/90 mt-1">
+                  Global Tennis Team (Spain) · Spanish Methodology & Player Development
                 </p>
               </div>
             </div>
@@ -401,7 +412,7 @@ function FounderSpotlight() {
                 <p className="font-display text-xs font-extrabold text-foreground uppercase tracking-wider">
                   Spain Methodology
                 </p>
-                <p className="text-xs text-muted-foreground">European drills & match sense</p>
+                <p className="text-xs text-muted-foreground">Mentored by Jofre Porta (Coach of Moya & Nadal)</p>
               </div>
             </div>
           </div>
@@ -449,7 +460,7 @@ function PlayersSlideshow() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <SectionHeading
           eyebrow="Academy Players"
-          title="Players Slideshow — Real Moments On Court"
+          title="Academy Highlights"
           body="High-quality action shots, training sessions, and group moments with Sports Life Tennis Academy players across all three Delhi centres."
         />
         <div className="flex items-center gap-2">
@@ -560,8 +571,8 @@ function HighIntensityTraining() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
         <SectionHeading
           eyebrow="On Court Intensity"
-          title="High Intensity Training — Real Sessions"
-          body="Watch the drills that shape competitive match readiness. Footwork circuits, technical repetition, and rally intensity across all three Delhi centres."
+          title="Academy Highlights"
+          body=""
         />
         <div className="flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-xs font-semibold text-muted-foreground">
           <Dumbbell className="size-4 text-neon" />
@@ -675,7 +686,7 @@ function TeamIntroduction() {
               <Trophy className="size-5.5" />
             </div>
             <div>
-              <p className="font-display text-3xl font-black text-foreground">16+</p>
+              <p className="font-display text-3xl font-black text-foreground">20+</p>
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Years Founder Experience</p>
             </div>
           </div>
