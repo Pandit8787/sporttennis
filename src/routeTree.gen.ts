@@ -22,7 +22,6 @@ import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
 import { Route as AboutMeetFounderRouteImport } from './routes/about/meet-founder'
 import { Route as AboutOurStoryRouteImport } from './routes/about/our-story'
-import { Route as AboutOurVisionMissionRouteImport } from './routes/about/our-vision-mission'
 import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
 import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
 import { Route as CentresIndexRouteImport } from './routes/centres/index'
@@ -99,11 +98,6 @@ const AboutOurStoryRoute = AboutOurStoryRouteImport.update({
   path: '/our-story',
   getParentRoute: () => AboutRoute,
 } as any)
-const AboutOurVisionMissionRoute = AboutOurVisionMissionRouteImport.update({
-  id: '/our-vision-mission',
-  path: '/our-vision-mission',
-  getParentRoute: () => AboutRoute,
-} as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
   id: '/blogs/',
   path: '/blogs/',
@@ -172,7 +166,6 @@ export interface FileRoutesByFullPath {
   '/tournaments': typeof TournamentsRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
   '/about/our-story': typeof AboutOurStoryRoute
-  '/about/our-vision-mission': typeof AboutOurVisionMissionRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/centres/major-dhyan-chand-sports-complex': typeof CentresMajorDhyanChandSportsComplexRoute
   '/centres/punjabi-bagh-club': typeof CentresPunjabiBaghClubRoute
@@ -198,7 +191,6 @@ export interface FileRoutesByTo {
   '/tournaments': typeof TournamentsRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
   '/about/our-story': typeof AboutOurStoryRoute
-  '/about/our-vision-mission': typeof AboutOurVisionMissionRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/centres/major-dhyan-chand-sports-complex': typeof CentresMajorDhyanChandSportsComplexRoute
   '/centres/punjabi-bagh-club': typeof CentresPunjabiBaghClubRoute
@@ -225,7 +217,6 @@ export interface FileRoutesById {
   '/tournaments': typeof TournamentsRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
   '/about/our-story': typeof AboutOurStoryRoute
-  '/about/our-vision-mission': typeof AboutOurVisionMissionRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/centres/major-dhyan-chand-sports-complex': typeof CentresMajorDhyanChandSportsComplexRoute
   '/centres/punjabi-bagh-club': typeof CentresPunjabiBaghClubRoute
@@ -253,7 +244,6 @@ export interface FileRouteTypes {
     | '/tournaments'
     | '/about/meet-founder'
     | '/about/our-story'
-    | '/about/our-vision-mission'
     | '/blogs/$slug'
     | '/centres/major-dhyan-chand-sports-complex'
     | '/centres/punjabi-bagh-club'
@@ -279,7 +269,6 @@ export interface FileRouteTypes {
     | '/tournaments'
     | '/about/meet-founder'
     | '/about/our-story'
-    | '/about/our-vision-mission'
     | '/blogs/$slug'
     | '/centres/major-dhyan-chand-sports-complex'
     | '/centres/punjabi-bagh-club'
@@ -305,7 +294,6 @@ export interface FileRouteTypes {
     | '/tournaments'
     | '/about/meet-founder'
     | '/about/our-story'
-    | '/about/our-vision-mission'
     | '/blogs/$slug'
     | '/centres/major-dhyan-chand-sports-complex'
     | '/centres/punjabi-bagh-club'
@@ -434,13 +422,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutOurStoryRouteImport
       parentRoute: typeof AboutRoute
     }
-    '/about/our-vision-mission': {
-      id: '/about/our-vision-mission'
-      path: '/our-vision-mission'
-      fullPath: '/about/our-vision-mission'
-      preLoaderRoute: typeof AboutOurVisionMissionRouteImport
-      parentRoute: typeof AboutRoute
-    }
     '/blogs/': {
       id: '/blogs/'
       path: '/blogs'
@@ -517,13 +498,11 @@ declare module '@tanstack/react-router' {
 interface AboutRouteChildren {
   AboutMeetFounderRoute: typeof AboutMeetFounderRoute
   AboutOurStoryRoute: typeof AboutOurStoryRoute
-  AboutOurVisionMissionRoute: typeof AboutOurVisionMissionRoute
 }
 
 const AboutRouteChildren: AboutRouteChildren = {
   AboutMeetFounderRoute: AboutMeetFounderRoute,
   AboutOurStoryRoute: AboutOurStoryRoute,
-  AboutOurVisionMissionRoute: AboutOurVisionMissionRoute,
 }
 
 const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)

@@ -87,7 +87,7 @@ export function PageHero({
               aria-hidden="true"
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-1000 ease-out`}
+              className={`absolute inset-0 size-full object-cover ${imagePos || "object-center"} transition-opacity duration-1000 ease-out`}
               style={{ opacity: index === activeImage ? 1 : 0 }}
               onError={(e) => {
                 const el = e.currentTarget as HTMLImageElement;

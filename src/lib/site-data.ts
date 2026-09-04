@@ -32,7 +32,6 @@ export const NAV = [
       { label: "About Us Overview", to: "/about", description: "Who we are and our leadership in Delhi" },
       { label: "Our Story & Why Us", to: "/about/our-story", description: "The journey that shaped Sports Life & what makes us different" },
       { label: "Meet the Founder", to: "/about/meet-founder", description: "Abhiney Kumar's vision & Spanish coaching" },
-      { label: "Our Vision, Mission & Values", to: "/about/our-vision-mission", description: "Building India's trusted tennis ecosystem" },
     ],
   },
   { label: "Meet Our Team", to: "/team" },

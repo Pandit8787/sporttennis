@@ -62,21 +62,13 @@ From our first court to a growing tennis community, SportsLife brings together e
     icon: Sparkles,
     badgeColor: "text-neon bg-neon/10 border-neon/30",
   },
-{
-  title: "Meet the Founder",
+  {
+    title: "Meet the Founder",
     to: "/about/meet-founder",
-      tag: "Leadership",
-        desc: "Abhiney Kumar — International Coach, professional player, 20+ years on court, Spain coaching experience (Jofre Porta & JC Ferrero Academy), and SAI/Khelo India induction protocol contributor.",
-          icon: GraduationCap,
-            badgeColor: "text-electric bg-electric/10 border-electric/30",
-  },
-{
-  title: "Our Vision, Mission & Values",
-    to: "/about/our-vision-mission",
-      tag: "Guiding Purpose & Culture",
-        desc: "Building India's most trusted tennis ecosystem through structured development and core values.",
-          icon: Target,
-            badgeColor: "text-neon bg-neon/10 border-neon/30",
+    tag: "Leadership",
+    desc: "Abhiney Kumar — International Coach, professional player, 20+ years on court, Spain coaching experience (Jofre Porta & JC Ferrero Academy), and SAI/Khelo India induction protocol contributor.",
+    icon: GraduationCap,
+    badgeColor: "text-electric bg-electric/10 border-electric/30",
   },
 ];
 
@@ -248,14 +240,6 @@ function AboutPage() {
               the opportunity to learn, grow, compete, and achieve their highest potential as both
               athletes and responsible leaders.
             </p>
-            <div className="mt-6 border-t border-border pt-4">
-              <a
-                href="/about/our-vision-mission"
-                className="text-xs font-bold text-neon hover:underline"
-              >
-                Explore Vision & Mission →
-              </a>
-            </div>
           </div>
 
           <div className="card-elevated p-8">
@@ -271,14 +255,6 @@ function AboutPage() {
               sound, tactically smart, physically resilient, and disciplined athletes prepared for
               success on and off court.
             </p>
-            <div className="mt-6 border-t border-border pt-4">
-              <a
-                href="/about/our-vision-mission"
-                className="text-xs font-bold text-electric hover:underline"
-              >
-                Explore Vision & Mission →
-              </a>
-            </div>
           </div>
         </div>
       </Section>
@@ -338,16 +314,6 @@ function AboutPage() {
               </div>
             </Reveal>
           ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <a
-            href="/about/our-vision-mission"
-            className="inline-flex items-center gap-1.5 font-bold text-neon text-sm hover:underline"
-          >
-            <span>Learn more about our core values</span>
-            <span>→</span>
-          </a>
         </div>
       </Section>
 

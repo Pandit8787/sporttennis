@@ -73,6 +73,7 @@ const GALLERY_COLLECTION: GalleryItem[] = [
   { id: 5, img: "/founder-gallery/abhiney-at-barcelona-tennis-acadmey.jpg", category: "Spain Mentorship" },
   { id: 6, img: "/founder-gallery/abhiney-at-global-agent-tennis-acadmey-madrid.jpg", category: "Spain Mentorship" },
   { id: 7, img: "/founder-gallery/abhiney-at-madrid-open.jpg", category: "Spain Mentorship" },
+  { id: 80, img: "/founder-gallery/elite-tennis-academy-barcelona.jpg", category: "Spain Mentorship" },
 
   // On-Court Training & Player Development
   { id: 8, img: academyGallery1, category: "Training" },

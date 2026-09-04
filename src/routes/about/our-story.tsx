@@ -22,13 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 
-const heroImage = "/about/hero-story-img-8427.jpg";
-const heroImages = [
-  heroImage,
-  "/about/img-7316.jpg",
-  "/about/img-7572.jpg",
-  "/about/img-20250328-183848.jpg",
-];
+const heroImage = "/about/img-7572.jpg";
 const communityGroupImage = "/about/img-3168.jpg";
 const roshanaraOpeningImage = "/about/opening-ceremony-roshanara.jpg";
 const diwaliCelebrationImage = "/about/img-0325.jpg";
@@ -439,7 +433,7 @@ function OurStoryAndWhyUsPage() {
         title="Our Story & Why Sports Life"
         body="One journey. Hundreds of stories. One family. Discover the journey that brought us here and why tennis at Sports Life is more than an hour on the court."
         image={heroImage}
-        images={heroImages}
+        imagePos="object-[center_38%]"
         removeFog={true}
       />
 
