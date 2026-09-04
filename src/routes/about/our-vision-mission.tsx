@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
-const visionActionImage = "/centre-gallery/whatsapp-20260813-171744-2.jpg";
+const visionActionImage = "/about/tennis-ecosystem-20250425.jpg";
 const developmentImage = "/centre-gallery/whatsapp-20260813-171844-3.jpg";
 const courtsImage = "/centre-gallery/whatsapp-20260813-171745-1.jpg";
 
@@ -151,12 +151,16 @@ function OurVisionMissionPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
-              <img
-                src={visionActionImage}
-                alt="Vision in action on court"
-                className="h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
-              />
+            <div className="overflow-hidden rounded-3xl border border-border shadow-2xl bg-surface group">
+              <div className="aspect-[3/4] w-full overflow-hidden bg-muted/20">
+                <img
+                  src={visionActionImage}
+                  alt="A complete tennis ecosystem in action at Sports Life"
+                  loading="lazy"
+                  decoding="async"
+                  className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
             </div>
             <div className="rounded-2xl border border-border bg-surface p-5 text-center">
               <p className="text-xs font-semibold uppercase tracking-wider text-neon">

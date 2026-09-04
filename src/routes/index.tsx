@@ -12,8 +12,9 @@ import academyGallery7 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 
 import academyGallery8 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM.jpeg";
 import academyGallery9 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (1).jpeg";
 import academyGallery10 from "@/assets/academy-gallery/WhatsApp Image 2026-08-07 at 8.21.23 PM (2).jpeg";
-const video1 = "/videos/whatsapp-video-1.mp4";
-const video2 = "/videos/b9d7097e4adf46bc9064aaf1f7151802.mov";
+const video1 = "/videos/academy-highlight-1.mp4";
+const video2 = "/videos/academy-highlight-2.mp4";
+const video3 = "/videos/academy-highlight-3.mp4";
 import {
   ACADEMY,
   COACHES,
@@ -205,7 +206,6 @@ function Marquee() {
     "Global Learning: Jofre Porta & Vishnu Vardhan",
     "Toddlers to Advanced & Performance Squads",
     "100% Player-Centred Development",
-    "We don't provide written skill assessment",
     "Major Dhyan Chand Sports Complex",
   ];
   return (
@@ -261,7 +261,7 @@ function CentresSpotlight() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <SectionHeading
           eyebrow="Delhi Infrastructure"
-          title="3 Premier Centres. 25 Courts."
+          title="3 Premier Centres 25 Courts"
           body="Train across all three major surfaces—Synthetic, Clay, and Grass—with certified coaching across North, West, and Central Delhi."
         />
         <CtaLink to="/centres" variant="ghost">
@@ -562,9 +562,9 @@ function PlayersSlideshow() {
 /* -------------------------------------------------------------------------- */
 function HighIntensityTraining() {
   const items = [
-    { src: video1, },
-    { src: video2, },
-    { src: "/videos/c0736a40636246c1937e92c55f6b970b.mov", },
+    { src: video1 },
+    { src: video2 },
+    { src: video3 },
   ];
   return (
     <Section>
