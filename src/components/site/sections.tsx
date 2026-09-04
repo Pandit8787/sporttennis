@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { ACADEMY, FAQS, TESTIMONIALS } from "@/lib/site-data";
 import { CtaLink } from "./layout";
 import { Reveal, TextReveal } from "./motion-primitives";
@@ -51,6 +51,7 @@ export function PageHero({
   title,
   body,
   image,
+  images,
   imagePos = "object-center",
   removeFog = false,
 }: {
@@ -58,45 +59,79 @@ export function PageHero({
   title?: string;
   body?: string;
   image?: string;
+  images?: string[];
   imagePos?: string;
   removeFog?: boolean;
 }) {
-  return (
-    <section className="relative overflow-hidden px-4 sm:px-6 flex flex-col justify-end min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] pb-14 sm:pb-20 lg:pb-24 pt-32">
-      {/* Base background */}
-      <div className="absolute inset-0 bg-background" />
+  const heroImages = images?.length ? images : image ? [image] : [];
+  const [activeImage, setActiveImage] = useState(0);
 
-      {image && (
+  useEffect(() => {
+    if (heroImages.length < 2) return;
+    const timer = window.setInterval(() => {
+      setActiveImage((current) => (current + 1) % heroImages.length);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, [heroImages.length]);
+
+  return (
+    <section className="relative overflow-hidden flex flex-col justify-end min-h-[60svh] sm:min-h-[70svh] lg:min-h-[85svh] pb-12 sm:pb-16 lg:pb-24 pt-32">
+      {/* Hero Images — object-cover like homepage — full banner fill, NO grey letterbox sides */}
+      {heroImages.length > 0 && (
         <>
-          <img
-            src={image}
-            alt=""
-            aria-hidden="true"
-            loading="eager"
-            className={`absolute inset-0 size-full object-cover ${imagePos} transition-transform duration-1000`}
-          />
-          {/* Refined gradient overlays */}
-          {!removeFog && (
-            <>
-              <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/70 to-background/25" />
-              <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-background/35" />
-            </>
+          {heroImages.map((heroImage, index) => (
+            <img
+              key={heroImage}
+              src={heroImage}
+              alt=""
+              aria-hidden="true"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+              className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-1000 ease-out`}
+              style={{ opacity: index === activeImage ? 1 : 0 }}
+              onError={(e) => {
+                const el = e.currentTarget as HTMLImageElement;
+                el.style.display = "none";
+              }}
+            />
+          ))}
+
+          {/* Gradient overlays — same clean pattern as homepage hero */}
+          {!removeFog ? (
+            <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.42)_40%,rgba(0,0,0,0.08)_100%)] pointer-events-none" />
+          ) : (
+            <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.35)_45%,rgba(0,0,0,0.12)_100%)] pointer-events-none" />
           )}
-          {removeFog && <div className="absolute inset-0 bg-black/40" />}
+          {/* Bottom-to-top gradient always for title legibility */}
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/78 via-black/28 to-transparent pointer-events-none" />
+
+          {heroImages.length > 1 && (
+            <div className="absolute bottom-6 inset-x-0 z-10 flex justify-center gap-2">
+              {heroImages.map((heroImage, index) => (
+                <button
+                  key={heroImage}
+                  type="button"
+                  aria-label={`Show banner image ${index + 1}`}
+                  onClick={() => setActiveImage(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === activeImage ? "w-8 bg-neon shadow-[0_0_12px_rgba(16,185,129,0.6)]" : "w-2 bg-white/55 hover:bg-white/85"}`}
+                />
+              ))}
+            </div>
+          )}
         </>
       )}
 
-      <div className="grid-lines absolute inset-0 opacity-20 pointer-events-none" />
+      <div className="grid-lines absolute inset-0 opacity-10 pointer-events-none" />
 
-      <div className="relative mx-auto w-full max-w-7xl">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {title && (
-          <h1 className="mt-4 max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-[0_10px_35px_rgba(0,0,0,0.8)] [text-shadow:0_2px_16px_rgba(0,0,0,0.8)] text-white leading-tight">
+          <h1 className="mt-4 max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-[0_10px_35px_rgba(0,0,0,0.85)] [text-shadow:0_4px_20px_rgba(0,0,0,0.85)] text-white leading-tight">
             <TextReveal text={title} />
           </h1>
         )}
         {body && (
           <Reveal delay={0.15}>
-            <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed text-white/95 lg:text-lg font-semibold drop-shadow-md">
+            <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed text-white/95 lg:text-lg font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
               {body}
             </p>
           </Reveal>
@@ -242,7 +277,7 @@ export function CtaBanner({
               Roshanara Club · Major Dhyan Chand Sports Complex · Punjabi Bagh Club
             </p>
             <p className="text-[11px] sm:text-xs text-muted-foreground font-medium">
-              * Note: We don’t provide written skill assessment at Major Dhyan Chand Sports Complex.
+
             </p>
           </div>
         </div>

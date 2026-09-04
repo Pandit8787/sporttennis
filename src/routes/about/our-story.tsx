@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal, Counter, TextReveal } from "@/components/site/motion-primitives";
 import { CtaLink } from "@/components/site/layout";
+import { useEffect, useRef, useState } from "react";
 import { ShuttleIcon } from "@/components/site/brand";
 import {
   Award,
@@ -22,12 +23,329 @@ import {
 } from "lucide-react";
 
 const heroImage = "/about/hero-story-img-8427.jpg";
+const heroImages = [
+  heroImage,
+  "/about/img-7316.jpg",
+  "/about/img-7572.jpg",
+  "/about/img-20250328-183848.jpg",
+];
 const communityGroupImage = "/about/img-3168.jpg";
 const roshanaraOpeningImage = "/about/opening-ceremony-roshanara.jpg";
 const diwaliCelebrationImage = "/about/img-0325.jpg";
-const coachingImage = "/founder-gallery/abhiney-at-jofre-porta-academy-1.jpg";
-const matchPlayImage = "/about/sunday-match-play.jpg";
-const facilitiesImage = "/centre-gallery/punjabi-bagh-club-gallery-1.jpg";
+
+const communitySlides = [
+  {
+    src: communityGroupImage,
+    alt: "Sports Life Tennis Academy community on court",
+  },
+  {
+    src: "/about/community-slider-img4739.jpg",
+    alt: "Sports Life community gathering",
+  },
+  {
+    src: "/about/community-slider-roshanara-opening.jpg",
+    alt: "Opening ceremony at Roshanara Club",
+  },
+];
+
+function CommunitySlider() {
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const goTo = (next: number) => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActive(next);
+      setAnimating(false);
+    }, 400);
+  };
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      goTo((active + 1) % communitySlides.length);
+    }, 3500);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [active]);
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-border shadow-2xl group bg-surface">
+      {/* Image viewport */}
+      <div className="aspect-[4/3] w-full overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(8,10,18,0.98)_60%,#000_100%)] relative">
+        {/* Ambient glow */}
+        <div className="pointer-events-none absolute inset-0 z-10 opacity-70 bg-[radial-gradient(circle_at_20%_30%,rgba(16,185,129,0.22),transparent_60%),radial-gradient(circle_at_85%_75%,rgba(56,189,248,0.22),transparent_55%)]" />
+        {communitySlides.map((slide, i) => (
+          <img
+            key={i}
+            src={slide.src}
+            alt={slide.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className="absolute inset-0 size-full object-contain object-center transition-opacity duration-600"
+            style={{ opacity: i === active ? 1 : 0, zIndex: i === active ? 1 : 0 }}
+          />
+        ))}
+        {/* Gradient overlay at bottom */}
+        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/60 via-black/25 to-transparent z-10 pointer-events-none" />
+        {/* Dot indicators */}
+        <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-20">
+          {communitySlides.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${i === active
+                ? "bg-neon w-5 h-2 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                : "bg-white/50 w-2 h-2 hover:bg-white/80"
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+      {/* Caption */}
+      <div className="bg-surface/90 backdrop-blur-md p-4 border-t border-border">
+        <p className="text-xs font-semibold text-neon tracking-wider uppercase"></p>
+        <p className="text-xs text-muted-foreground mt-0.5"></p>
+      </div>
+    </div>
+  );
+}
+
+const tennisForEveryoneSlides = [
+  {
+    src: "/about/tennis-for-everyone-img3399.jpg",
+    alt: "Sports Life players on court",
+  },
+  {
+    src: "/about/tennis-for-everyone-img20240924.jpg",
+    alt: "Sports Life community evening session",
+  },
+  {
+    src: "/about/tennis-for-everyone-img20240929.jpg",
+    alt: "Players training at Sports Life",
+  },
+  {
+    src: "/about/tennis-for-everyone-img20250419.jpg",
+    alt: "Sports Life academy session",
+  },
+];
+
+function TennisForEveryoneSlider() {
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const goTo = (next: number) => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActive(next);
+      setAnimating(false);
+    }, 400);
+  };
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      goTo((active + 1) % tennisForEveryoneSlides.length);
+    }, 3500);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [active]);
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-border shadow-xl bg-surface">
+      {/* Image viewport */}
+      <div className="aspect-[3/4] w-full overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(8,10,18,0.98)_60%,#000_100%)] relative">
+        <div className="pointer-events-none absolute inset-0 z-10 opacity-70 bg-[radial-gradient(circle_at_20%_30%,rgba(16,185,129,0.22),transparent_60%),radial-gradient(circle_at_85%_75%,rgba(56,189,248,0.22),transparent_55%)]" />
+        {tennisForEveryoneSlides.map((slide, i) => (
+          <img
+            key={i}
+            src={slide.src}
+            alt={slide.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className="absolute inset-0 size-full object-contain object-center transition-opacity duration-600"
+            style={{ opacity: i === active ? 1 : 0, zIndex: i === active ? 1 : 0 }}
+          />
+        ))}
+        {/* Gradient overlay */}
+        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/60 via-black/25 to-transparent z-10 pointer-events-none" />
+        {/* Dot indicators */}
+        <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-20">
+          {tennisForEveryoneSlides.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${i === active
+                ? "bg-neon w-5 h-2 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                : "bg-white/50 w-2 h-2 hover:bg-white/80"
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+      {/* Caption */}
+      <div className="bg-surface/90 backdrop-blur-md p-4 border-t border-border">
+        <p className="text-xs font-semibold text-neon tracking-wider uppercase"></p>
+        <p className="text-xs text-muted-foreground mt-0.5"></p>
+      </div>
+    </div>
+  );
+}
+
+const moreThanTennisSlides = [
+  {
+    src: "/about/more-than-tennis-img-ad2c.jpg",
+    alt: "Sports Life community celebration",
+  },
+  {
+    src: "/about/more-than-tennis-img-b104.jpg",
+    alt: "Sports Life family moments together",
+  },
+  {
+    src: "/about/more-than-tennis-img1930.jpg",
+    alt: "Sports Life academy community gathering",
+  },
+];
+
+function MoreThanTennisSlider() {
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const goTo = (next: number) => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActive(next);
+      setAnimating(false);
+    }, 400);
+  };
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      goTo((active + 1) % moreThanTennisSlides.length);
+    }, 3500);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [active]);
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-border shadow-2xl bg-surface">
+      {/* Image viewport */}
+      <div className="aspect-[3/4] w-full overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(8,10,18,0.98)_60%,#000_100%)] relative">
+        <div className="pointer-events-none absolute inset-0 z-10 opacity-70 bg-[radial-gradient(circle_at_20%_30%,rgba(56,189,248,0.22),transparent_60%),radial-gradient(circle_at_85%_75%,rgba(16,185,129,0.22),transparent_55%)]" />
+        {moreThanTennisSlides.map((slide, i) => (
+          <img
+            key={i}
+            src={slide.src}
+            alt={slide.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className="absolute inset-0 size-full object-contain object-center transition-opacity duration-600"
+            style={{ opacity: i === active ? 1 : 0, zIndex: i === active ? 1 : 0 }}
+          />
+        ))}
+        {/* Gradient overlay */}
+        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/60 via-black/25 to-transparent z-10 pointer-events-none" />
+        {/* Dot indicators */}
+        <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-20">
+          {moreThanTennisSlides.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${i === active
+                ? "bg-electric w-5 h-2 shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+                : "bg-white/50 w-2 h-2 hover:bg-white/80"
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+      {/* Caption */}
+      <div className="bg-surface/90 backdrop-blur-md p-4 border-t border-border">
+        <p className="text-xs font-semibold text-electric tracking-wider uppercase"></p>
+        <p className="text-xs text-muted-foreground mt-0.5"></p>
+      </div>
+    </div>
+  );
+}
+
+interface MiniCardSliderProps {
+  slides: { src: string; alt: string }[];
+  tag: string;
+  tagColor?: string;
+  description: string;
+}
+
+function MiniCardSlider({
+  slides,
+  tag,
+  tagColor = "text-neon",
+  description,
+}: MiniCardSliderProps) {
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const goTo = (next: number) => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActive(next);
+      setAnimating(false);
+    }, 400);
+  };
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      goTo((active + 1) % slides.length);
+    }, 3800);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [active, slides.length]);
+
+  const activeDotClass = tagColor === "text-electric" ? "bg-electric" : "bg-neon";
+
+  return (
+    <div className="overflow-hidden rounded-3xl border border-border shadow-lg group bg-surface flex flex-col hover:border-border/80 transition-all duration-300">
+      <div className="aspect-[3/4] w-full overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(8,10,18,0.98)_60%,#000_100%)] relative">
+        <div className="pointer-events-none absolute inset-0 z-10 opacity-70 bg-[radial-gradient(circle_at_20%_30%,rgba(16,185,129,0.22),transparent_60%),radial-gradient(circle_at_85%_75%,rgba(56,189,248,0.22),transparent_55%)]" />
+        {slides.map((slide, i) => (
+          <img
+            key={i}
+            src={slide.src}
+            alt={slide.alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 size-full object-contain object-center transition-opacity duration-700"
+            style={{ opacity: i === active ? 1 : 0, zIndex: i === active ? 1 : 0 }}
+          />
+        ))}
+        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/60 via-black/25 to-transparent z-10 pointer-events-none" />
+        <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-20">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${i === active
+                ? `${activeDotClass} w-5 h-2 shadow-[0_0_10px_rgba(16,185,129,0.5)]`
+                : "bg-white/50 w-2 h-2 hover:bg-white/80"
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="p-4 bg-surface mt-auto border-t border-border/50">
+        <p className={`text-xs font-bold uppercase tracking-wider ${tagColor}`}>{tag}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
+      </div>
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/about/our-story")({
   head: () => ({
@@ -121,6 +439,7 @@ function OurStoryAndWhyUsPage() {
         title="Our Story & Why Sports Life"
         body="One journey. Hundreds of stories. One family. Discover the journey that brought us here and why tennis at Sports Life is more than an hour on the court."
         image={heroImage}
+        images={heroImages}
         removeFog={true}
       />
 
@@ -131,7 +450,7 @@ function OurStoryAndWhyUsPage() {
         <SectionHeading
           eyebrow="Our Origins & Journey"
           title="Our Story"
-          body="How a humble beginning at Roshanara Club grew into a thriving Delhi-wide tennis family."
+          body=""
         />
 
         {/* Founding Philosophy Callout */}
@@ -163,21 +482,7 @@ function OurStoryAndWhyUsPage() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-3xl border border-border shadow-2xl group bg-surface">
-              <div className="aspect-[4/3] w-full overflow-hidden bg-muted/20">
-                <img
-                  src={communityGroupImage}
-                  alt="Sports Life Tennis Academy community on court"
-                  loading="lazy"
-                  decoding="async"
-                  className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="bg-surface/90 backdrop-blur-md p-4 border-t border-border">
-                <p className="text-xs font-semibold text-neon tracking-wider uppercase">Our Community in Action</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Growing together across 3 premier centres in Delhi</p>
-              </div>
-            </div>
+            <CommunitySlider />
           </div>
         </div>
 
@@ -185,10 +490,10 @@ function OurStoryAndWhyUsPage() {
         <Reveal delay={0.15}>
           <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
             {[
-              { label: "Centres in Delhi", value: 3, prefix: "", suffix: "", desc: "Roshanara · Dhyan Chand · Punjabi Bagh" },
-              { label: "Dedicated Coaches", value: 26, prefix: "", suffix: "+", desc: "Started with just 2 coaches" },
-              { label: "Active Monthly Players", value: 300, prefix: "", suffix: "+", desc: "Toddlers to adults in 60s" },
-              { label: "Multi-Surface Courts", value: 25, prefix: "", suffix: "", desc: "Synthetic, Clay & Grass" },
+              { label: "Centres in Delhi", value: 3, prefix: "", suffix: "", desc: "" },
+              { label: "Dedicated Coaches", value: 26, prefix: "", suffix: "+", desc: "" },
+              { label: "Active Monthly Players", value: 300, prefix: "", suffix: "+", desc: "" },
+              { label: "Multi-Surface Courts", value: 25, prefix: "", suffix: "", desc: "" },
             ].map((stat, i) => (
               <div
                 key={i}
@@ -233,21 +538,7 @@ function OurStoryAndWhyUsPage() {
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-3xl border border-border shadow-xl group bg-surface">
-              <div className="aspect-[3/4] w-full overflow-hidden bg-muted/20">
-                <img
-                  src={roshanaraOpeningImage}
-                  alt="Opening ceremony at Roshanara Club Tennis courts"
-                  loading="lazy"
-                  decoding="async"
-                  className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="bg-surface/90 backdrop-blur-md p-4 border-t border-border">
-                <p className="text-xs font-semibold text-neon tracking-wider uppercase">Est. 2024 · Roshanara Club</p>
-                <p className="text-xs text-muted-foreground mt-0.5">Inauguration ceremony where the Sports Life journey began</p>
-              </div>
-            </div>
+            <TennisForEveryoneSlider />
           </div>
 
           {/* More than Tennis: Community & Family */}
@@ -276,38 +567,55 @@ function OurStoryAndWhyUsPage() {
               </div>
 
               <div className="lg:col-span-5">
-                <div className="overflow-hidden rounded-3xl border border-border shadow-2xl group bg-surface">
-                  <div className="aspect-[3/4] w-full overflow-hidden bg-muted/20">
-                    <img
-                      src={diwaliCelebrationImage}
-                      alt="Diwali celebration on court at Sports Life Tennis Academy"
-                      loading="lazy"
-                      decoding="async"
-                      className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="bg-surface/90 backdrop-blur-md p-4 border-t border-border">
-                    <p className="text-xs font-semibold text-electric tracking-wider uppercase">Celebrations on Court · Diwali Night</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">Creating lifelong memories together beyond match scores</p>
-                  </div>
-                </div>
+                <MoreThanTennisSlider />
               </div>
             </div>
           </div>
 
           {/* Story Crest / Motto */}
-          <div className="rounded-3xl border border-neon/40 bg-gradient-to-r from-black via-surface to-black p-8 text-center shadow-2xl">
-            <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
-              This is Sports Life.
-            </p>
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-display text-sm sm:text-base lg:text-lg font-extrabold uppercase tracking-widest text-neon">
-              <span>One journey.</span>
-              <span className="text-white/40">·</span>
-              <span>Hundreds of stories.</span>
-              <span className="text-white/40">·</span>
-              <span>One family.</span>
+          <Reveal delay={0.1}>
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-neon/45 bg-black shadow-[0_25px_70px_-12px_rgba(16,185,129,0.35)] isolate">
+              {/* Hero background image */}
+              <img
+                src={heroImage}
+                alt="Sports Life Tennis Academy family"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 size-full object-cover object-center opacity-40"
+              />
+              {/* Cine overlay — vignette + heavy readability */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.75)_72%,rgba(0,0,0,0.96)_100%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(16,185,129,0.22)_0%,rgba(0,0,0,0)_40%,rgba(56,189,248,0.22)_100%)]" />
+              <div className="absolute -top-24 -left-24 size-72 rounded-full bg-neon/30 blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -right-24 size-80 rounded-full bg-electric/25 blur-3xl pointer-events-none" />
+              {/* Subtle grid lines */}
+              <div className="grid-lines absolute inset-0 opacity-15 pointer-events-none" />
+
+              {/* Content */}
+              <div className="relative z-10 px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-20 text-center">
+                {/* Top badge */}
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/8 border border-white/12 backdrop-blur-md px-4 py-1.5 mb-6 sm:mb-8">
+                  <ShuttleIcon className="size-4 text-neon" />
+                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.22em] text-white/85">
+                    The Sports Life Standard
+                  </span>
+                  <Sparkles className="size-3.5 text-neon" />
+                </div>
+
+                <p className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.05]" style={{ textShadow: "0 6px 28px rgba(0,0,0,0.75)" }}>
+                  This is Sports Life.
+                </p>
+                <div className="mx-auto mt-5 h-1 w-20 sm:w-28 rounded-full bg-gradient-to-r from-transparent via-neon to-transparent shadow-[0_0_20px_rgba(16,185,129,0.7)]" />
+                <div className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-display text-xs sm:text-sm md:text-base lg:text-xl font-extrabold uppercase tracking-[0.18em] sm:tracking-[0.22em]">
+                  <span className="text-neon drop-shadow-[0_2px_8px_rgba(16,185,129,0.55)]">One journey.</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
+                  <span className="text-neon drop-shadow-[0_2px_8px_rgba(16,185,129,0.55)]">Hundreds of stories.</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
+                  <span className="text-neon drop-shadow-[0_2px_8px_rgba(16,185,129,0.55)]">One family.</span>
+                </div>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </Section>
 
@@ -348,9 +656,8 @@ function OurStoryAndWhyUsPage() {
                   <div>
                     <div className="flex items-center justify-between gap-4 mb-5">
                       <div
-                        className={`flex size-12 items-center justify-center rounded-2xl ${
-                          isNeon ? "bg-neon/15 text-neon" : "bg-electric/15 text-electric"
-                        }`}
+                        className={`flex size-12 items-center justify-center rounded-2xl ${isNeon ? "bg-neon/15 text-neon" : "bg-electric/15 text-electric"
+                          }`}
                       >
                         <Icon className="size-6" />
                       </div>
@@ -380,111 +687,58 @@ function OurStoryAndWhyUsPage() {
 
         {/* Visual Showcase Gallery */}
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
-          <div className="overflow-hidden rounded-3xl border border-border shadow-lg group bg-surface flex flex-col">
-            <div className="aspect-[3/4] w-full overflow-hidden bg-muted/20">
-              <img
-                src={coachingImage}
-                alt="Coaching with purpose at Sports Life"
-                loading="lazy"
-                decoding="async"
-                className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-4 bg-surface mt-auto">
-              <p className="text-xs font-bold uppercase text-neon tracking-wider">Mentorship & Purpose</p>
-              <p className="text-xs text-muted-foreground mt-0.5">26+ coaches dedicated to individual player growth</p>
-            </div>
-          </div>
+          <MiniCardSlider
+            slides={[
+              {
+                src: "/about/why-img0281.jpg",
+                alt: "Sports Life tennis coaches and dedicated mentorship",
+              },
+              {
+                src: "/about/why-img2765.jpg",
+                alt: "Individual player coaching and development",
+              },
+            ]}
+            tag=""
+            tagColor="text-neon"
+            description=""
+          />
 
-          <div className="overflow-hidden rounded-3xl border border-border shadow-lg group bg-surface flex flex-col">
-            <div className="aspect-[3/4] w-full overflow-hidden bg-muted/20">
-              <img
-                src={matchPlayImage}
-                alt="Sunday match play at Sports Life"
-                loading="lazy"
-                decoding="async"
-                className="size-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-4 bg-surface mt-auto">
-              <p className="text-xs font-bold uppercase text-electric tracking-wider">Sunday Match Play</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Real match points, pressure, and decision-making</p>
-            </div>
-          </div>
+          <MiniCardSlider
+            slides={[
+              {
+                src: "/about/why-img8084.jpg",
+                alt: "Sunday match play real point competition",
+              },
+              {
+                src: "/about/why-img8260.jpg",
+                alt: "Pressure points and match decision-making",
+              },
+            ]}
+            tag=""
+            tagColor="text-electric"
+            description=""
+          />
 
-          <div className="overflow-hidden rounded-3xl border border-border shadow-lg group bg-surface flex flex-col">
-            <div className="aspect-[3/4] w-full overflow-hidden bg-muted/20">
-              <img
-                src={facilitiesImage}
-                alt="25 multi-surface courts across Delhi"
-                loading="lazy"
-                decoding="async"
-                className="size-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-4 bg-surface mt-auto">
-              <p className="text-xs font-bold uppercase text-neon tracking-wider">25 Multi-Surface Courts</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Synthetic, clay and grass courts across 3 centres</p>
-            </div>
-          </div>
+          <MiniCardSlider
+            slides={[
+              {
+                src: "/about/why-img20250717a.jpg",
+                alt: "Multi-surface synthetic, clay and grass courts",
+              },
+              {
+                src: "/about/why-img20250717b.jpg",
+                alt: "World-class court facilities across 3 centres in Delhi",
+              },
+            ]}
+            tag=""
+            tagColor="text-neon"
+            description=""
+          />
         </div>
       </Section>
 
-      {/* -------------------------------------------------------------------------- */}
-      {/*                   CONCLUSION & CALL TO ACTION BANNER                       */}
-      {/* -------------------------------------------------------------------------- */}
-      <Section className="py-16 sm:py-24">
-        <div className="relative overflow-hidden rounded-3xl border border-neon/30 bg-gradient-to-br from-surface via-black to-surface p-8 sm:p-12 lg:p-16 shadow-2xl">
-          <div className="absolute -top-32 -right-20 size-96 rounded-full bg-neon/15 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-40 -left-10 size-96 rounded-full bg-electric/15 blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full bg-neon/15 px-4 py-1 text-xs font-black uppercase tracking-widest text-neon">
-              <Sparkles className="size-4" />
-              <span>So, Why Sports Life?</span>
-            </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
-              Because we believe tennis can give a person much more than a better forehand.
-            </h2>
-
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 max-w-2xl mx-auto py-2">
-              {[
-                "It can teach discipline.",
-                "It can build confidence.",
-                "It can develop resilience.",
-                "It can create friendships.",
-                "It can open opportunities.",
-                "It becomes a lifelong part of you.",
-              ].map((value, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-white/10 bg-white/5 p-2.5 sm:p-3 text-center backdrop-blur-xs"
-                >
-                  <p className="text-xs sm:text-sm font-semibold text-white/90">{value}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
-              Whether you are 3.5 or 60+, picking up a racquet for the first time or preparing for the biggest tournament of your career, your journey matters to us.
-            </p>
-
-            <div className="pt-2">
-              <p className="font-display text-xl sm:text-2xl font-black text-neon tracking-wide">
-                From the first ball to the biggest dream. Sports Life is here for the journey.
-              </p>
-            </div>
-
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
-              <CtaLink to="/contact">Book Free Trial Session</CtaLink>
-              <CtaLink to="/programs" variant="ghost">
-                Explore Programs
-              </CtaLink>
-            </div>
-          </div>
-        </div>
-      </Section>
     </div>
   );
 }

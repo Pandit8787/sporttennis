@@ -58,7 +58,7 @@ function CentresPage() {
       courts: "6 Clay · 4 Synthetic Courts (10 Total)",
       summary:
         "Professional tennis coaching and competitive match-play in West Delhi. Features 6 clay and 4 synthetic courts with vibrant junior, adult, and Sunday Match Play sessions.",
-      image: "/centre-gallery/img_8064.jpg",
+      image: "/centre-gallery/punjabi-bagh-img4616.jpg",
       tag: "West Delhi Centre",
     },
   ];

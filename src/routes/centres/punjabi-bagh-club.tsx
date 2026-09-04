@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 
-const heroImage = "/centre-gallery/img_8064.jpg";
+const heroImage = "/centre-gallery/punjabi-bagh-img4616.jpg";
 const galleryImages = [
+  "/centre-gallery/punjabi-bagh-img4616.jpg",
   "/centre-gallery/img_8064.jpg",
   "/centre-gallery/whatsapp-20260813-171911.jpg",
   "/centre-gallery/whatsapp-20260813-171912-1.jpg",

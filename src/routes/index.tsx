@@ -251,7 +251,7 @@ function CentresSpotlight() {
       slug: "punjabi-bagh-club",
       area: "West Delhi · Ring Road",
       courts: "10 Courts (6 Clay · 4 Synthetic)",
-      image: "/centre-gallery/whatsapp-20260813-171911.jpg",
+      image: "/centre-gallery/punjabi-bagh-img4616.jpg",
       summary: "Premier West Delhi tennis destination featuring 6 clay and 4 synthetic courts with active junior, adult and Sunday match play batches.",
     },
   ] as const;
