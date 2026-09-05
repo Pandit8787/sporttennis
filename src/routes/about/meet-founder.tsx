@@ -96,6 +96,7 @@ interface StorySlide {
   category?: string;
   year?: string;
   desc?: string;
+  position?: string;
 }
 
 const competitiveEraSlides: StorySlide[] = [
@@ -104,28 +105,32 @@ const competitiveEraSlides: StorySlide[] = [
     title: "CS-7 Tournament Winner",
     year: "2016",
     category: "AITA Championship Series",
-    desc: "Champion trophy and merit certificate at the AITA Championship Series (CS-7) tournament.",
+    desc: "",
+    position: "object-top",
   },
   {
     src: "/founder-gallery/inter-college-winner.jpg",
     title: "Inter-College Champion",
     year: "2017–18",
     category: "Delhi University",
-    desc: "Secured First Position in Delhi University Inter-College Tennis Championship, awarded certificate of appreciation.",
+    desc: ".",
+    position: "object-top",
   },
   {
     src: "/founder-gallery/vilas-tennis-academy-mallorca.jpg",
     title: "Vilas Tennis Academy",
     year: "2016",
     category: "Mallorca, Spain",
-    desc: "International training stint at Vilas Tennis Academy in Mallorca, Spain alongside European coaches and international players.",
+    desc: "",
+    position: "object-center",
   },
   {
     src: "/founder-gallery/tournament-winner-2019.jpg",
     title: "Aahvaan Champion",
     year: "2019–20",
     category: "Men's Lawn Tennis 1st Position",
-    desc: "Secured First Position at the Aahvaan Lawn Tennis Championship, DTU — winner's trophy and certificate.",
+    desc: "",
+    position: "object-top",
   },
 ];
 
@@ -133,30 +138,34 @@ const spainStintSlides: StorySlide[] = [
   {
     src: "/founder-gallery/jofre-porta-academy-group.jpg",
     title: "Global Tennis Team — Jofre Porta Academy",
-    year: "2023",
+    year: "",
     category: "Mallorca, Spain",
-    desc: "International coaching team and high-performance academy players at Jofre Porta's Global Tennis Team in Mallorca.",
+    desc: "",
+    position: "object-center",
   },
   {
     src: "/founder-gallery/abhiney-with-karen-khachanov-atp.jpg",
     title: "With Karen Khachanov (Former ATP World No. 8)",
-    year: "Spain Tour",
+    year: "",
     category: "ATP Pro Circuit Exposure",
-    desc: "Exchanging insights with Olympic silver medallist and Grand Slam semi-finalist Karen Khachanov during European high-performance training.",
+    desc: "",
+    position: "object-top",
   },
   {
     src: "/founder-gallery/spain-training-dsc1528.jpg",
     title: "High-Performance Technical Coaching",
-    year: "2023",
+    year: "",
     category: "European Methods",
-    desc: "On-court player development, modern biomechanics, and technical drill execution in European clay court systems.",
+    desc: "",
+    position: "object-center",
   },
   {
     src: "/founder-gallery/spain-stint-img20230401.jpg",
     title: "Junior Champions & Mentorship",
-    year: "2023",
+    year: "",
     category: "European Youth Circuit",
-    desc: "Guiding and celebrating tournament milestones with junior athletes during competitive European training cycles.",
+    desc: "",
+    position: "object-top",
   },
 ];
 
@@ -165,15 +174,17 @@ const nationalSystemSlides: StorySlide[] = [
     src: "/founder-gallery/working-with-sai.jpg",
     title: "Working With Sports Authority of India",
     year: "SAI / Khelo India",
-    category: "National Tennis System",
-    desc: "Collaborating with SAI coaches and national administrators during player development and talent assessment initiatives.",
+    category: "National System",
+    desc: "",
+    position: "object-top",
   },
   {
     src: "/founder-gallery/khelo-india-sai-img20240202.jpg",
-    title: "Khelo India Talent Identification Scheme",
+    title: "Working with Sports Authority of India-Khelo India",
     year: "2024",
     category: "Induction Protocol",
-    desc: "Contributing to the formulation of national induction protocol and assessment criteria for junior tennis players entering Khelo India.",
+    desc: "",
+    position: "object-top",
   },
 ];
 
@@ -181,16 +192,18 @@ const foundingPurposeSlides: StorySlide[] = [
   {
     src: "/founder-gallery/founding-purpose-img7701.jpg",
     title: "Roshanara Club Tennis Courts",
-    year: "Established 2024",
-    category: "The Foundation Grounds",
-    desc: "Historic clay courts at DDA Roshanara Club, Delhi — where Sports Life Tennis Academy welcomed its first cohort of dedicated learners.",
+    year: "",
+    category: "",
+    desc: "",
+    position: "object-center",
   },
   {
     src: "/founder-gallery/founding-purpose-img8427.jpg",
     title: "Academy Court Atmosphere & High Standards",
-    year: "2024",
+    year: "",
     category: "Academy Training Facility",
-    desc: "Creating professional tennis training environments equipped for year-round grassroots and competitive player development.",
+    desc: "",
+    position: "object-center",
   },
 ];
 
@@ -198,16 +211,18 @@ const philosophySlides: StorySlide[] = [
   {
     src: "/founder-gallery/philosophy-img20240929.jpg",
     title: "Player-First Mentorship on Court",
-    year: "2024",
+    year: "",
     category: "Sports Life Philosophy",
-    desc: "Abhiney Kumar actively mentoring athletes on court, tailoring individual development pathways to nurture the complete tennis player.",
+    desc: "",
+    position: "object-[center_25%]",
   },
   {
     src: "/founder-gallery/philosophy-img4272.jpg",
-    title: "Technical Guidance & Athlete Care",
-    year: "Sports Life",
-    category: "Individual Pathway",
-    desc: "Structured developmental drills and attentive mentoring ensuring players develop sound fundamentals, confidence, and discipline.",
+    title: "",
+    year: "",
+    category: "",
+    desc: "",
+    position: "object-center",
   },
 ];
 
@@ -215,7 +230,7 @@ function ChapterImageSlider({
   slides,
   interval = 5000,
   className = "",
-  viewportHeightClass = "h-[340px] sm:h-[400px] lg:h-[450px]",
+  viewportHeightClass = "h-[380px] sm:h-[450px] lg:h-[500px]",
 }: {
   slides: StorySlide[];
   interval?: number;
@@ -224,6 +239,7 @@ function ChapterImageSlider({
 }) {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const prev = () => {
     setActive((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
@@ -234,134 +250,245 @@ function ChapterImageSlider({
   };
 
   useEffect(() => {
-    if (isPaused || slides.length <= 1) return;
+    if (isPaused || lightboxOpen || slides.length <= 1) return;
     const timer = setInterval(() => {
       setActive((curr) => (curr + 1) % slides.length);
     }, interval);
     return () => clearInterval(timer);
-  }, [isPaused, slides.length, interval, active]);
+  }, [isPaused, lightboxOpen, slides.length, interval, active]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, slides.length]);
 
   const currentSlide = slides[active] ?? slides[0]!;
 
   return (
-    <div
-      className={`overflow-hidden rounded-2xl border border-border/80 bg-surface-2/40 shadow-xl transition-all duration-300 hover:border-neon/40 ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      {/* Slider Viewport */}
-      <div className={`relative ${viewportHeightClass} w-full overflow-hidden bg-[radial-gradient(ellipse_at_center,rgba(15,23,42,0.96)_0%,rgba(8,10,18,0.98)_60%,#000_100%)]`}>
-        {/* Ambient blurred backdrop of current image */}
-        {slides.map((slide, i) => (
-          <img
-            key={i}
-            src={slide.src}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 size-full object-cover blur-2xl opacity-20 scale-110 transition-opacity duration-700 pointer-events-none"
-            style={{ opacity: i === active ? 0.25 : 0 }}
-          />
-        ))}
-
-        {/* Ambient radial glow */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(16,185,129,0.14),transparent_70%)] z-5" />
-
-        {/* Sharp uncropped images */}
-        {slides.map((slide, i) => (
-          <div
-            key={i}
-            className="absolute inset-0 size-full flex items-center justify-center p-3 sm:p-5 transition-opacity duration-700"
-            style={{
-              opacity: i === active ? 1 : 0,
-              zIndex: i === active ? 10 : 0,
-              pointerEvents: i === active ? "auto" : "none",
-            }}
-          >
+    <>
+      <div
+        className={`overflow-hidden rounded-2xl border border-border/80 bg-surface-2/40 shadow-xl transition-all duration-300 hover:border-neon/40 ${className}`}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Slider Viewport - Ambient Photo Canvas (Zero black bars + 100% full uncropped images) */}
+        <div className={`relative ${viewportHeightClass} w-full overflow-hidden bg-surface-2 group/slider`}>
+          {/* Dynamic Ambient Blurred Backdrop: Fills entire box with vivid image colors, eliminating black sidebars */}
+          {slides.map((slide, i) => (
             <img
+              key={`bg-${i}`}
               src={slide.src}
-              alt={slide.title}
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
-              className="max-h-full max-w-full object-contain rounded-xl shadow-2xl drop-shadow-[0_12px_30px_rgba(0,0,0,0.85)]"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 size-full object-cover scale-125 pointer-events-none transition-opacity duration-700 ease-in-out"
+              style={{
+                opacity: i === active ? 0.75 : 0,
+                filter: "blur(32px) saturate(1.45) brightness(0.82)",
+              }}
             />
+          ))}
+
+          {/* Subtle soft tint over ambient backdrop for depth and elegance */}
+          <div className="pointer-events-none absolute inset-0 bg-black/20 backdrop-blur-xs" />
+
+          {/* Foreground Sharp Uncropped Image: 100% complete photo, never cropped or cut off */}
+          {slides.map((slide, i) => (
+            <div
+              key={`fg-${i}`}
+              className="absolute inset-0 size-full flex items-center justify-center p-2.5 sm:p-4 transition-opacity duration-700 ease-in-out cursor-pointer z-10"
+              onClick={() => setLightboxOpen(true)}
+              style={{
+                opacity: i === active ? 1 : 0,
+                zIndex: i === active ? 10 : 0,
+                pointerEvents: i === active ? "auto" : "none",
+              }}
+            >
+              <img
+                src={slide.src}
+                alt={slide.title}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                className="max-h-full max-w-full object-contain rounded-xl shadow-2xl drop-shadow-[0_16px_36px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover/slider:scale-[1.01]"
+              />
+            </div>
+          ))}
+
+          {/* Soft gradient vignette for clean contrast with buttons */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/25 z-15" />
+
+          {/* Zoom / Fullscreen Button */}
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(true)}
+            aria-label="View full image"
+            title="Click to view full photo"
+            className="absolute top-3 left-3 z-20 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 hover:bg-neon hover:text-black hover:border-neon transition-all duration-200 shadow-md cursor-pointer"
+          >
+            <Maximize2 className="size-3.5 sm:size-4" />
+          </button>
+
+          {/* Navigation Arrows (for multi-image sliders) */}
+          {slides.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prev();
+                }}
+                aria-label="Previous image"
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex size-9 sm:size-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 hover:bg-neon hover:text-black hover:border-neon transition-all duration-200 shadow-xl cursor-pointer"
+              >
+                <ChevronLeft className="size-4 sm:size-5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  next();
+                }}
+                aria-label="Next image"
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex size-9 sm:size-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/20 hover:bg-neon hover:text-black hover:border-neon transition-all duration-200 shadow-xl cursor-pointer"
+              >
+                <ChevronRight className="size-4 sm:size-5" />
+              </button>
+            </>
+          )}
+
+          {/* Counter Badge */}
+          <div className="absolute top-3 right-3 z-20 rounded-full bg-black/75 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white/90 border border-white/20 shadow-md">
+            {slides.length > 1 ? `${active + 1} / ${slides.length}` : "Photo Archive"}
           </div>
-        ))}
-
-        {/* Navigation Arrows (for multi-image sliders) */}
-        {slides.length > 1 && (
-          <>
-            <button
-              type="button"
-              onClick={prev}
-              aria-label="Previous image"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex size-9 sm:size-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/15 hover:bg-neon hover:text-black hover:border-neon transition-all duration-200 shadow-xl cursor-pointer"
-            >
-              <ChevronLeft className="size-4 sm:size-5" />
-            </button>
-
-            <button
-              type="button"
-              onClick={next}
-              aria-label="Next image"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex size-9 sm:size-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-md border border-white/15 hover:bg-neon hover:text-black hover:border-neon transition-all duration-200 shadow-xl cursor-pointer"
-            >
-              <ChevronRight className="size-4 sm:size-5" />
-            </button>
-          </>
-        )}
-
-        {/* Counter Badge */}
-        <div className="absolute top-3 right-3 z-20 rounded-full bg-black/75 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white/90 border border-white/15 shadow-md">
-          {slides.length > 1 ? `${active + 1} / ${slides.length}` : "Photo Archive"}
         </div>
-      </div>
 
-      {/* Caption & Indicator Bar */}
-      <div className="border-t border-border/80 bg-surface/95 backdrop-blur-md p-4 sm:p-5">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              {currentSlide.category && (
-                <span className="text-xs font-bold uppercase tracking-wider text-neon">
-                  {currentSlide.category}
-                </span>
-              )}
-              {currentSlide.year && (
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-white/5 border border-border text-muted-foreground">
-                  {currentSlide.year}
-                </span>
+        {/* Caption & Indicator Bar */}
+        <div className="border-t border-border/80 bg-surface/95 backdrop-blur-md p-4 sm:p-5">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                {currentSlide.category && (
+                  <span className="text-xs font-bold uppercase tracking-wider text-neon">
+                    {currentSlide.category}
+                  </span>
+                )}
+                {currentSlide.year && (
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-white/5 border border-border text-muted-foreground">
+                    {currentSlide.year}
+                  </span>
+                )}
+              </div>
+              <h4 className="text-base font-bold text-foreground leading-snug">
+                {currentSlide.title}
+              </h4>
+              {currentSlide.desc && (
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {currentSlide.desc}
+                </p>
               )}
             </div>
-            <h4 className="text-base font-bold text-foreground leading-snug">
-              {currentSlide.title}
-            </h4>
-            {currentSlide.desc && (
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                {currentSlide.desc}
-              </p>
+
+            {/* Dot Indicators (for multi-image sliders) */}
+            {slides.length > 1 && (
+              <div className="flex items-center gap-1.5 self-center sm:self-auto shrink-0 pt-1 sm:pt-0">
+                {slides.map((slide, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    aria-label={`Go to slide ${i + 1}: ${slide.title}`}
+                    onClick={() => setActive(i)}
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${i === active
+                      ? "h-2 w-7 bg-neon shadow-[0_0_12px_rgba(16,185,129,0.6)]"
+                      : "h-2 w-2 bg-white/30 hover:bg-white/60"
+                      }`}
+                  />
+                ))}
+              </div>
             )}
           </div>
-
-          {/* Dot Indicators (for multi-image sliders) */}
-          {slides.length > 1 && (
-            <div className="flex items-center gap-1.5 self-center sm:self-auto shrink-0 pt-1 sm:pt-0">
-              {slides.map((slide, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  aria-label={`Go to slide ${i + 1}: ${slide.title}`}
-                  onClick={() => setActive(i)}
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${i === active
-                    ? "h-2 w-7 bg-neon shadow-[0_0_12px_rgba(16,185,129,0.6)]"
-                    : "h-2 w-2 bg-white/30 hover:bg-white/60"
-                    }`}
-                />
-              ))}
-            </div>
-          )}
         </div>
       </div>
-    </div>
+
+      {/* Lightbox Modal for Full View */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <div
+            className="relative max-w-4xl w-full flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setLightboxOpen(false)}
+              className="absolute -top-12 right-0 flex size-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
+              aria-label="Close preview"
+            >
+              <X className="size-5" />
+            </button>
+
+            {/* Navigation Arrows */}
+            {slides.length > 1 && (
+              <>
+                <button
+                  onClick={prev}
+                  className="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 z-10 flex size-11 items-center justify-center rounded-full bg-black/70 text-white border border-white/20 hover:bg-neon hover:text-black transition-all cursor-pointer shadow-xl"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="size-6" />
+                </button>
+                <button
+                  onClick={next}
+                  className="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 z-10 flex size-11 items-center justify-center rounded-full bg-black/70 text-white border border-white/20 hover:bg-neon hover:text-black transition-all cursor-pointer shadow-xl"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="size-6" />
+                </button>
+              </>
+            )}
+
+            {/* Full Image Box */}
+            <div className="max-h-[75vh] max-w-full overflow-hidden rounded-2xl border border-white/15 bg-black/80 shadow-2xl flex items-center justify-center">
+              <img
+                src={currentSlide.src}
+                alt={currentSlide.title}
+                className="max-h-[75vh] w-auto max-w-full object-contain rounded-xl"
+              />
+            </div>
+
+            {/* Caption */}
+            <div className="mt-4 text-center max-w-lg px-4">
+              {currentSlide.category && (
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-neon/15 px-3 py-1 text-xs font-semibold text-neon border border-neon/30 mb-2">
+                  <span>{currentSlide.category}</span>
+                  {currentSlide.year && <span>• {currentSlide.year}</span>}
+                </div>
+              )}
+              <h3 className="text-lg sm:text-xl font-bold text-white">
+                {currentSlide.title}
+              </h3>
+              {currentSlide.desc && (
+                <p className="mt-1.5 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                  {currentSlide.desc}
+                </p>
+              )}
+              {slides.length > 1 && (
+                <p className="text-[11px] text-zinc-400 mt-2 font-medium">
+                  {active + 1} of {slides.length} • Use ← → keys to navigate
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -415,9 +542,7 @@ function MeetFounderPage() {
     <>
       {/* Hero */}
       <PageHero
-        eyebrow="Founder & Head Coach"
-        title="Abhiney Kumar"
-        body="From a childhood passion for tennis to building a player-first academy focused on long-term athlete development across Delhi."
+        title=""
         image={heroImage}
         removeFog
       />
@@ -430,7 +555,7 @@ function MeetFounderPage() {
               <div className="relative mx-auto max-w-md overflow-hidden rounded-3xl border border-border bg-surface p-3 shadow-xl">
                 <img
                   src={headshotImage}
-                  alt="Abhiney Kumar — Founder & Head Coach, Sports Life Tennis Academy"
+                  alt="Abhiney Kumar — Founder , Sports Life Tennis Academy"
                   className="aspect-4/5 w-full rounded-2xl object-cover object-top"
                 />
                 <div className="mt-4 rounded-xl bg-linear-to-r from-neon/15 via-electric/10 to-transparent p-4">
@@ -495,7 +620,7 @@ function MeetFounderPage() {
               <div className="space-y-4 lg:col-span-7">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                    Chapter 01 · The Beginning
+
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -517,34 +642,29 @@ function MeetFounderPage() {
                 <div className="pt-2">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface-2 border border-border text-xs text-muted-foreground">
                     <Sparkles className="size-3.5 text-neon" />
-                    <span>Age 4 · Unexpected rejection turned lifelong calling</span>
+                    <span></span>
                   </div>
                 </div>
               </div>
 
               <div className="lg:col-span-5">
                 <div className="group relative overflow-hidden rounded-2xl border border-border/80 bg-surface-2/60 p-3 shadow-xl transition-all duration-300 hover:border-neon/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]">
-                  <div className="relative h-[320px] sm:h-[380px] w-full overflow-hidden rounded-xl bg-black/60 flex items-center justify-center p-2">
-                    <img
-                      src={startingPhoto}
-                      alt=""
-                      aria-hidden="true"
-                      className="absolute inset-0 size-full object-cover blur-2xl opacity-20 scale-110 pointer-events-none"
-                    />
+                  <div className="relative h-[320px] sm:h-[380px] w-full overflow-hidden rounded-xl bg-surface-2">
                     <img
                       src={startingPhoto}
                       alt="Young Abhiney Kumar playing tennis on clay court - where the journey began"
-                      className="relative max-h-full max-w-full object-contain rounded-lg shadow-2xl drop-shadow-[0_8px_24px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   </div>
                   <div className="pt-3.5 px-1 flex items-center justify-between gap-2 border-t border-border/60 mt-2">
                     <div>
                       <p className="text-xs font-bold text-foreground">The First Serve</p>
-                      <p className="text-[11px] text-muted-foreground">Early Childhood Years · Clay Court Discovery</p>
+                      <p className="text-[11px] text-muted-foreground"></p>
                     </div>
                     <span className="text-[10px] font-semibold text-neon uppercase tracking-wider bg-neon/10 px-2 py-0.5 rounded-full border border-neon/20">
-                      Archive
+
                     </span>
                   </div>
                 </div>
@@ -558,7 +678,7 @@ function MeetFounderPage() {
               <div className="space-y-4 lg:col-span-5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                    Chapter 02 · Competitive Era
+
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -581,13 +701,13 @@ function MeetFounderPage() {
                 </p>
                 <div className="pt-2 flex flex-wrap gap-2 text-xs">
                   <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <Trophy className="size-3.5 text-neon" /> AITA Winner
+
                   </span>
                   <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <Medal className="size-3.5 text-neon" /> DU Champion
+
                   </span>
                   <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <Globe2 className="size-3.5 text-neon" /> Vilas Academy Spain
+
                   </span>
                 </div>
               </div>
@@ -604,7 +724,7 @@ function MeetFounderPage() {
             <div className="relative space-y-4 max-w-3xl">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                  Chapter 03 · Resilience & Family
+
                 </span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -639,7 +759,7 @@ function MeetFounderPage() {
               <div className="order-1 lg:order-2 space-y-4 lg:col-span-5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                    Chapter 04 · Spain Stints
+
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -661,13 +781,13 @@ function MeetFounderPage() {
                 </p>
                 <div className="pt-2 flex flex-wrap gap-2 text-xs">
                   <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <Globe2 className="size-3.5 text-neon" /> Jofre Porta Academy
+
                   </span>
                   <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <ShieldCheck className="size-3.5 text-neon" /> J.C. Ferrero Equelite
+
                   </span>
                   <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <Users className="size-3.5 text-neon" /> ATP Pro Circuit
+
                   </span>
                 </div>
               </div>
@@ -680,7 +800,7 @@ function MeetFounderPage() {
               <div className="space-y-4 lg:col-span-5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                    Chapter 05 · National System
+
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -698,12 +818,12 @@ function MeetFounderPage() {
                 </p>
                 <div className="pt-2">
                   <div className="p-3.5 rounded-xl bg-surface-2/80 border border-border/80 space-y-1">
-                    <p className="text-xs font-bold text-neon flex items-center gap-1.5">
-                      <Award className="size-3.5" /> Institutional Contribution
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      Formulating the national talent scouting and induction framework for upcoming junior tennis champions under Khelo India.
-                    </p>
+
+
+
+
+
+
                   </div>
                 </div>
               </div>
@@ -724,7 +844,7 @@ function MeetFounderPage() {
               <div className="order-1 lg:order-2 space-y-4 lg:col-span-5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                    Chapter 06 · Founding Purpose
+
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -740,21 +860,9 @@ function MeetFounderPage() {
                   Chand Sports Complex, and Punjabi Bagh Club.
                 </p>
                 <div className="rounded-xl border border-neon/30 bg-neon/10 p-4">
-                  <p className="text-base font-bold text-foreground">
-                    “Growth is not the purpose by itself. Player development is.”
-                  </p>
+
                 </div>
-                <div className="pt-2 flex flex-wrap gap-2 text-xs">
-                  <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium">
-                    300+ Monthly Athletes
-                  </span>
-                  <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium">
-                    3 Premier Delhi Hubs
-                  </span>
-                  <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium">
-                    Player-First Culture
-                  </span>
-                </div>
+
               </div>
             </div>
           </div>
@@ -765,7 +873,7 @@ function MeetFounderPage() {
               <div className="space-y-4 lg:col-span-5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-neon bg-neon/10 px-3 py-1 rounded-full border border-neon/20">
-                    Chapter 07 · Core Philosophy
+
                   </span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
@@ -784,14 +892,7 @@ function MeetFounderPage() {
                   The pathway is different for everyone. Our responsibility is to understand that journey
                   and help build the right pathway. That is what player-first development means to me.
                 </p>
-                <div className="pt-2 flex flex-wrap gap-2 text-xs">
-                  <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <CheckCircle2 className="size-3.5 text-neon" /> Personalized Goals
-                  </span>
-                  <span className="px-3 py-1 rounded-lg bg-surface-2 border border-border text-foreground font-medium flex items-center gap-1.5">
-                    <CheckCircle2 className="size-3.5 text-neon" /> Complete Athlete Care
-                  </span>
-                </div>
+
               </div>
 
               <div className="lg:col-span-7">

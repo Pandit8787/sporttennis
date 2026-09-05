@@ -161,7 +161,7 @@ function CoachDetailPage() {
             {/* Right Col: Header Intro & Tagline */}
             <div className="lg:col-span-7 space-y-6">
               <Reveal delay={0.1}>
-                <span className="eyebrow">{coach.badge}</span>
+                {coach.badge && <span className="eyebrow">{coach.badge}</span>}
                 <h1 className="mt-3 text-4xl sm:text-5xl font-black tracking-tight text-foreground">
                   {coach.name}
                 </h1>

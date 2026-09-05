@@ -107,7 +107,7 @@ export const COACH_PROFILES: Record<string, CoachProfile> = {
     initials: "MS",
     image: "/mukul-singh.jpg",
     tagline: "Developing High-Performance Players Through Experience, Discipline & Excellence",
-    badge: "5x AITA National Winner · Head Coach",
+    badge: "",
     experience: "National & University Level Champion · Elite Coach",
     certifications: "High-Performance Player Development Specialist",
     intro: [

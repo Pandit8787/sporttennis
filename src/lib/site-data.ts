@@ -208,26 +208,7 @@ export const COACHES = [
     bio: "Samriti Punyani is an accomplished tennis player and coach with over 14 years of experience in the sport. Having represented India at state, national, and international levels, she is passionate about developing players through structured coaching, personalized guidance, and a strong focus on long-term athlete development.",
     image: "/samriti-punyani.jpg",
   },
-  {
-    name: "Sachin",
-    role: "Coach",
-    initials: "S",
-    experience: "Junior Coaching Expert",
-    cert: "ITF Level 1 · AITA Certified",
-    achievements: ["U-12 Player Development", "Toddler Tennis Specialist"],
-    bio: "Newly joined senior youth coach specializing in U-10 and U-12 foundational programs.",
-    image: "/coaches/rohit.jpg",
-  },
-  {
-    name: "Ankit",
-    role: "Coach",
-    initials: "A",
-    experience: "Adult & Match Play",
-    cert: "PTR Certified · AITA Level 2",
-    achievements: ["Adult Tennis Coaching", "Sunday Match Play League"],
-    bio: "Recently hired specialist coach for adults, corporate sessions, and Sunday Match Play organization.",
-    image: "/coaches/mohit.jpg",
-  },
+
   {
     name: "Rahul",
     role: "Coach",

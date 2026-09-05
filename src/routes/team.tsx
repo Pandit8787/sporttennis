@@ -1,4 +1,5 @@
 import { Link, createFileRoute, Outlet, useLocation } from "@tanstack/react-router";
+import { useState, useEffect, useCallback } from "react";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { COACHES } from "@/lib/site-data";
 import { Reveal } from "@/components/site/motion-primitives";
@@ -50,15 +51,15 @@ function TeamPage() {
   const leadershipTeam = [
     {
       name: "Abhiney Kumar",
-      role: "Founder & Head Coach",
+      role: "Founder",
       tagline: "International Coach & Player Development Specialist",
       to: "/about/meet-founder" as const,
       image: "/abhiney-kumar-headshot.jpg",
       initials: "AK",
-      badge: "Founder & Head Coach",
+      badge: "Founder",
       badgeColor: "bg-neon/15 text-neon border-neon/30",
       experience: "20+ Years Experience · Spain Exposure",
-      tags: ["Diploma JC Ferrero (Spain)", "NIS & PTR Certified", "Khelo India SAI Protocol"],
+
       bio: "International Tennis Coach and founder of Sports Life Tennis Academy. With 20+ years in competitive tennis and coaching stints across elite academies in Spain (Jofre Porta, Ferrero Academy), he drives structured systems for Indian tennis.",
     },
     {
@@ -70,8 +71,8 @@ function TeamPage() {
       initials: "RS",
       badge: "Head Coach",
       badgeColor: "bg-electric/15 text-electric border-electric/30",
-      experience: "12+ Years Competitive & Coaching",
-      tags: ["Former AITA Top 35", "Mentored AIR 8 & AIR 13", "Tournament Strategy"],
+      experience: "20+ Years Competitive & Coaching",
+
       bio: "Former AITA Men's Top 35 player and high-performance coach. Specialized in technical stroke correction, tactical match planning, and mentoring junior athletes to top national rankings.",
     },
     {
@@ -84,8 +85,8 @@ function TeamPage() {
       badge: "Head Coach",
       badgeColor: "bg-amber-500/15 text-amber-400 border-amber-500/30",
       experience: "National & DU Champion · Elite Coach",
-      tags: ["5x AITA National Winner", "Top-20 Player Mentor", "Agility Specialist"],
-      bio: "Accomplished national player and coach with 5 AITA titles. Known for energetic, disciplined training, biomechanical precision, and helping athletes develop composure under competitive pressure.",
+
+      bio: "Accomplished national player, known for energetic, disciplined training..",
     },
     {
       name: "Samriti Punyani",
@@ -97,7 +98,7 @@ function TeamPage() {
       badge: "Head Coach",
       badgeColor: "bg-pink-500/15 text-pink-400 border-pink-500/30",
       experience: "14+ Years Competitive & Sports Education",
-      tags: ["NIS Qualified · M.P.Ed.", "All India Inter-Uni Gold", "LTAD Framework"],
+
       bio: "Former All India Rank 21 and double Inter-University Gold Medalist. Brings a scientific physical education approach, long-term athlete development (LTAD), and inspiring leadership in women's tennis.",
     },
   ];
@@ -135,48 +136,8 @@ function TeamPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <div className="relative overflow-hidden min-h-[450px] md:min-h-[550px] lg:min-h-[650px] flex flex-col justify-end pt-28 pb-16 lg:pt-36 lg:pb-24 border-b border-border/80">
-        <div className="absolute inset-0 z-0">
-          <img src="/team-bg-1.webp" alt="Coaching Team Background" className="w-full h-full object-cover object-[center_30%]" />
-        </div>
-        <div className="grid-lines absolute inset-0 opacity-10 pointer-events-none z-0" />
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 mt-auto">
-          <div className="mx-auto max-w-4xl text-center">
-
-            {/* Stats Highlight Bar */}
-            <Reveal delay={0.15}>
-              <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 max-w-3xl mx-auto">
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-neon">4</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Head Coaches
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-electric">26+</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Coaches
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-foreground">25</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Delhi Courts
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border/80 bg-surface/90 p-4 backdrop-blur-md">
-                  <p className="font-display text-2xl sm:text-3xl font-black text-neon">100%</p>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mt-0.5">
-                    Player-First
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </div>
+      {/* Hero Section — Image Slider */}
+      <TeamHeroBanner />
 
       {/* Leadership Team (4 Head Coach Cards) */}
       <Section>
@@ -225,17 +186,7 @@ function TeamPage() {
                       {coach.bio}
                     </p>
 
-                    {/* Skill Tags */}
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {coach.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-lg bg-surface-2 border border-border/80 px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+
                   </div>
                 </div>
 
@@ -323,16 +274,12 @@ function TeamPage() {
                       </div>
                     )}
                   </div>
-                  <div className="p-4 sm:p-5 text-center grow flex flex-col justify-between">
+                  <div className="p-4 sm:p-5 text-center grow flex flex-col justify-center">
                     <div>
                       <h4 className="text-lg font-bold text-foreground group-hover:text-neon transition-colors">
                         {coach.name}
                       </h4>
                       <p className="mt-1 text-[11px] font-semibold text-neon">{coach.role}</p>
-
-                    </div>
-                    <div className="mt-3 pt-3 border-t border-border/60 text-[11px] font-medium text-foreground/80">
-                      {coach.cert}
                     </div>
                   </div>
                 </article>
@@ -343,9 +290,134 @@ function TeamPage() {
       )}
 
       {/* Bottom CTA Banner */}
-      
+
     </>
   );
 }
 
 export default TeamPage;
+
+/* ─────────────────────────────────────────────
+   Team Hero Banner — Auto-sliding image carousel
+   ───────────────────────────────────────────── */
+const HERO_IMAGES = [
+  {
+    src: "/team-hero-1.jpg",
+    alt: "Sports Life Tennis Academy Coaching Mentors",
+    pos: "center center",
+  },
+  {
+    src: "/team-hero-2.jpg",
+    alt: "Sports Life Tennis Academy Coaching Faculty on Court",
+    pos: "center center",
+  },
+  {
+    src: "/team-hero-3.jpg",
+    alt: "Major Dhyan Chand Complex Coaching Team",
+    pos: "center center",
+  },
+];
+
+function TeamHeroBanner() {
+  const [current, setCurrent] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
+  const [animating, setAnimating] = useState(false);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (animating || index === current) return;
+      setPrev(current);
+      setCurrent(index);
+      setAnimating(true);
+      setTimeout(() => {
+        setPrev(null);
+        setAnimating(false);
+      }, 800);
+    },
+    [animating, current]
+  );
+
+  const next = useCallback(() => goTo((current + 1) % HERO_IMAGES.length), [current, goTo]);
+  const back = useCallback(
+    () => goTo((current - 1 + HERO_IMAGES.length) % HERO_IMAGES.length),
+    [current, goTo]
+  );
+
+  /* Auto-advance every 5 s */
+  useEffect(() => {
+    const id = setInterval(next, 5000);
+    return () => clearInterval(id);
+  }, [next]);
+
+  return (
+    <div className="relative w-full aspect-[16/9] overflow-hidden bg-black mt-[72px] sm:mt-[80px] border-b border-border/80 group select-none">
+      {/* Slide layers */}
+      {HERO_IMAGES.map((img, i) => (
+        <div
+          key={img.src}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{
+            opacity: i === current ? 1 : 0,
+            zIndex: i === current ? 1 : 0,
+            pointerEvents: i === current ? "auto" : "none",
+          }}
+        >
+          {/* Full sharp coach photo — edge-to-edge, perfectly framed in 16:9 */}
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            className="size-full object-cover object-center"
+          />
+        </div>
+      ))}
+
+      {/* Gentle top & bottom vignette for elegant framing & control contrast */}
+      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/40 to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none z-10" />
+
+      {/* Left arrow */}
+      <button
+        type="button"
+        aria-label="Previous slide"
+        onClick={back}
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-black/40 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white hover:text-neon hover:border-neon/60 transition-all duration-300 shadow-xl cursor-pointer"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+
+      {/* Right arrow */}
+      <button
+        type="button"
+        aria-label="Next slide"
+        onClick={next}
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-black/40 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white hover:text-neon hover:border-neon/60 transition-all duration-300 shadow-xl cursor-pointer"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+
+      {/* Modern Slide Indicators Pill at Bottom Center */}
+      <div className="absolute bottom-4 sm:bottom-6 inset-x-0 z-20 flex justify-center items-center pointer-events-auto">
+        <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 shadow-xl">
+          {HERO_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 cursor-pointer ${i === current
+                ? "w-7 h-2 bg-neon shadow-[0_0_10px_rgba(204,255,0,0.8)]"
+                : "w-2 h-2 bg-white/40 hover:bg-white/80"
+                }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
