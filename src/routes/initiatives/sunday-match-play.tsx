@@ -37,7 +37,7 @@ interface MatchPlayMediaItem {
 const matchPlayMediaItems: MatchPlayMediaItem[] = [
   {
     type: "video",
-    src: "/initiatives/sunday-match-play/sunday-match-play-video.mp4",
+    src: "/initiatives/sunday-match-play/sunday-match-play-video.web.mp4",
     alt: "Sunday Match Play Action Video",
     objectPosition: "object-center",
   },
