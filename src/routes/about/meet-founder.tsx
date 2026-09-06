@@ -199,7 +199,7 @@ const foundingPurposeSlides: StorySlide[] = [
   },
   {
     src: "/founder-gallery/founding-purpose-img8427.jpg",
-    title: "Academy Court Atmosphere & High Standards",
+    title: "",
     year: "",
     category: "Academy Training Facility",
     desc: "",
@@ -609,8 +609,8 @@ function MeetFounderPage() {
       <Section className="bg-surface/30 py-16 sm:py-24">
         <SectionHeading
           eyebrow="The Story"
-          title="The Journey of Abhiney Kumar"
-          body="From a childhood passion for tennis to building a player-first academy focused on long-term athlete development across Delhi."
+          title="The Journey"
+          body=""
         />
 
         <div className="mt-12 sm:mt-16 max-w-6xl mx-auto space-y-12 sm:space-y-16">

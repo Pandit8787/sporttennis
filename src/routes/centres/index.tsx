@@ -39,7 +39,7 @@ function CentresPage() {
       summary:
         "Located in the heart of North Delhi, Roshanara Club is one of the city's most historic and prestigious sports venues. In 2024, Sports Life began its journey here with a vision to create a player-first environment combining professional coaching with multi-surface training.",
       image: "/centre-gallery/whatsapp-20260813-171744-1.jpg",
-      tag: "Flagship Founding Centre",
+
     },
     {
       slug: "major-dhyan-chand-sports-complex",
@@ -49,7 +49,7 @@ function CentresPage() {
       summary:
         "Expanded in 2026 to provide aspiring players access to professional coaching in a modern sporting environment. A dedicated hub for structured player development with 4 synthetic and 2 clay courts.",
       image: "/centre-gallery/whatsapp-20260813-171844-2.jpg",
-      tag: "Development Hub",
+
     },
     {
       slug: "punjabi-bagh-club",
@@ -59,7 +59,7 @@ function CentresPage() {
       summary:
         "Professional tennis coaching and competitive match-play in West Delhi. Features 6 clay and 4 synthetic courts with vibrant junior, adult, and Sunday Match Play sessions.",
       image: "/centre-gallery/punjabi-bagh-img4616.jpg",
-      tag: "West Delhi Centre",
+
     },
   ];
 
@@ -67,8 +67,8 @@ function CentresPage() {
     <>
       <PageHero
         eyebrow="Our Centres"
-        title="25 Courts Across 3 Delhi Centres"
-        body="Train across all three major surfaces—Synthetic, Clay, and Grass—with certified coaching and a player-first philosophy."
+        title="OUR CENTERS"
+        body="Train across all three major surfaces—Synthetic, Clay, and Grass—with certified coaching."
         image={heroImage}
         removeFog
       />
@@ -77,7 +77,7 @@ function CentresPage() {
         <SectionHeading
           eyebrow="Delhi Network"
           title="Premier Tennis Centres in Delhi"
-          body="Providing athletes with structured coaching and multi-surface training environments across North, West, and Central Delhi."
+          body="Providing athletes with structured coaching and multi-surface training environments across Delhi."
         />
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -94,9 +94,7 @@ function CentresPage() {
                       className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                    <span className="absolute top-3 left-3 rounded-full bg-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-md">
-                      {c.tag}
-                    </span>
+
                     <div className="absolute bottom-3 left-3 right-3 text-white">
                       <p className="text-xs font-semibold text-neon flex items-center gap-1">
                         <MapPin className="size-3" /> {c.area}
@@ -165,7 +163,7 @@ function CentresPage() {
         </div>
       </Section>
 
-      
+
     </>
   );
 }
