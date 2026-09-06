@@ -72,15 +72,15 @@ function ProgramsPage() {
 
                   {p.perfectFor && (
                     <div className="mt-4 rounded-xl bg-surface-2/70 border border-border/60 p-3 text-xs">
-                      <span className="font-bold text-foreground">Perfect for: </span>
-                      <span className="text-muted-foreground">{p.perfectFor}</span>
+
+
                     </div>
                   )}
                 </div>
 
                 <div className="mt-7 flex items-center justify-between border-t border-border/80 pt-4">
                   <span className="text-xs font-semibold text-muted-foreground">
-                    {p.slug === "sunday-match-play" ? "Weekly League" : "Regular Program"}
+                    {p.slug === ""}
                   </span>
                   <CtaLink to="/contact" variant="neon" className="px-4 py-2 text-[11px]">
                     Book Trial
@@ -92,50 +92,9 @@ function ProgramsPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface/30">
-        <SectionHeading
-          eyebrow="Development Stages"
-          title="How Our Coaching Pathway Works"
-          body="Clear progression stages ensuring players continuously build technique, match intelligence, and confidence."
-          align="center"
-        />
-        <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              step: "01",
-              title: "Assessment & Placement",
-              desc: "A first session where coaches assess age, hand-eye coordination, movement, and individual goals.",
-            },
-            {
-              step: "02",
-              title: "Foundation & Consistency",
-              desc: "Developing stroke biomechanics, grips, footwork, and structured point play.",
-            },
-            {
-              step: "03",
-              title: "Sunday Match Play",
-              desc: "Applying skills in regular competitive match play to build tactical composure and resilience.",
-            },
-            {
-              step: "04",
-              title: "Tournament & Long-term Growth",
-              desc: "Dedicated tournament preparation, tactical planning, fitness conditioning, and player pathway guidance.",
-            },
-          ].map((s, i) => (
-            <Reveal key={s.step} delay={i * 0.07}>
-              <li className="card-elevated h-full p-6 sm:p-7 border border-border bg-surface flex flex-col justify-between">
-                <div>
-                  <span className="font-display text-4xl font-black text-neon/40">{s.step}</span>
-                  <h4 className="mt-3 text-lg font-bold text-foreground">{s.title}</h4>
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                </div>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-      </Section>
 
-      
+
+
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
@@ -5,10 +6,13 @@ import {
   Award,
   BookOpen,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Globe2,
   HeartHandshake,
   Lightbulb,
   MessageSquare,
+  Play,
   Sparkles,
   Trophy,
   Users,
@@ -16,8 +20,205 @@ import {
 } from "lucide-react";
 
 const heroImage = "/founder-gallery/abhiney-at-rafa-nadal-tennis-academy.jpg";
-const jofreSessionImage = "/founder-gallery/abhiney-with-jofre-porta.jpg";
-const ferreroSessionImage = "/founder-gallery/abhiney-at-jc-ferrero-academy.jpg";
+
+interface MediaSlideItem {
+  type: "image" | "video";
+  src: string;
+  alt: string;
+  objectPosition?: string;
+}
+
+const jofreMediaItems: MediaSlideItem[] = [
+  {
+    type: "image",
+    src: "/initiatives/global-learning/jofre-video-call.jpg",
+    alt: "Jofre Porta Online Video Conference with Sports Life Players",
+    objectPosition: "object-center",
+  },
+  {
+    type: "video",
+    src: "/initiatives/global-learning/jofre-instagram-video.mp4",
+    alt: "Sports Life exclusive masterclass video with Jofre Porta",
+    objectPosition: "object-center",
+  },
+  {
+    type: "image",
+    src: "/initiatives/global-learning/jofre-instagram-post.jpg",
+    alt: "Jofre Porta Instagram Post on Sports Life Session",
+    objectPosition: "object-[center_22%]",
+  },
+];
+
+const vishnuMediaItems: MediaSlideItem[] = [
+  {
+    type: "image",
+    src: "/initiatives/global-learning/vishnu-vardhan-1.jpg",
+    alt: "Vishnu Vardhan interacting with Sports Life team",
+    objectPosition: "object-[center_35%]",
+  },
+  {
+    type: "image",
+    src: "/initiatives/global-learning/vishnu-vardhan-2.jpg",
+    alt: "Vishnu Vardhan & Jofre Porta Masterclass poster",
+    objectPosition: "object-[center_20%]",
+  },
+  {
+    type: "image",
+    src: "/initiatives/global-learning/vishnu-vardhan-3.jpg",
+    alt: "Vishnu Vardhan Session Poster",
+    objectPosition: "object-center",
+  },
+];
+
+function GlobalMediaSlider({
+  items,
+  heightClass,
+  badgeText,
+}: {
+  items: MediaSlideItem[];
+  heightClass: string;
+  badgeText: string;
+}) {
+  const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
+
+  const prev = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    setActive((curr) => (curr === 0 ? items.length - 1 : curr - 1));
+  };
+
+  const next = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    setActive((curr) => (curr === items.length - 1 ? 0 : curr + 1));
+  };
+
+  const currentItem = items[active];
+  const isCurrentVideo = currentItem?.type === "video";
+
+  useEffect(() => {
+    // If currently on a video, pause automatic sliding so video can play comfortably
+    if (isPaused || items.length <= 1 || isCurrentVideo) return;
+    const timer = setInterval(() => {
+      setActive((curr) => (curr + 1) % items.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused, items.length, isCurrentVideo, active]);
+
+  useEffect(() => {
+    // Pause other videos when slide changes
+    Object.entries(videoRefs.current).forEach(([idx, vid]) => {
+      if (vid && Number(idx) !== active) {
+        vid.pause();
+      }
+    });
+  }, [active]);
+
+  return (
+    <div
+      className={`relative ${heightClass} w-full overflow-hidden rounded-2xl border border-border bg-neutral-950 group/slider select-none shadow-md`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Slides */}
+      {items.map((item, idx) => (
+        <div
+          key={item.src}
+          className="absolute inset-0 size-full transition-opacity duration-700 ease-in-out"
+          style={{
+            opacity: idx === active ? 1 : 0,
+            zIndex: idx === active ? 10 : 0,
+            pointerEvents: idx === active ? "auto" : "none",
+          }}
+        >
+          {item.type === "video" ? (
+            <div className="relative size-full bg-black flex items-center justify-center">
+              <video
+                ref={(el) => {
+                  videoRefs.current[idx] = el;
+                }}
+                src={item.src}
+                controls
+                playsInline
+                preload="metadata"
+                className="size-full object-cover"
+                onPlay={() => setIsPaused(true)}
+                onEnded={() => next()}
+              />
+              {/* Subtle badge on video */}
+              <div className="pointer-events-none absolute top-3 right-3 z-20 flex items-center gap-1.5 rounded-full bg-black/70 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-white border border-white/20">
+                <Play className="size-3 text-neon fill-neon" />
+                <span>Video Clip</span>
+              </div>
+            </div>
+          ) : (
+            <img
+              src={item.src}
+              alt={item.alt}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
+              className={`size-full object-cover ${item.objectPosition || "object-center"} transition-transform duration-700 group-hover/slider:scale-105`}
+            />
+          )}
+        </div>
+      ))}
+
+      {/* Vignette overlays for badge and title contrast */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/25 to-transparent z-15" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-15" />
+
+      {/* Top Tag Badge */}
+      <span className="absolute top-3 left-3 z-20 rounded-full bg-black/70 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-neon shadow-md">
+        {badgeText}
+      </span>
+
+      {/* Navigation Arrows */}
+      {items.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous slide"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-25 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-md border border-white/20 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon cursor-pointer shadow-lg active:scale-95"
+          >
+            <ChevronLeft className="size-4 sm:size-5" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next slide"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-25 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-md border border-white/20 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon cursor-pointer shadow-lg active:scale-95"
+          >
+            <ChevronRight className="size-4 sm:size-5" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-3 right-3 z-25 flex items-center gap-1.5">
+            {items.map((_, dotIdx) => (
+              <button
+                key={`dot-${dotIdx}`}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActive(dotIdx);
+                }}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  dotIdx === active
+                    ? "w-5 h-1.5 bg-neon"
+                    : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/initiatives/global-learning")({
   head: () => ({
@@ -49,7 +250,7 @@ function GlobalLearning() {
       <PageHero
         eyebrow="Global Learning Initiatives"
         title="Learning Beyond the Court"
-        body="Direct access to experienced professionals. At Sports Life, we believe player development should extend beyond the regular coaching session."
+        body="Connecting Our Players With Global Tennis Expertise"
         image={heroImage}
         imagePos="object-[center_24%]"
         removeFog
@@ -59,7 +260,7 @@ function GlobalLearning() {
       <Section>
         <SectionHeading
           eyebrow="Learning Beyond the Court"
-          title="Direct Access to Experienced Professionals"
+          title="Connecting Our Players With Global Tennis Expertise"
           body="Bringing the right people, experiences, and knowledge closer to our players."
         />
 
@@ -92,43 +293,36 @@ function GlobalLearning() {
           <Reveal delay={0.05}>
             <div className="card-elevated flex flex-col justify-between h-full p-7 sm:p-9 border border-border bg-surface rounded-3xl">
               <div>
-                <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-neon/15 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-neon">
-                    01 Coaching Perspective
-                  </span>
-                  <span className="text-xs font-semibold text-muted-foreground">Mallorca, Spain</span>
-                </div>
-
-                <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-foreground">
+                <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-foreground">
                   Jofre Porta
                 </h3>
                 <p className="text-sm font-semibold text-neon mt-1">
                   Learning From an International Coaching Perspective
                 </p>
 
-                <div className="relative my-6 overflow-hidden rounded-2xl border border-border bg-surface-2/80 flex items-center justify-center p-2 aspect-[4/3] sm:aspect-[16/11]">
-                  <img
-                    src={jofreSessionImage}
-                    alt="Exclusive learning interaction with Jofre Porta"
-                    className="size-full object-contain"
+                {/* Dynamic Media Slider for Jofre Porta */}
+                <div className="my-6">
+                  <GlobalMediaSlider
+                    items={jofreMediaItems}
+                    heightClass="h-80 sm:h-96 md:h-[440px]"
+                    badgeText="Mallorca, Spain"
                   />
-                  <div className="absolute bottom-2 left-2 right-2 rounded-lg bg-black/75 backdrop-blur-md px-3 py-1.5 text-[11px] text-white font-medium text-center">
-                    An exclusive learning interaction with Jofre Porta.
-                  </div>
                 </div>
 
-                <p className="text-sm leading-relaxed text-foreground/80">
-                  Sports Life organised an exclusive online interaction with Jofre Porta, giving our
-                  players the opportunity to interact directly with an internationally experienced coach
-                  and learn from his perspective on tennis and player development.
-                </p>
-
-                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-                  The session allowed players to ask questions and gain insights that they would not
-                  normally receive during their regular training sessions. For us, the value was not
-                  simply in meeting an experienced coach. It was in giving players the opportunity to
-                  listen, question, and think differently about their own development.
-                </p>
+                <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
+                  <p className="font-semibold text-foreground">
+                    Sports Life × Jofre Porta — An Exclusive Online Learning Session
+                  </p>
+                  <p>
+                    One of our Global Learning initiatives brought our players and coaching team together for an online interaction with Jofre Porta (The coach of Rafael Nadal and Carlos Moya).
+                  </p>
+                  <p>
+                    The session gave our players the opportunity to interact directly with Jofre, ask questions and hear his perspective on tennis, player development and the journey of becoming a better player.
+                  </p>
+                  <p>
+                    For us, the value of the session was not simply the opportunity to meet an experienced coach. It was about giving our players the chance to listen, think, ask questions and see tennis from a different perspective. Learning that reaches beyond the tennis court.
+                  </p>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -137,42 +331,33 @@ function GlobalLearning() {
           <Reveal delay={0.1}>
             <div className="card-elevated flex flex-col justify-between h-full p-7 sm:p-9 border border-border bg-surface rounded-3xl">
               <div>
-                <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-electric/15 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-electric">
-                    02 Pro Player Perspective
-                  </span>
-                  <span className="text-xs font-semibold text-muted-foreground">ATP Tour / India</span>
-                </div>
-
-                <h3 className="mt-4 text-2xl sm:text-3xl font-extrabold text-foreground">
+                <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-foreground">
                   Vishnu Vardhan
                 </h3>
                 <p className="text-sm font-semibold text-electric mt-1">
                   Learning From a Professional Player's Perspective
                 </p>
 
-                <div className="relative my-6 overflow-hidden rounded-2xl border border-border bg-surface-2/80 flex items-center justify-center p-2 aspect-[4/3] sm:aspect-[16/11]">
-                  <img
-                    src={ferreroSessionImage}
-                    alt="Exclusive player interaction with Vishnu Vardhan"
-                    className="size-full object-contain"
+                {/* Dynamic Media Slider for Vishnu Vardhan */}
+                <div className="my-6">
+                  <GlobalMediaSlider
+                    items={vishnuMediaItems}
+                    heightClass="h-80 sm:h-96 md:h-[440px]"
+                    badgeText="ATP Tour / India"
                   />
-                  <div className="absolute bottom-2 left-2 right-2 rounded-lg bg-black/75 backdrop-blur-md px-3 py-1.5 text-[11px] text-white font-medium text-center">
-                    An exclusive player interaction with Vishnu Vardhan.
-                  </div>
                 </div>
 
-                <p className="text-sm leading-relaxed text-foreground/80">
-                  Sports Life also created an opportunity for our players to interact directly with
-                  Vishnu Vardhan, an accomplished Indian professional tennis player.
-                </p>
-
-                <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-                  The interaction gave players an opportunity to hear about competitive tennis from the
-                  perspective of someone who has experienced it at the professional level. Players could
-                  ask questions, understand the realities of competing at a high level, and learn from
-                  experiences that go beyond what can be taught through a regular training session.
-                </p>
+                <div className="space-y-3 text-sm leading-relaxed text-foreground/80">
+                  <p className="font-semibold text-foreground">
+                    Sports Life × Vishnu Vardhan — Pro Player Perspective
+                  </p>
+                  <p>
+                    Sports Life also created an opportunity for our players to interact directly with Vishnu Vardhan, an accomplished Indian professional tennis player and Asian Games medalist.
+                  </p>
+                  <p>
+                    The interaction gave players an opportunity to hear about competitive tennis from the perspective of someone who has experienced it at the professional level. Players could ask questions, understand the realities of competing at a high level, and learn from experiences that go beyond what can be taught through a regular training session.
+                  </p>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -268,7 +453,7 @@ function GlobalLearning() {
       </Section>
 
       {/* CTA */}
-      
+
     </>
   );
 }

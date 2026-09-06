@@ -1,9 +1,12 @@
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import { Reveal } from "@/components/site/motion-primitives";
 import {
   BookOpen,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Globe2,
   GraduationCap,
   Home,
@@ -12,8 +15,6 @@ import {
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
-const matchPlayImage = "/centre-gallery/img_8064.jpg";
-const globalLearningImage = "/founder-gallery/abhiney-with-jofre-porta.jpg";
 
 export const Route = createFileRoute("/initiatives/")({
   head: () => ({
@@ -38,7 +39,24 @@ export const Route = createFileRoute("/initiatives/")({
   component: InitiativesPage,
 });
 
-const ACTIVE_INITIATIVES = [
+interface InitiativeItem {
+  title: string;
+  tag: string;
+  badgeColor: string;
+  desc: string;
+  highlights: string[];
+  link: string;
+  linkText: string;
+  icon: typeof Trophy;
+  images: {
+    src: string;
+    alt: string;
+    objectPosition?: string;
+  }[];
+  imageAspect: string;
+}
+
+const ACTIVE_INITIATIVES: InitiativeItem[] = [
   {
     title: "Sunday Match Play",
     tag: "Active Program",
@@ -53,9 +71,19 @@ const ACTIVE_INITIATIVES = [
     link: "/initiatives/sunday-match-play",
     linkText: "Explore Sunday Match Play",
     icon: Trophy,
-    image: matchPlayImage,
-    imagePos: "object-center",
-    imageAspect: "aspect-[16/10]",
+    images: [
+      {
+        src: "/initiatives/sunday-match-play-1.jpg",
+        alt: "Sunday Match Play Session",
+        objectPosition: "object-[center_60%]",
+      },
+      {
+        src: "/initiatives/sunday-match-play-2.jpg",
+        alt: "Sunday Match Play Competition",
+        objectPosition: "object-[center_55%]",
+      },
+    ],
+    imageAspect: "h-80 sm:h-96 md:h-[420px]",
   },
   {
     title: "Global Learning Initiatives",
@@ -71,11 +99,142 @@ const ACTIVE_INITIATIVES = [
     link: "/initiatives/global-learning",
     linkText: "View Global Learning",
     icon: Globe2,
-    image: globalLearningImage,
-    imagePos: "object-center",
-    imageAspect: "aspect-[3/2]",
+    images: [
+      {
+        src: "/initiatives/global-learning-1.jpg",
+        alt: "Global Learning Masterclass with Vishnu Vardhan & Jofre Porta",
+        objectPosition: "object-[center_20%]",
+      },
+      {
+        src: "/initiatives/global-learning-2.jpg",
+        alt: "Jofre Porta Instagram Post on Sports Life Session",
+        objectPosition: "object-[center_25%]",
+      },
+    ],
+    imageAspect: "h-80 sm:h-96 md:h-[420px]",
   },
 ];
+
+function CardImageSlider({
+  images,
+  title,
+  tag,
+  heightClass,
+}: {
+  images: InitiativeItem["images"];
+  title: string;
+  tag: string;
+  heightClass: string;
+}) {
+  const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const prev = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    setActive((curr) => (curr === 0 ? images.length - 1 : curr - 1));
+  };
+
+  const next = (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    setActive((curr) => (curr === images.length - 1 ? 0 : curr + 1));
+  };
+
+  useEffect(() => {
+    if (isPaused || images.length <= 1) return;
+    const timer = setInterval(() => {
+      setActive((curr) => (curr + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused, images.length]);
+
+  return (
+    <div
+      className={`relative ${heightClass} w-full overflow-hidden bg-neutral-950 group/slider select-none`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Slides */}
+      {images.map((img, idx) => (
+        <div
+          key={img.src}
+          className="absolute inset-0 size-full transition-opacity duration-700 ease-in-out"
+          style={{
+            opacity: idx === active ? 1 : 0,
+            zIndex: idx === active ? 10 : 0,
+            pointerEvents: idx === active ? "auto" : "none",
+          }}
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading={idx === 0 ? "eager" : "lazy"}
+            decoding="async"
+            className={`size-full object-cover ${img.objectPosition || "object-center"} transition-transform duration-700 group-hover/slider:scale-105`}
+          />
+        </div>
+      ))}
+
+      {/* Vignette overlays for badge and title contrast */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/85 via-black/35 to-transparent z-15" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/60 to-transparent z-15" />
+
+      {/* Top Tag Badge */}
+      <span className="absolute top-3 left-3 z-20 rounded-full bg-black/70 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-neon shadow-md">
+        {tag}
+      </span>
+
+      {/* Bottom Title */}
+      <h3 className="absolute bottom-3 left-4 right-16 z-20 text-xl sm:text-2xl font-bold text-white drop-shadow-md">
+        {title}
+      </h3>
+
+      {/* Navigation Arrows (shown if multiple images) */}
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous slide"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-25 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-md border border-white/20 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon cursor-pointer shadow-lg active:scale-95"
+          >
+            <ChevronLeft className="size-4 sm:size-5" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next slide"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-25 flex size-8 sm:size-9 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-md border border-white/20 opacity-0 group-hover/slider:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon cursor-pointer shadow-lg active:scale-95"
+          >
+            <ChevronRight className="size-4 sm:size-5" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-3.5 right-4 z-25 flex items-center gap-1.5">
+            {images.map((_, dotIdx) => (
+              <button
+                key={`dot-${dotIdx}`}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActive(dotIdx);
+                }}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  dotIdx === active
+                    ? "w-5 h-1.5 bg-neon"
+                    : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 const UPCOMING_INITIATIVES = [
   {
@@ -121,22 +280,13 @@ function InitiativesPage() {
           {ACTIVE_INITIATIVES.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.1}>
               <div className="card-elevated group flex flex-col justify-between h-full overflow-hidden border border-border bg-surface rounded-3xl shadow-lg hover:border-neon/50 transition-all">
-                <div className={`relative ${item.imageAspect} overflow-hidden`}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    decoding="async"
-                    className={`size-full object-cover ${item.imagePos} transition-transform duration-700 group-hover:scale-105`}
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                  <span className="absolute top-3 left-3 rounded-full bg-black/60 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-neon">
-                    {item.tag}
-                  </span>
-                  <h3 className="absolute bottom-3 left-4 right-4 text-2xl font-bold text-white">
-                    {item.title}
-                  </h3>
-                </div>
+                {/* Image Slider Component */}
+                <CardImageSlider
+                  images={item.images}
+                  title={item.title}
+                  tag={item.tag}
+                  heightClass={item.imageAspect}
+                />
 
                 <div className="p-7 flex flex-col justify-between grow">
                   <div>
@@ -170,7 +320,7 @@ function InitiativesPage() {
         </div>
       </Section>
 
-      
+
     </>
   );
 }

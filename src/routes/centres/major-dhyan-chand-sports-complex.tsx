@@ -155,11 +155,10 @@ function CentreImageSlider({ slides }: { slides: CentreSlide[] }) {
                 type="button"
                 onClick={() => setActive(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  i === active
-                    ? "w-8 h-2.5 bg-neon shadow-lg shadow-neon/40"
-                    : "w-2.5 h-2.5 bg-white/50 hover:bg-white"
-                }`}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${i === active
+                  ? "w-8 h-2.5 bg-neon shadow-lg shadow-neon/40"
+                  : "w-2.5 h-2.5 bg-white/50 hover:bg-white"
+                  }`}
               />
             ))}
           </div>
@@ -266,7 +265,7 @@ function MDCSC() {
         <SectionHeading
           eyebrow="Gallery"
           title="On-Court Action at Major Dhyan Chand"
-          body="Moments from our coaching batches, drills, and player development."
+          body=""
         />
 
         <div className="mt-10">
@@ -278,7 +277,7 @@ function MDCSC() {
         <SectionHeading
           eyebrow="Court Infrastructure"
           title="Training Across Multiple Surfaces"
-          body="4 professional synthetic courts and 2 clay courts allowing players to train on multiple surfaces."
+          body="4 synthetic courts and 2 clay courts allowing players to train on multiple surfaces."
         />
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">

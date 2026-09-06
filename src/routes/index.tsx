@@ -548,9 +548,6 @@ function PlayersSlideshow() {
               />
             ))}
           </div>
-          <CtaLink to="/gallery" variant="ghost">
-            Full Player Gallery
-          </CtaLink>
         </div>
       </div>
     </Section>

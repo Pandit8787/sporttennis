@@ -54,6 +54,7 @@ export function PageHero({
   images,
   imagePos = "object-center",
   removeFog = false,
+  className,
 }: {
   eyebrow?: string;
   title?: string;
@@ -62,6 +63,7 @@ export function PageHero({
   images?: string[];
   imagePos?: string;
   removeFog?: boolean;
+  className?: string;
 }) {
   const heroImages = images?.length ? images : image ? [image] : [];
   const [activeImage, setActiveImage] = useState(0);
@@ -75,7 +77,7 @@ export function PageHero({
   }, [heroImages.length]);
 
   return (
-    <section className="relative overflow-hidden flex flex-col justify-end min-h-[60svh] sm:min-h-[70svh] lg:min-h-[85svh] pb-12 sm:pb-16 lg:pb-24 pt-32">
+    <section className={`relative overflow-hidden flex flex-col justify-end min-h-[60svh] sm:min-h-[70svh] lg:min-h-[85svh] pb-12 sm:pb-16 lg:pb-24 pt-20 sm:pt-24 mt-[72px] sm:mt-[80px] ${className || ""}`}>
       {/* Hero Images — object-cover like homepage — full banner fill, NO grey letterbox sides */}
       {heroImages.length > 0 && (
         <>

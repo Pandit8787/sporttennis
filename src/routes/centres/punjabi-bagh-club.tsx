@@ -159,11 +159,10 @@ function CentreImageSlider({ slides }: { slides: CentreSlide[] }) {
                 type="button"
                 onClick={() => setActive(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  i === active
+                className={`transition-all duration-300 rounded-full cursor-pointer ${i === active
                     ? "w-8 h-2.5 bg-neon shadow-lg shadow-neon/40"
                     : "w-2.5 h-2.5 bg-white/50 hover:bg-white"
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -266,7 +265,7 @@ function PunjabiBagh() {
         <SectionHeading
           eyebrow="Gallery"
           title="Punjabi Bagh Club Training Gallery"
-          body="Moments from our clay and synthetic court training and Sunday Match Play sessions."
+          body=""
         />
 
         <div className="mt-10">

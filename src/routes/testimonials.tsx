@@ -1,16 +1,23 @@
+import { useState, useRef, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section } from "@/components/site/sections";
 import { Counter } from "@/components/site/motion-primitives";
-import { VideoCard } from "@/components/site/VideoCard";
 import {
+  CheckCircle2,
   ExternalLink,
+  Film,
   Instagram,
+  MapPin,
+  Maximize2,
+  Pause,
+  Play,
+  Sparkles,
   Star,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
-const spotlightCourtImage = "/centre-gallery/whatsapp-20260813-171744-1.jpg";
-const spotlightGroupImage = "/centre-gallery/whatsapp-20260813-171844-2.jpg";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
@@ -35,43 +42,297 @@ export const Route = createFileRoute("/testimonials")({
   component: TestimonialsPage,
 });
 
+interface VideoTestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  badge: string;
+  badgeType: "verified" | "reel" | "story";
+  quote: string;
+  highlight: string;
+  src: string;
+  poster: string;
+  location: string;
+  duration: string;
+  instagramUrl?: string;
+}
 
-
-const VIDEO_TESTIMONIALS = [
+const VIDEO_TESTIMONIALS: VideoTestimonialItem[] = [
   {
-    src: "/videos/testimonials/C0004.mp4",
-    title: "Parent Testimonial — Genuine Feedback",
-    tag: "Parent Review",
-    caption: "“Coaching aur environment dono hi top-class hai. Bacchon ka progress visible hai.”",
+    id: "kanav-mittal",
+    name: "Kanav Mittal",
+    role: "Academy Student",
+    badge: "Verified Review",
+    badgeType: "verified",
+    highlight: "Massive improvement through structured coaching",
+    quote:
+      "Great tennis academy with experienced and supportive coaches. The training is professional and well structured, and it has improved my game massively.",
+    src: "/testimonials/kanav-mittal-testimonial.mp4",
+    poster: "/testimonials/kanav-mittal-poster.jpg",
     location: "Roshanara Club",
-    name: "Parent Review",
+    duration: "0:26",
   },
   {
-    src: "/videos/testimonials/C0005.mp4",
-    title: "Player Experience On Court",
-    tag: "Player Story",
-    caption: "“Regular drills + Sunday match play ne mera game poora badal diya.”",
+    id: "ekamveer-singh",
+    name: "Ekamveer Singh",
+    role: "Junior Competitive Squad",
+    badge: "Instagram Reel",
+    badgeType: "reel",
+    highlight: "Personalized attention & technical confidence",
+    quote:
+      "Very good and professional academy for tennis players. All the coaches give personal attention and sweet encouragement on court.",
+    src: "/testimonials/ekamveer-testimonial.mp4",
+    poster: "/testimonials/ekamveer-poster.jpg",
     location: "Dhyan Chand Complex",
-    name: "Junior Player",
+    duration: "0:42",
+    instagramUrl: "https://www.instagram.com/reels/Db8mYtTJ-8F/",
   },
   {
-    src: "/videos/testimonials/C0006.mp4",
-    title: "Parent On Junior Journey",
-    tag: "Parent Review",
-    caption: "“Technique, discipline, match sense — sab ek saath improve hua.”",
+    id: "digvijay-singh",
+    name: "Digvijay Singh",
+    role: "Tournament Competitor",
+    badge: "Instagram Reel",
+    badgeType: "reel",
+    highlight: "Daily fitness discipline & high-stakes match play",
+    quote:
+      "Intense on-court training, disciplined footwork drills, and mentors who push your competitive potential every single week.",
+    src: "/testimonials/digvijay-testimonial.mp4",
+    poster: "/testimonials/digvijay-poster.jpg",
     location: "Punjabi Bagh Club",
-    name: "Parent Review",
-  },
-  {
-    src: "/videos/testimonials/C0009.mp4",
-    title: "Player & Parent Success Story",
-    tag: "Combined Review",
-    caption: "“State level tak pahuncha diya. Coach team ka support unbelievable hai.”",
-    location: "Sports Life Academy",
-    name: "Player + Parent",
+    duration: "0:50",
+    instagramUrl: "https://www.instagram.com/reels/DciMLqCM-aP/",
   },
 ];
+
+function VideoReelCard({
+  item,
+  isPlaying,
+  onPlay,
+  onPause,
+}: {
+  item: VideoTestimonialItem;
+  isPlaying: boolean;
+  onPlay: () => void;
+  onPause: () => void;
+}) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMuted, setIsMuted] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isPlaying) {
+      video.currentTime = 0;
+      video
+        .play()
+        .then(() => {
+          video.muted = false;
+          setIsMuted(false);
+        })
+        .catch(() => {
+          // If browser policy blocks unmuted autoplay, mute and play
+          video.muted = true;
+          setIsMuted(true);
+          video.play().catch(() => {});
+        });
+    } else {
+      video.pause();
+    }
+  }, [isPlaying]);
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video || !video.duration) return;
+    setProgress((video.currentTime / video.duration) * 100);
+  };
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      onPause();
+    } else {
+      onPlay();
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
+
+  const handleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    }
+  };
+
+  return (
+    <div
+      onClick={togglePlay}
+      className={`group relative rounded-3xl overflow-hidden bg-slate-950 border transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer select-none aspect-[9/16] min-h-[460px] sm:min-h-[500px] ${
+        isPlaying
+          ? "border-neon shadow-2xl shadow-neon/15 ring-2 ring-neon/40"
+          : "border-border hover:border-neon/50 hover:shadow-2xl hover:shadow-neon/10"
+      }`}
+    >
+      {/* Video Element */}
+      <video
+        ref={videoRef}
+        src={item.src}
+        poster={item.poster}
+        playsInline
+        loop
+        preload="metadata"
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={() => onPause()}
+        className="absolute inset-0 size-full object-cover"
+      />
+
+      {/* Top Gradient Overlay */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/85 via-black/45 to-transparent pointer-events-none z-10" />
+
+      {/* Bottom Gradient Overlay */}
+      <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-black/95 via-black/75 to-transparent pointer-events-none z-10" />
+
+      {/* Top Bar Badges */}
+      <div className="relative z-20 p-4 flex items-center justify-between gap-2">
+        {/* Category Pill */}
+        <span
+          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider backdrop-blur-md border ${
+            item.badgeType === "reel"
+              ? "bg-pink-500/20 text-pink-300 border-pink-500/40 shadow-sm shadow-pink-500/20"
+              : item.badgeType === "verified"
+              ? "bg-neon/20 text-neon border-neon/40 shadow-sm shadow-neon/20"
+              : "bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm shadow-amber-500/20"
+          }`}
+        >
+          {item.badgeType === "reel" ? (
+            <Instagram className="size-3 text-pink-400" />
+          ) : item.badgeType === "verified" ? (
+            <CheckCircle2 className="size-3 text-neon" />
+          ) : (
+            <Sparkles className="size-3 text-amber-400" />
+          )}
+          <span>{item.badge}</span>
+        </span>
+
+        {/* Location Pill */}
+        <span className="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 px-2.5 py-1 text-[10px] font-semibold text-white/90">
+          <MapPin className="size-3 text-neon" />
+          <span className="truncate max-w-[120px]">{item.location}</span>
+        </span>
+      </div>
+
+      {/* Center Play / Pause Indicator */}
+      <div className="relative z-20 flex flex-col items-center justify-center p-4">
+        {!isPlaying ? (
+          <div className="flex flex-col items-center gap-2 group-hover:scale-105 transition-transform duration-300">
+            <div className="size-16 rounded-full bg-black/65 backdrop-blur-md border-2 border-white/30 flex items-center justify-center text-white shadow-2xl group-hover:bg-neon group-hover:text-black group-hover:border-neon group-hover:shadow-[0_0_25px_rgba(16,185,129,0.7)] transition-all duration-300">
+              <Play className="size-7 fill-current ml-1" />
+            </div>
+            <span className="rounded-full bg-black/70 backdrop-blur-sm border border-white/10 px-3 py-1 text-[11px] font-bold text-white/90">
+              Watch Review · {item.duration}
+            </span>
+          </div>
+        ) : (
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="size-14 rounded-full bg-black/60 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+              <Pause className="size-6 fill-current" />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Bottom Info & Action Bar */}
+      <div className="relative z-20 p-4 space-y-2.5">
+        <div>
+          <div className="flex items-center justify-between gap-2">
+            <h4 className="font-display text-lg font-black text-white drop-shadow-md">
+              {item.name}
+            </h4>
+            <span className="text-[11px] font-medium text-neon font-mono">
+              {item.duration}
+            </span>
+          </div>
+          <p className="text-xs font-semibold text-white/70">{item.role}</p>
+        </div>
+
+        <p className="text-xs text-white/90 line-clamp-2 leading-relaxed italic drop-shadow-sm">
+          "{item.quote}"
+        </p>
+
+        {/* Action Controls Row */}
+        <div className="flex items-center justify-between gap-2 pt-1 border-t border-white/15">
+          <div className="flex items-center gap-2">
+            {/* Audio Toggle */}
+            <button
+              type="button"
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+              className="inline-flex items-center gap-1.5 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 px-2.5 py-1 text-[10px] font-bold text-white transition-colors"
+            >
+              {isMuted ? (
+                <>
+                  <VolumeX className="size-3 text-red-400" />
+                  <span>Unmute</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="size-3 text-neon" />
+                  <span>Sound On</span>
+                </>
+              )}
+            </button>
+
+            {/* Fullscreen Button */}
+            <button
+              type="button"
+              onClick={handleFullscreen}
+              aria-label="View Fullscreen"
+              className="size-6 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 hover:text-neon transition-colors"
+            >
+              <Maximize2 className="size-3" />
+            </button>
+          </div>
+
+          {/* Direct Instagram Link if available */}
+          {item.instagramUrl && (
+            <a
+              href={item.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 rounded-full bg-pink-500/20 hover:bg-pink-500/35 border border-pink-500/40 px-2.5 py-1 text-[10px] font-bold text-pink-300 transition-all hover:scale-105"
+            >
+              <Instagram className="size-3" />
+              <span>Instagram</span>
+              <ExternalLink className="size-2.5" />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Video Progress Bar */}
+      <div className="absolute bottom-0 inset-x-0 h-1.5 bg-white/15 z-30 overflow-hidden">
+        <div
+          className="h-full bg-neon transition-all duration-150 shadow-[0_0_8px_rgba(16,185,129,0.8)]"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function TestimonialsPage() {
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+
   return (
     <>
       {/* Hero Section */}
@@ -123,31 +384,69 @@ function TestimonialsPage() {
         </div>
       </Section>
 
-      {/* Instagram & Social Media Video Testimonials Banner */}
+      {/* Featured Video Reviews & Instagram Reels Section */}
       <Section className="bg-surface/30">
-        <div className="card-elevated rounded-3xl border border-pink-500/30 bg-linear-to-r from-pink-500/10 via-purple-500/5 to-transparent p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-pink-500/15 border border-pink-500/30 px-3.5 py-1 text-xs font-bold text-pink-400">
-              <Instagram className="size-4" /> Instagram Community & Reels
+        <div className="space-y-8">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-border pb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-neon/10 border border-neon/30 px-3.5 py-1 text-xs font-bold text-neon mb-3">
+                <Film className="size-3.5" /> Video Testimonials &amp; Instagram Reels
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground">
+                Watch On-Court Player Reviews
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground max-w-2xl leading-relaxed">
+                Authentic player interviews, junior competitive experiences, and featured training reels directly from our courts at Roshanara, Major Dhyan Chand, and Punjabi Bagh.
+              </p>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Watch Video Testimonials & Training Reels
-            </h3>
-            <p className="text-sm text-foreground/80 leading-relaxed">
-              Follow our daily on-court training stories, player match highlights, coach interviews, and video reviews on Instagram.
-            </p>
+
+            {/* Instagram Link CTA */}
+            <a
+              href="https://www.instagram.com/sportslife_tennis?igsi=MWE2OXg1anI4OWJ0Yg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2.5 rounded-full bg-linear-to-r from-pink-500 via-purple-600 to-indigo-600 px-6 py-3 font-display text-xs font-black uppercase tracking-wider text-white shadow-lg hover:shadow-pink-500/25 hover:scale-[1.02] active:scale-95 transition-all"
+            >
+              <Instagram className="size-4" />
+              <span>Follow @sportslife_tennis</span>
+              <ExternalLink className="size-3.5" />
+            </a>
           </div>
-          <a
-            href="https://www.instagram.com/sportslife_tennis?igsi=MWE2OXg1anI4OWJ0Yg%3D%3D&utm_source=qr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-pink-500 to-purple-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-lg hover:opacity-95 transition-opacity"
-          >
-            <span>Follow on Instagram</span>
-            <ExternalLink className="size-4" />
-          </a>
+
+          {/* Video Cards Grid */}
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {VIDEO_TESTIMONIALS.map((item) => (
+              <VideoReelCard
+                key={item.id}
+                item={item}
+                isPlaying={activeVideoId === item.id}
+                onPlay={() => setActiveVideoId(item.id)}
+                onPause={() => setActiveVideoId(null)}
+              />
+            ))}
+          </div>
+
+          {/* Tip / Note below videos */}
+          <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl border border-border bg-surface text-xs text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-neon animate-pulse" />
+              <span>Tap any video card above to play with high-definition sound and full controls.</span>
+            </div>
+            <a
+              href="https://www.instagram.com/sportslife_tennis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-bold text-foreground hover:text-neon transition-colors"
+            >
+              <span>Explore 100+ reels on Instagram</span>
+              <ExternalLink className="size-3" />
+            </a>
+          </div>
         </div>
       </Section>
+
+
 
       {/* Real Google Reviews — Text Cards */}
       <Section>
@@ -305,10 +604,10 @@ function TestimonialsPage() {
               {/* Google badge */}
               <div className="mt-3 flex items-center gap-1.5 text-[11px] text-muted-foreground">
                 <svg className="size-3.5" viewBox="0 0 24 24" fill="none">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
                 </svg>
                 <span>Google Review</span>
               </div>
@@ -332,7 +631,7 @@ function TestimonialsPage() {
       </Section>
 
       {/* CTA */}
-      
+
     </>
   );
 }
