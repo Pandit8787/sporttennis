@@ -116,7 +116,7 @@ function VideoReelCard({
   onPause: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -125,22 +125,13 @@ function VideoReelCard({
 
     if (isPlaying) {
       video.currentTime = 0;
-      video
-        .play()
-        .then(() => {
-          video.muted = false;
-          setIsMuted(false);
-        })
-        .catch(() => {
-          // If browser policy blocks unmuted autoplay, mute and play
-          video.muted = true;
-          setIsMuted(true);
-          video.play().catch(() => {});
-        });
+      video.muted = true;
+      setIsMuted(true);
+      video.play().catch(() => onPause());
     } else {
       video.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, onPause]);
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
@@ -187,11 +178,13 @@ function VideoReelCard({
         ref={videoRef}
         src={item.src}
         poster={item.poster}
+        muted
         playsInline
         loop
         preload="metadata"
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => onPause()}
+        onError={() => onPause()}
         className="absolute inset-0 size-full object-cover"
       />
 
