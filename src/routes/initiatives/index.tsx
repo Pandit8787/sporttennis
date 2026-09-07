@@ -222,11 +222,10 @@ function CardImageSlider({
                   setActive(dotIdx);
                 }}
                 aria-label={`Go to slide ${dotIdx + 1}`}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  dotIdx === active
-                    ? "w-5 h-1.5 bg-neon"
-                    : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
-                }`}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${dotIdx === active
+                  ? "w-5 h-1.5 bg-neon"
+                  : "w-1.5 h-1.5 bg-white/50 hover:bg-white"
+                  }`}
               />
             ))}
           </div>
@@ -262,8 +261,8 @@ function InitiativesPage() {
     <>
       <PageHero
         eyebrow="Sports Life Initiatives"
-        title="Pathways Beyond Traditional Coaching"
-        body="We actively create opportunities for our players to compete regularly, learn from international professionals, and broaden their perspective on tennis."
+        title="Sports Life Initiatives"
+        body=""
         image={heroImage}
         removeFog
       />
