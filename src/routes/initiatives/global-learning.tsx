@@ -252,7 +252,7 @@ function GlobalLearning() {
         title="Learning Beyond the Court"
         body="Connecting Our Players With Global Tennis Expertise"
         image={heroImage}
-        imagePos="object-[center_24%]"
+        imagePos="object-[center_42%]"
         removeFog
       />
 
