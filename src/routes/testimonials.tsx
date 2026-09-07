@@ -334,7 +334,7 @@ function TestimonialsPage() {
       <PageHero
         eyebrow="Reviews & Feedback"
         title="Google Reviews & Player Feedback"
-        body="Hear firsthand from parents, juniors, competitive athletes, and adult players about how our player-first coaching and multi-surface facilities shape their tennis journey."
+        body=""
         image={heroImage}
         removeFog
       />
@@ -392,7 +392,7 @@ function TestimonialsPage() {
                 Watch On-Court Player Reviews
               </h2>
               <p className="mt-2 text-sm text-muted-foreground max-w-2xl leading-relaxed">
-                Authentic player interviews, junior competitive experiences, and featured training reels directly from our courts at Roshanara, Major Dhyan Chand, and Punjabi Bagh.
+                
               </p>
             </div>
 
@@ -455,7 +455,7 @@ function TestimonialsPage() {
               What Our Players &amp; Parents Say
             </h2>
             <p className="mt-2 text-sm text-muted-foreground max-w-xl">
-              Real, unedited Google reviews — straight from parents, juniors, and players training at Sports Life Tennis Academy.
+            
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0">
