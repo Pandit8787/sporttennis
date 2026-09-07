@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 
 const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
+const TESTIMONIAL_VIDEO_BASE =
+  "https://media.githubusercontent.com/media/Pandit8787/sporttennis/main/public/testimonials";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
@@ -67,7 +69,7 @@ const VIDEO_TESTIMONIALS: VideoTestimonialItem[] = [
     highlight: "Massive improvement through structured coaching",
     quote:
       "Great tennis academy with experienced and supportive coaches. The training is professional and well structured, and it has improved my game massively.",
-    src: "/testimonials/kanav-mittal-testimonial.mp4",
+    src: `${TESTIMONIAL_VIDEO_BASE}/kanav-mittal-testimonial.mp4`,
     poster: "/testimonials/kanav-mittal-poster.jpg",
     location: "Roshanara Club",
     duration: "0:26",
@@ -81,7 +83,7 @@ const VIDEO_TESTIMONIALS: VideoTestimonialItem[] = [
     highlight: "Personalized attention & technical confidence",
     quote:
       "Very good and professional academy for tennis players. All the coaches give personal attention and sweet encouragement on court.",
-    src: "/testimonials/ekamveer-testimonial.mp4",
+    src: `${TESTIMONIAL_VIDEO_BASE}/ekamveer-testimonial.mp4`,
     poster: "/testimonials/ekamveer-poster.jpg",
     location: "Dhyan Chand Complex",
     duration: "0:42",
@@ -96,7 +98,7 @@ const VIDEO_TESTIMONIALS: VideoTestimonialItem[] = [
     highlight: "Daily fitness discipline & high-stakes match play",
     quote:
       "Intense on-court training, disciplined footwork drills, and mentors who push your competitive potential every single week.",
-    src: "/testimonials/digvijay-testimonial.mp4",
+    src: `${TESTIMONIAL_VIDEO_BASE}/digvijay-testimonial.mp4`,
     poster: "/testimonials/digvijay-poster.jpg",
     location: "Punjabi Bagh Club",
     duration: "0:50",
