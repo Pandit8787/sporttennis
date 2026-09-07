@@ -42,6 +42,7 @@ export const Route = createFileRoute("/contact")({
 
 const field =
   "w-full rounded-xl border border-input bg-surface/60 px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-neon/60 focus:ring-2 focus:ring-ring";
+const contactHeroImage = "/hero-banner/contact-img-4759.jpg";
 
 function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -167,6 +168,8 @@ function ContactPage() {
         eyebrow="Contact"
         title="Come train with us"
         body="Start with a free trial session and let our coaches guide you to the right program and centre. Choose from 3 premier Delhi locations."
+        image={contactHeroImage}
+        imagePos="object-[center_38%]"
       />
 
       <Section>
@@ -230,12 +233,7 @@ function ContactPage() {
                       color: "from-pink-500 to-orange-400",
                       icon: "📸",
                     },
-                    {
-                      label: "YouTube",
-                      href: "https://youtube.com",
-                      color: "from-red-500 to-red-600",
-                      icon: "▶️",
-                    },
+                   
                     {
                       label: "WhatsApp",
                       href: "https://wa.me/919266579159",
@@ -257,21 +255,6 @@ function ContactPage() {
                       </div>
                     </a>
                   ))}
-                </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {ACADEMY.socials
-                    .filter((s) => !["Instagram", "YouTube", "WhatsApp"].includes(s.label))
-                    .map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="glass rounded-full px-4 py-2 text-xs font-semibold transition-colors hover:text-neon"
-                      >
-                        {s.label}
-                      </a>
-                    ))}
                 </div>
               </div>
             </div>
@@ -296,7 +279,7 @@ function ContactPage() {
         <SectionHeading
           eyebrow="Our 3 Centres"
           title="Choose Your Nearest Sports Life Centre"
-          body="All 3 Delhi centres feature structured coaching, certified mentors, and dedicated player development across surfaces."
+          body=""
         />
 
         <div className="mt-12 grid gap-8">
@@ -308,9 +291,7 @@ function ContactPage() {
                   <div className="p-7 sm:p-9">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <span className="inline-block rounded-full bg-neon/10 border border-neon/30 text-neon px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider">
-                          {centre.tag}
-                        </span>
+                       
                         <h3 className="mt-3 text-2xl font-black text-foreground">
                           {centre.name}
                         </h3>
