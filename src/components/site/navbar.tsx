@@ -130,19 +130,19 @@ export function Navbar() {
         {/* Subtle top vibrant accent line */}
         <div className="absolute inset-x-0 top-0 h-[2px] bg-linear-to-r from-transparent via-neon/60 to-transparent pointer-events-none" />
 
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[1560px] items-center gap-3 px-4 sm:px-6 lg:px-8">
           {/* Brand Logo & Name */}
           <Link
             to="/"
-            className="flex items-center shrink-0 mr-3 sm:mr-6 lg:mr-8 xl:mr-10"
+            className="flex shrink-0 items-center mr-2 sm:mr-4 lg:mr-5"
             aria-label="Sports Life Tennis Academy"
           >
             <NavbarBrand />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav ref={navRef} className="hidden grow items-center justify-center xl:flex px-2">
-            <ul className="flex items-center gap-1 xl:gap-1.5 whitespace-nowrap bg-surface-2/60 border border-border/60 rounded-full px-3 py-1.5 shadow-xs backdrop-blur-md">
+          <nav ref={navRef} className="hidden min-w-0 grow items-center justify-center xl:flex">
+            <ul className="flex min-w-0 items-center gap-0.5 xl:gap-1 whitespace-nowrap bg-surface-2/60 border border-border/60 rounded-full px-2 py-1.5 shadow-xs backdrop-blur-md">
               {NAV.map((item, i) => (
                 <li key={String(item.to) + i} className="relative">
                   {"children" in item && item.children ? (
@@ -151,11 +151,11 @@ export function Navbar() {
                       onMouseEnter={() => setOpenIndex(i)}
                       onMouseLeave={() => setOpenIndex(null)}
                     >
-                      <div className="flex items-center gap-1 rounded-full px-3 py-1.5 transition-all hover:bg-neon/10 cursor-pointer">
+                      <div className="flex items-center gap-0.5 rounded-full px-2.5 py-1.5 transition-all hover:bg-neon/10 cursor-pointer">
                         <Link
                           to={item.to}
                           activeProps={{ className: "text-neon font-bold" }}
-                          className="text-[12px] 2xl:text-[12.5px] font-semibold text-foreground/80 group-hover:text-neon transition-colors"
+                          className="text-[11px] 2xl:text-[12px] font-semibold text-foreground/80 group-hover:text-neon transition-colors"
                         >
                           {item.label}
                         </Link>
@@ -215,7 +215,7 @@ export function Navbar() {
                       to={item.to}
                       activeOptions={{ exact: item.to === "/" }}
                       activeProps={{ className: "text-neon font-bold bg-neon/15 shadow-xs" }}
-                      className="rounded-full px-3 py-1.5 text-[12px] 2xl:text-[12.5px] font-semibold text-foreground/80 hover:bg-neon/10 hover:text-neon transition-all"
+                      className="rounded-full px-2.5 py-1.5 text-[11px] 2xl:text-[12px] font-semibold text-foreground/80 hover:bg-neon/10 hover:text-neon transition-all"
                     >
                       {item.label}
                     </Link>
@@ -226,7 +226,7 @@ export function Navbar() {
           </nav>
 
           {/* Action Buttons: Desktop & Mobile Header Bar */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             {/* Quick Call Button */}
             <a
               href={`tel:${cleanPhone}`}

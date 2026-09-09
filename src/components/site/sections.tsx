@@ -53,6 +53,7 @@ export function PageHero({
   image,
   images,
   imagePos = "object-center",
+  imageFit = "object-cover",
   removeFog = false,
   className,
 }: {
@@ -62,6 +63,7 @@ export function PageHero({
   image?: string;
   images?: string[];
   imagePos?: string;
+  imageFit?: "object-cover" | "object-contain";
   removeFog?: boolean;
   className?: string;
 }) {
@@ -89,7 +91,7 @@ export function PageHero({
               aria-hidden="true"
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              className={`absolute inset-0 size-full object-cover ${imagePos || "object-center"} transition-opacity duration-1000 ease-out`}
+              className={`absolute inset-0 size-full ${imageFit} ${imagePos || "object-center"} transition-opacity duration-1000 ease-out`}
               style={{ opacity: index === activeImage ? 1 : 0 }}
               onError={(e) => {
                 const el = e.currentTarget as HTMLImageElement;

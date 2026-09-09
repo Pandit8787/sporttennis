@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as CoachesRouteImport } from './routes/coaches'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
+import { Route as MeetOurPlayersRouteImport } from './routes/meet-our-players'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
@@ -55,6 +56,11 @@ const ContactRoute = ContactRouteImport.update({
 const FacilitiesRoute = FacilitiesRouteImport.update({
   id: '/facilities',
   path: '/facilities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetOurPlayersRoute = MeetOurPlayersRouteImport.update({
+  id: '/meet-our-players',
+  path: '/meet-our-players',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
+  '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRouteWithChildren
@@ -176,6 +183,7 @@ export interface FileRoutesByTo {
   '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
+  '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRouteWithChildren
@@ -201,6 +209,7 @@ export interface FileRoutesById {
   '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
+  '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRouteWithChildren
@@ -227,6 +236,7 @@ export interface FileRouteTypes {
     | '/coaches'
     | '/contact'
     | '/facilities'
+    | '/meet-our-players'
     | '/programs'
     | '/sitemap.xml'
     | '/team'
@@ -251,6 +261,7 @@ export interface FileRouteTypes {
     | '/coaches'
     | '/contact'
     | '/facilities'
+    | '/meet-our-players'
     | '/programs'
     | '/sitemap.xml'
     | '/team'
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '/coaches'
     | '/contact'
     | '/facilities'
+    | '/meet-our-players'
     | '/programs'
     | '/sitemap.xml'
     | '/team'
@@ -300,6 +312,7 @@ export interface RootRouteChildren {
   CoachesRoute: typeof CoachesRoute
   ContactRoute: typeof ContactRoute
   FacilitiesRoute: typeof FacilitiesRoute
+  MeetOurPlayersRoute: typeof MeetOurPlayersRoute
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRouteWithChildren
@@ -351,6 +364,13 @@ declare module '@tanstack/react-router' {
       path: '/facilities'
       fullPath: '/facilities'
       preLoaderRoute: typeof FacilitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meet-our-players': {
+      id: '/meet-our-players'
+      path: '/meet-our-players'
+      fullPath: '/meet-our-players'
+      preLoaderRoute: typeof MeetOurPlayersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -503,6 +523,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoachesRoute: CoachesRoute,
   ContactRoute: ContactRoute,
   FacilitiesRoute: FacilitiesRoute,
+  MeetOurPlayersRoute: MeetOurPlayersRoute,
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRouteWithChildren,

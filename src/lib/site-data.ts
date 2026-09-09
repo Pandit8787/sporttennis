@@ -45,6 +45,7 @@ export const NAV = [
       { label: "Punjabi Bagh Club", to: "/centres/punjabi-bagh-club", description: "West Delhi · 6 Clay · 4 Synthetic" },
     ],
   },
+  { label: "Meet Our Players", to: "/meet-our-players" },
   { label: "Our Programs", to: "/programs" },
   {
     label: "Sports Life Initiatives",
