@@ -239,7 +239,7 @@ export function Navbar() {
             {/* Quick Book Trial pill on Mobile & Desktop */}
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-3.5 py-1.5 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider text-white uppercase shadow-[0_4px_16px_rgba(34,197,94,0.3)] hover:shadow-[0_6px_22px_rgba(34,197,94,0.45)] hover:scale-105 active:scale-95 transition-all"
+              className="group hidden xl:inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-3.5 py-1.5 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider text-white uppercase shadow-[0_4px_16px_rgba(34,197,94,0.3)] hover:shadow-[0_6px_22px_rgba(34,197,94,0.45)] hover:scale-105 active:scale-95 transition-all"
             >
               <span>Book Trial</span>
               <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
