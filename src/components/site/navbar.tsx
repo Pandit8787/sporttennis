@@ -52,7 +52,7 @@ function getItemIcon(label: string) {
       return <MapPin className="size-4.5 text-neon" />;
     case "our programs":
       return <Sparkles className="size-4.5 text-neon" />;
-    case "sports life initiatives":
+    case "sports life iniatives":
       return <Globe2 className="size-4.5 text-neon" />;
     case "facilities":
       return <Trophy className="size-4.5 text-neon" />;

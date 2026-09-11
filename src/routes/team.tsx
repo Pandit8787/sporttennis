@@ -302,11 +302,6 @@ export default TeamPage;
    ───────────────────────────────────────────── */
 const HERO_IMAGES = [
   {
-    src: "/team-hero-1.jpg",
-    alt: "Sports Life Tennis Academy Coaching Mentors",
-    pos: "center center",
-  },
-  {
     src: "/team-hero-2.jpg",
     alt: "Sports Life Tennis Academy Coaching Faculty on Court",
     pos: "center center",
@@ -362,7 +357,7 @@ function TeamHeroBanner() {
             pointerEvents: i === current ? "auto" : "none",
           }}
         >
-          {/* Full sharp coach photo — edge-to-edge, perfectly framed in 16:9 */}
+          {/* The banner ratio matches the source images, keeping the full photo sharp and edge-to-edge. */}
           <img
             src={img.src}
             alt={img.alt}

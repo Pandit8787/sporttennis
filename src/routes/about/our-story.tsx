@@ -384,7 +384,7 @@ function OurStoryAndWhyUsPage() {
       icon: Flame,
       tag: "Match Play & Toughness",
       title: "Learn to Play. Then Learn to Compete.",
-      body: "A practice session can teach you how to hit a shot. A match teaches you when to use it. That's why competitive exposure is an important part of our philosophy. Through initiatives such as Sunday Match Play, players get opportunities to experience real points, pressure, decision-making and competition. They learn how to win. They learn how to lose. And, most importantly, they learn how to respond. Because some of the most important lessons in tennis happen when the score is against you.",
+      body: "A practice session can teach you how to hit a shot. A match teaches you when to use it. That's why competitive exposure is an important part of our philosophy. Through iniatives such as Sunday Match Play, players get opportunities to experience real points, pressure, decision-making and competition. They learn how to win. They learn how to lose. And, most importantly, they learn how to respond. Because some of the most important lessons in tennis happen when the score is against you.",
       accent: "neon",
     },
     {
@@ -412,7 +412,7 @@ function OurStoryAndWhyUsPage() {
       icon: Globe2,
       tag: "Global Perspectives",
       title: "Learning Doesn't Stop at Sports Life",
-      body: "We believe that the best coaches never stop learning. Through our Global Learning initiatives, Sports Life has created opportunities for players and coaches to learn from experienced professionals and gain perspectives beyond their regular training environment. Because tennis continues to evolve. And so should we.",
+      body: "We believe that the best coaches never stop learning. Through our Global Learning iniatives, Sports Life has created opportunities for players and coaches to learn from experienced professionals and gain perspectives beyond their regular training environment. Because tennis continues to evolve. And so should we.",
       accent: "neon",
     },
     {

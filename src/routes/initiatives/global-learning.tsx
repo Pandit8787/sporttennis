@@ -223,13 +223,13 @@ function GlobalMediaSlider({
 export const Route = createFileRoute("/initiatives/global-learning")({
   head: () => ({
     meta: [
-      { title: "Global Learning Initiatives — Learning Beyond the Court | Sports Life" },
+      { title: "Global Learning iniatives — Learning Beyond the Court | Sports Life" },
       {
         name: "description",
         content:
           "Direct access to experienced professionals: exclusive online sessions with Jofre Porta, Indian professional Vishnu Vardhan, and international tennis mentors.",
       },
-      { property: "og:title", content: "Global Learning Initiatives — Sports Life" },
+      { property: "og:title", content: "Global Learning iniatives — Sports Life" },
       {
         property: "og:description",
         content:
@@ -248,7 +248,7 @@ function GlobalLearning() {
     <>
       {/* Hero */}
       <PageHero
-        eyebrow="Global Learning Initiatives"
+        eyebrow="Global Learning iniatives"
         title="Learning Beyond the Court"
         body="Connecting Our Players With Global Tennis Expertise"
         image={heroImage}
@@ -285,7 +285,7 @@ function GlobalLearning() {
         <SectionHeading
           eyebrow="Exclusive Interactions"
           title="Learning From Those Who Have Been There"
-          body="As part of our learning initiatives, Sports Life has organised exclusive online interactions that have given our players the opportunity to directly engage with experienced professionals. These sessions are designed to go beyond technical coaching. Players can listen, ask questions, understand different perspectives, and learn about the realities of competitive tennis from people who have experienced them firsthand."
+          body="As part of our learning iniatives, Sports Life has organised exclusive online interactions that have given our players the opportunity to directly engage with experienced professionals. These sessions are designed to go beyond technical coaching. Players can listen, ask questions, understand different perspectives, and learn about the realities of competitive tennis from people who have experienced them firsthand."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -314,7 +314,7 @@ function GlobalLearning() {
                     Sports Life × Jofre Porta — An Exclusive Online Learning Session
                   </p>
                   <p>
-                    One of our Global Learning initiatives brought our players and coaching team together for an online interaction with Jofre Porta (The coach of Rafael Nadal and Carlos Moya).
+                    One of our Global Learning iniatives brought our players and coaching team together for an online interaction with Jofre Porta (The coach of Rafael Nadal and Carlos Moya).
                   </p>
                   <p>
                     The session gave our players the opportunity to interact directly with Jofre, ask questions and hear his perspective on tennis, player development and the journey of becoming a better player.
@@ -443,7 +443,7 @@ function GlobalLearning() {
           <div className="mt-8 rounded-2xl border border-border bg-surface p-6 text-sm text-foreground/80 max-w-2xl mx-auto">
             <h4 className="font-bold text-foreground text-base mb-2">The Journey Continues</h4>
             <p>
-              Our global learning initiatives are still evolving. As Sports Life grows, we want to create more opportunities for our players to interact with experienced coaches, professional players, and people who can offer valuable perspectives on different stages of the tennis journey.
+              Our global learning iniatives are still evolving. As Sports Life grows, we want to create more opportunities for our players to interact with experienced coaches, professional players, and people who can offer valuable perspectives on different stages of the tennis journey.
             </p>
             <p className="mt-3 font-semibold text-neon">
               Because sometimes, one conversation can change the way a player sees the game.

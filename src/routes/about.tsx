@@ -85,7 +85,7 @@ function AboutPage() {
       <PageHero
         eyebrow="About Sports Life"
         title="Building the Future of Indian Tennis"
-        body="Coaching excellence, multi-surface infrastructure, and player-first athlete development across Delhi's premier sports clubs."
+        body=""
         image={heroImage}
         removeFog
       />
@@ -260,113 +260,10 @@ function AboutPage() {
       </Section>
 
       {/* Core Values Summary */}
-      <Section>
-        <SectionHeading
-          eyebrow="Core Values"
-          title="Principles That Guide Us"
-          body="Lived daily by our coaches and players across all 3 Delhi centres."
-        />
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              title: "Excellence",
-              desc: "World-class coaching standards, 27 tournament courts, and pristine facilities.",
-              icon: Trophy,
-            },
-            {
-              title: "Integrity",
-              desc: "Honest feedback, transparent progress reports, and fair play always.",
-              icon: ShieldCheck,
-            },
-            {
-              title: "Player First",
-              desc: "Individualized development roadmaps centered around long-term growth.",
-              icon: HeartHandshake,
-            },
-            {
-              title: "Discipline",
-              desc: "Structured practice routines, punctuality, and competitive composure.",
-              icon: Zap,
-            },
-            {
-              title: "Continuous Learning",
-              desc: "Ongoing coach education, international masterclasses, and modern methods.",
-              icon: Lightbulb,
-            },
-            {
-              title: "Community",
-              desc: "A welcoming, supportive environment connecting players, parents, and coaches.",
-              icon: Users,
-            },
-          ].map((v, i) => (
-            <Reveal key={v.title} delay={i * 0.05}>
-              <div className="card-elevated flex h-full flex-col justify-between p-6">
-                <div>
-                  <div className="flex size-10 items-center justify-center rounded-xl bg-neon/15 text-neon mb-3">
-                    <v.icon className="size-5" />
-                  </div>
-                  <h4 className="font-bold text-lg text-foreground">{v.title}</h4>
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {v.desc}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      
 
       {/* Facilities Banner */}
-      <Section className="bg-surface/30">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
-            <img
-              src={courtsImage}
-              alt="Multi-surface tennis courts in Delhi"
-              className="h-80 w-full object-cover"
-            />
-          </div>
-
-          <div className="space-y-4">
-            <span className="eyebrow">
-              <MapPin className="size-3.5" />
-              Our Infrastructure
-            </span>
-            <h3 className="text-3xl font-extrabold text-foreground">
-              25 Courts Across Delhi
-            </h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Sports Life provides players with rare multi-surface training on Synthetic, Clay, and
-              Grass courts across Roshanara Club, Major Dhyan Chand Sports Complex, and Punjabi Bagh
-              Club.
-            </p>
-            <div className="space-y-2 pt-2">
-              <div className="flex items-center gap-2 text-sm text-foreground/85">
-                <CheckCircle2 className="size-4 text-neon" />
-                <span><strong>Roshanara Club:</strong> 4 Synthetic, 2 Clay, 3 Grass</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-foreground/85">
-                <CheckCircle2 className="size-4 text-neon" />
-                <span><strong>Major Dhyan Chand:</strong> 6 Synthetic, 7 Clay</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-foreground/85">
-                <CheckCircle2 className="size-4 text-neon" />
-                <span><strong>Punjabi Bagh Club:</strong> 4 Synthetic, 1 Clay</span>
-              </div>
-            </div>
-            <div className="pt-2">
-              <a
-                href="/about/our-story"
-                className="inline-flex items-center gap-1.5 font-bold text-neon text-sm hover:underline"
-              >
-                <span>Discover why families choose Sports Life</span>
-                <span>→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </Section>
+     
 
       {/* CTA */}
 

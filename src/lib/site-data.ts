@@ -48,12 +48,12 @@ export const NAV = [
   { label: "Meet Our Players", to: "/meet-our-players" },
   { label: "Our Programs", to: "/programs" },
   {
-    label: "Sports Life Initiatives",
+    label: "Sports Life iniatives",
     to: "/initiatives",
     children: [
-      { label: "Initiatives Overview", to: "/initiatives", description: "Pathways beyond traditional training" },
+      { label: "iniatives Overview", to: "/initiatives", description: "Pathways beyond traditional training" },
       { label: "Sunday Match Play", to: "/initiatives/sunday-match-play", description: "Weekly tournament match play league" },
-      { label: "Global Learning Initiatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
+      { label: "Global Learning iniatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
     ],
   },
   { label: "Testimonials", to: "/testimonials" },
@@ -154,16 +154,6 @@ export const PROGRAMS = [
     summary: "It's Never Too Late to Start Playing. Whether you're picking up a racquet for the first time, returning to tennis after years away, or looking to improve your game, our Adult Tennis Program provides a welcoming and professional environment for players of all abilities.",
     points: ["Fitness & agility", "Technique refinement", "Stress relief & wellness", "Welcoming community"],
     perfectFor: "Beginners, recreational players, and competitive adults",
-  },
-  {
-    slug: "sunday-match-play",
-    name: "Sunday Match Play",
-    level: "All Levels",
-    duration: "Every Sunday",
-    price: "On enquiry",
-    summary: "A structured weekly competitive match-play initiative giving players regular tournament match exposure, tactical debriefs, and competitive confidence.",
-    points: ["Simulated tournament matches", "Supervisor coach debriefs", "Tactical shot selection", "Competitive pressure training"],
-    perfectFor: "All players wanting real competitive match exposure",
   },
 ];
 
@@ -453,7 +443,7 @@ export const INITIATIVES = [
     body: "Structured competitive matches for players of similar level, helping them improve decision-making, tactical shot selection, and match confidence.",
   },
   {
-    title: "Global Learning Initiatives",
+    title: "Global Learning iniatives",
     body: "Learning Beyond the Court: Direct online interactive sessions with international coaches like Jofre Porta and Indian professionals like Vishnu Vardhan.",
   },
 ];

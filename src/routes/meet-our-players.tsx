@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/motion-primitives";
-import { PageHero, Section, SectionHeading } from "@/components/site/sections";
+import { PageHero, Section } from "@/components/site/sections";
 import { CtaLink } from "@/components/site/layout";
 import { Medal, Star, Trophy, Globe2 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -114,7 +114,7 @@ const PLAYERS = [
   {
     name: "Soham Aggarwal",
     subtitle: "All India IPSC Gold — Team Event",
-    image: null,
+    image: "/players/soham.png",
     
     badgeColor: "bg-neon/15 text-neon border-neon/30",
     highlights: [
@@ -237,21 +237,22 @@ function MeetOurPlayersPage() {
         removeFog
       />
 
-      <Section className="pt-0">
-        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
+      <Section className="pt-0 pb-4 sm:pb-6 lg:pb-8">
+        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3">
           {([
-            { icon: <Trophy className="size-5 text-amber-400" />, value: "9+", label: "Spotlight Players" },
-            { icon: <Star className="size-5 text-neon" />, value: "ITF", label: "International Competitors" },
-            { icon: <Medal className="size-5 text-blue-400" />, value: "SGFI", label: "State Medalists" },
-            { icon: <Globe2 className="size-5 text-purple-400" />, value: "AITA", label: "National Champions" },
-          ] as { icon: ReactNode; value: string; label: string }[]).map((s) => (
+            { icon: <Globe2 className="size-5 text-purple-400" />, label: "AITA" },
+            { icon: <Star className="size-5 text-neon" />, label: "ITF" },
+            { icon: <Medal className="size-5 text-blue-400" />, label: "SGFI" },
+            { icon: <Trophy className="size-5 text-amber-400" />, label: "KHELO INDIA" },
+            { icon: <Trophy className="size-5 text-amber-400" />, label: "DAV NATIONALS" },
+            { icon: <Star className="size-5 text-neon" />, label: "CBSE" },
+          ] as { icon: ReactNode; label: string }[]).map((s) => (
             <div
               key={s.label}
               className="flex flex-col items-center gap-2 rounded-2xl border border-border/60 bg-surface/80 p-4 text-center backdrop-blur-sm"
             >
               {s.icon}
-              <span className="font-display text-xl font-black text-foreground">{s.value}</span>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              <span className="font-display text-sm font-black uppercase tracking-wider text-foreground">
                 {s.label}
               </span>
             </div>
@@ -259,22 +260,34 @@ function MeetOurPlayersPage() {
         </div>
       </Section>
 
-      <Section>
-        <SectionHeading
-          eyebrow="Player Spotlight"
-          title="Our Competitive Players"
-          body="From Khelo India to ITF tournaments, our players are proving themselves on the biggest stages."
-          align="center"
-        />
-
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <Section className="pt-4 sm:pt-6 lg:pt-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PLAYERS.map((player, i) => (
             <PlayerCard key={player.name} player={player} index={i} />
           ))}
         </div>
       </Section>
 
-     
+      <Section className="relative overflow-hidden border-t border-border/60 bg-surface-2/40">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-px w-48 -translate-x-1/2 bg-neon shadow-[0_0_28px_rgba(163,230,53,0.8)]" />
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-display text-2xl font-black leading-tight text-foreground sm:text-3xl">
+              These are just a few of the journeys we&apos;re proud to be a part of.
+            </p>
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Behind every achievement are countless hours of training, competition and commitment.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              And there are many more journeys unfolding across Sports Life.
+            </p>
+            <p className="mt-6 font-display text-lg font-bold text-neon sm:text-xl">Your journey could be next.</p>
+            <CtaLink to="/contact" variant="neon" className="mt-7">
+              Start Your Journey
+            </CtaLink>
+          </div>
+        </Reveal>
+      </Section>
     </>
   );
 }

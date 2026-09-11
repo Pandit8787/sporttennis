@@ -227,7 +227,7 @@ function SundayMatchPlay() {
       <div className="relative">
         <PageHero
           eyebrow="Signature Initiative"
-          title="sunday mtach play"
+          title="sunday match  play"
           body=""
           image={heroImage}
           imagePos="object-[center_48%]"
