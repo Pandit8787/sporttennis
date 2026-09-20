@@ -54,6 +54,7 @@ export const NAV = [
       { label: "iniatives Overview", to: "/initiatives", description: "Pathways beyond traditional training" },
       { label: "Sunday Match Play", to: "/initiatives/sunday-match-play", description: "Weekly tournament match play league" },
       { label: "Global Learning iniatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
+      { label: "DU Sports Quota Guide", to: "/du-sports-quota-guide-tennis", description: "CUET weightage, certificates & trial guide" },
     ],
   },
   { label: "Testimonials", to: "/testimonials" },

@@ -113,6 +113,34 @@ const ACTIVE_INITIATIVES: InitiativeItem[] = [
     ],
     imageAspect: "h-80 sm:h-96 md:h-[420px]",
   },
+  {
+    title: "DU Sports Quota Guide",
+    tag: "Admissions & Trials",
+    badgeColor: "text-amber-500 bg-amber-500/10 border-amber-500/30",
+    desc: "A complete independent educational guide for tennis players and parents navigating Delhi University Sports Supernumerary Quota admissions, CUET weightage (25%), certificate marks (25%), and on-court trials (50%).",
+    highlights: [
+      "Breakdown of Combined Sports Merit (CSM) calculation",
+      "Category B, C & D certificate marks comparison",
+      "CUET subject compatibility and CSAS admission roadmap",
+      "2026 DU tennis trials observational analysis & tactical preparation",
+    ],
+    link: "/du-sports-quota-guide-tennis",
+    linkText: "Read DU Sports Quota Guide",
+    icon: GraduationCap,
+    images: [
+      {
+        src: "/centre-gallery/whatsapp-20260813-171844-1.jpg",
+        alt: "DU Sports Quota Tennis Trials and Admissions",
+        objectPosition: "object-[center_35%]",
+      },
+      {
+        src: "/centre-gallery/whatsapp-20260813-171843-1.jpg",
+        alt: "Competitive Tennis Training for University Admissions",
+        objectPosition: "object-[center_40%]",
+      },
+    ],
+    imageAspect: "h-80 sm:h-96 md:h-[420px]",
+  },
 ];
 
 function CardImageSlider({

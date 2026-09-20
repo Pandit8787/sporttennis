@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CoachesRouteImport } from './routes/coaches'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DuSportsQuotaGuideTennisRouteImport } from './routes/du-sports-quota-guide-tennis'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as MeetOurPlayersRouteImport } from './routes/meet-our-players'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -53,6 +54,12 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DuSportsQuotaGuideTennisRoute =
+  DuSportsQuotaGuideTennisRouteImport.update({
+    id: '/du-sports-quota-guide-tennis',
+    path: '/du-sports-quota-guide-tennis',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FacilitiesRoute = FacilitiesRouteImport.update({
   id: '/facilities',
   path: '/facilities',
@@ -157,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRouteWithChildren
   '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
+  '/du-sports-quota-guide-tennis': typeof DuSportsQuotaGuideTennisRoute
   '/facilities': typeof FacilitiesRoute
   '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
@@ -182,6 +190,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRouteWithChildren
   '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
+  '/du-sports-quota-guide-tennis': typeof DuSportsQuotaGuideTennisRoute
   '/facilities': typeof FacilitiesRoute
   '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
@@ -208,6 +217,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRouteWithChildren
   '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
+  '/du-sports-quota-guide-tennis': typeof DuSportsQuotaGuideTennisRoute
   '/facilities': typeof FacilitiesRoute
   '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/coaches'
     | '/contact'
+    | '/du-sports-quota-guide-tennis'
     | '/facilities'
     | '/meet-our-players'
     | '/programs'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/coaches'
     | '/contact'
+    | '/du-sports-quota-guide-tennis'
     | '/facilities'
     | '/meet-our-players'
     | '/programs'
@@ -285,6 +297,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/coaches'
     | '/contact'
+    | '/du-sports-quota-guide-tennis'
     | '/facilities'
     | '/meet-our-players'
     | '/programs'
@@ -311,6 +324,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRouteWithChildren
   CoachesRoute: typeof CoachesRoute
   ContactRoute: typeof ContactRoute
+  DuSportsQuotaGuideTennisRoute: typeof DuSportsQuotaGuideTennisRoute
   FacilitiesRoute: typeof FacilitiesRoute
   MeetOurPlayersRoute: typeof MeetOurPlayersRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -357,6 +371,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/du-sports-quota-guide-tennis': {
+      id: '/du-sports-quota-guide-tennis'
+      path: '/du-sports-quota-guide-tennis'
+      fullPath: '/du-sports-quota-guide-tennis'
+      preLoaderRoute: typeof DuSportsQuotaGuideTennisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/facilities': {
@@ -522,6 +543,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRouteWithChildren,
   CoachesRoute: CoachesRoute,
   ContactRoute: ContactRoute,
+  DuSportsQuotaGuideTennisRoute: DuSportsQuotaGuideTennisRoute,
   FacilitiesRoute: FacilitiesRoute,
   MeetOurPlayersRoute: MeetOurPlayersRoute,
   ProgramsRoute: ProgramsRoute,
