@@ -19,6 +19,7 @@ import {
   Target,
   Zap,
   Info,
+  FileText,
 } from "lucide-react";
 
 // Components
@@ -32,7 +33,7 @@ import { PreparationChecklist } from "@/components/du-guide/PreparationChecklist
 import { FAQAccordion } from "@/components/du-guide/FAQAccordion";
 import { EnquiryForm } from "@/components/du-guide/EnquiryForm";
 
-const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
+const heroImage = "https://cdn.collegewollege.com/storage/colleges/branding/aGBsW3QmmmTTVV8kMkRAqZJoKIlxVMp1pWZMAb3a.webp";
 
 export const Route = createFileRoute("/du-sports-quota-guide-tennis")({
   head: () => ({
@@ -315,6 +316,53 @@ function DUSportsQuotaGuidePage() {
                 CUET (UG) is an important part of the Delhi University admission process. For the 2026–27 academic session, candidates seeking admission to undergraduate programmes at Delhi University must appear for CUET (UG)-2026 and subsequently apply through the CSAS (UG)-2026 portal.
               </p>
 
+              {/* Official DU PDF Documents */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a
+                  href="https://www.du.ac.in/uploads/2026/06012026_BOI_UG_2026_27_compressed.pdf"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="flex items-center justify-between rounded-2xl border border-blue-500/30 bg-blue-500/5 hover:bg-blue-500/10 p-3.5 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 shrink-0">
+                      <FileText className="size-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block text-xs font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate">
+                        DU Bulletin of Information
+                      </span>
+                      <span className="block text-[11px] text-muted-foreground truncate">
+                        BOI UG 2026–27 (PDF)
+                      </span>
+                    </div>
+                  </div>
+                  <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 shrink-0 ml-2" />
+                </a>
+
+                <a
+                  href="https://admission.uod.ac.in/userfiles/downloads/UG-CSAS_26062026.pdf"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="flex items-center justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/10 p-3.5 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
+                      <FileText className="size-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block text-xs font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 truncate">
+                        DU CSAS Guidelines
+                      </span>
+                      <span className="block text-[11px] text-muted-foreground truncate">
+                        UG-CSAS Bulletin (PDF)
+                      </span>
+                    </div>
+                  </div>
+                  <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 shrink-0 ml-2" />
+                </a>
+              </div>
+
               <div className="rounded-2xl border border-blue-500/30 bg-blue-500/10 p-5 shadow-xs">
                 <p className="font-bold text-foreground sm:text-lg leading-snug">
                   “For candidates applying under Sports Supernumerary Quota Categories B, C and D, the highest Programme-Specific CUET percentage score contributes 25% to the Combined Sports Merit (CSM).”
@@ -428,8 +476,33 @@ function DUSportsQuotaGuidePage() {
 
           <div className="text-sm sm:text-base leading-relaxed text-foreground/85 space-y-3">
             <p>
-              Sports certificates contribute <strong>25% of the Combined Sports Merit (CSM) score</strong>. The evaluation is carried out strictly based on the highest level of competition and the position secured.
+              Sports certificates contribute <strong>25% of the Combined Sports Merit (CSM) score</strong>. They are evaluated based on the level of competition and the position achieved. Up to three certificates may be uploaded, but only the certificate receiving the highest evaluated marks is considered for the CSM.
             </p>
+          </div>
+
+          {/* Official Document Link */}
+          <div className="max-w-sm mt-4">
+            <a
+              href="https://admission.uod.ac.in/userfiles/downloads/UG-CSAS_26062026.pdf"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-center justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/10 p-3.5 transition-all group shadow-xs"
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
+                  <FileText className="size-4" />
+                </div>
+                <div className="min-w-0">
+                  <span className="block text-xs font-bold text-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 truncate">
+                    DU CSAS Guidelines
+                  </span>
+                  <span className="block text-[11px] text-muted-foreground truncate">
+                    UG-CSAS Bulletin (PDF)
+                  </span>
+                </div>
+              </div>
+              <ExternalLink className="size-3.5 text-muted-foreground group-hover:text-emerald-600 dark:group-hover:text-emerald-400 shrink-0 ml-2" />
+            </a>
           </div>
 
           {/* Responsive Certificate Marks Table */}
@@ -454,7 +527,7 @@ function DUSportsQuotaGuidePage() {
           </h2>
 
           <p className="text-sm sm:text-base leading-relaxed text-foreground/85 max-w-4xl">
-            Delhi University classifies sports certificates into four distinct tiers (Categories A, B, C, and D), ranging from international representation down to recognized district clusters.
+            Delhi University classifies sports certificates into four distinct tiers (Categories A, B, C, and D), ranging from international representation to recognized district clusters.
           </p>
 
           {/* 4 Category Cards */}
@@ -517,9 +590,9 @@ function DUSportsQuotaGuidePage() {
             </div>
 
             <div className="lg:col-span-5">
-              <InsightCard badge="SPORTS LIFE INSIGHT" title="Audit Your Certificate Profile Early">
+              <InsightCard badge="SPORTS LIFE INSIGHT" title="Know Where You Stand">
                 <p>
-                  “Identifying your highest eligible certificate is one of the first steps in evaluating your DU sports quota profile. Do not wait until the CSAS portal opens in June. Audit tournament dates, certificate stamps, organizing federation credentials, and category levels months in advance.”
+                  Before the admission season begins, understand which of your certificates are eligible and which one could contribute the highest marks to your CSM.
                 </p>
               </InsightCard>
             </div>
@@ -535,7 +608,7 @@ function DUSportsQuotaGuidePage() {
               Section 08 & 09
             </span>
             <span className="text-xs text-muted-foreground font-semibold">
-              50% Weightage · The Major Decider
+              50% Weightage ·
             </span>
           </div>
 
@@ -576,7 +649,7 @@ function DUSportsQuotaGuidePage() {
                   Player Reporting & Verification
                 </h4>
                 <p className="mt-2 text-xs text-foreground/80 leading-relaxed">
-                  Candidates report in proper tennis kit with original certificates, CUET scorecard, CSAS registration slips, and photo IDs for physical verification.
+                  Candidates report for the trial and complete the required document and identity verification process.
                 </p>
               </div>
 
@@ -636,9 +709,7 @@ function DUSportsQuotaGuidePage() {
                   “If a player does not have a current Men's or Women's ranking, the <strong>AITA Under-18 ranking</strong> may be considered for seeding purposes, while Men's/Women's AITA ranking receives first preference.”
                 </p>
               </div>
-              <div className="rounded-xl bg-surface-2/60 p-3 text-xs text-muted-foreground border border-border/60">
-                *This represents Sports Life's observation and should not be treated as an official DU rule.
-              </div>
+
             </div>
 
             {/* Duration of the Tennis Trial */}
@@ -651,13 +722,14 @@ function DUSportsQuotaGuidePage() {
               </h3>
               <div className="text-sm text-foreground/85 space-y-3 leading-relaxed">
                 <p>
-                  “Based on Sports Life's observation of the 2026 trials, the tennis trial was generally conducted over <strong>2–3 days</strong> depending on the size of the draw and number of participants.”
+                  “Based on Sports Life’s observation of the 2026 trials, the tennis trial was generally conducted over <strong>2–3 days</strong> depending on the draw size and number of participants.”
                 </p>
                 <p>
-                  “Players progress through successive rounds, and their performance during the trial is evaluated by the committee.”
+                  “Players progress through successive rounds, with their performance evaluated by the committee.”
                 </p>
                 <p>
-                  Players must manage stamina, hydration, and mental composure across consecutive high-stakes match days.
+
+                  From a preparation perspective, players should be physically and mentally prepared to play multiple matches in a single day — in some situations, potentially 3–4 matches depending on the draw and schedule.
                 </p>
               </div>
             </div>
@@ -951,7 +1023,7 @@ function DUSportsQuotaGuidePage() {
               Always refer to official University of Delhi notifications and bulletins for binding admission updates:
             </p>
 
-            <div className="grid gap-4 sm:grid-cols-3 pt-2">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-2">
               <a
                 href="https://admission.uod.ac.in/"
                 target="_blank"
@@ -970,7 +1042,7 @@ function DUSportsQuotaGuidePage() {
               </a>
 
               <a
-                href="https://admission.uod.ac.in/userfiles/downloads/UG-CSAS_26062026.pdf/"
+                href="https://admission.uod.ac.in/userfiles/downloads/UG-CSAS_26062026.pdf"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="group flex items-center justify-between rounded-2xl border border-border/70 bg-surface-2/40 p-5 transition-all hover:border-neon hover:bg-neon/5 shadow-xs"
@@ -998,6 +1070,23 @@ function DUSportsQuotaGuidePage() {
                   </span>
                   <span className="text-[11px] text-muted-foreground">
                     du.ac.in Main Website
+                  </span>
+                </div>
+                <ExternalLink className="size-4 text-muted-foreground group-hover:text-neon transition-colors shrink-0" />
+              </a>
+
+              <a
+                href="https://www.du.ac.in/uploads/2026/06012026_BOI_UG_2026_27_compressed.pdf"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="group flex items-center justify-between rounded-2xl border border-border/70 bg-surface-2/40 p-5 transition-all hover:border-neon hover:bg-neon/5 shadow-xs"
+              >
+                <div>
+                  <span className="block text-xs sm:text-sm font-black text-foreground group-hover:text-neon transition-colors">
+                    DU Bulletin of Information
+                  </span>
+                  <span className="text-[11px] text-muted-foreground">
+                    BOI UG 2026–27 PDF
                   </span>
                 </div>
                 <ExternalLink className="size-4 text-muted-foreground group-hover:text-neon transition-colors shrink-0" />

@@ -17,7 +17,7 @@ export function CertificateTable() {
       badge: "Runner-Up",
     },
     {
-      position: "3rd Position (Semi-Finalist / Bronze)",
+      position: "3rd Position (Semi-Finalist)",
       catB: 160,
       catC: 80,
       catD: 20,

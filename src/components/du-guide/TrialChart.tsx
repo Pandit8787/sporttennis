@@ -58,15 +58,8 @@ export function TrialChart() {
         {/* Header with Title and Badges */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/15 px-3 py-0.5 text-[11px] font-black uppercase tracking-wider text-rose-600 dark:text-rose-400">
-                <ShieldAlert className="size-3.5" />
-                NOT OFFICIAL DU MARKS
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/15 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                2026 Trial Observation
-              </span>
-            </div>
+
+
             <h3 className="mt-3 font-display text-xl sm:text-2xl font-black text-foreground">
               Tennis Trial Marks Analysis — Out of 400
             </h3>
@@ -121,19 +114,17 @@ export function TrialChart() {
           {TRIAL_DATA.map((item) => (
             <div
               key={item.round}
-              className={`rounded-xl border p-2.5 text-center transition-all ${
-                item.highlight
+              className={`rounded-xl border p-2.5 text-center transition-all ${item.highlight
                   ? "border-emerald-500/40 bg-emerald-500/10"
                   : "border-border/70 bg-surface-2/40"
-              }`}
+                }`}
             >
               <div className="text-[10px] uppercase font-bold text-muted-foreground truncate">
                 {item.round}
               </div>
               <div
-                className={`font-display text-base font-black mt-0.5 ${
-                  item.highlight ? "text-emerald-500" : "text-foreground"
-                }`}
+                className={`font-display text-base font-black mt-0.5 ${item.highlight ? "text-emerald-500" : "text-foreground"
+                  }`}
               >
                 {item.marks}{" "}
                 <span className="text-[10px] text-muted-foreground font-normal">/400</span>

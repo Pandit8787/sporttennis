@@ -11,7 +11,7 @@ export const DU_FAQS = [
     id: "faq-1",
     question: "1. What is the DU Sports Supernumerary Quota?",
     answer:
-      "The DU Sports Supernumerary Quota is a special reservation category in Delhi University undergraduate admissions for accomplished sports performers. Supernumerary means these seats are created over and above the regular sanctioned intake of colleges, providing a dedicated pathway for competitive athletes to gain admission based on their sports achievements and trials.",
+      "The DU Sports Supernumerary Quota is a in Delhi University undergraduate admissions for accomplished sports performers. Supernumerary means these seats are created over and above the regular sanctioned intake of colleges, providing a dedicated pathway for competitive athletes to gain admission based on their sports achievements and trials.",
   },
   {
     id: "faq-2",
@@ -104,11 +104,10 @@ export function FAQAccordion() {
           <AccordionItem
             key={faq.id}
             value={faq.id}
-            className={`rounded-2xl border px-4 sm:px-5 transition-all ${
-              faq.isCrucial
+            className={`rounded-2xl border px-4 sm:px-5 transition-all ${faq.isCrucial
                 ? "border-rose-500/30 bg-rose-500/5"
                 : "border-border/70 bg-surface hover:border-neon/40"
-            }`}
+              }`}
           >
             <AccordionTrigger className="text-left font-display text-sm sm:text-base font-bold text-foreground hover:text-neon py-4 cursor-pointer hover:no-underline">
               <span className="flex items-center gap-2">

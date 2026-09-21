@@ -33,7 +33,7 @@ export const CATEGORIES_DATA: CertificateCategoryData[] = [
     badge: "Max 200 Marks",
     badgeVariant: "emerald",
     description:
-      "Highest standard of domestic national competitions recognized by national sports federations (AITA / IOA / SGFI / MYAS).",
+      "National-level competitions recognized by the applicable sports federation/authority and covered under the University of Delhi  sports certificate criteria.",
     competitions: [
       "National Games",
       "Federation Cup",

@@ -5,56 +5,56 @@ export function ProcessTimeline() {
   const steps = [
     {
       number: "01",
-      title: "Appear for CUET (UG)-2026",
-      authority: "Conducted by NTA (National Testing Agency)",
-      desc: "Candidate registers and appears for CUET (UG) in Class XII passed subjects aligned with DU target programme eligibility.",
+      title: "Appear for CUET with the subjects required for your intended DU programme.",
+      authority: "",
+      desc: "",
       icon: FileText,
-      badge: "NTA Examination",
+
       badgeColor: "bg-blue-500/15 text-blue-600 border-blue-500/30",
     },
     {
       number: "02",
-      title: "CUET (UG) Results Declaration",
-      authority: "NTA Scorecard Issued",
-      desc: "NTA releases percentiles and normalized test scores. Candidate obtains official score card and CUET Application Number.",
+      title: "CUET (UG) Results",
+      authority: "",
+      desc: "Receive your CUET scorecard and results from NTA. Your CUET Application Number is required for the next stage.",
       icon: CheckCircle,
-      badge: "Scorecard Required",
+
       badgeColor: "bg-blue-500/15 text-blue-600 border-blue-500/30",
     },
     {
       number: "03",
       title: "DU CSAS (UG)-2026 Portal Registration",
-      authority: "Conducted by University of Delhi",
+
       desc: "Register on Delhi University's Common Seat Allocation System (CSAS) portal using CUET Application Number.",
       icon: School,
-      badge: "DU Centralized Portal",
+
       badgeColor: "bg-emerald-500/15 text-emerald-600 border-emerald-500/30",
     },
     {
       number: "04",
       title: "Select Programme & College Preferences",
-      authority: "University of Delhi CSAS Phase II",
-      desc: "Select preferred courses and colleges. CUET subject combinations will determine Programme-Specific CUET scores.",
+
+      desc: "Select preferred courses and colleges.",
       icon: Layers,
-      badge: "Preference Mapping",
+
       badgeColor: "bg-emerald-500/15 text-emerald-600 border-emerald-500/30",
     },
     {
       number: "05",
       title: "Apply Under Sports Supernumerary Quota",
-      authority: "Sports Quota Form & Certificate Upload",
-      desc: "Opt for Sports Supernumerary Quota (Tennis). Upload maximum up to three valid sports certificates (1 May 2023 – 30 April 2026).",
+
+      desc: "Opt for Sports Supernumerary Quota (Tennis). Upload maximum up to three valid sports certificates",
       icon: FileText,
-      badge: "Max 3 Certificates",
+
       badgeColor: "bg-amber-500/15 text-amber-600 border-amber-500/30",
     },
     {
       number: "06",
       title: "DU Tennis Trials & Seat Allocation",
-      authority: "DU Sports Admission Committee",
+
       desc: "Appear for physical on-court trials (evaluated out of 400 marks). CSM score is computed (25% CUET + 25% Certificates + 50% Trial), followed by seat allocation rounds.",
       icon: Trophy,
-      badge: "CSM Merit Allocation",
+
       badgeColor: "bg-neon/20 text-foreground border-neon/40",
     },
   ];
@@ -74,24 +74,24 @@ export function ProcessTimeline() {
               {/* Step Card */}
               <div className="rounded-2xl border border-border/70 bg-surface/90 p-5 sm:p-6 shadow-sm transition-all hover:border-neon/40 hover:shadow-md">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                  <span
-                    className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider ${step.badgeColor}`}
-                  >
-                    {step.badge}
-                  </span>
-                  <span className="text-xs font-semibold text-muted-foreground flex items-center gap-1">
-                    <Icon className="size-3.5" />
-                    {step.authority}
-                  </span>
+
+                  {step.authority && (
+                    <span className="text-xs font-semibold text-muted-foreground flex items-center gap-1">
+                      <Icon className="size-3.5" />
+                      {step.authority}
+                    </span>
+                  )}
                 </div>
 
                 <h3 className="font-display text-lg sm:text-xl font-black text-foreground">
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-foreground/80 leading-relaxed">
-                  {step.desc}
-                </p>
+                {step.desc && (
+                  <p className="mt-2 text-sm text-foreground/80 leading-relaxed">
+                    {step.desc}
+                  </p>
+                )}
               </div>
 
               {idx < steps.length - 1 && (

@@ -6,34 +6,34 @@ export function WeightageSection() {
       percentage: "25%",
       title: "CUET (UG) Score",
       subtitle: "Academic Component",
-      desc: "Highest Programme-Specific CUET percentage score for the selected undergraduate degree.",
+      desc: "",
       icon: GraduationCap,
       color: "from-blue-500/20 via-blue-500/5 to-transparent",
       borderColor: "border-blue-500/30 hover:border-blue-500/60",
       accent: "text-blue-500",
-      tag: "Academic Foundation",
+
     },
     {
       percentage: "25%",
       title: "Sports Certificates",
       subtitle: "Prior Achievements",
-      desc: "Highest eligible certificate evaluated out of 200 marks from the preceding 3 years.",
+      desc: "",
       icon: Award,
       color: "from-amber-500/20 via-amber-500/5 to-transparent",
       borderColor: "border-amber-500/30 hover:border-amber-500/60",
       accent: "text-amber-500",
-      tag: "Verified Credentials",
+
     },
     {
       percentage: "50%",
       title: "DU Tennis Trial",
       subtitle: "On-Court Performance",
-      desc: "Live tournament matches evaluated out of 400 marks by the University Sports Admission Committee.",
+      desc: "",
       icon: Trophy,
       color: "from-emerald-500/25 via-emerald-500/10 to-transparent",
       borderColor: "border-emerald-500/40 hover:border-emerald-500/70 ring-1 ring-emerald-500/20",
       accent: "text-emerald-500",
-      tag: "Crucial Decider",
+
     },
   ];
 
@@ -49,9 +49,7 @@ export function WeightageSection() {
               className={`relative overflow-hidden rounded-3xl border bg-surface/90 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 shadow-md bg-linear-to-b ${p.color} ${p.borderColor}`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-extrabold uppercase tracking-widest text-muted-foreground bg-surface/80 px-2.5 py-1 rounded-full border border-border/60">
-                  {p.tag}
-                </span>
+
                 <div className={`p-2.5 rounded-2xl bg-surface/90 shadow-xs ${p.accent}`}>
                   <Icon className="size-6" />
                 </div>
@@ -121,7 +119,7 @@ export function WeightageSection() {
 
         <div className="mt-6 max-w-3xl mx-auto rounded-2xl bg-surface/80 p-4 border border-border/60 text-xs sm:text-sm text-foreground/85 leading-relaxed">
           <p className="font-semibold text-foreground">
-            “The final merit score is determined by the combined contribution of all three components. Admission is not based on a single factor alone.”
+            “The final merit score is determined by the combined contribution of all three components.”
           </p>
           <p className="mt-2 text-muted-foreground text-xs">
             Combined Sports Merit (CSM) is used for merit ranking, and admissions are allocated according to Delhi University's seat allocation process, candidate's programme and college preferences, and the availability of sports quota seats.
