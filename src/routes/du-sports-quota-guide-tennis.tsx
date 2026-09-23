@@ -25,6 +25,7 @@ import {
 // Components
 import { InsightCard } from "@/components/du-guide/InsightCard";
 import { WeightageSection } from "@/components/du-guide/WeightageCard";
+import { CSMRealityInsights } from "@/components/du-guide/CSMRealityInsights";
 import { CategoryCards } from "@/components/du-guide/CategoryCard";
 import { ProcessTimeline } from "@/components/du-guide/ProcessTimeline";
 import { CertificateTable } from "@/components/du-guide/CertificateTable";
@@ -851,8 +852,21 @@ function DUSportsQuotaGuidePage() {
         </div>
       </Section>
 
+      {/* SECTION 14 — COMBINED SPORTS MERIT & REALITY CHECK */}
+      <Section id="key-insights" className="scroll-mt-36 bg-surface/30 border-b border-border/60">
+        <div className="space-y-6">
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-neon/15 text-neon px-3 py-0.5 text-xs font-black uppercase tracking-wider">
+              Section 14
+            </span>
+            <span className="text-xs text-muted-foreground font-semibold">
+              Sports Life Key Insights & Merit Reality
+            </span>
+          </div>
 
-
+          <CSMRealityInsights />
+        </div>
+      </Section>
 
       {/* SECTION 16 — CTA & CONSULTATION ENQUIRY FORM */}
       <Section id="enquire" className="scroll-mt-36 bg-surface/30 border-b border-border/60">
