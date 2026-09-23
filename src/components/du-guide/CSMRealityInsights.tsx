@@ -1,63 +1,9 @@
-import { Plus, Equal, Sparkles, Trophy, Award, GraduationCap, AlertCircle } from "lucide-react";
+import { Sparkles, Trophy, Award, GraduationCap, AlertCircle } from "lucide-react";
+
 
 export function CSMRealityInsights() {
   return (
     <div className="space-y-10">
-      {/* Visual Formula Card */}
-      <div className="relative overflow-hidden rounded-3xl border border-neon/30 bg-linear-to-r from-neon/15 via-surface/90 to-blue-500/15 p-6 sm:p-8 shadow-xl text-center">
-        <span className="inline-block rounded-full bg-neon/20 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-neon mb-3">
-          Combined Sports Merit (CSM) Formula
-        </span>
-
-        <h3 className="text-2xl sm:text-3xl font-black text-foreground">
-          Combined Sports Merit (CSM)
-        </h3>
-
-        {/* Formula Representation */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-4 font-display font-black">
-          <div className="flex items-center gap-2 rounded-2xl border border-blue-500/30 bg-surface/90 px-4 py-3 shadow-xs">
-            <span className="text-2xl sm:text-3xl text-blue-500">25%</span>
-            <span className="text-xs sm:text-sm text-foreground/90 uppercase tracking-wider">CUET</span>
-          </div>
-
-          <div className="flex size-8 items-center justify-center rounded-full bg-surface border border-border text-muted-foreground">
-            <Plus className="size-4" />
-          </div>
-
-          <div className="flex items-center gap-2 rounded-2xl border border-amber-500/30 bg-surface/90 px-4 py-3 shadow-xs">
-            <span className="text-2xl sm:text-3xl text-amber-500">25%</span>
-            <span className="text-xs sm:text-sm text-foreground/90 uppercase tracking-wider">Certificates</span>
-          </div>
-
-          <div className="flex size-8 items-center justify-center rounded-full bg-surface border border-border text-muted-foreground">
-            <Plus className="size-4" />
-          </div>
-
-          <div className="flex items-center gap-2 rounded-2xl border border-emerald-500/40 bg-surface/90 px-4 py-3 shadow-xs ring-1 ring-emerald-500/20">
-            <span className="text-2xl sm:text-3xl text-emerald-500">50%</span>
-            <span className="text-xs sm:text-sm text-foreground/90 uppercase tracking-wider">Sports Trial</span>
-          </div>
-
-          <div className="flex size-8 items-center justify-center rounded-full bg-surface border border-border text-muted-foreground">
-            <Equal className="size-4" />
-          </div>
-
-          <div className="flex items-center gap-2 rounded-2xl border border-neon/50 bg-neon/15 px-5 py-3 shadow-md">
-            <span className="text-2xl sm:text-3xl text-foreground font-black">100%</span>
-            <span className="text-xs sm:text-sm text-neon font-black uppercase tracking-wider">Final CSM</span>
-          </div>
-        </div>
-
-        <div className="mt-6 max-w-3xl mx-auto rounded-2xl bg-surface/80 p-4 border border-border/60 text-xs sm:text-sm text-foreground/85 leading-relaxed">
-          <p className="font-semibold text-foreground">
-            "The final merit score is determined by the combined contribution of all three components."
-          </p>
-          <p className="mt-2 text-muted-foreground text-xs">
-            Combined Sports Merit (CSM) is used for merit ranking, and admissions are allocated according to Delhi University's seat allocation process, candidate's programme and college preferences, and the availability of sports quota seats.
-          </p>
-        </div>
-      </div>
-
       {/* ─── SPORTS LIFE KEY INSIGHTS ───────────────────────────── */}
       <div className="space-y-6">
         {/* Section badge + heading */}

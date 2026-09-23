@@ -270,6 +270,7 @@ function DUSportsQuotaGuidePage() {
         </div>
       </Section>
 
+
       {/* SECTION 2 — HOW DU SPORTS QUOTA SELECTION WORKS */}
       <Section id="selection-process" className="scroll-mt-36 bg-surface/40 border-b border-border/60">
         <div className="space-y-6">
