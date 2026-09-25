@@ -129,14 +129,9 @@ const ACTIVE_INITIATIVES: InitiativeItem[] = [
     icon: GraduationCap,
     images: [
       {
-        src: "/centre-gallery/whatsapp-20260813-171844-1.jpg",
+        src: "https://cdn.collegewollege.com/storage/colleges/branding/aGBsW3QmmmTTVV8kMkRAqZJoKIlxVMp1pWZMAb3a.webp",
         alt: "DU Sports Quota Tennis Trials and Admissions",
         objectPosition: "object-[center_35%]",
-      },
-      {
-        src: "/centre-gallery/whatsapp-20260813-171843-1.jpg",
-        alt: "Competitive Tennis Training for University Admissions",
-        objectPosition: "object-[center_40%]",
       },
     ],
     imageAspect: "h-80 sm:h-96 md:h-[420px]",
