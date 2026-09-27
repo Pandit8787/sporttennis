@@ -49,12 +49,12 @@ export const NAV = [
   { label: "Meet Our Players", to: "/meet-our-players" },
   { label: "Our Programs", to: "/programs" },
   {
-    label: "Sports Life iniatives",
+    label: "Sports Life Initiatives",
     to: "/initiatives",
     children: [
-      { label: "iniatives Overview", to: "/initiatives", description: "Pathways beyond traditional training" },
+      { label: "Initiatives Overview", to: "/initiatives", description: "Pathways beyond traditional training" },
       { label: "Sunday Match Play", to: "/initiatives/sunday-match-play", description: "Weekly tournament match play league" },
-      { label: "Global Learning iniatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
+      { label: "Global Learning Initiatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
       { label: "DU Sports Quota Guide", to: "/du-sports-quota-guide-tennis", description: "CUET weightage, certificates & trial guide" },
     ],
   },
@@ -445,7 +445,7 @@ export const INITIATIVES = [
     body: "Structured competitive matches for players of similar level, helping them improve decision-making, tactical shot selection, and match confidence.",
   },
   {
-    title: "Global Learning iniatives",
+    title: "Global Learning Initiatives",
     body: "Learning Beyond the Court: Direct online interactive sessions with international coaches like Jofre Porta and Indian professionals like Vishnu Vardhan.",
   },
 ];

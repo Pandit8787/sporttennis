@@ -19,13 +19,13 @@ const heroImage = "/centre-gallery/whatsapp-20260813-171844-1.jpg";
 export const Route = createFileRoute("/initiatives/")({
   head: () => ({
     meta: [
-      { title: "Sports Life iniatives — Beyond Court Tennis Programs" },
+      { title: "Sports Life Initiatives — Beyond Court Tennis Programs" },
       {
         name: "description",
         content:
-          "Explore Sports Life iniatives: Sunday Match Play and Global Learning iniatives (Learning Beyond the Court).",
+          "Explore Sports Life Initiatives: Sunday Match Play and Global Learning Initiatives (Learning Beyond the Court).",
       },
-      { property: "og:title", content: "Sports Life iniatives" },
+      { property: "og:title", content: "Sports Life Initiatives" },
       {
         property: "og:description",
         content:
@@ -86,7 +86,7 @@ const ACTIVE_INITIATIVES: InitiativeItem[] = [
     imageAspect: "h-80 sm:h-96 md:h-[420px]",
   },
   {
-    title: "Global Learning iniatives",
+    title: "Global Learning Initiatives",
     tag: "Active Series",
     badgeColor: "text-electric bg-electric/10 border-electric/30",
     desc: "Learning Beyond the Court: Direct access to experienced professionals including international coach Jofre Porta and accomplished Indian pro Vishnu Vardhan.",
@@ -283,19 +283,19 @@ function InitiativesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Sports Life Iniatives"
-        title="Sports Life Iniatives"
+        eyebrow="Sports Life Initiatives"
+        title="Sports Life Initiatives"
         body=""
         image={heroImage}
         removeFog
       />
 
-      {/* Active iniatives */}
+      {/* Active initiatives */}
       <Section>
         <SectionHeading
-          eyebrow="Current iniatives"
-          title="Active Player Iniatives"
-          body="Currently featuring our signature Sunday Match Play program and Global Learning iniatives."
+          eyebrow="Current Initiatives"
+          title="Active Player Initiatives"
+          body="Currently featuring our signature Sunday Match Play program and Global Learning Initiatives."
         />
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
