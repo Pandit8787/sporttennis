@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ACADEMY } from "@/lib/site-data";
-import { Send, CheckCircle2, MessageCircle, Phone, Calendar, User, Mail, Award, BookOpen, School } from "lucide-react";
+import { Send, CheckCircle2, MessageCircle, Phone, Calendar, User, Mail, Award, BookOpen, School, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 export function EnquiryForm() {
@@ -21,24 +21,72 @@ export function EnquiryForm() {
     message: "",
   });
 
+  const TARGET_EMAIL = "Sportslifetennisacademy@gmail.com";
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate submission / dispatch
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      toast.success("DU Sports Quota Roadmap Request Received!", {
-        description: "Our coaching and academic guidance team will connect with you within 24 hours.",
+    try {
+      const payload = {
+        _subject: `DU Sports Quota Profile Evaluation: ${formData.playerName} (${formData.certificateCategory})`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: formData.email,
+        "Player Name": formData.playerName,
+        "Parent Name": formData.parentName,
+        "Phone / WhatsApp Number": formData.phone,
+        "Email Address": formData.email,
+        "Date of Birth": formData.dob || "Not specified",
+        "Gender": formData.gender,
+        "Current AITA Ranking": formData.aitaRanking || "Not specified",
+        "Eligible Certificate Category": formData.certificateCategory,
+        "Highest Sports Achievement": formData.highestAchievement || "Not specified",
+        "Target DU Programme(s)": formData.targetProgramme || "Not specified",
+        "Preferred DU College(s)": formData.targetCollege || "Not specified",
+        "Specific Questions / Message": formData.message || "None",
+        "Submitted At (IST)": new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+      };
+
+      const response = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-    }, 600);
+
+      if (response.ok) {
+        setSubmitted(true);
+        toast.success("DU Sports Quota Roadmap Request Sent!", {
+          description: `Your profile details have been emailed directly to ${TARGET_EMAIL}. Our team will review and get in touch.`,
+        });
+      } else {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.message || "Failed to submit form online");
+      }
+    } catch (err: unknown) {
+      console.error("Form submission error:", err);
+      // Fallback: provide direct mailto link & WhatsApp option if offline/blocked
+      toast.error("Could not send form automatically", {
+        description: "Please send your details via WhatsApp or email directly to " + TARGET_EMAIL,
+      });
+      // Still allow them to send via mailto fallback
+      const mailtoSubject = encodeURIComponent(`DU Sports Quota Evaluation - ${formData.playerName}`);
+      const mailtoBody = encodeURIComponent(
+        `Player Name: ${formData.playerName}\nParent Name: ${formData.parentName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nAITA Rank: ${formData.aitaRanking}\nCategory: ${formData.certificateCategory}\nAchievement: ${formData.highestAchievement}\nTarget DU Course: ${formData.targetProgramme}\nPreferred College: ${formData.targetCollege}\nQuestions: ${formData.message}`
+      );
+      window.open(`mailto:${TARGET_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`, "_blank");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleWhatsAppDirect = () => {
@@ -86,7 +134,7 @@ export function EnquiryForm() {
       </div>
 
       {submitted ? (
-        <div className="rounded-3xl border border-emerald-500/40 bg-emerald-500/10 p-8 text-center space-y-4 max-w-xl mx-auto">
+        <div className="rounded-3xl border border-emerald-500/40 bg-emerald-500/10 p-8 text-center space-y-4 max-w-xl mx-auto animate-in fade-in zoom-in duration-300">
           <div className="flex size-14 items-center justify-center rounded-full bg-emerald-500 text-white mx-auto shadow-lg">
             <CheckCircle2 className="size-8" />
           </div>
@@ -94,13 +142,41 @@ export function EnquiryForm() {
             Thank You, {formData.playerName || "Player"}!
           </h4>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Your DU Sports Quota roadmap profile has been submitted. Our senior coaching directors and admissions mentors will review your sports certificate category, AITA standing, and target programme to prepare your strategic roadmap.
+            Your DU Sports Quota roadmap profile has been submitted and sent to{" "}
+            <span className="font-semibold text-foreground underline decoration-emerald-500 underline-offset-2">
+              {TARGET_EMAIL}
+            </span>
+            . Our senior coaching directors and admissions mentors will review your sports certificate category, AITA standing, and target programme to prepare your strategic roadmap.
           </p>
-          <div className="pt-2">
+          <div className="pt-3 flex flex-wrap justify-center items-center gap-3">
             <button
               type="button"
-              onClick={() => setSubmitted(false)}
-              className="text-xs font-bold text-neon hover:underline cursor-pointer"
+              onClick={handleWhatsAppDirect}
+              className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+            >
+              <MessageCircle className="size-4" />
+              <span>Connect on WhatsApp Now</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setSubmitted(false);
+                setFormData({
+                  playerName: "",
+                  parentName: "",
+                  phone: "",
+                  email: "",
+                  dob: "",
+                  gender: "Male",
+                  aitaRanking: "",
+                  highestAchievement: "",
+                  certificateCategory: "Category B (National Level)",
+                  targetProgramme: "",
+                  targetCollege: "",
+                  message: "",
+                });
+              }}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-xs font-bold text-foreground hover:bg-surface/80 transition-all cursor-pointer"
             >
               Submit Another Profile
             </button>
@@ -320,10 +396,19 @@ export function EnquiryForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-8 py-3.5 text-xs font-black uppercase tracking-wider text-white shadow-lg hover:shadow-neon/40 hover:scale-105 active:scale-95 transition-all cursor-pointer disabled:opacity-50"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-neon via-emerald-500 to-teal-500 px-8 py-3.5 text-xs font-black uppercase tracking-wider text-white shadow-lg hover:shadow-neon/40 hover:scale-105 active:scale-95 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              <Send className="size-4" />
-              <span>{loading ? "Preparing..." : "Get My DU Sports Quota Roadmap"}</span>
+              {loading ? (
+                <>
+                  <Loader2 className="size-4 animate-spin" />
+                  <span>Submitting & Sending Mail...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="size-4" />
+                  <span>Get My DU Sports Quota Roadmap</span>
+                </>
+              )}
             </button>
           </div>
         </form>

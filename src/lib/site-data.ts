@@ -6,6 +6,7 @@ export const ACADEMY = {
   whatsapp: "+919266579159",
   email: "abhiney@sportslifetennisacademy.com",
   emails: [
+    "Sportslifetennisacademy@gmail.com",
     "abhiney@sportslifetennisacademy.com",
     "kabhiney@gmail.com",
   ],
