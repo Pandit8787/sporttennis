@@ -1044,7 +1044,7 @@ function DUSportsQuotaGuidePage() {
             </div>
           </div>
 
-          {/* Connected Initiative: Home to all Tennis Players */}
+          {/* Connected Initiative: Your tennis home in Delhi */}
           <div className="mt-8 rounded-3xl border border-neon/40 bg-linear-to-r from-neon/10 via-surface to-surface p-6 sm:p-8 shadow-xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-2 max-w-2xl">
@@ -1053,7 +1053,7 @@ function DUSportsQuotaGuidePage() {
                   <span>Sports Life Initiative</span>
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-foreground">
-                  Home to all Tennis Players · Your Tennis Home in Delhi
+                  Your tennis home in Delhi
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   Travelling to Delhi for DU trials or tournaments? Bring your own coach, get age-matched hitting partners, pre-trial match practice, and court access across 25 courts in 3 premier Delhi centres.

@@ -137,10 +137,10 @@ const ACTIVE_INITIATIVES: InitiativeItem[] = [
     imageAspect: "h-80 sm:h-96 md:h-[420px]",
   },
   {
-    title: "Home to all Tennis Players",
+    title: "Your tennis home in Delhi",
     tag: "Tournament Preparation",
     badgeColor: "text-emerald-500 bg-emerald-500/10 border-emerald-500/30",
-    desc: "Your Tennis Home in Delhi. Designed to support competitive players travelling to Delhi for ITF, AITA, Fenesta Open, DU Trials, and other major tournaments with court access, hitting partners, practice matches, and coach support.",
+    desc: "Designed to support competitive players travelling to Delhi for ITF, AITA, Fenesta Open, DU Trials, and other major tournaments with court access, hitting partners, practice matches, and coach support.",
     highlights: [
       "Bring your own travelling coach with zero interference and full court support",
       "Age & UTR-matched practice partners and high-tempo hitting sessions",
