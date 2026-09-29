@@ -15,12 +15,14 @@ import { Route as CoachesRouteImport } from './routes/coaches'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DuSportsQuotaGuideTennisRouteImport } from './routes/du-sports-quota-guide-tennis'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
+import { Route as HomeToAllTennisPlayersRouteImport } from './routes/home-to-all-tennis-players'
 import { Route as MeetOurPlayersRouteImport } from './routes/meet-our-players'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TournamentsRouteImport } from './routes/tournaments'
+import { Route as YourTennisHomeInDelhiRouteImport } from './routes/your-tennis-home-in-delhi'
 import { Route as AboutMeetFounderRouteImport } from './routes/about/meet-founder'
 import { Route as AboutOurStoryRouteImport } from './routes/about/our-story'
 import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
@@ -65,6 +67,11 @@ const FacilitiesRoute = FacilitiesRouteImport.update({
   path: '/facilities',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeToAllTennisPlayersRoute = HomeToAllTennisPlayersRouteImport.update({
+  id: '/home-to-all-tennis-players',
+  path: '/home-to-all-tennis-players',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MeetOurPlayersRoute = MeetOurPlayersRouteImport.update({
   id: '/meet-our-players',
   path: '/meet-our-players',
@@ -93,6 +100,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const TournamentsRoute = TournamentsRouteImport.update({
   id: '/tournaments',
   path: '/tournaments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YourTennisHomeInDelhiRoute = YourTennisHomeInDelhiRouteImport.update({
+  id: '/your-tennis-home-in-delhi',
+  path: '/your-tennis-home-in-delhi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutMeetFounderRoute = AboutMeetFounderRouteImport.update({
@@ -166,12 +178,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/du-sports-quota-guide-tennis': typeof DuSportsQuotaGuideTennisRoute
   '/facilities': typeof FacilitiesRoute
+  '/home-to-all-tennis-players': typeof HomeToAllTennisPlayersRoute
   '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
   '/tournaments': typeof TournamentsRoute
+  '/your-tennis-home-in-delhi': typeof YourTennisHomeInDelhiRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/blogs/$slug': typeof BlogsSlugRoute
@@ -192,12 +206,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/du-sports-quota-guide-tennis': typeof DuSportsQuotaGuideTennisRoute
   '/facilities': typeof FacilitiesRoute
+  '/home-to-all-tennis-players': typeof HomeToAllTennisPlayersRoute
   '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
   '/tournaments': typeof TournamentsRoute
+  '/your-tennis-home-in-delhi': typeof YourTennisHomeInDelhiRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/blogs/$slug': typeof BlogsSlugRoute
@@ -219,12 +235,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/du-sports-quota-guide-tennis': typeof DuSportsQuotaGuideTennisRoute
   '/facilities': typeof FacilitiesRoute
+  '/home-to-all-tennis-players': typeof HomeToAllTennisPlayersRoute
   '/meet-our-players': typeof MeetOurPlayersRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
   '/tournaments': typeof TournamentsRoute
+  '/your-tennis-home-in-delhi': typeof YourTennisHomeInDelhiRoute
   '/about/meet-founder': typeof AboutMeetFounderRoute
   '/about/our-story': typeof AboutOurStoryRoute
   '/blogs/$slug': typeof BlogsSlugRoute
@@ -247,12 +265,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/du-sports-quota-guide-tennis'
     | '/facilities'
+    | '/home-to-all-tennis-players'
     | '/meet-our-players'
     | '/programs'
     | '/sitemap.xml'
     | '/team'
     | '/testimonials'
     | '/tournaments'
+    | '/your-tennis-home-in-delhi'
     | '/about/meet-founder'
     | '/about/our-story'
     | '/blogs/$slug'
@@ -273,12 +293,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/du-sports-quota-guide-tennis'
     | '/facilities'
+    | '/home-to-all-tennis-players'
     | '/meet-our-players'
     | '/programs'
     | '/sitemap.xml'
     | '/team'
     | '/testimonials'
     | '/tournaments'
+    | '/your-tennis-home-in-delhi'
     | '/about/meet-founder'
     | '/about/our-story'
     | '/blogs/$slug'
@@ -299,12 +321,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/du-sports-quota-guide-tennis'
     | '/facilities'
+    | '/home-to-all-tennis-players'
     | '/meet-our-players'
     | '/programs'
     | '/sitemap.xml'
     | '/team'
     | '/testimonials'
     | '/tournaments'
+    | '/your-tennis-home-in-delhi'
     | '/about/meet-founder'
     | '/about/our-story'
     | '/blogs/$slug'
@@ -326,12 +350,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DuSportsQuotaGuideTennisRoute: typeof DuSportsQuotaGuideTennisRoute
   FacilitiesRoute: typeof FacilitiesRoute
+  HomeToAllTennisPlayersRoute: typeof HomeToAllTennisPlayersRoute
   MeetOurPlayersRoute: typeof MeetOurPlayersRoute
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRouteWithChildren
   TestimonialsRoute: typeof TestimonialsRoute
   TournamentsRoute: typeof TournamentsRoute
+  YourTennisHomeInDelhiRoute: typeof YourTennisHomeInDelhiRoute
   BlogsSlugRoute: typeof BlogsSlugRoute
   CentresMajorDhyanChandSportsComplexRoute: typeof CentresMajorDhyanChandSportsComplexRoute
   CentresPunjabiBaghClubRoute: typeof CentresPunjabiBaghClubRoute
@@ -387,6 +413,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FacilitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home-to-all-tennis-players': {
+      id: '/home-to-all-tennis-players'
+      path: '/home-to-all-tennis-players'
+      fullPath: '/home-to-all-tennis-players'
+      preLoaderRoute: typeof HomeToAllTennisPlayersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/meet-our-players': {
       id: '/meet-our-players'
       path: '/meet-our-players'
@@ -427,6 +460,13 @@ declare module '@tanstack/react-router' {
       path: '/tournaments'
       fullPath: '/tournaments'
       preLoaderRoute: typeof TournamentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/your-tennis-home-in-delhi': {
+      id: '/your-tennis-home-in-delhi'
+      path: '/your-tennis-home-in-delhi'
+      fullPath: '/your-tennis-home-in-delhi'
+      preLoaderRoute: typeof YourTennisHomeInDelhiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about/meet-founder': {
@@ -545,12 +585,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DuSportsQuotaGuideTennisRoute: DuSportsQuotaGuideTennisRoute,
   FacilitiesRoute: FacilitiesRoute,
+  HomeToAllTennisPlayersRoute: HomeToAllTennisPlayersRoute,
   MeetOurPlayersRoute: MeetOurPlayersRoute,
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRouteWithChildren,
   TestimonialsRoute: TestimonialsRoute,
   TournamentsRoute: TournamentsRoute,
+  YourTennisHomeInDelhiRoute: YourTennisHomeInDelhiRoute,
   BlogsSlugRoute: BlogsSlugRoute,
   CentresMajorDhyanChandSportsComplexRoute:
     CentresMajorDhyanChandSportsComplexRoute,

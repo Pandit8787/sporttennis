@@ -56,6 +56,7 @@ export const NAV = [
       { label: "Sunday Match Play", to: "/initiatives/sunday-match-play", description: "Weekly tournament match play league" },
       { label: "Global Learning Initiatives", to: "/initiatives/global-learning", description: "Learning Beyond the Court · Masterclasses" },
       { label: "DU Sports Quota Guide", to: "/du-sports-quota-guide-tennis", description: "CUET weightage, certificates & trial guide" },
+      { label: "Home to all Tennis Players", to: "/home-to-all-tennis-players", description: "Your Tennis Home in Delhi · Tournament Prep" },
     ],
   },
   { label: "Testimonials", to: "/testimonials" },

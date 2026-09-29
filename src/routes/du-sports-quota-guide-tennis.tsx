@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
 import {
   GraduationCap,
@@ -12,6 +12,7 @@ import {
   Sparkles,
   CheckCircle2,
   Calendar,
+  Home,
   AlertTriangle,
   Clock,
   ArrowRight,
@@ -1040,6 +1041,31 @@ function DUSportsQuotaGuidePage() {
                 </div>
                 <ExternalLink className="size-4 text-muted-foreground group-hover:text-neon transition-colors shrink-0" />
               </a>
+            </div>
+          </div>
+
+          {/* Connected Initiative: Home to all Tennis Players */}
+          <div className="mt-8 rounded-3xl border border-neon/40 bg-linear-to-r from-neon/10 via-surface to-surface p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-2 max-w-2xl">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-neon/20 px-3 py-0.5 text-xs font-bold text-neon uppercase tracking-wider">
+                  <Home className="size-3.5" />
+                  <span>Sports Life Initiative</span>
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-foreground">
+                  Home to all Tennis Players · Your Tennis Home in Delhi
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Travelling to Delhi for DU trials or tournaments? Bring your own coach, get age-matched hitting partners, pre-trial match practice, and court access across 25 courts in 3 premier Delhi centres.
+                </p>
+              </div>
+              <Link
+                to="/home-to-all-tennis-players"
+                className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-neon px-6 py-3 text-xs font-black uppercase text-black hover:bg-neon/90 hover:scale-105 active:scale-95 transition-all shadow-lg"
+              >
+                <span>Explore Initiative</span>
+                <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
         </div>

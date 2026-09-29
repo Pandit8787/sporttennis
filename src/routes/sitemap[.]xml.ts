@@ -24,6 +24,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/tournaments", changefreq: "weekly", priority: "0.8" },
           { path: "/blogs", changefreq: "weekly", priority: "0.8" },
           { path: "/du-sports-quota-guide-tennis", changefreq: "weekly", priority: "0.9" },
+          { path: "/home-to-all-tennis-players", changefreq: "weekly", priority: "0.9" },
           { path: "/contact", changefreq: "monthly", priority: "0.9" },
           ...BLOGS.map((b) => ({
             path: `/blogs/${b.slug}`,
