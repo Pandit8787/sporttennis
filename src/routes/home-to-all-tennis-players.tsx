@@ -219,7 +219,7 @@ function HomeToAllTennisPlayersPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const TARGET_EMAIL = "Sportslifetennisacademy@gmail.com";
+  const TARGET_EMAIL = "abhiney@sportslifetennisacademy.com";
 
   const toggleReq = (req: string) => {
     setRequirements((prev) =>
@@ -230,6 +230,8 @@ function HomeToAllTennisPlayersPage() {
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
     const reqText = requirements.length > 0 ? requirements.join(", ") : "Not specified yet";
 
@@ -256,6 +258,7 @@ function HomeToAllTennisPlayersPage() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+        signal: controller.signal,
         body: JSON.stringify(payload),
       });
 
@@ -294,6 +297,7 @@ Sent via Sports Life Tennis Academy website`,
       });
       setSubmitted(true);
     } finally {
+      window.clearTimeout(timeoutId);
       setSubmitting(false);
     }
   };

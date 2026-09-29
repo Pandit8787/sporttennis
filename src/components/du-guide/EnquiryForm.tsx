@@ -6,6 +6,8 @@ import { toast } from "sonner";
 export function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [submissionMode, setSubmissionMode] = useState<"sent" | "draft">("sent");
   const [formData, setFormData] = useState({
     playerName: "",
     parentName: "",
@@ -21,7 +23,7 @@ export function EnquiryForm() {
     message: "",
   });
 
-  const TARGET_EMAIL = "Sportslifetennisacademy@gmail.com";
+  const TARGET_EMAIL = "abhiney@sportslifetennisacademy.com";
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -32,6 +34,9 @@ export function EnquiryForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setSubmitMessage("Submitting your details...");
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
     try {
       const payload = {
@@ -60,11 +65,14 @@ export function EnquiryForm() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+        signal: controller.signal,
         body: JSON.stringify(payload),
       });
 
       if (response.ok) {
         setSubmitted(true);
+        setSubmissionMode("sent");
+        setSubmitMessage("");
         toast.success("DU Sports Quota Roadmap Request Sent!", {
           description: `Your profile details have been emailed directly to ${TARGET_EMAIL}. Our team will review and get in touch.`,
         });
@@ -75,8 +83,11 @@ export function EnquiryForm() {
     } catch (err: unknown) {
       console.error("Form submission error:", err);
       // Fallback: provide direct mailto link & WhatsApp option if offline/blocked
-      toast.error("Could not send form automatically", {
-        description: "Please send your details via WhatsApp or email directly to " + TARGET_EMAIL,
+      setSubmitted(true);
+      setSubmissionMode("draft");
+      setSubmitMessage("");
+      toast.info("Your email draft is ready", {
+        description: "Please press Send in your email app to complete the enquiry.",
       });
       // Still allow them to send via mailto fallback
       const mailtoSubject = encodeURIComponent(`DU Sports Quota Evaluation - ${formData.playerName}`);
@@ -85,6 +96,7 @@ export function EnquiryForm() {
       );
       window.open(`mailto:${TARGET_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`, "_blank");
     } finally {
+      window.clearTimeout(timeoutId);
       setLoading(false);
     }
   };
@@ -142,11 +154,23 @@ export function EnquiryForm() {
             Thank You, {formData.playerName || "Player"}!
           </h4>
           <p className="text-sm text-foreground/80 leading-relaxed">
-            Your DU Sports Quota roadmap profile has been submitted and sent to{" "}
-            <span className="font-semibold text-foreground underline decoration-emerald-500 underline-offset-2">
-              {TARGET_EMAIL}
-            </span>
-            . Our senior coaching directors and admissions mentors will review your sports certificate category, AITA standing, and target programme to prepare your strategic roadmap.
+            {submissionMode === "sent" ? (
+              <>
+                Your DU Sports Quota roadmap profile has been submitted and sent to{" "}
+                <span className="font-semibold text-foreground underline decoration-emerald-500 underline-offset-2">
+                  {TARGET_EMAIL}
+                </span>
+                . Our senior coaching directors and admissions mentors will review your sports certificate category, AITA standing, and target programme to prepare your strategic roadmap.
+              </>
+            ) : (
+              <>
+                Your details have been filled in an email draft addressed to{" "}
+                <span className="font-semibold text-foreground underline decoration-emerald-500 underline-offset-2">
+                  {TARGET_EMAIL}
+                </span>
+                . Please press <strong>Send</strong> in your email app to complete the submission.
+              </>
+            )}
           </p>
           <div className="pt-3 flex flex-wrap justify-center items-center gap-3">
             <button
@@ -161,6 +185,7 @@ export function EnquiryForm() {
               type="button"
               onClick={() => {
                 setSubmitted(false);
+                setSubmissionMode("sent");
                 setFormData({
                   playerName: "",
                   parentName: "",
@@ -390,9 +415,16 @@ export function EnquiryForm() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-border/70">
-            <p className="text-xs text-muted-foreground text-center sm:text-left">
-              🔒 Confidential. Your sports and contact information will only be used for admission guidance.
-            </p>
+            <div className="space-y-1 text-center sm:text-left">
+              <p className="text-xs text-muted-foreground">
+                🔒 Confidential. Your sports and contact information will only be used for admission guidance.
+              </p>
+              {submitMessage && (
+                <p role="status" className="text-xs font-semibold text-neon">
+                  {submitMessage}
+                </p>
+              )}
+            </div>
             <button
               type="submit"
               disabled={loading}
