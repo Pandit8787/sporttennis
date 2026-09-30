@@ -152,11 +152,6 @@ const ACTIVE_INITIATIVES: InitiativeItem[] = [
     icon: Home,
     images: [
       {
-        src: "/hero-banner/hero-banner-1.jpg",
-        alt: "Sports Life - Your Tennis Home in Delhi",
-        objectPosition: "object-[center_35%]",
-      },
-      {
         src: "/centres/roshanara/roshanara-slide-1.jpg",
         alt: "Roshanara Club Tennis Courts Delhi",
         objectPosition: "object-[center_40%]",

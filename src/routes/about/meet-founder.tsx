@@ -542,7 +542,7 @@ function MeetFounderPage() {
     <>
       {/* Hero */}
       <PageHero
-        title=""
+        title="Meet The Founder"
         image={heroImage}
         removeFog
       />
