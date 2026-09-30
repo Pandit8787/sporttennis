@@ -36,7 +36,7 @@ export const Route = createFileRoute("/home-to-all-tennis-players")({
   head: () => ({
     meta: [
       {
-        title: "Your tennis home in Delhi — Sports Life Tennis Academy",
+        title: "Your Tennis Home In Delhi — Sports Life Tennis Academy",
       },
       {
         name: "description",
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/home-to-all-tennis-players")({
       },
       {
         property: "og:title",
-        content: "Your tennis home in Delhi — Sports Life",
+        content: "Your Tennis Home In Delhi — Sports Life",
       },
       {
         property: "og:description",
@@ -277,7 +277,7 @@ function HomeToAllTennisPlayersPage() {
         `Tournament Preparation Request: ${playerName || "Player"} — ${tournament || "Delhi"}`,
       );
       const mailtoBody = encodeURIComponent(
-`New Tournament Preparation Request — Your tennis home in Delhi
+        `New Tournament Preparation Request — Your tennis home in Delhi
 
 🎾 Player Name: ${playerName || "Not provided"}
 📞 Contact / WhatsApp: ${phone || "Not provided"}
@@ -314,7 +314,7 @@ Sent via Sports Life Tennis Academy website`,
 🎯 *Support Needed:* ${reqText}
 📝 *Notes / Requirements:* ${notes || "None"}
 
-_Enquired via Sports Life Tennis Academy: Your tennis home in Delhi initiative_`;
+_Enquired via Sports Life Tennis Academy: Your Tennis Home In Delhi initiative_`;
 
     const cleanNumber = ACADEMY.whatsapp.replace(/\D/g, "");
     window.open(`https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`, "_blank");
@@ -325,7 +325,7 @@ _Enquired via Sports Life Tennis Academy: Your tennis home in Delhi initiative_`
       {/* Hero Section */}
       <PageHero
         images={HERO_IMAGES}
-        title="Your tennis home in Delhi"
+        title="Your Tennis Home In Delhi"
         body="Coming to Delhi for a tennis tournament? Sports Life is here to help you prepare. Court access, practice partners, hitting sessions, and match play across 25 courts in 3 Delhi centres."
       />
 
@@ -482,9 +482,8 @@ _Enquired via Sports Life Tennis Academy: Your tennis home in Delhi initiative_`
             return (
               <div
                 key={pillar.title}
-                className={`group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-surface/90 p-6 sm:p-7 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${pillar.borderGlow} ${
-                  i === 4 ? "md:col-span-2 lg:col-span-1" : ""
-                }`}
+                className={`group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-surface/90 p-6 sm:p-7 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${pillar.borderGlow} ${i === 4 ? "md:col-span-2 lg:col-span-1" : ""
+                  }`}
               >
                 {/* Background ambient glow */}
                 <div
@@ -899,16 +898,14 @@ _Enquired via Sports Life Tennis Academy: Your tennis home in Delhi initiative_`
                           type="button"
                           key={req}
                           onClick={() => toggleReq(req)}
-                          className={`flex items-center gap-2.5 rounded-xl border p-3 text-left text-xs font-semibold transition-all cursor-pointer ${
-                            isSelected
-                              ? "border-neon bg-neon/15 text-neon"
-                              : "border-border bg-surface-2 text-foreground/80 hover:border-border/80"
-                          }`}
+                          className={`flex items-center gap-2.5 rounded-xl border p-3 text-left text-xs font-semibold transition-all cursor-pointer ${isSelected
+                            ? "border-neon bg-neon/15 text-neon"
+                            : "border-border bg-surface-2 text-foreground/80 hover:border-border/80"
+                            }`}
                         >
                           <div
-                            className={`size-4 rounded-sm border flex items-center justify-center shrink-0 ${
-                              isSelected ? "border-neon bg-neon text-black" : "border-muted-foreground"
-                            }`}
+                            className={`size-4 rounded-sm border flex items-center justify-center shrink-0 ${isSelected ? "border-neon bg-neon text-black" : "border-muted-foreground"
+                              }`}
                           >
                             {isSelected && <CheckCircle2 className="size-3.5 stroke-[3]" />}
                           </div>
