@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { ACADEMY } from "@/lib/site-data";
 import { Reveal } from "@/components/site/motion-primitives";
 import { PageHero, Section, SectionHeading } from "@/components/site/sections";
+import { Mail, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -43,15 +44,86 @@ export const Route = createFileRoute("/contact")({
 const field =
   "w-full rounded-xl border border-input bg-surface/60 px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-neon/60 focus:ring-2 focus:ring-ring";
 const contactHeroImage = "/hero-banner/contact-img-4759.jpg";
+const contactFormEmail = "sportslifetennisacademy@gmail.com";
 
 function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    level: "Complete beginner",
+    message: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    const fieldName = id === "c-msg" ? "message" : id.replace("c-", "");
+    setForm((prev) => ({ ...prev, [fieldName]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const action = (e.nativeEvent as SubmitEvent).submitter;
+    const details =
+      `Name: ${form.name}\n` +
+      `Phone: ${form.phone}\n` +
+      `Email: ${form.email}\n` +
+      `Current level: ${form.level}\n` +
+      `Message: ${form.message || "Not provided"}`;
+
+    if (action instanceof HTMLButtonElement && action.value === "whatsapp") {
+      const waNumber = ACADEMY.whatsapp.replace(/\D/g, "");
+      const waText = `New Free Trial Request - Sports Life Tennis Academy\n${details}`;
+      window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`, "_blank", "noopener,noreferrer");
+      setSubmitMessage("WhatsApp opened with your trial request. Send the message there to complete your enquiry.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitMessage("Sending your free trial request...");
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${contactFormEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        signal: controller.signal,
+        body: JSON.stringify({
+          _subject: `Free Trial Request - ${form.name}`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: form.email,
+          Name: form.name,
+          Phone: form.phone,
+          Email: form.email,
+          "Current level": form.level,
+          Message: form.message || "Not provided",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Email service did not accept the request");
+      }
+
+      setSubmitMessage(`Your request was sent to ${contactFormEmail}.`);
+    } catch (error) {
+      console.error("Contact form email error:", error);
+      setSubmitMessage(`We couldn't send your request. Please try again or email ${contactFormEmail} directly.`);
+    } finally {
+      window.clearTimeout(timeoutId);
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
+      onSubmit={handleSubmit}
       className="glass rounded-3xl p-7 lg:p-10"
     >
       <h2 className="text-3xl">Book a free trial</h2>
@@ -67,7 +139,7 @@ function ContactForm() {
           >
             Name
           </label>
-          <input id="c-name" required className={`mt-2 ${field}`} placeholder="Your name" />
+          <input id="c-name" required className={`mt-2 ${field}`} placeholder="Your name" value={form.name} onChange={handleChange} />
         </div>
         <div>
           <label
@@ -76,7 +148,7 @@ function ContactForm() {
           >
             Phone
           </label>
-          <input id="c-phone" required className={`mt-2 ${field}`} placeholder="+91" />
+          <input id="c-phone" required className={`mt-2 ${field}`} placeholder="+91" value={form.phone} onChange={handleChange} />
         </div>
         <div className="sm:col-span-2">
           <label
@@ -91,6 +163,8 @@ function ContactForm() {
             required
             className={`mt-2 ${field}`}
             placeholder="you@email.com"
+            value={form.email}
+            onChange={handleChange}
           />
         </div>
         <div className="sm:col-span-2">
@@ -100,7 +174,7 @@ function ContactForm() {
           >
             Current level
           </label>
-          <select id="c-level" className={`mt-2 ${field}`}>
+          <select id="c-level" className={`mt-2 ${field}`} value={form.level} onChange={handleChange}>
             <option>Complete beginner</option>
             <option>Recreational player</option>
             <option>Club / school level</option>
@@ -119,17 +193,32 @@ function ContactForm() {
             rows={4}
             className={`mt-2 ${field}`}
             placeholder="Preferred timings, goals, anything we should know"
+            value={form.message}
+            onChange={handleChange}
           />
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="mt-7 w-full rounded-full bg-[image:var(--gradient-electric)] px-6 py-3.5 font-display text-xs font-extrabold tracking-[0.16em] text-primary-foreground uppercase transition-transform hover:-translate-y-0.5"
-      >
-        {sent ? "Request sent" : "Request free trial"}
-      </button>
-      {sent && <p className="mt-4 text-sm text-neon">Thanks — a coach will call you shortly.</p>}
+      <div className="mt-7 grid gap-3 sm:grid-cols-2">
+        <button
+          type="submit"
+          value="whatsapp"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3.5 font-display text-xs font-extrabold tracking-[0.12em] text-white uppercase transition-colors hover:bg-emerald-700"
+        >
+          <MessageCircle className="size-4" />
+          Send on WhatsApp
+        </button>
+        <button
+          type="submit"
+          value="email"
+          disabled={isSubmitting}
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3.5 font-display text-xs font-extrabold tracking-[0.12em] text-foreground uppercase transition-colors hover:border-neon hover:text-neon disabled:cursor-wait disabled:opacity-60"
+        >
+          <Mail className="size-4" />
+          {isSubmitting ? "Sending..." : "Send by Email"}
+        </button>
+      </div>
+      {submitMessage && <p className="mt-4 text-sm text-neon">{submitMessage}</p>}
     </form>
   );
 }
