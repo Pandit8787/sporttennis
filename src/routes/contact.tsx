@@ -106,15 +106,25 @@ function ContactForm() {
           Message: form.message || "Not provided",
         }),
       });
+      const result = await response.json().catch(() => null);
 
-      if (!response.ok) {
-        throw new Error("Email service did not accept the request");
+      if (!response.ok || result?.success === false || result?.success === "false") {
+        throw new Error(result?.message || "Email service did not accept the request");
       }
 
-      setSubmitMessage(`Your request was sent to ${contactFormEmail}.`);
+      if (result?.success !== true && result?.success !== "true") {
+        throw new Error(result?.message || "Email service returned an unexpected response");
+      }
+
+      setSubmitMessage(
+        `Request accepted for ${contactFormEmail}. If this is the first submission, check that inbox (including spam) for FormSubmit's verification email and confirm the address.`
+      );
     } catch (error) {
       console.error("Contact form email error:", error);
-      setSubmitMessage(`We couldn't send your request. Please try again or email ${contactFormEmail} directly.`);
+      const reason = error instanceof Error ? ` ${error.message}` : "";
+      setSubmitMessage(
+        `Email was not accepted.${reason} Check that ${contactFormEmail} is verified with FormSubmit, then try again.`
+      );
     } finally {
       window.clearTimeout(timeoutId);
       setIsSubmitting(false);
